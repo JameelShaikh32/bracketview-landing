@@ -148,7 +148,7 @@ const pricingPlans: PricingPlan[] = [
             "AI repair & helpers with monthly usage limits",
         ],
         cta: "Get started free",
-        ctaHref: "https://bracketview.in",
+        ctaHref: "https://app.bracketview.in",
     },
     {
         name: "Monthly",
@@ -164,8 +164,8 @@ const pricingPlans: PricingPlan[] = [
             "No monthly AI caps",
             "Priority for future Pro capabilities",
         ],
-        cta: "Upgrade to Pro",
-        ctaHref: "https://bracketview.in/pricing",
+        cta: "Get Started",
+        ctaHref: "https://app.bracketview.in/pricing",
     },
     {
         name: "Yearly",
@@ -184,7 +184,7 @@ const pricingPlans: PricingPlan[] = [
             "Priority for future Pro capabilities",
         ],
         cta: "Get Started",
-        ctaHref: "https://bracketview.in/pricing",
+        ctaHref: "https://app.bracketview.in/pricing",
         highlighted: true,
     },
 ];

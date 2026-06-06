@@ -1,11 +1,22 @@
+"use client";
+
+import AnimatedPath from "@/app/components/motion/AnimatedPath";
+import Reveal from "@/app/components/motion/Reveal";
+import StaggerGroup from "@/app/components/motion/StaggerGroup";
+import { springTransition } from "@/app/components/motion/variants";
 import type { HowItWorksStep } from "@/app/data/constant";
 import { howItWorksSteps } from "@/app/data/constant";
 import { ArrowUpRight } from "lucide-react";
+import { motion } from "motion/react";
 import Link from "next/link";
 
 const StepCard = ({ step, title, description }: HowItWorksStep) => {
     return (
-        <article className="group flex min-h-64 flex-1 flex-col rounded-4xl bg-white p-6 text-black transition-colors duration-300 hover:bg-accent sm:min-h-72 sm:p-8 dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white">
+        <motion.article
+            whileHover={{ y: -4 }}
+            transition={springTransition}
+            className="group flex min-h-64 flex-1 flex-col rounded-4xl bg-white p-6 text-black transition-colors duration-300 hover:bg-accent sm:min-h-72 sm:p-8 dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white"
+        >
             <div className="mb-8 flex size-12 items-center justify-center rounded-2xl bg-gray text-black transition-colors duration-300 group-hover:bg-white sm:size-14 dark:bg-background dark:text-foreground dark:group-hover:bg-white dark:group-hover:text-black">
                 <span className="text-base font-bold tracking-tight sm:text-lg">
                     {step}
@@ -16,7 +27,7 @@ const StepCard = ({ step, title, description }: HowItWorksStep) => {
             <p className="mt-3 flex-1 text-sm leading-relaxed opacity-80">
                 {description}
             </p>
-        </article>
+        </motion.article>
     );
 };
 
@@ -36,15 +47,32 @@ const WavyConnector = ({ direction }: { direction: "up" | "down" }) => {
                 className="h-16 w-full text-black/45 dark:text-foreground/55"
                 fill="none"
             >
-                <path
+                <AnimatedPath
                     d={path}
-                    stroke="currentColor"
-                    strokeWidth="2.5"
+                    strokeWidth={2.5}
                     strokeDasharray="6 8"
                     strokeLinecap="round"
                 />
-                <circle cx="0" cy="40" r="3.5" fill="currentColor" />
-                <circle cx="56" cy="40" r="3.5" fill="currentColor" />
+                <motion.circle
+                    cx="0"
+                    cy="40"
+                    r="3.5"
+                    fill="currentColor"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.3, delay: 0.6 }}
+                />
+                <motion.circle
+                    cx="56"
+                    cy="40"
+                    r="3.5"
+                    fill="currentColor"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.3, delay: 0.8 }}
+                />
             </svg>
         </div>
     );
@@ -60,15 +88,32 @@ const VerticalConnector = () => (
             className="h-full w-8 text-black/45 dark:text-foreground/55"
             fill="none"
         >
-            <path
+            <AnimatedPath
                 d="M 16 0 C 4 16, 28 32, 16 48"
-                stroke="currentColor"
-                strokeWidth="2.5"
+                strokeWidth={2.5}
                 strokeDasharray="6 8"
                 strokeLinecap="round"
             />
-            <circle cx="16" cy="0" r="3.5" fill="currentColor" />
-            <circle cx="16" cy="48" r="3.5" fill="currentColor" />
+            <motion.circle
+                cx="16"
+                cy="0"
+                r="3.5"
+                fill="currentColor"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+            />
+            <motion.circle
+                cx="16"
+                cy="48"
+                r="3.5"
+                fill="currentColor"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.3, delay: 0.8 }}
+            />
         </svg>
     </div>
 );
@@ -80,7 +125,7 @@ const HowItWorks = () => {
             className="relative w-full px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pb-32"
         >
             <div className="mx-auto max-w-7xl">
-                <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+                <Reveal className="mx-auto flex max-w-4xl flex-col items-center text-center">
                     <span className="rounded-full border border-black px-5 py-1.5 text-sm font-medium text-black dark:border-foreground dark:text-foreground">
                         How it works
                     </span>
@@ -93,28 +138,34 @@ const HowItWorks = () => {
                         Open BracketView, paste your payload, and start inspecting
                         structured data in seconds.
                     </p>
-                </div>
+                </Reveal>
 
                 {/* Mobile — stacked with vertical connectors */}
-                <div className="mt-14 flex flex-col sm:mt-16 md:hidden">
+                <StaggerGroup className="mt-14 flex flex-col sm:mt-16 md:hidden">
                     {howItWorksSteps.map((item, index) => (
                         <div key={item.step}>
                             <StepCard {...item} />
                             {index < howItWorksSteps.length - 1 && <VerticalConnector />}
                         </div>
                     ))}
-                </div>
+                </StaggerGroup>
 
                 {/* Desktop — cards with wavy connectors in the gaps */}
                 <div className="mt-14 hidden items-stretch sm:mt-16 md:flex">
-                    <StepCard {...howItWorksSteps[0]} />
+                    <Reveal className="flex-1">
+                        <StepCard {...howItWorksSteps[0]} />
+                    </Reveal>
                     <WavyConnector direction="up" />
-                    <StepCard {...howItWorksSteps[1]} />
+                    <Reveal className="flex-1">
+                        <StepCard {...howItWorksSteps[1]} />
+                    </Reveal>
                     <WavyConnector direction="down" />
-                    <StepCard {...howItWorksSteps[2]} />
+                    <Reveal className="flex-1">
+                        <StepCard {...howItWorksSteps[2]} />
+                    </Reveal>
                 </div>
 
-                <div className="mt-14 flex justify-center sm:mt-16">
+                <Reveal className="mt-14 flex justify-center sm:mt-16">
                     <Link
                         href="https://app.bracketview.in"
                         target="_blank"
@@ -124,7 +175,7 @@ const HowItWorks = () => {
                         Open BracketView
                         <ArrowUpRight size={18} aria-hidden />
                     </Link>
-                </div>
+                </Reveal>
             </div>
         </section>
     );

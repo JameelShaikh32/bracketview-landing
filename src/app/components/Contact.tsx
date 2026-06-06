@@ -1,4 +1,7 @@
 import ContactForm from "@/app/components/ContactForm";
+import PageHeader from "@/app/components/motion/PageHeader";
+import Reveal from "@/app/components/motion/Reveal";
+import StaggerGroup from "@/app/components/motion/StaggerGroup";
 import { socialLinks } from "@/app/data/constant";
 import { supportEmail } from "@/app/data/legal";
 import { ArrowUpRight, Clock3, Mail, MessageCircle } from "lucide-react";
@@ -7,26 +10,18 @@ const Contact = () => {
     return (
         <main className="w-full px-4 pb-24 pt-8 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
-                <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-                    <span className="rounded-full border border-black px-5 py-1.5 text-sm font-medium text-black dark:border-foreground dark:text-foreground">
-                        Contact
-                    </span>
-
-                    <h1 className="mt-8 text-3xl font-bold leading-[1.15] tracking-tight text-black sm:text-4xl md:text-[2.75rem] dark:text-foreground">
-                        Get in touch with BracketView
-                    </h1>
-
-                    <p className="mt-6 max-w-2xl text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/70">
-                        Have a question about your account, billing, privacy, or the
-                        product? Send us a message and we will get back to you within
-                        1–2 business days.
-                    </p>
-                </div>
+                <PageHeader
+                    badge="Contact"
+                    title="Get in touch with BracketView"
+                    description="Have a question about your account, billing, privacy, or the product? Send us a message and we will get back to you within 1–2 business days."
+                />
 
                 <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-5 lg:mt-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-                    <ContactForm />
+                    <Reveal variant="fadeLeft">
+                        <ContactForm />
+                    </Reveal>
 
-                    <div className="flex flex-col gap-5">
+                    <StaggerGroup className="flex flex-col gap-5">
                         <div className="rounded-4xl bg-white p-6 sm:p-8 dark:bg-muted">
                             <div className="flex size-12 items-center justify-center rounded-2xl bg-gray dark:bg-background">
                                 <Mail size={22} strokeWidth={1.75} aria-hidden />
@@ -90,7 +85,7 @@ const Contact = () => {
                                 ))}
                             </ul>
                         </div>
-                    </div>
+                    </StaggerGroup>
                 </div>
             </div>
         </main>

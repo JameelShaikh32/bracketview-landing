@@ -1,6 +1,12 @@
+"use client";
+
+import Reveal from "@/app/components/motion/Reveal";
+import StaggerGroup from "@/app/components/motion/StaggerGroup";
+import { springTransition } from "@/app/components/motion/variants";
 import type { PricingPlan } from "@/app/data/constant";
 import { pricingPlans } from "@/app/data/constant";
 import { ArrowUpRight, Check } from "lucide-react";
+import { motion } from "motion/react";
 import Link from "next/link";
 
 const PricingCard = ({
@@ -17,11 +23,11 @@ const PricingCard = ({
     ctaHref,
     highlighted = false,
 }: PricingPlan) => {
-    const hasDiscount = Boolean(originalPrice && displayPrice);
-
     return (
-        <article
-            className={`group flex min-h-128 flex-col rounded-4xl p-6 sm:min-h-136 sm:p-8 ${highlighted
+        <motion.article
+            whileHover={{ y: -4, scale: highlighted ? 1.02 : 1 }}
+            transition={springTransition}
+            className={`group flex h-full w-full flex-col rounded-4xl p-6 sm:p-8 ${highlighted
                 ? "bg-accent text-black dark:bg-accent-dark dark:text-white"
                 : "bg-white text-black transition-colors duration-300 hover:bg-accent dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white"
                 }`}
@@ -35,7 +41,7 @@ const PricingCard = ({
                 )}
             </div>
 
-            {hasDiscount ? (
+            {originalPrice && displayPrice ? (
                 <div className="mt-6">
                     <div className="flex flex-wrap items-baseline gap-3">
                         <span className="text-4xl font-bold tracking-tight line-through decoration-2 sm:text-5xl">
@@ -80,8 +86,8 @@ const PricingCard = ({
                     <li key={feature} className="flex items-start gap-3 text-sm">
                         <span
                             className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full ${highlighted
-                                ? "bg-black dark:bg-accent text-white"
-                                : "bg-emerald-500 group-hover:bg-black text-white transition-all duration-300 dark:bg-emerald-700"
+                                ? "bg-black text-white dark:bg-accent"
+                                : "bg-emerald-500 text-white transition-all duration-300 group-hover:bg-black dark:bg-emerald-700"
                                 }`}
                         >
                             <Check size={12} strokeWidth={3} aria-hidden />
@@ -90,7 +96,7 @@ const PricingCard = ({
                     </li>
                 ))}
             </ul>
-        </article>
+        </motion.article>
     );
 };
 
@@ -101,7 +107,7 @@ const Pricing = () => {
             className="relative w-full px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pb-32"
         >
             <div className="mx-auto max-w-7xl">
-                <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+                <Reveal className="mx-auto flex max-w-4xl flex-col items-center text-center">
                     <span className="rounded-full border border-black px-5 py-1.5 text-sm font-medium text-black dark:border-foreground dark:text-foreground">
                         Pricing
                     </span>
@@ -114,19 +120,21 @@ const Pricing = () => {
                         The full JSON workspace is free. Pro unlocks unlimited AI,
                         larger uploads, and unlimited snapshots.
                     </p>
-                </div>
+                </Reveal>
 
-                <div className="mt-14 grid grid-cols-1 gap-4 sm:mt-16 md:grid-cols-3 lg:gap-5">
+                <StaggerGroup className="mt-14 grid grid-cols-1 items-stretch gap-4 sm:mt-16 md:grid-cols-3 lg:gap-5">
                     {pricingPlans.map((plan) => (
                         <PricingCard key={plan.name} {...plan} />
                     ))}
-                </div>
+                </StaggerGroup>
 
-                <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-black/55 dark:text-foreground/50">
-                    Payments are processed with Razorpay. Pro includes a fair use
-                    policy for unlimited AI — normal personal or team usage is
-                    always welcome.
-                </p>
+                <Reveal className="mx-auto mt-10 max-w-2xl text-center">
+                    <p className="text-xs leading-relaxed text-black/55 dark:text-foreground/50">
+                        Payments are processed with Razorpay. Pro includes a fair use
+                        policy for unlimited AI — normal personal or team usage is
+                        always welcome.
+                    </p>
+                </Reveal>
             </div>
         </section>
     );

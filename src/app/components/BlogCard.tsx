@@ -1,3 +1,4 @@
+import HoverArticle from "@/app/components/motion/HoverArticle";
 import { formatBlogDate, type BlogPost } from "@/app/data/blog";
 import { ArrowUpRight, Clock3 } from "lucide-react";
 
@@ -10,7 +11,7 @@ const BlogCard = ({
     tags,
 }: BlogPost) => {
     return (
-        <article className="group flex min-h-full flex-col rounded-4xl bg-white p-6 text-black transition-colors duration-300 hover:bg-accent sm:p-8 dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white">
+        <HoverArticle className="group flex min-h-full flex-col rounded-4xl bg-white p-6 text-black transition-colors duration-300 hover:bg-accent sm:p-8 dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white">
             <div className="mb-5 flex flex-wrap items-center gap-2">
                 {tags.map((tag) => (
                     <span
@@ -44,7 +45,7 @@ const BlogCard = ({
                 Read on Medium
                 <ArrowUpRight size={16} aria-hidden />
             </a>
-        </article>
+        </HoverArticle>
     );
 };
 

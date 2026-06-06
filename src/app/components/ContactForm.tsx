@@ -3,6 +3,7 @@
 import SubjectDropdown from "@/app/components/ui/SubjectDropdown";
 import { supportEmail } from "@/app/data/legal";
 import { ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -14,6 +15,7 @@ const ContactForm = () => {
     const [formState, setFormState] = useState<FormState>("idle");
     const [errorMessage, setErrorMessage] = useState("");
     const [subject, setSubject] = useState("");
+    const reducedMotion = useReducedMotion();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -95,8 +97,14 @@ const ContactForm = () => {
     }
 
     return (
-        <form
+        <motion.form
             onSubmit={handleSubmit}
+            animate={
+                formState === "error" && !reducedMotion
+                    ? { x: [0, -8, 8, -6, 6, 0] }
+                    : { x: 0 }
+            }
+            transition={{ duration: 0.4 }}
             className="rounded-4xl bg-white p-6 sm:p-8 dark:bg-muted"
         >
             <div className="mb-8">
@@ -228,7 +236,7 @@ const ContactForm = () => {
                     )}
                 </button>
             </div>
-        </form>
+        </motion.form>
     );
 };
 

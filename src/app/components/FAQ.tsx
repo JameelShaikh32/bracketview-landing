@@ -1,6 +1,7 @@
 "use client";
 
 import { faqItems } from "@/app/data/constant";
+import Reveal from "@/app/components/motion/Reveal";
 import { Minus, Plus } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
@@ -14,14 +15,14 @@ const FAQ = () => {
             className="relative w-full px-4 pb-14 pt-16 sm:px-6 lg:px-8"
         >
             <div className="mx-auto max-w-7xl">
-                <div className="mb-12 text-center sm:mb-14">
+                <Reveal className="mb-12 text-center sm:mb-14">
                     <h2 className="text-3xl font-bold leading-snug text-black sm:text-4xl md:text-[2.75rem] dark:text-foreground">
                         Frequently asked questions
                     </h2>
                     <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-black/70 sm:text-base dark:text-foreground/70">
                         We have given answers to the most popular questions below
                     </p>
-                </div>
+                </Reveal>
 
                 <div className="rounded-4xl bg-white p-6 sm:p-10 lg:p-12 dark:bg-muted">
                     <ul className="divide-y divide-black/10 dark:divide-foreground/10">

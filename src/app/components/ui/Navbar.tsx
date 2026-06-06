@@ -3,6 +3,7 @@
 import ThemeToggle from "@/app/components/ui/ThemeToggle";
 import { navLinks } from "@/app/data/constant";
 import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -16,10 +17,15 @@ const iconButtonClasses =
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const navRef = useRef<HTMLElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
     const menuButtonRef = useRef<HTMLButtonElement>(null);
     const [menuTop, setMenuTop] = useState(0);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD);
@@ -69,35 +75,43 @@ const Navbar = () => {
         };
     }, [menuOpen]);
 
-    const mobileMenu = menuOpen ? (
-        <div
-            ref={menuRef}
-            id="mobile-nav-menu"
-            className="mobile-nav-menu fixed inset-x-4 z-45 overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_8px_32px_rgba(25,19,20,0.12)] dark:border-white/10 dark:bg-[#1a1718] dark:shadow-[0_8px_32px_rgba(0,0,0,0.45)] sm:inset-x-6 md:hidden"
-            style={{ top: menuTop }}
-        >
-            <ul className="flex flex-col px-2 py-2">
-                {navLinks.map((link: { label: string; href: string }) => (
-                    <li key={link.label}>
-                        <Link
-                            href={link.href}
-                            className="block rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-black/5 dark:hover:bg-white/10"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            {link.label}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+    const mobileMenu = (
+        <AnimatePresence>
+            {menuOpen ? (
+                <motion.div
+                    ref={menuRef}
+                    id="mobile-nav-menu"
+                    initial={{ opacity: 0, y: -16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -16 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="fixed inset-x-4 z-45 overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_8px_32px_rgba(25,19,20,0.12)] dark:border-white/10 dark:bg-[#1a1718] dark:shadow-[0_8px_32px_rgba(0,0,0,0.45)] sm:inset-x-6 md:hidden"
+                    style={{ top: menuTop }}
+                >
+                    <ul className="flex flex-col px-2 py-2">
+                        {navLinks.map((link: { label: string; href: string }) => (
+                            <li key={link.label}>
+                                <Link
+                                    href={link.href}
+                                    className="block rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    {link.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
 
-            <div className="flex items-center justify-between border-t border-black/5 px-4 py-3 dark:border-white/10">
-                <span className="text-sm font-medium text-foreground/70">
-                    Theme
-                </span>
-                <ThemeToggle />
-            </div>
-        </div>
-    ) : null;
+                    <div className="flex items-center justify-between border-t border-black/5 px-4 py-3 dark:border-white/10">
+                        <span className="text-sm font-medium text-foreground/70">
+                            Theme
+                        </span>
+                        <ThemeToggle />
+                    </div>
+                </motion.div>
+            ) : null}
+        </AnimatePresence>
+    );
 
     return (
         <header className="fixed inset-x-0 top-0 z-50 px-4 pt-2 sm:px-6">
@@ -163,16 +177,36 @@ const Navbar = () => {
                         aria-controls="mobile-nav-menu"
                         onClick={() => setMenuOpen((open) => !open)}
                     >
-                        {menuOpen ? (
-                            <X size={20} aria-hidden />
-                        ) : (
-                            <Menu size={20} aria-hidden />
-                        )}
+                        <AnimatePresence mode="wait" initial={false}>
+                            {menuOpen ? (
+                                <motion.span
+                                    key="close"
+                                    initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                                    exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="flex items-center justify-center"
+                                >
+                                    <X size={20} aria-hidden />
+                                </motion.span>
+                            ) : (
+                                <motion.span
+                                    key="menu"
+                                    initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                                    exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="flex items-center justify-center"
+                                >
+                                    <Menu size={20} aria-hidden />
+                                </motion.span>
+                            )}
+                        </AnimatePresence>
                     </button>
                 </div>
             </nav>
 
-            {mobileMenu && createPortal(mobileMenu, document.body)}
+            {mounted ? createPortal(mobileMenu, document.body) : null}
         </header>
     );
 };

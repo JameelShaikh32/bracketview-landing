@@ -1,3 +1,6 @@
+import Reveal from "@/app/components/motion/Reveal";
+import StaggerGroup from "@/app/components/motion/StaggerGroup";
+
 const aboutHighlights = [
     {
         title: "Privacy-first",
@@ -20,7 +23,7 @@ const OurMission = () => {
             className="relative w-full px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pb-32"
         >
             <div className="mx-auto max-w-7xl">
-                <div className="rounded-4xl bg-white p-8 sm:p-12 lg:p-16 dark:bg-muted">
+                <Reveal variant="scaleIn" className="rounded-4xl bg-white p-8 sm:p-12 lg:p-16 dark:bg-muted">
                     <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
                         <span className="rounded-full border border-black px-5 py-1.5 text-sm font-medium text-black dark:border-foreground dark:text-foreground">
                             About us
@@ -46,11 +49,11 @@ const OurMission = () => {
                         </p>
                     </div>
 
-                    <div className="mt-12 grid grid-cols-1 gap-4 sm:mt-14 md:grid-cols-3 lg:gap-5">
+                    <StaggerGroup className="mt-12 grid grid-cols-1 items-stretch gap-4 sm:mt-14 md:grid-cols-3 lg:gap-5">
                         {aboutHighlights.map((item) => (
                             <div
                                 key={item.title}
-                                className="rounded-3xl bg-gray p-6 dark:bg-background"
+                                className="flex h-full flex-col rounded-3xl bg-gray p-6 dark:bg-background"
                             >
                                 <h3 className="text-lg font-bold text-black dark:text-foreground">
                                     {item.title}
@@ -60,8 +63,8 @@ const OurMission = () => {
                                 </p>
                             </div>
                         ))}
-                    </div>
-                </div>
+                    </StaggerGroup>
+                </Reveal>
             </div>
         </section>
     );

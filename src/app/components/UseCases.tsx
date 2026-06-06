@@ -1,16 +1,26 @@
+"use client";
+
+import Reveal from "@/app/components/motion/Reveal";
+import StaggerGroup from "@/app/components/motion/StaggerGroup";
+import { springTransition } from "@/app/components/motion/variants";
 import type { UseCaseItem } from "@/app/data/constant";
 import { useCases } from "@/app/data/constant";
+import { motion } from "motion/react";
 
 const UseCaseCard = ({ icon: Icon, title, description }: UseCaseItem) => {
     return (
-        <article className="group flex min-h-56 flex-col rounded-4xl bg-white p-6 text-black transition-colors duration-300 hover:bg-accent sm:min-h-64 sm:p-8 dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white">
+        <motion.article
+            whileHover={{ y: -4 }}
+            transition={springTransition}
+            className="group flex min-h-56 flex-col rounded-4xl bg-white p-6 text-black transition-colors duration-300 hover:bg-accent sm:min-h-64 sm:p-8 dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white"
+        >
             <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-gray text-black transition-colors duration-300 group-hover:bg-white sm:mb-8 sm:size-14 dark:bg-background dark:text-foreground dark:group-hover:bg-white dark:group-hover:text-black">
                 <Icon size={22} strokeWidth={1.75} aria-hidden />
             </div>
 
             <h3 className="text-xl font-bold leading-snug sm:text-2xl">{title}</h3>
             <p className="mt-3 text-sm leading-relaxed opacity-80">{description}</p>
-        </article>
+        </motion.article>
     );
 };
 
@@ -21,7 +31,7 @@ const UseCases = () => {
             className="relative w-full px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pb-32"
         >
             <div className="mx-auto max-w-7xl">
-                <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+                <Reveal className="mx-auto flex max-w-4xl flex-col items-center text-center">
                     <span className="rounded-full border border-black px-5 py-1.5 text-sm font-medium text-black dark:border-foreground dark:text-foreground">
                         Use cases
                     </span>
@@ -34,13 +44,13 @@ const UseCases = () => {
                         Whether you are shipping APIs, reviewing webhooks, or cleaning
                         up configs, BracketView fits into your daily workflow.
                     </p>
-                </div>
+                </Reveal>
 
-                <div className="mt-14 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+                <StaggerGroup className="mt-14 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
                     {useCases.map((useCase) => (
                         <UseCaseCard key={useCase.title} {...useCase} />
                     ))}
-                </div>
+                </StaggerGroup>
             </div>
         </section>
     );

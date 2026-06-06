@@ -49,6 +49,7 @@ const FeaturedOnBadge = ({
                 alt={imageAlt ?? label}
                 width={imageWidth}
                 height={imageHeight}
+                loading="lazy"
                 style={
                     imageMaxWidth
                         ? { maxWidth: `${imageMaxWidth}px` }

@@ -1,8 +1,14 @@
 import { sendContactEmails } from "@/lib/email/send-contact";
 import { getSmtpConfig } from "@/lib/email/transporter";
+import {
+    getClientIp,
+    isAllowedOrigin,
+    sanitizeText,
+} from "@/lib/security";
 import { NextResponse } from "next/server";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_BODY_BYTES = 8_192;
 
 const contactSubjects = new Set([
     "General inquiry",
@@ -22,6 +28,36 @@ type ContactRequestBody = {
 
 export async function POST(request: Request) {
     try {
+        if (!isAllowedOrigin(request)) {
+            return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+        }
+
+        const contentType = request.headers.get("content-type") ?? "";
+        if (!contentType.includes("application/json")) {
+            return NextResponse.json(
+                { error: "Invalid content type." },
+                { status: 415 },
+            );
+        }
+
+        const rawBody = await request.text();
+        if (!rawBody || rawBody.length > MAX_BODY_BYTES) {
+            return NextResponse.json(
+                { error: "Request body is too large." },
+                { status: 413 },
+            );
+        }
+
+        let body: ContactRequestBody;
+        try {
+            body = JSON.parse(rawBody) as ContactRequestBody;
+        } catch {
+            return NextResponse.json(
+                { error: "Invalid JSON payload." },
+                { status: 400 },
+            );
+        }
+
         if (!getSmtpConfig()) {
             return NextResponse.json(
                 {
@@ -31,25 +67,23 @@ export async function POST(request: Request) {
             );
         }
 
-        const body = (await request.json()) as ContactRequestBody;
-
         if (body.company?.trim()) {
             return NextResponse.json({ success: true });
         }
 
-        const name = body.name?.trim() ?? "";
-        const email = body.email?.trim() ?? "";
-        const subject = body.subject?.trim() ?? "";
-        const message = body.message?.trim() ?? "";
+        const name = sanitizeText(body.name ?? "", 120);
+        const email = sanitizeText(body.email ?? "", 254);
+        const subject = sanitizeText(body.subject ?? "", 80);
+        const message = sanitizeText(body.message ?? "", 5000);
 
-        if (!name || name.length > 120) {
+        if (!name) {
             return NextResponse.json(
                 { error: "Please enter a valid name." },
                 { status: 400 },
             );
         }
 
-        if (!email || !EMAIL_PATTERN.test(email) || email.length > 254) {
+        if (!email || !EMAIL_PATTERN.test(email)) {
             return NextResponse.json(
                 { error: "Please enter a valid email address." },
                 { status: 400 },
@@ -63,7 +97,7 @@ export async function POST(request: Request) {
             );
         }
 
-        if (!message || message.length < 10 || message.length > 5000) {
+        if (!message || message.length < 10) {
             return NextResponse.json(
                 {
                     error: "Message must be between 10 and 5000 characters.",
@@ -76,7 +110,7 @@ export async function POST(request: Request) {
 
         return NextResponse.json({ success: true });
     } catch (error) {
-        console.error("Contact form error:", error);
+        console.error("Contact form error:", getClientIp(request), error);
 
         return NextResponse.json(
             {

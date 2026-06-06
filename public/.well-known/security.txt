@@ -1,0 +1,6 @@
+Contact: mailto:support@bracketview.in
+Expires: 2027-06-06T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://bracketview.in/.well-known/security.txt
+Policy: https://bracketview.in/privacy
+Acknowledgments: https://bracketview.in/contact

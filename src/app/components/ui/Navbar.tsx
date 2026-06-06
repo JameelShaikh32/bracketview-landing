@@ -117,7 +117,7 @@ const Navbar = () => {
                 >
                     <Image
                         src="/logo.png"
-                        alt="logo"
+                        alt="BracketView logo"
                         width={32}
                         height={32}
                         className="shrink-0"

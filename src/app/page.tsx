@@ -5,11 +5,13 @@ import HeroSection from "./components/HeroSection";
 import HowItWorks from "./components/HowItWorks";
 import OurMission from "./components/OurMission";
 import Pricing from "./components/Pricing";
+import SeoContent from "./components/SeoContent";
 import UseCases from "./components/UseCases";
 
 export default function Home() {
   return (
     <>
+      <SeoContent />
       <HeroSection />
       <Features />
       <HowItWorks />

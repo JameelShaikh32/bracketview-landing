@@ -198,7 +198,7 @@ const faqItems: FaqItem[] = [
     {
         question: "Is BracketView free to use?",
         answer:
-            "Yes. The full JSON workspace — viewer, formatter, validator, tree, graph, JSONPath, diff, and schema tools — is free. Pro adds unlimited AI and higher upload limits.",
+            "BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, and schema — are available at no cost with no signup required. Pro subscription unlocks unlimited AI, higher upload limits, and unlimited encrypted snapshot links.",
     },
     {
         question: "Does my JSON data leave the browser?",

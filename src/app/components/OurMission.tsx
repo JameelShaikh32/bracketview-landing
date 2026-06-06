@@ -4,8 +4,8 @@ const aboutHighlights = [
         description: "Core tools run locally in your browser whenever possible.",
     },
     {
-        title: "Full workspace free",
-        description: "Viewer, formatter, validator, and query tools at no cost.",
+        title: "Freemium model",
+        description: "Core viewer, formatter, validator, and query tools at no cost.",
     },
     {
         title: "Built for builders",

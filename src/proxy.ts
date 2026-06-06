@@ -7,7 +7,7 @@ const BLOCKED_METHODS = new Set(["TRACE", "TRACK", "CONNECT"]);
 const CONTACT_RATE_LIMIT = 5;
 const CONTACT_RATE_WINDOW_MS = 15 * 60 * 1000;
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     if (BLOCKED_METHODS.has(request.method)) {
         return new NextResponse(null, { status: 405 });
     }

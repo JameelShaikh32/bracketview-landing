@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BracketView Landing
 
-## Getting Started
+Marketing site for [BracketView](https://bracketview.in) — a freemium online JSON viewer, formatter, and validator.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
+cp .env.example .env.local   # fill in secrets locally
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Import this repo in [Vercel](https://vercel.com/new) (framework: **Next.js**, root directory: `.`).
+2. Set **Production** environment variables (Project → Settings → Environment Variables):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Variable | Required | Notes |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Yes | `https://bracketview.in` |
+| `NEXT_PUBLIC_GA_ID` | No | Google Analytics measurement ID |
+| `NEXT_PUBLIC_GTM_ID` | No | Google Tag Manager container ID |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | No | Search Console verification code |
+| `SMTP_HOST` | For contact form | Hostinger SMTP host |
+| `SMTP_PORT` | For contact form | e.g. `465` |
+| `SMTP_SECURE` | For contact form | `true` for port 465 |
+| `SMTP_USER` | For contact form | SMTP username |
+| `SMTP_PASS` | For contact form | SMTP password (secret) |
+| `SMTP_FROM` | For contact form | e.g. `BracketView <support@bracketview.in>` |
+| `CONTACT_INBOX` | For contact form | e.g. `support@bracketview.in` |
+
+3. Add domain `bracketview.in` in Vercel → Domains and point DNS to Vercel.
+4. Upload `public/og-image.png` (1200×630) for social previews.
+5. Deploy — `npm run build` runs `next-sitemap` automatically to generate `robots.txt` and `sitemap.xml`.
+
+### Vercel CLI
+
+```bash
+npx vercel login
+npx vercel link
+npx vercel env pull .env.local
+npx vercel          # preview
+npx vercel --prod   # production
+```
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build + sitemap generation |
+| `npm run start` | Start production server locally |
+| `npm run lint` | Run ESLint |

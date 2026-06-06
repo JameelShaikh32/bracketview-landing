@@ -1,11 +1,28 @@
 const SITE_URL =
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://bracketview.in";
 
-const ALLOWED_HOSTS = new Set([
+const STATIC_ALLOWED_HOSTS = new Set([
     new URL(SITE_URL).host,
     "localhost:3000",
     "127.0.0.1:3000",
 ]);
+
+const isAllowedHost = (host: string): boolean => {
+    if (STATIC_ALLOWED_HOSTS.has(host)) {
+        return true;
+    }
+
+    if (host.endsWith(".vercel.app")) {
+        return true;
+    }
+
+    const vercelUrl = process.env.VERCEL_URL;
+    if (vercelUrl && host === vercelUrl) {
+        return true;
+    }
+
+    return false;
+};
 
 const sanitizeText = (value: string, maxLength: number): string =>
     value
@@ -20,7 +37,7 @@ const isAllowedOrigin = (request: Request): boolean => {
 
     if (origin) {
         try {
-            return ALLOWED_HOSTS.has(new URL(origin).host);
+            return isAllowedHost(new URL(origin).host);
         } catch {
             return false;
         }
@@ -28,7 +45,7 @@ const isAllowedOrigin = (request: Request): boolean => {
 
     if (referer) {
         try {
-            return ALLOWED_HOSTS.has(new URL(referer).host);
+            return isAllowedHost(new URL(referer).host);
         } catch {
             return false;
         }

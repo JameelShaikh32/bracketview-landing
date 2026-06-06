@@ -112,7 +112,7 @@ const Footer = () => {
                             {socialLinks.map((social) => {
                                 const Icon =
                                     socialIcons[
-                                        social.label as keyof typeof socialIcons
+                                    social.label as keyof typeof socialIcons
                                     ];
 
                                 return (

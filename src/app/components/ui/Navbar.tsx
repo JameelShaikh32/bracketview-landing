@@ -6,10 +6,14 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
 const SCROLL_THRESHOLD = 24;
+
+const subscribeToClient = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 const iconButtonClasses =
     "flex shrink-0 cursor-pointer items-center justify-center rounded-full bg-black p-2.5 text-white transition-colors duration-300 hover:bg-black/10 hover:text-foreground dark:bg-gray dark:text-black dark:hover:bg-gray/30 dark:hover:text-gray";
@@ -17,15 +21,15 @@ const iconButtonClasses =
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [mounted, setMounted] = useState(false);
+    const isClient = useSyncExternalStore(
+        subscribeToClient,
+        getClientSnapshot,
+        getServerSnapshot,
+    );
     const navRef = useRef<HTMLElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
     const menuButtonRef = useRef<HTMLButtonElement>(null);
     const [menuTop, setMenuTop] = useState(0);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD);
@@ -206,7 +210,7 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {mounted ? createPortal(mobileMenu, document.body) : null}
+            {isClient ? createPortal(mobileMenu, document.body) : null}
         </header>
     );
 };

@@ -27,6 +27,7 @@ type FeaturePageItem = {
     title: string;
     description: string;
     href: string;
+    cta: string;
 };
 
 type FeatureCategory = {
@@ -47,6 +48,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Collapse noisy branches, search keys, and inspect nested objects with type highlights.",
                 href: "https://app.bracketview.in",
+                cta: "Open tree view",
             },
             {
                 icon: Network,
@@ -54,6 +56,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Map relationships as a dynamic node network instead of a flat list.",
                 href: "https://app.bracketview.in",
+                cta: "Open graph view",
             },
             {
                 icon: FileJson,
@@ -61,6 +64,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Large, distraction-free text workspace with colour-coded JSON and line references.",
                 href: "https://app.bracketview.in",
+                cta: "Open editor",
             },
             {
                 icon: BarChart3,
@@ -68,6 +72,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Quick analysis of node counts, depth, and structure at a glance.",
                 href: "https://app.bracketview.in",
+                cta: "View JSON stats",
             },
         ],
     },
@@ -82,6 +87,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Beautify with readable indentation and consistent spacing in one click.",
                 href: "https://app.bracketview.in",
+                cta: "Try formatter",
             },
             {
                 icon: Zap,
@@ -89,6 +95,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Compress JSON for production payloads and compact storage.",
                 href: "https://app.bracketview.in",
+                cta: "Try minifier",
             },
             {
                 icon: Shield,
@@ -96,6 +103,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Surface bracket mismatches, trailing commas, and unquoted keys as you type.",
                 href: "https://app.bracketview.in",
+                cta: "Try validator",
             },
         ],
     },
@@ -110,6 +118,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Run full jq in the browser via WebAssembly with quick filters and syntax help.",
                 href: "https://app.bracketview.in",
+                cta: "Try JQ filters",
             },
             {
                 icon: SearchCode,
@@ -117,6 +126,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Use familiar path expressions like $.store.book[*].author on any payload.",
                 href: "https://app.bracketview.in",
+                cta: "Try JSONPath",
             },
             {
                 icon: Sparkles,
@@ -124,6 +134,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Describe what you need in plain English and get a valid jq filter instantly.",
                 href: "https://app.bracketview.in",
+                cta: "Try AI queries",
             },
         ],
     },
@@ -138,6 +149,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Repair missing commas, unquoted keys, and common syntax errors automatically.",
                 href: "https://app.bracketview.in",
+                cta: "Try AI fixer",
             },
             {
                 icon: Layers,
@@ -145,6 +157,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Generate realistic test rows from a schema with custom profiles and row counts.",
                 href: "https://app.bracketview.in/json-schema",
+                cta: "Generate mock data",
             },
             {
                 icon: PenLine,
@@ -152,6 +165,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Refine and improve LLM prompts directly inside your JSON workspace.",
                 href: "https://app.bracketview.in/prompt-enhancer",
+                cta: "Enhance prompts",
             },
         ],
     },
@@ -165,6 +179,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Confirm data against OpenAPI definitions or custom JSON Schema rules.",
                 href: "https://app.bracketview.in/json-schema",
+                cta: "Validate schema",
             },
             {
                 icon: ClipboardCopy,
@@ -172,6 +187,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Create a draft schema from an example object for docs and contracts.",
                 href: "https://app.bracketview.in/json-schema",
+                cta: "Generate schema",
             },
             {
                 icon: Code2,
@@ -179,6 +195,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Export accurate types/interfaces for 9+ languages including TypeScript, Python, Go, and Rust.",
                 href: "https://app.bracketview.in/json-types",
+                cta: "Generate types",
             },
         ],
     },
@@ -193,6 +210,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Side-by-side comparison highlighting added, removed, and modified fields.",
                 href: "https://app.bracketview.in/json-diff",
+                cta: "Compare JSON",
             },
             {
                 icon: Layers,
@@ -200,6 +218,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Paste two versions and see exactly what changed between releases.",
                 href: "https://app.bracketview.in/compare-view",
+                cta: "Open compare view",
             },
             {
                 icon: FileSpreadsheet,
@@ -207,6 +226,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Upload files from disk and export formatted JSON, CSV, and more.",
                 href: "https://app.bracketview.in",
+                cta: "Import & export",
             },
         ],
     },
@@ -220,6 +240,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Generate encrypted links with optional expiry for async reviews and bug reports.",
                 href: "https://app.bracketview.in",
+                cta: "Share snapshots",
             },
             {
                 icon: StickyNote,
@@ -227,6 +248,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Attach notes to keys and values, including JSONPath context for teammates.",
                 href: "https://app.bracketview.in",
+                cta: "Try annotations",
             },
         ],
     },
@@ -241,6 +263,7 @@ const featureCategories: FeatureCategory[] = [
                 description:
                     "Handle common encoding and decoding tasks alongside your JSON editor.",
                 href: "https://app.bracketview.in/encoder-decoder",
+                cta: "Open encoder tool",
             },
         ],
     },

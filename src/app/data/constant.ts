@@ -16,6 +16,7 @@ type FeatureItem = {
     title: string;
     description: string;
     href: string;
+    cta: string;
 };
 
 type HowItWorksStep = {
@@ -96,24 +97,28 @@ const features: FeatureItem[] = [
         title: "Tree & Graph Viewer",
         description: "Explore nested JSON with collapsible tree and graph views",
         href: "https://app.bracketview.in",
+        cta: "Open tree viewer",
     },
     {
         icon: Braces,
         title: "Format & Validate",
         description: "Beautify, minify, and validate JSON as you type",
         href: "https://app.bracketview.in",
+        cta: "Try formatter",
     },
     {
         icon: SearchCode,
         title: "JSONPath & JQ Query",
         description: "Query large documents with JSONPath or JQ expressions",
         href: "https://app.bracketview.in",
+        cta: "Try JSONPath",
     },
     {
         icon: GitCompare,
         title: "Compare JSON & Export",
         description: "Compare two JSON versions and export formatted output",
         href: "https://app.bracketview.in/json-diff",
+        cta: "Try JSON diff",
     },
 ];
 
@@ -164,7 +169,7 @@ const pricingPlans: PricingPlan[] = [
             "No monthly AI caps",
             "Priority for future Pro capabilities",
         ],
-        cta: "Get Started",
+        cta: "Start monthly plan",
         ctaHref: "https://app.bracketview.in/pricing",
     },
     {
@@ -183,7 +188,7 @@ const pricingPlans: PricingPlan[] = [
             "No monthly AI caps",
             "Priority for future Pro capabilities",
         ],
-        cta: "Get Started",
+        cta: "Start yearly plan",
         ctaHref: "https://app.bracketview.in/pricing",
         highlighted: true,
     },
@@ -219,17 +224,17 @@ const faqItems: FaqItem[] = [
 
 const footerLinks = {
     product: [
-        { label: "Features", href: "/features" },
-        { label: "Pricing", href: "/#pricing" },
-        { label: "How it works", href: "/#how-it-works" },
-        { label: "Open app", href: "https://app.bracketview.in" },
+        { label: "All features", href: "/features" },
+        { label: "View pricing", href: "/#pricing" },
+        { label: "How BracketView works", href: "/#how-it-works" },
+        { label: "Launch workspace", href: "https://app.bracketview.in" },
     ],
     company: [
-        { label: "About", href: "/#about" },
-        { label: "Blog", href: "/blog" },
-        { label: "Use cases", href: "/#use-cases" },
-        { label: "FAQ", href: "/#faq" },
-        { label: "Contact", href: "/contact" },
+        { label: "About us", href: "/#about" },
+        { label: "Read the blog", href: "/blog" },
+        { label: "JSON use cases", href: "/#use-cases" },
+        { label: "Help & FAQ", href: "/#faq" },
+        { label: "Contact support", href: "/contact" },
     ],
     legal: [
         { label: "Privacy", href: "/privacy" },

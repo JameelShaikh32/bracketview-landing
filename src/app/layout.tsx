@@ -8,6 +8,7 @@ import {
 } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Martian_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Analytics, { GTM_ID } from "./components/Analytics";
 import StructuredData from "./components/StructuredData";
 import Footer from "./components/ui/Footer";
@@ -99,6 +100,7 @@ export default function RootLayout({
                 <Navbar />
                 {children}
                 <Footer />
+                <SpeedInsights />
             </body>
         </html>
     );

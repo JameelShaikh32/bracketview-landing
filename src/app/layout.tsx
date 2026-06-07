@@ -6,9 +6,10 @@ import {
     OG_IMAGE_ALT,
     SITE_URL,
 } from "@/lib/seo";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Martian_Mono } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import Analytics, { GTM_ID } from "./components/Analytics";
 import StructuredData from "./components/StructuredData";
 import Footer from "./components/ui/Footer";
@@ -101,6 +102,7 @@ export default function RootLayout({
                 {children}
                 <Footer />
                 <SpeedInsights />
+                <VercelAnalytics />
             </body>
         </html>
     );

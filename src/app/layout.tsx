@@ -1,9 +1,3 @@
-import type { Metadata } from "next";
-import { Martian_Mono } from "next/font/google";
-import Analytics, { GTM_ID } from "./components/Analytics";
-import StructuredData from "./components/StructuredData";
-import Footer from "./components/ui/Footer";
-import Navbar from "./components/ui/Navbar";
 import {
     KEYWORDS,
     META_DESCRIPTION,
@@ -12,6 +6,12 @@ import {
     OG_IMAGE_ALT,
     SITE_URL,
 } from "@/lib/seo";
+import type { Metadata } from "next";
+import { Martian_Mono } from "next/font/google";
+import Analytics, { GTM_ID } from "./components/Analytics";
+import StructuredData from "./components/StructuredData";
+import Footer from "./components/ui/Footer";
+import Navbar from "./components/ui/Navbar";
 import "./globals.css";
 
 const martianMono = Martian_Mono({
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
     title: META_TITLE,
     description: META_DESCRIPTION,
-    authors: [{ name: "BracketView" }],
+    authors: [{ name: "Jameel Shaikh" }],
     robots: { index: true, follow: true },
     alternates: { canonical: "/" },
     openGraph: {

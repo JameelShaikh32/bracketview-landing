@@ -1,7 +1,7 @@
 "use client";
 
-import CircularText from "@/app/components/ui/CircularText";
 import { getFadeUpVariant, heroStaggerContainer } from "@/app/components/motion/variants";
+import CircularText from "@/app/components/ui/CircularText";
 import { ArrowDown, ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
@@ -78,11 +78,11 @@ const HeroAnimated = () => {
                                 reducedMotion
                                     ? undefined
                                     : {
-                                          duration: 4,
-                                          repeat: Infinity,
-                                          ease: "easeInOut",
-                                          delay: 1,
-                                      }
+                                        duration: 4,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                        delay: 1,
+                                    }
                             }
                             className="rounded-2xl bg-white/45 p-4 shadow-[0_8px_32px_rgba(25,19,20,0.12)] backdrop-blur-md"
                         >
@@ -112,7 +112,7 @@ const HeroAnimated = () => {
                         className="absolute -bottom-4 left-24 z-0"
                     >
                         <Image
-                            src="/images/hero-light.png"
+                            src="/images/hero-light.webp"
                             alt="BracketView JSON editor preview"
                             width={1919}
                             height={976}
@@ -121,7 +121,7 @@ const HeroAnimated = () => {
                             className="h-auto w-2xl max-w-none rounded-t-2xl object-contain object-top-left dark:hidden sm:w-3xl lg:w-5xl"
                         />
                         <Image
-                            src="/images/hero-dark.png"
+                            src="/images/hero-dark.webp"
                             alt="BracketView JSON editor preview"
                             width={1919}
                             height={977}

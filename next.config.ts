@@ -54,14 +54,7 @@ const nextConfig: NextConfig = {
         ],
     },
     async redirects() {
-        return [
-            {
-                source: "/:path*",
-                has: [{ type: "host", value: "www.bracketview.in" }],
-                destination: "https://bracketview.in/:path*",
-                permanent: true,
-            },
-        ];
+        return [];
     },
     async headers() {
         return [

@@ -1,14 +1,8 @@
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
     "framework": "nextjs",
-    "regions": ["bom1"],
-    "redirects": [
-        {
-            "source": "/:path*",
-            "has": [{ "type": "host", "value": "www.bracketview.in" }],
-            "destination": "https://bracketview.in/:path*",
-            "permanent": true
-        }
+    "regions": [
+        "bom1"
     ],
     "functions": {
         "src/app/api/contact/route.ts": {

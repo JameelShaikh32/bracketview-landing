@@ -9,7 +9,32 @@ const META_TITLE =
 const META_DESCRIPTION =
     "Freemium online JSON viewer, formatter & validator. Beautify, pretty-print, validate & edit JSON in your browser — privacy-first, no install. Try BracketView.";
 
+const OG_IMAGE = "/og-image.webp";
+
+const OG_IMAGE_ALT =
+    "BracketView — Online JSON Viewer, Formatter & Validator";
+
 const KEYWORDS = [
+    "BracketView",
+    "bracketview",
+    "json viewer",
+    "json formatter",
+    "json validator",
+    "json beautifier",
+    "json editor",
+    "json pretty print",
+    "json diff",
+    "json viewer tool",
+    "onlinejson viewer",
+    "online json formatter",
+    "online json validator",
+    "online json beautifier",
+    "online json editor",
+    "online json pretty print",
+    "online json diff",
+    "online json viewer tool",
+    "format json",
+    "validate json",
     "json viewer online",
     "json formatter online",
     "json validator online",
@@ -17,9 +42,18 @@ const KEYWORDS = [
     "json editor online",
     "free json viewer",
     "json pretty print online",
-    "json viewer tool",
     "format json online",
     "validate json online",
+    "json diff online",
+    "BracketView JSON Viewer",
+    "BracketView JSON Formatter",
+    "BracketView JSON Validator",
+    "BracketView JSON Beautifier",
+    "BracketView JSON Editor",
+    "BracketView JSON Pretty Print",
+    "BracketView JSON Diff",
+    "BracketView JSON Viewer Tool",
+
 ] as const;
 
 type FaqItem = {
@@ -117,7 +151,10 @@ export {
     KEYWORDS,
     META_DESCRIPTION,
     META_TITLE,
+    OG_IMAGE,
+    OG_IMAGE_ALT,
     SEO_FAQ_ITEMS,
-    SITE_URL,
+    SITE_URL
 };
 export type { FaqItem };
+

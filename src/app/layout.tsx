@@ -9,6 +9,8 @@ import {
     KEYWORDS,
     META_DESCRIPTION,
     META_TITLE,
+    OG_IMAGE,
+    OG_IMAGE_ALT,
     SITE_URL,
 } from "@/lib/seo";
 import "./globals.css";
@@ -33,10 +35,10 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "/og-image.png",
+                url: OG_IMAGE,
                 width: 1200,
                 height: 630,
-                alt: "BracketView — Online JSON Viewer, Formatter & Validator",
+                alt: OG_IMAGE_ALT,
             },
         ],
     },
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: META_TITLE,
         description: META_DESCRIPTION,
-        images: ["/og-image.png"],
+        images: [OG_IMAGE],
     },
     verification: {
         google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,

@@ -6,7 +6,7 @@ const SeoContent = () => {
             <h1>Online JSON Viewer, Formatter &amp; Validator</h1>
 
             <section>
-                <h2>Why BracketView?</h2>
+                <h3>Why BracketView?</h3>
                 <p>
                     BracketView is a freemium, privacy-first online JSON viewer,
                     formatter, and validator built for developers who need to
@@ -22,38 +22,38 @@ const SeoContent = () => {
             </section>
 
             <section>
-                <h2>Online JSON Viewer Tool</h2>
-                <h3>JSON Viewer Online</h3>
+                <h3>Online JSON Viewer Tool</h3>
+                <h4>JSON Viewer Online</h4>
                 <p>
                     Explore nested JSON with collapsible tree and interactive
                     graph views. Paste or upload any JSON document and navigate
                     complex structures effortlessly with our JSON viewer online.
                 </p>
-                <h3>JSON Formatter Online</h3>
+                <h4>JSON Formatter Online</h4>
                 <p>
                     Beautify and minify JSON with one click. The JSON formatter
                     online adds proper indentation and syntax highlighting so
                     your data is always readable.
                 </p>
-                <h3>JSON Validator Online</h3>
+                <h4>JSON Validator Online</h4>
                 <p>
                     Catch syntax errors in real time as you type. The JSON
                     validator online highlights issues with line numbers so you
                     can fix problems before they reach production.
                 </p>
-                <h3>JSON Beautifier Online</h3>
+                <h4>JSON Beautifier Online</h4>
                 <p>
                     Transform minified or messy JSON into clean, indented output.
                     Use the JSON beautifier online to make API responses and
                     config files human-readable instantly.
                 </p>
-                <h3>JSON Editor Online</h3>
+                <h4>JSON Editor Online</h4>
                 <p>
                     Edit JSON directly in the browser with live validation and
                     formatting. The JSON editor online supports large documents
                     with fast parsing and responsive editing.
                 </p>
-                <h3>JSON Pretty Print Online</h3>
+                <h4>JSON Pretty Print Online</h4>
                 <p>
                     Pretty-print compressed JSON with consistent spacing and
                     indentation. JSON pretty print online makes debugging API
@@ -62,7 +62,7 @@ const SeoContent = () => {
             </section>
 
             <section>
-                <h2>How to Use BracketView</h2>
+                <h3>How to Use BracketView</h3>
                 <ol>
                     <li>
                         Open BracketView and paste your JSON into the editor, or
@@ -85,10 +85,10 @@ const SeoContent = () => {
             </section>
 
             <section>
-                <h2>Frequently Asked Questions</h2>
+                <h3>Frequently Asked Questions</h3>
                 {SEO_FAQ_ITEMS.map((item) => (
                     <div key={item.question}>
-                        <h3>{item.question}</h3>
+                        <h4>{item.question}</h4>
                         <p>{item.answer}</p>
                     </div>
                 ))}

@@ -138,7 +138,8 @@ const Navbar = () => {
                         alt="BracketView logo"
                         width={32}
                         height={32}
-                        className="shrink-0"
+                        sizes="32px"
+                        className="size-8 shrink-0"
                     />
                     <span className="truncate text-sm font-medium tracking-tight sm:text-base md:text-lg">
                         BracketView

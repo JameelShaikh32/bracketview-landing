@@ -23,7 +23,6 @@ const FeaturedOnBadge = ({
     imageAlt,
     imageWidth,
     imageHeight,
-    imageMaxWidth,
 }: {
     type: "producthunt" | "saashub";
     label: string;
@@ -32,9 +31,10 @@ const FeaturedOnBadge = ({
     imageAlt?: string;
     imageWidth?: number;
     imageHeight?: number;
-    imageMaxWidth?: number;
 }) => {
-    if (!imageSrc) return null;
+    if (!imageSrc || !imageWidth || !imageHeight) return null;
+
+    const isExternal = imageSrc.startsWith("http");
 
     return (
         <a
@@ -43,24 +43,29 @@ const FeaturedOnBadge = ({
             rel="noopener noreferrer"
             className="inline-block transition-opacity hover:opacity-85"
         >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-                src={imageSrc}
-                alt={imageAlt ?? label}
-                width={imageWidth}
-                height={imageHeight}
-                loading="lazy"
-                style={
-                    imageMaxWidth
-                        ? { maxWidth: `${imageMaxWidth}px` }
-                        : undefined
-                }
-                className={
-                    imageWidth && imageHeight
-                        ? "h-[54px] w-[250px] max-w-full"
-                        : "max-w-full"
-                }
-            />
+            {isExternal ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                    src={imageSrc}
+                    alt={imageAlt ?? label}
+                    width={imageWidth}
+                    height={imageHeight}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-auto max-w-full object-contain"
+                    style={{ width: imageWidth, height: "auto" }}
+                />
+            ) : (
+                <Image
+                    src={imageSrc}
+                    alt={imageAlt ?? label}
+                    width={imageWidth}
+                    height={imageHeight}
+                    sizes={`${imageWidth}px`}
+                    className="h-auto max-w-full object-contain"
+                    style={{ width: imageWidth, height: "auto" }}
+                />
+            )}
         </a>
     );
 };
@@ -101,7 +106,14 @@ const Footer = () => {
                             href="/"
                             className="inline-flex items-center gap-2.5 text-foreground transition-opacity hover:opacity-80"
                         >
-                            <Image src="/logo.png" alt="BracketView logo" width={32} height={32} />
+                            <Image
+                                src="/logo.png"
+                                alt="BracketView logo"
+                                width={32}
+                                height={32}
+                                sizes="32px"
+                                className="size-8 shrink-0"
+                            />
                             <span className="text-lg font-medium">BracketView</span>
                         </Link>
                         <p className="mt-4 max-w-sm text-sm leading-relaxed text-black/65 dark:text-foreground/65">

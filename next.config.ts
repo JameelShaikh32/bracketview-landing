@@ -40,6 +40,29 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
     poweredByHeader: false,
     reactStrictMode: true,
+    images: {
+        formats: ["image/avif", "image/webp"],
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "api.producthunt.com",
+            },
+            {
+                protocol: "https",
+                hostname: "cdn-b.saashub.com",
+            },
+        ],
+    },
+    async redirects() {
+        return [
+            {
+                source: "/:path*",
+                has: [{ type: "host", value: "www.bracketview.in" }],
+                destination: "https://bracketview.in/:path*",
+                permanent: true,
+            },
+        ];
+    },
     async headers() {
         return [
             {

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Martian_Mono } from "next/font/google";
-import Script from "next/script";
 import Analytics, { GTM_ID } from "./components/Analytics";
 import StructuredData from "./components/StructuredData";
 import Footer from "./components/ui/Footer";
@@ -18,6 +17,8 @@ import "./globals.css";
 const martianMono = Martian_Mono({
     variable: "--font-martian-mono",
     subsets: ["latin"],
+    display: "swap",
+    adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -72,10 +73,14 @@ export default function RootLayout({
         >
             <head>
                 <meta httpEquiv="x-dns-prefetch-control" content="on" />
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
                 <link
                     rel="sitemap"
                     type="application/xml"
                     href="/sitemap.xml"
+                />
+                <script
+                    dangerouslySetInnerHTML={{ __html: themeInitScript }}
                 />
                 <StructuredData />
                 <Analytics />
@@ -91,9 +96,6 @@ export default function RootLayout({
                         />
                     </noscript>
                 ) : null}
-                <Script id="theme-init" strategy="beforeInteractive">
-                    {themeInitScript}
-                </Script>
                 <Navbar />
                 {children}
                 <Footer />

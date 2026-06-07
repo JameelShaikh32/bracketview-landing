@@ -111,8 +111,8 @@ const features: FeatureItem[] = [
     },
     {
         icon: GitCompare,
-        title: "Diff & Export",
-        description: "Compare versions and export formatted output",
+        title: "Compare JSON & Export",
+        description: "Compare two JSON versions and export formatted output",
         href: "https://app.bracketview.in/json-diff",
     },
 ];
@@ -258,7 +258,8 @@ const featuredOnLinks = [
         imageSrc:
             "https://cdn-b.saashub.com/img/badges/approved-color.png?v=1",
         imageAlt: "BracketView badge",
-        imageMaxWidth: 150,
+        imageWidth: 150,
+        imageHeight: 50,
     },
 ];
 

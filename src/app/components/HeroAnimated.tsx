@@ -114,18 +114,20 @@ const HeroAnimated = () => {
                         <Image
                             src="/images/hero-light.png"
                             alt="BracketView JSON editor preview"
-                            width={1200}
-                            height={800}
+                            width={1919}
+                            height={976}
+                            sizes="(max-width: 640px) 672px, (max-width: 1024px) 768px, 1024px"
                             priority
-                            className="h-auto w-2xl max-w-none rounded-t-2xl object-cover object-top-left dark:hidden sm:w-3xl lg:w-5xl"
+                            className="h-auto w-2xl max-w-none rounded-t-2xl object-contain object-top-left dark:hidden sm:w-3xl lg:w-5xl"
                         />
                         <Image
                             src="/images/hero-dark.png"
                             alt="BracketView JSON editor preview"
-                            width={1200}
-                            height={800}
+                            width={1919}
+                            height={977}
+                            sizes="(max-width: 640px) 672px, (max-width: 1024px) 768px, 1024px"
                             priority
-                            className="hidden h-auto w-2xl max-w-none rounded-t-2xl object-cover object-top-left sm:w-3xl lg:w-5xl dark:block"
+                            className="hidden h-auto w-2xl max-w-none rounded-t-2xl object-contain object-top-left sm:w-3xl lg:w-5xl dark:block"
                         />
                     </motion.div>
 

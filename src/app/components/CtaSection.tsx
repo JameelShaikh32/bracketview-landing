@@ -35,17 +35,17 @@ const CtaSection = () => {
 
     return (
         <section className="relative w-full px-4 pb-4 pt-8 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-7xl rounded-4xl bg-white dark:bg-muted">
-                <div className="grid grid-cols-1 lg:grid-cols-3">
+            <div className="mx-auto max-w-7xl bg-transparent dark:bg-muted">
+                <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden rounded-4xl">
                     {/* Left */}
-                    <Reveal variant="fadeLeft" className="flex flex-col justify-between gap-10 overflow-hidden rounded-tl-4xl p-8 sm:p-10 lg:rounded-none lg:p-12">
+                    <Reveal variant="fadeLeft" className="flex flex-col justify-between gap-10 overflow-hidden bg-white p-8 sm:p-10 lg:p-12">
                         <div>
                             <span className="inline-flex rounded-full border border-black px-4 py-1.5 text-sm font-medium text-black dark:border-foreground dark:text-foreground">
                                 Let&apos;s start now
                             </span>
-                            <h2 className="mt-8 text-3xl font-bold leading-snug text-black sm:text-4xl dark:text-foreground">
+                            <h3 className="mt-8 text-3xl font-bold leading-snug text-black sm:text-4xl dark:text-foreground">
                                 Start working with JSON faster today!
-                            </h2>
+                            </h3>
                         </div>
 
                         <Link
@@ -60,7 +60,7 @@ const CtaSection = () => {
                     </Reveal>
 
                     {/* Middle — accent chart panel */}
-                    <div className="relative min-h-64 overflow-hidden bg-accent p-8 dark:bg-accent-dark lg:min-h-0 lg:rounded-none">
+                    <div className="relative min-h-64 overflow-hidden bg-accent p-8 dark:bg-accent-dark lg:min-h-0">
                         <div
                             className="absolute inset-0 opacity-20"
                             style={{
@@ -117,7 +117,7 @@ const CtaSection = () => {
                     </div>
 
                     {/* Right */}
-                    <Reveal variant="fadeRight" className="flex flex-col justify-center gap-10 overflow-hidden rounded-br-4xl bg-accent p-8 dark:bg-accent-dark sm:p-10 lg:rounded-none lg:p-12">
+                    <Reveal variant="fadeRight" className="flex flex-col justify-center gap-10 overflow-hidden bg-accent p-8 dark:bg-accent-dark sm:p-10 lg:p-12">
                         <p className="max-w-sm text-sm leading-relaxed text-black/80 sm:text-base dark:text-white/85">
                             Developers already use BracketView to inspect APIs,
                             validate configs, and ship faster. Try it too!

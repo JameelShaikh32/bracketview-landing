@@ -62,6 +62,8 @@ const FeaturedOnBadge = ({
                     width={imageWidth}
                     height={imageHeight}
                     sizes={`${imageWidth}px`}
+                    loading="lazy"
+                    decoding="async"
                     className="h-auto max-w-full object-contain"
                     style={{ width: imageWidth, height: "auto" }}
                 />
@@ -107,11 +109,12 @@ const Footer = () => {
                             className="inline-flex items-center gap-2.5 text-foreground transition-opacity hover:opacity-80"
                         >
                             <Image
-                                src="/logo.png"
+                                src="/logo.webp"
                                 alt="BracketView logo"
                                 width={32}
                                 height={32}
                                 sizes="32px"
+                                loading="eager"
                                 className="size-8 shrink-0"
                             />
                             <span className="text-lg font-medium">BracketView</span>

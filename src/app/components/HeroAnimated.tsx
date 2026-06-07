@@ -2,12 +2,14 @@
 
 import { getFadeUpVariant, heroStaggerContainer } from "@/app/components/motion/variants";
 import CircularText from "@/app/components/ui/CircularText";
+import { useTheme } from "@/app/hooks/useTheme";
 import { ArrowDown, ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 
 const HeroAnimated = () => {
+    const theme = useTheme();
     const reducedMotion = useReducedMotion();
     const itemVariant = getFadeUpVariant(reducedMotion);
 
@@ -117,7 +119,8 @@ const HeroAnimated = () => {
                             width={1919}
                             height={976}
                             sizes="(max-width: 640px) 672px, (max-width: 1024px) 768px, 1024px"
-                            priority
+                            priority={theme === "light"}
+                            loading={theme === "light" ? "eager" : "lazy"}
                             className="h-auto w-2xl max-w-none rounded-t-2xl object-contain object-top-left dark:hidden sm:w-3xl lg:w-5xl"
                         />
                         <Image
@@ -126,7 +129,8 @@ const HeroAnimated = () => {
                             width={1919}
                             height={977}
                             sizes="(max-width: 640px) 672px, (max-width: 1024px) 768px, 1024px"
-                            priority
+                            priority={theme === "dark"}
+                            loading={theme === "dark" ? "eager" : "lazy"}
                             className="hidden h-auto w-2xl max-w-none rounded-t-2xl object-contain object-top-left sm:w-3xl lg:w-5xl dark:block"
                         />
                     </motion.div>

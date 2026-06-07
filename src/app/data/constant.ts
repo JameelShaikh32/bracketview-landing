@@ -244,8 +244,7 @@ const featuredOnLinks = [
         label: "Product Hunt",
         type: "producthunt" as const,
         href: "https://www.producthunt.com/products/bracketview/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-bracketview",
-        imageSrc:
-            "https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1134106&theme=light",
+        imageSrc: "/images/product_hunt_badge.webp",
         imageAlt:
             "BracketView - Free Advanced JSON viewer with AI fix, JQ, JSON share & more | Product Hunt",
         imageWidth: 250,
@@ -255,8 +254,7 @@ const featuredOnLinks = [
         label: "SaaSHub",
         type: "saashub" as const,
         href: "https://www.saashub.com/bracketview?utm_source=badge&utm_campaign=badge&utm_content=bracketview&badge_variant=color&badge_kind=approved",
-        imageSrc:
-            "https://cdn-b.saashub.com/img/badges/approved-color.png?v=1",
+        imageSrc: "/images/saashub-badge.webp",
         imageAlt: "BracketView badge",
         imageWidth: 150,
         imageHeight: 50,

@@ -18,7 +18,7 @@ const getSiteUrl = () =>
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
   "https://bracketview.in";
 
-const getLogoUrl = () => `${getSiteUrl()}/logo.png`;
+const getLogoUrl = () => `${getSiteUrl()}/logo.webp`;
 
 const emailLayout = ({
   previewText,

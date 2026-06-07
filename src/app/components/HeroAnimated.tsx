@@ -24,12 +24,12 @@ const HeroAnimated = () => {
                     className="hero-left-panel relative flex flex-col justify-start gap-2 rounded-t-4xl rounded-bl-4xl bg-white px-4 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14 dark:bg-muted"
                 >
                     <div className="flex flex-col gap-6">
-                        <motion.p
+                        <motion.h1
                             variants={itemVariant}
                             className="max-w-xl text-3xl font-bold leading-snug text-black md:text-5xl dark:text-foreground"
                         >
                             JSON Viewer, Formatter &amp; Validator for Modern Developers
-                        </motion.p>
+                        </motion.h1>
                         <motion.p
                             variants={itemVariant}
                             className="max-w-md text-sm leading-relaxed text-black/70 sm:text-base dark:text-foreground/70"

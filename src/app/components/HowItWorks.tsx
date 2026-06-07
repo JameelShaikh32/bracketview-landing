@@ -2,13 +2,13 @@
 
 import AnimatedPath from "@/app/components/motion/AnimatedPath";
 import Reveal from "@/app/components/motion/Reveal";
-import StaggerGroup from "@/app/components/motion/StaggerGroup";
 import { springTransition } from "@/app/components/motion/variants";
 import type { HowItWorksStep } from "@/app/data/constant";
 import { howItWorksSteps } from "@/app/data/constant";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { Fragment } from "react";
 
 const StepCard = ({ step, title, description }: HowItWorksStep) => {
     return (
@@ -140,29 +140,22 @@ const HowItWorks = () => {
                     </p>
                 </Reveal>
 
-                {/* Mobile — stacked with vertical connectors */}
-                <StaggerGroup className="mt-14 flex flex-col sm:mt-16 md:hidden">
+                <div className="mt-14 flex flex-col sm:mt-16 md:flex-row md:items-stretch">
                     {howItWorksSteps.map((item, index) => (
-                        <div key={item.step}>
-                            <StepCard {...item} />
-                            {index < howItWorksSteps.length - 1 && <VerticalConnector />}
-                        </div>
+                        <Fragment key={item.step}>
+                            <Reveal className="flex-1">
+                                <StepCard {...item} />
+                            </Reveal>
+                            {index < howItWorksSteps.length - 1 ? (
+                                <>
+                                    <VerticalConnector />
+                                    <WavyConnector
+                                        direction={index === 0 ? "up" : "down"}
+                                    />
+                                </>
+                            ) : null}
+                        </Fragment>
                     ))}
-                </StaggerGroup>
-
-                {/* Desktop — cards with wavy connectors in the gaps */}
-                <div className="mt-14 hidden items-stretch sm:mt-16 md:flex">
-                    <Reveal className="flex-1">
-                        <StepCard {...howItWorksSteps[0]} />
-                    </Reveal>
-                    <WavyConnector direction="up" />
-                    <Reveal className="flex-1">
-                        <StepCard {...howItWorksSteps[1]} />
-                    </Reveal>
-                    <WavyConnector direction="down" />
-                    <Reveal className="flex-1">
-                        <StepCard {...howItWorksSteps[2]} />
-                    </Reveal>
                 </div>
 
                 <Reveal className="mt-14 flex justify-center sm:mt-16">

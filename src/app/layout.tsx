@@ -54,6 +54,15 @@ export const metadata: Metadata = {
     verification: {
         google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     },
+    icons: {
+        apple: [
+            {
+                url: "/apple-icon.png",
+                sizes: "180x180",
+                type: "image/png",
+            },
+        ],
+    },
     other: {
         keywords: KEYWORDS.join(", "),
     },

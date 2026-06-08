@@ -2,7 +2,10 @@
 
 import AnimatedPath from "@/app/components/motion/AnimatedPath";
 import Reveal from "@/app/components/motion/Reveal";
-import { getScaleInVariant, staggerContainer } from "@/app/components/motion/variants";
+import {
+    getScaleInVariant,
+    staggerContainer,
+} from "@/app/components/motion/variants";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
@@ -25,7 +28,11 @@ const chartDots = [
 
 const statBadges = [
     { text: "↑ 8.1k nodes", className: "left-10 top-10", delay: 1.0 },
-    { text: "↓ 2.6ms", className: "left-1/2 top-16 -translate-x-1/2", delay: 1.2 },
+    {
+        text: "↓ 2.6ms",
+        className: "left-1/2 top-16 -translate-x-1/2",
+        delay: 1.2,
+    },
     { text: "↑ 99.9%", className: "right-10 top-8", delay: 1.4 },
 ];
 
@@ -35,10 +42,13 @@ const CtaSection = () => {
 
     return (
         <section className="relative w-full px-4 pb-4 pt-8 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-7xl bg-transparent dark:bg-muted">
+            <div className="mx-auto max-w-7xl bg-transparent">
                 <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden rounded-4xl">
                     {/* Left */}
-                    <Reveal variant="fadeLeft" className="flex flex-col justify-between gap-10 overflow-hidden bg-white p-8 sm:p-10 lg:p-12">
+                    <Reveal
+                        variant="fadeLeft"
+                        className="flex flex-col justify-between gap-10 overflow-hidden bg-white dark:bg-muted rounded-l-4xl p-8 sm:p-10 lg:p-12"
+                    >
                         <div>
                             <span className="inline-flex rounded-full border border-black px-4 py-1.5 text-sm font-medium text-black dark:border-foreground dark:text-foreground">
                                 Let&apos;s start now
@@ -51,7 +61,7 @@ const CtaSection = () => {
                         <Link
                             href="https://app.bracketview.in"
                             target="_blank"
-                            rel="noopener noreferrer"
+                            rel="noopener noreferrer nofollow"
                             className="inline-flex w-fit items-center gap-2 rounded-2xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                         >
                             Launch BracketView
@@ -117,10 +127,13 @@ const CtaSection = () => {
                     </div>
 
                     {/* Right */}
-                    <Reveal variant="fadeRight" className="flex flex-col justify-center gap-10 overflow-hidden bg-accent p-8 dark:bg-accent-dark sm:p-10 lg:p-12">
+                    <Reveal
+                        variant="fadeRight"
+                        className="flex flex-col justify-center gap-10 overflow-hidden bg-accent p-8 dark:bg-accent-dark sm:p-10 lg:p-12"
+                    >
                         <p className="max-w-sm text-sm leading-relaxed text-black/80 sm:text-base dark:text-white/85">
-                            Developers already use BracketView to inspect APIs,
-                            validate configs, and ship faster. Try it too!
+                            Developers already use BracketView to inspect APIs, validate
+                            configs, and ship faster. Try it too!
                         </p>
 
                         <div>

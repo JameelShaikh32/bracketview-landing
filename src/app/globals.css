@@ -108,17 +108,3 @@ body {
   background: transparent;
   box-shadow: -20px 20px 0 var(--background);
 }
-/* @media (prefers-color-scheme: dark) {
-  .hero-left-panel::before {
-    box-shadow: 12px 12px 0 var(--background);
-  }
-  .hero-left-panel::after {
-    box-shadow: 12px 12px 0 var(--background);
-  }
-  .hero-right-panel::before {
-    box-shadow: -20px 20px 0 var(--background);
-  }
-  .hero-right-panel::after {
-    box-shadow: -20px 20px 0 var(--background);
-  }
-} */

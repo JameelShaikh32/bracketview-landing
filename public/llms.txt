@@ -1,0 +1,52 @@
+# BracketView
+
+> Online JSON viewer, formatter, validator, and editor for developers.
+> Privacy-first: all JSON processing happens in your browser.
+> App: https://app.bracketview.in
+
+BracketView is a freemium, privacy-first JSON workspace built for developers, QA engineers, and data analysts. It provides an expansive, ad-free, in-browser environment to view, format, validate, and query JSON data securely.
+
+## Core Identity & Positioning
+Unlike legacy JSON utilities cluttered with advertisements and cramped panels, BracketView offers a full-screen, distraction-free workspace. It prioritizes data privacy by executing core viewing, formatting, and validation locally in the user's browser. This ensures that sensitive API payloads and configuration files do not touch remote servers unnecessarily.
+
+## Key Features & Capabilities
+- **Advanced Viewing:** Interactive Tree View and "Graph View" (JSON Galaxy) that visually maps nested data relationships as dynamic node networks.
+- **Formatting & Validation:** Real-time JSON formatter, minifier, and strict validator that catches bracket mismatches, unquoted keys, and trailing commas instantly.
+- **Querying & Filtering:** In-browser JSONPath and JQ playgrounds powered by WebAssembly (Wasm).
+- **AI-Powered Workflows:**
+  - AI JSON Fixer: Automatically repairs broken syntax.
+  - AI Mock Data Generator: Creates realistic test rows based on custom schemas.
+  - AI Query Assistant: Translates plain English into valid JQ filters.
+  - AI Prompt Enhancer: Refines LLM prompts directly inside the workspace.
+- **Diff & Compare:** Side-by-side JSON diff utility for comparing payload versions.
+- **Schema & Type Generation:** Validates against JSON Schema or OpenAPI definitions, and exports accurate types/interfaces for 9+ languages (TypeScript, Python, Go, Rust, etc.).
+- **Secure Collaboration:** Generates encrypted, shareable snapshots with optional expiries for async debugging.
+
+## Common Use Cases
+- Debugging malformed JSON from REST API responses
+- Formatting and pretty-printing minified JSON payloads
+- Comparing two versions of a JSON config or API response
+- Generating TypeScript interfaces from a JSON object
+- Running JQ queries without installing command-line tools
+- Validating JSON against an OpenAPI or JSON Schema definition
+- Creating mock test data for a given JSON schema
+
+## Technical Architecture
+- **Frontend:** Built with Next.js, React.js, and Tailwind CSS.
+- **Local Processing:** Utilizes WebAssembly to run heavy operations (like JQ filtering) directly on the client side.
+
+## Target Audience
+- Full-Stack Web Developers
+- Software & QA Engineers
+- Data Analysts
+- Anyone working heavily with REST APIs, webhooks, or structured data exports.
+
+## Pricing Model
+- **Free Tier:** Full core workspace, completely free forever with no signup required.
+- **Pro Tier:** Starts at $6/month. Unlocks unlimited AI usage, large file support (up to 50 MB), and unlimited encrypted snapshot links.
+
+## Official Links
+- **Marketing Site:** [https://bracketview.in](https://bracketview.in)
+- **Web App Workspace:** [https://app.bracketview.in](https://app.bracketview.in)
+- **Organization LinkedIn Profile:** [https://www.linkedin.com/company/bracketview](https://www.linkedin.com/company/bracketview)
+- **Creator:** Jameel Shaikh ([LinkedIn](https://www.linkedin.com/in/dev-jameel)) ([Portfolio](https://jameelshaikh.netlify.app)) ([Medium Blog](https://dev-jameel.medium.com))

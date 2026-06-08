@@ -88,6 +88,31 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
         answer:
             "BracketView is a freemium, privacy-first JSON tool. Core workspace features — viewing, formatting, validation, tree navigation, JSONPath, diff, and schema tools — are available at no cost with no signup required. Pro subscription unlocks unlimited AI, higher upload limits, and unlimited encrypted snapshot links.",
     },
+    {
+        question: "What is JQ filter and how do I use it online?",
+        answer:
+            "JQ is a lightweight command-line JSON processor. BracketView includes an in-browser JQ filter tool — paste your JSON and write JQ expressions like '.users[] | .name' to query, transform, or extract data without installing anything.",
+    },
+    {
+        question: "How do I compare two JSON files online?",
+        answer:
+            "Use BracketView's Diff tool: paste your original JSON on the left and the modified JSON on the right. The diff viewer highlights added, removed, and changed keys side-by-side, making it easy to spot differences instantly.",
+    },
+    {
+        question: "What is JSON Schema validation?",
+        answer:
+            "JSON Schema is a standard for describing the structure of JSON data. BracketView's schema validator lets you paste a JSON Schema and validate your JSON against it, showing exactly which fields are missing or have incorrect types.",
+    },
+    {
+        question: "Is my JSON data private when using BracketView?",
+        answer:
+            "Yes. BracketView is privacy-first — all JSON processing happens in your browser. Your data is never sent to any server unless you explicitly create an encrypted snapshot link, which is stored temporarily and encrypted.",
+    },
+    {
+        question: "What is an alternative to JSONLint or JSON Formatter & Validator?",
+        answer:
+            "BracketView is a modern alternative to JSONLint, JSON Formatter & Validator, and jsonformatter.org. It combines viewing, formatting, validation, diff, schema validation, and JQ filtering in a single privacy-first tool — no install required.",
+    },
 ];
 
 function buildWebApplicationSchema() {
@@ -100,6 +125,23 @@ function buildWebApplicationSchema() {
         applicationCategory: "DeveloperApplication",
         operatingSystem: "Any",
         browserRequirements: "Requires JavaScript",
+        featureList: [
+            "Online json viewer",
+            "JSON Viewer",
+            "json viewer",
+            "json",
+            "JSON Viewer with collapsible tree",
+            "JSON Beautifier and Minifier",
+            "JSON Validator with real-time error highlighting",
+            "JSON Diff tool",
+            "JSON Schema validation",
+            "JQ Filter support",
+            "Encrypted snapshot sharing",
+            "JSON Annotate",
+            "Dark mode",
+            "Privacy-first — no server processing",
+        ],
+        screenshot: `${SITE_URL}/og-image.webp`,
         offers: {
             "@type": "Offer",
             price: "0",
@@ -107,6 +149,37 @@ function buildWebApplicationSchema() {
             description:
                 "Freemium — core JSON workspace free. Pro subscription available for unlimited AI and higher limits.",
         },
+    };
+}
+
+function buildOrganizationSchema() {
+    return {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "BracketView",
+        url: SITE_URL,
+        logo: `${SITE_URL}/logo.png`,
+        founder: {
+            "@type": "Person",
+            name: "Jameel Shaikh",
+        },
+        sameAs: [
+            "https://x.com/bracket_view",
+            "https://www.linkedin.com/company/bracketview",
+            "https://www.facebook.com/bracketview",
+            "https://www.instagram.com/bracketview",
+            "https://www.youtube.com/@bracketview",
+            "https://www.producthunt.com/products/bracketview",
+            "https://www.saashub.com/bracketview"
+        ],
+        knowsAbout: [
+            "JSON formatting",
+            "JSON validation",
+            "JSON Schema",
+            "JQ filter",
+            "Developer tools",
+            "JSON diff",
+        ],
     };
 }
 
@@ -145,9 +218,7 @@ function buildFaqPageSchema() {
 
 export {
     APP_URL,
-    buildFaqPageSchema,
-    buildWebApplicationSchema,
-    buildWebSiteSchema,
+    buildFaqPageSchema, buildOrganizationSchema, buildWebApplicationSchema, buildWebSiteSchema,
     KEYWORDS,
     META_DESCRIPTION,
     META_TITLE,
@@ -157,4 +228,3 @@ export {
     SITE_URL
 };
 export type { FaqItem };
-

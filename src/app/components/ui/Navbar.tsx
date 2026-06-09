@@ -17,7 +17,7 @@ import { createPortal } from "react-dom";
 
 const SCROLL_THRESHOLD = 24;
 
-const subscribeToClient = () => () => {};
+const subscribeToClient = () => () => { };
 const getClientSnapshot = () => true;
 const getServerSnapshot = () => false;
 
@@ -128,11 +128,10 @@ const Navbar = () => {
       <nav
         ref={navRef}
         aria-label="Main navigation"
-        className={`relative mx-auto flex w-full min-w-0 items-center gap-3 transition-all duration-300 ease-out ${
-          scrolled
-            ? "max-w-7xl rounded-full bg-white/70 px-3 py-2 shadow-[0_8px_32px_rgba(25,19,20,0.08)] backdrop-blur-md dark:bg-black/60 dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)] sm:px-4 sm:py-2.5 md:px-6"
-            : "bg-transparent px-1 py-3 sm:px-2"
-        }`}
+        className={`relative mx-auto flex w-full min-w-0 items-center gap-3 transition-all duration-300 ease-out ${scrolled
+          ? "max-w-7xl rounded-full bg-white/70 px-3 py-2 shadow-[0_8px_32px_rgba(25,19,20,0.08)] backdrop-blur-md dark:bg-black/60 dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)] sm:px-4 sm:py-2.5 md:px-6"
+          : "bg-transparent px-1 py-3 sm:px-2"
+          }`}
       >
         <Link
           href="/"
@@ -154,14 +153,9 @@ const Navbar = () => {
 
         <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {navLinks.map((link: { label: string; href: string }) => (
-            <li
-              key={link.label}
-              className="cursor-pointer rounded-xl bg-transparent px-3 py-1 transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray dark:hover:text-black"
-            >
-              <Link href={link.href} className="text-sm">
-                {link.label}
-              </Link>
-            </li>
+            <Link key={link.label} href={link.href} className="text-sm cursor-pointer rounded-xl bg-transparent px-3 py-1 transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray dark:hover:text-black">
+              {link.label}
+            </Link>
           ))}
         </ul>
 

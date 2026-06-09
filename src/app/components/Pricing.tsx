@@ -72,7 +72,7 @@ const PricingCard = ({
       <Link
         href={ctaHref}
         target="_blank"
-        rel="noopener noreferrer nofollow"
+        rel="noopener noreferrer"
         className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-medium transition-colors duration-300 ${
           highlighted
             ? "bg-black text-white hover:opacity-90 dark:bg-foreground dark:text-background"

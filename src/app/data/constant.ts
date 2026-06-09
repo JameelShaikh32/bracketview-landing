@@ -227,7 +227,7 @@ const footerLinks = {
         { label: "All features", href: "/features" },
         { label: "View pricing", href: "/#pricing" },
         { label: "How BracketView works", href: "/#how-it-works" },
-        { label: "Launch workspace", href: "https://app.bracketview.in", rel: "nofollow" },
+        { label: "Launch workspace", href: "https://app.bracketview.in", rel: "" },
     ],
     company: [
         { label: "About us", href: "/#about" },
@@ -254,7 +254,7 @@ const featuredOnLinks = [
             "BracketView - Free Advanced JSON viewer with AI fix, JQ, JSON share & more | Product Hunt",
         imageWidth: 250,
         imageHeight: 54,
-        rel: "nofollow",
+        rel: "",
     },
     {
         label: "SaaSHub",
@@ -264,7 +264,7 @@ const featuredOnLinks = [
         imageAlt: "BracketView badge",
         imageWidth: 150,
         imageHeight: 50,
-        rel: "nofollow",
+        rel: "",
     },
 ];
 
@@ -272,27 +272,27 @@ const socialLinks = [
     {
         label: "LinkedIn",
         href: "https://www.linkedin.com/company/bracketview",
-        rel: "nofollow",
+        rel: "",
     },
     {
         label: "Twitter",
         href: "https://x.com/bracket_view",
-        rel: "nofollow",
+        rel: "",
     },
     {
         label: "Instagram",
         href: "https://www.instagram.com/bracketview",
-        rel: "nofollow",
+        rel: "",
     },
     {
         label: "YouTube",
         href: "https://www.youtube.com/@bracketview",
-        rel: "nofollow",
+        rel: "",
     },
     {
         label: "Medium",
         href: "https://medium.com/@dev-jameel",
-        rel: "nofollow",
+        rel: "",
     },
 ];
 
@@ -335,3 +335,4 @@ export {
     useCases
 };
 export type { FaqItem, FeatureItem, HowItWorksStep, PricingPlan, UseCaseItem };
+

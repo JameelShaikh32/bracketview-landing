@@ -157,7 +157,7 @@ const HowItWorks = () => {
           <Link
             href="https://app.bracketview.in"
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-2xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
           >
             Open BracketView

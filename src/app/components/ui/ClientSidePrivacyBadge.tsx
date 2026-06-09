@@ -32,7 +32,7 @@ const ClientSidePrivacyBadge = ({
       {...props}
     >
       <span
-        className="flex size-4 shrink-0 items-center justify-center rounded-sm bg-emerald-500/10 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400/90"
+        className="flex size-6 md:size-4 shrink-0 items-center justify-center rounded-sm bg-emerald-500/10 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400/90"
         aria-hidden
       >
         <Lock size={10} strokeWidth={2.25} />
@@ -40,8 +40,8 @@ const ClientSidePrivacyBadge = ({
 
       {compact ? (
         <>
-          <span className="truncate sm:hidden">Client-side</span>
-          <span className="hidden truncate sm:inline">{label}</span>
+          {/* <span className="truncate sm:hidden">Client-side</span> */}
+          <span className="leading-snug">{label}</span>
         </>
       ) : (
         <span className="truncate">{label}</span>

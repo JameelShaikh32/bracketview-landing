@@ -36,7 +36,7 @@ const PageHeader = ({ badge, title, description, cta }: PageHeaderProps) => {
 
       <motion.h1
         variants={itemVariant}
-        className="mt-8 text-3xl font-bold leading-[1.15] tracking-tight text-black sm:text-4xl md:text-[2.75rem] dark:text-foreground"
+        className="mt-8 text-3xl font-bold leading-snug tracking-tight text-black sm:text-4xl md:text-[2.75rem] dark:text-foreground"
       >
         {title}
       </motion.h1>
@@ -53,7 +53,7 @@ const PageHeader = ({ badge, title, description, cta }: PageHeaderProps) => {
           <Link
             href={cta.href}
             target={cta.external ? "_blank" : undefined}
-            rel={cta.external ? "noopener noreferrer nofollow" : undefined}
+            rel={cta.external ? "noopener noreferrer" : undefined}
             className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
           >
             {cta.label}

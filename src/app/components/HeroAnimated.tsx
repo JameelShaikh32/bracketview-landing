@@ -4,8 +4,8 @@ import {
   getFadeUpVariant,
   heroStaggerContainer,
 } from "@/app/components/motion/variants";
-import ClientSidePrivacyBadge from "@/app/components/ui/ClientSidePrivacyBadge";
 import CircularText from "@/app/components/ui/CircularText";
+import ClientSidePrivacyBadge from "@/app/components/ui/ClientSidePrivacyBadge";
 import { useTheme } from "@/app/hooks/useTheme";
 import { ArrowDown, ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
@@ -55,7 +55,7 @@ const HeroAnimated = () => {
             <Link
               href="https://app.bracketview.in"
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer"
               className="inline-flex w-fit items-center gap-2 rounded-2xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
             >
               <span className="sm:hidden">Open App</span>
@@ -94,11 +94,11 @@ const HeroAnimated = () => {
                 reducedMotion
                   ? undefined
                   : {
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 1,
-                    }
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1,
+                  }
               }
               className="rounded-2xl bg-white/45 p-4 shadow-[0_8px_32px_rgba(25,19,20,0.12)] backdrop-blur-md"
             >
@@ -180,7 +180,7 @@ const HeroAnimated = () => {
 
         {/* Learn more — panel junction */}
         <motion.a
-          href="#features"
+          href="#about"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.9 }}

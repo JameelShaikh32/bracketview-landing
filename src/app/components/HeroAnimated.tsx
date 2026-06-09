@@ -4,6 +4,7 @@ import {
   getFadeUpVariant,
   heroStaggerContainer,
 } from "@/app/components/motion/variants";
+import ClientSidePrivacyBadge from "@/app/components/ui/ClientSidePrivacyBadge";
 import CircularText from "@/app/components/ui/CircularText";
 import { useTheme } from "@/app/hooks/useTheme";
 import { ArrowDown, ArrowDownRight, ArrowUpRight } from "lucide-react";
@@ -41,6 +42,10 @@ const HeroAnimated = () => {
               designed to help developers inspect &amp; work with JSON more
               efficiently.
             </motion.p>
+
+            <motion.div variants={itemVariant}>
+              <ClientSidePrivacyBadge compact className="max-w-lg" />
+            </motion.div>
           </div>
 
           <motion.div

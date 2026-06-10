@@ -9,7 +9,7 @@ const META_TITLE =
     "Online JSON Viewer, Formatter & Validator | BracketView";
 
 const META_DESCRIPTION =
-    "BracketView is a free online JSON workspace for developers. It formats, validates, and queries JSON in the browser with no install. Features include JQ filter playground, AI JSON repair, and encrypted snapshot sharing. 100% client-side — your data never leaves your browser.";
+    "BracketView is a freemium online JSON workspace for developers. Format, validate, and query JSON in the browser—no install. JQ, AI JSON repair, encrypted sharing. 100% client-side; your data never leaves your browser.";
 
 const OG_IMAGE = "/og-image.webp";
 

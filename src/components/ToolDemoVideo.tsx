@@ -1,8 +1,15 @@
 "use client";
 
-import { Maximize2, Play, X } from "lucide-react";
+import { Maximize2, Pause, Play, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import {
+    useCallback,
+    useEffect,
+    useId,
+    useRef,
+    useState,
+    useSyncExternalStore,
+} from "react";
 import { createPortal } from "react-dom";
 
 type ToolDemoVideoProps = {
@@ -22,14 +29,34 @@ const iosLayoutTransition = {
     layout: iosSpring,
 };
 
+const mobileMediaQuery = "(max-width: 767px)";
+
+const emptySubscribe = () => () => {};
+
+const useIsClient = () =>
+    useSyncExternalStore(emptySubscribe, () => true, () => false);
+
+const useIsMobileViewport = () =>
+    useSyncExternalStore(
+        (onStoreChange) => {
+            const mediaQuery = window.matchMedia(mobileMediaQuery);
+            mediaQuery.addEventListener("change", onStoreChange);
+            return () => mediaQuery.removeEventListener("change", onStoreChange);
+        },
+        () => window.matchMedia(mobileMediaQuery).matches,
+        () => false,
+    );
+
 const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps) => {
     const layoutId = useId();
     const videoRef = useRef<HTMLVideoElement>(null);
     const expandedVideoRef = useRef<HTMLVideoElement>(null);
     const [hasError, setHasError] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-    const [mounted, setMounted] = useState(false);
+    const mounted = useIsClient();
+    const isMobile = useIsMobileViewport();
     const reducedMotion = useReducedMotion();
 
     const layoutTransition = reducedMotion
@@ -41,7 +68,22 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
         : { duration: 0.32, ease: [0.22, 1, 0.36, 1] as const };
 
     useEffect(() => {
-        setMounted(true);
+        const mediaQuery = window.matchMedia(mobileMediaQuery);
+
+        const handleViewportChange = () => {
+            if (mediaQuery.matches) return;
+
+            setIsPlaying(false);
+            const video = videoRef.current;
+            if (!video) return;
+            video.pause();
+            video.currentTime = 0;
+        };
+
+        mediaQuery.addEventListener("change", handleViewportChange);
+
+        return () =>
+            mediaQuery.removeEventListener("change", handleViewportChange);
     }, []);
 
     const pauseInlineVideo = useCallback(() => {
@@ -50,10 +92,11 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
         video.pause();
         video.currentTime = 0;
         setIsHovered(false);
+        setIsPlaying(false);
     }, []);
 
     const handleMouseEnter = () => {
-        if (isExpanded) return;
+        if (isExpanded || isMobile) return;
         setIsHovered(true);
         const video = videoRef.current;
         if (!video) return;
@@ -61,13 +104,37 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
     };
 
     const handleMouseLeave = () => {
-        if (isExpanded) return;
+        if (isExpanded || isMobile) return;
         setIsHovered(false);
         const video = videoRef.current;
         if (!video) return;
         video.pause();
         video.currentTime = 0;
     };
+
+    const handleMobilePlay = () => {
+        if (!isMobile || isExpanded || isPlaying) return;
+        const video = videoRef.current;
+        if (!video) return;
+        void video.play();
+    };
+
+    const handleMobilePause = (event: React.MouseEvent) => {
+        event.stopPropagation();
+        const video = videoRef.current;
+        if (!video) return;
+        video.pause();
+    };
+
+    const handleInlineVideoPlay = () => {
+        if (isMobile) setIsPlaying(true);
+    };
+
+    const handleInlineVideoPause = () => {
+        if (isMobile) setIsPlaying(false);
+    };
+
+    const showOverlay = isMobile ? !isPlaying : !isHovered;
 
     const handleExpand = (event: React.MouseEvent) => {
         event.stopPropagation();
@@ -113,75 +180,75 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
     const expandedModal =
         mounted && !showPlaceholder
             ? createPortal(
-                  <AnimatePresence>
-                      {isExpanded ? (
-                          <>
-                              <motion.button
-                                  key="backdrop"
-                                  type="button"
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  exit={{ opacity: 0 }}
-                                  transition={backdropTransition}
-                                  className="fixed inset-0 z-50 cursor-default bg-black/70 backdrop-blur-md"
-                                  aria-label="Close expanded video"
-                                  onClick={handleCloseExpanded}
-                              />
+                <AnimatePresence>
+                    {isExpanded ? (
+                        <>
+                            <motion.button
+                                key="backdrop"
+                                type="button"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={backdropTransition}
+                                className="fixed inset-0 z-50 cursor-default bg-black/70 backdrop-blur-md"
+                                aria-label="Close expanded video"
+                                onClick={handleCloseExpanded}
+                            />
 
-                              <motion.div
-                                  key="expanded-video"
-                                  layoutId={layoutId}
-                                  layout
-                                  transition={layoutTransition}
-                                  onLayoutAnimationComplete={
-                                      handleExpandedAnimationComplete
-                                  }
-                                  className="fixed inset-x-4 top-1/2 z-51 mx-auto w-full max-w-6xl -translate-y-1/2 overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl"
-                                  style={{ borderRadius: 16 }}
-                                  onClick={(event) => event.stopPropagation()}
-                              >
-                                  <video
-                                      ref={expandedVideoRef}
-                                      muted
-                                      playsInline
-                                      loop
-                                      controls={false}
-                                      poster={poster}
-                                      className="block h-auto max-h-[85vh] w-full object-contain"
-                                  >
-                                      <source src={src} type="video/webm" />
-                                      <source
-                                          src={src!.replace(/\.webm$/, ".mp4")}
-                                          type="video/mp4"
-                                      />
-                                  </video>
-                              </motion.div>
+                            <motion.div
+                                key="expanded-video"
+                                layoutId={layoutId}
+                                layout
+                                transition={layoutTransition}
+                                onLayoutAnimationComplete={
+                                    handleExpandedAnimationComplete
+                                }
+                                className="fixed inset-x-4 top-1/2 z-51 mx-auto w-full max-w-6xl -translate-y-1/2 overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl"
+                                style={{ borderRadius: 16 }}
+                                onClick={(event) => event.stopPropagation()}
+                            >
+                                <video
+                                    ref={expandedVideoRef}
+                                    muted
+                                    playsInline
+                                    loop
+                                    controls={isMobile}
+                                    poster={poster}
+                                    className="block h-auto max-h-[85vh] w-full object-contain"
+                                >
+                                    <source src={src} type="video/webm" />
+                                    <source
+                                        src={src!.replace(/\.webm$/, ".mp4")}
+                                        type="video/mp4"
+                                    />
+                                </video>
+                            </motion.div>
 
-                              <motion.button
-                                  key="close"
-                                  type="button"
-                                  initial={{ opacity: 0, scale: 0.85 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  exit={{ opacity: 0, scale: 0.85 }}
-                                  transition={
-                                      reducedMotion
-                                          ? { duration: 0.1 }
-                                          : {
-                                                ...iosSpring,
-                                                delay: 0.12,
-                                            }
-                                  }
-                                  onClick={handleCloseExpanded}
-                                  className="fixed right-4 top-4 z-52 flex size-10 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-md transition-colors hover:bg-white/22 sm:right-6 sm:top-6"
-                                  aria-label="Close expanded video"
-                              >
-                                  <X size={20} aria-hidden />
-                              </motion.button>
-                          </>
-                      ) : null}
-                  </AnimatePresence>,
-                  document.body,
-              )
+                            <motion.button
+                                key="close"
+                                type="button"
+                                initial={{ opacity: 0, scale: 0.85 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.85 }}
+                                transition={
+                                    reducedMotion
+                                        ? { duration: 0.1 }
+                                        : {
+                                            ...iosSpring,
+                                            delay: 0.12,
+                                        }
+                                }
+                                onClick={handleCloseExpanded}
+                                className="fixed right-4 top-4 z-52 flex size-10 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-md transition-colors hover:bg-white/22 sm:right-6 sm:top-6"
+                                aria-label="Close expanded video"
+                            >
+                                <X size={20} aria-hidden />
+                            </motion.button>
+                        </>
+                    ) : null}
+                </AnimatePresence>,
+                document.body,
+            )
             : null;
 
     if (showPlaceholder) {
@@ -227,6 +294,8 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
                         poster={poster}
                         aria-label={`${label} demo preview`}
                         onError={() => setHasError(true)}
+                        onPlay={handleInlineVideoPlay}
+                        onPause={handleInlineVideoPause}
                         className="h-full w-full object-contain"
                     >
                         <source src={src} type="video/webm" />
@@ -236,19 +305,37 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
                         />
                     </video>
 
-                    <div
-                        className={`pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/45 transition-opacity duration-300 ${
-                            isHovered ? "opacity-0" : "opacity-100"
-                        }`}
-                        aria-hidden={isHovered}
+                    <button
+                        type="button"
+                        onClick={handleMobilePlay}
+                        className={`absolute inset-0 z-1 flex flex-col items-center justify-center gap-2 bg-black/45 transition-opacity duration-300 max-md:cursor-pointer md:pointer-events-none ${showOverlay
+                                ? "opacity-100"
+                                : "pointer-events-none opacity-0"
+                            }`}
+                        aria-label={`Play ${label} demo`}
+                        aria-hidden={!showOverlay}
                     >
                         <span className="flex size-11 items-center justify-center rounded-full bg-white/90 text-black">
                             <Play size={18} fill="currentColor" aria-hidden />
                         </span>
-                        <p className="text-sm font-medium text-white">
+                        <p className="text-sm font-medium text-white md:hidden">
+                            Click to play
+                        </p>
+                        <p className="hidden text-sm font-medium text-white md:block">
                             Hover to play
                         </p>
-                    </div>
+                    </button>
+
+                    {isMobile && isPlaying ? (
+                        <button
+                            type="button"
+                            onClick={handleMobilePause}
+                            className="absolute bottom-3 left-3 z-10 flex size-9 items-center justify-center rounded-xl bg-black/55 text-white backdrop-blur-sm transition-colors active:bg-black/75 md:hidden"
+                            aria-label={`Pause ${label} demo`}
+                        >
+                            <Pause size={16} fill="currentColor" aria-hidden />
+                        </button>
+                    ) : null}
 
                     <button
                         type="button"

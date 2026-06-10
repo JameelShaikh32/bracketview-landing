@@ -1,46 +1,37 @@
 # BracketView
 
-> BracketView is a freemium online JSON viewer, formatter, validator, and query workspace for developers. Built by Jameel Shaikh. Available at https://bracketview.in
+> BracketView is a freemium online JSON viewer, formatter, validator, and query workspace for developers. Core tools run 100% client-side in the browser — no install required. Built by Jameel Shaikh.
 
-## What it does
-BracketView lets developers format, validate, query, and share JSON in the browser — no install required. Core tools run 100% client-side (data never leaves the browser).
+BracketView lets developers format, validate, query, diff, and share JSON in a full-screen, distraction-free workspace. Freemium pricing: core tools are free forever; Pro ($6/month or $54/year) unlocks unlimited AI, 50 MB uploads, and unlimited encrypted snapshot links.
 
-## Key features
-- JSON Tree View and Graph View for nested data exploration
-- One-click JSON formatter (beautify) and minifier
-- Real-time JSON validator with inline error highlighting
-- JSONPath query support ($.store.book[*].author syntax)
-- JQ Filter Playground powered by WebAssembly — full jq in the browser
-- AI JSON Fixer: automatically repairs broken JSON (missing commas, unquoted keys, etc.)
-- AI Mock Data Generator: creates test data from JSON Schema
-- AI Query Assistant: converts plain English to jq expressions
-- JSON Diff: side-by-side comparison of two JSON versions
-- JSON Schema Validator and Generator
-- Type Generator: exports TypeScript, Python, Go, Rust, and 9+ other language types from JSON
-- Encrypted shareable snapshot links with optional expiry
-- WebRTC Nearby Share: transfer JSON between browsers using a 6-character code or QR scan
-- Annotations: attach notes to JSON keys and values
-- Encoder/Decoder utility
-- JSON Stats View: node count, depth, structure analysis
+Key capabilities include tree and graph views, JSONPath and JQ filter playground (WebAssembly), AI JSON repair, JSON diff, schema validation, type generation in 9+ languages, and encrypted shareable snapshots.
 
-## Pricing
-- Free: full workspace, monthly AI limits, uploads up to 10 MB, 50 lifetime snapshot links
-- Pro Monthly: $6/month — unlimited AI, 50 MB uploads, unlimited snapshots
-- Pro Yearly: $54/year ($4.50/month) — same Pro features, 25% savings
+## App & site
 
-## Use cases
-API debugging, webhook payload review, config management, log cleanup, API version diffing, schema documentation
+- [BracketView web app](https://app.bracketview.in): Open the JSON workspace — paste, format, validate, and query JSON
+- [BracketView marketing site](https://bracketview.in): Product overview, pricing, features, and documentation
 
-## Technical details
-- 100% client-side for core tools (privacy-first)
-- Works in any modern browser, no install
-- Payments via Razorpay
-- Featured on Product Hunt and SaaSHub
+## Tool pages
 
-## Contact & links
-- Website: https://bracketview.in
-- App: https://app.bracketview.in
-- Blog: https://medium.com/@dev-jameel
-- LinkedIn: https://www.linkedin.com/company/bracketview
-- X (Twitter): https://x.com/bracket_view
-- Author: Jameel Shaikh
+- [JSON Formatter](https://bracketview.in/json-formatter): Beautify and minify JSON online
+- [JSON Validator](https://bracketview.in/json-validator): Real-time syntax validation with inline errors
+- [JSON Diff](https://bracketview.in/json-diff): Side-by-side comparison of two JSON documents
+- [JSONPath Query](https://bracketview.in/jsonpath-query): Query JSON with JSONPath expressions
+- [JQ Playground](https://bracketview.in/jq-playground): Full jq filter engine in the browser via WebAssembly
+- [JSON Schema Validator](https://bracketview.in/json-schema-validator): Validate JSON against JSON Schema
+- [JSON Type Generator](https://bracketview.in/json-type-generator): Export TypeScript, Python, Go, Rust, and more from JSON
+
+## Documentation
+
+- [Features](https://bracketview.in/features): Full feature list and capabilities
+- [Glossary](https://bracketview.in/glossary): JSON, JSONPath, jq, and schema terminology
+- [Blog](https://bracketview.in/blog): Articles on JSON workflows and BracketView updates
+
+## Optional
+
+- [Contact](https://bracketview.in/contact): Get in touch with the BracketView team
+- [Privacy Policy](https://bracketview.in/privacy): Data handling and client-side processing policy
+- [Terms of Service](https://bracketview.in/terms): Usage terms
+- [LinkedIn](https://www.linkedin.com/company/bracketview): Company updates
+- [X (Twitter)](https://x.com/bracket_view): Product news and tips
+- [Author on Medium](https://medium.com/@dev-jameel): Blog posts by Jameel Shaikh

@@ -124,20 +124,19 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 
 ## Official Links
 
-- Marketing Site: https://bracketview.in
-- Web App: https://app.bracketview.in
-- JSON Formatter: https://bracketview.in/json-formatter
-- JSON Validator: https://bracketview.in/json-validator
-- JSON Diff: https://bracketview.in/json-diff
-- JSONPath Query: https://bracketview.in/jsonpath-query
-- JQ Playground: https://bracketview.in/jq-playground
-- Schema Validator: https://bracketview.in/json-schema-validator
-- Type Generator: https://bracketview.in/json-type-generator
-- Glossary: https://bracketview.in/glossary
-- Blog: https://bracketview.in/blog
-- LinkedIn: https://www.linkedin.com/company/bracketview
-- X (Twitter): https://x.com/bracket_view
-- Instagram: https://www.instagram.com/bracketview
-- YouTube: https://www.youtube.com/@bracketview
-- Author Medium: https://medium.com/@dev-jameel
-- Founder: Jameel Shaikh
+- [BracketView marketing site](https://bracketview.in): Product overview, pricing, and documentation
+- [BracketView web app](https://app.bracketview.in): JSON workspace — format, validate, query, and share
+- [JSON Formatter](https://bracketview.in/json-formatter): Beautify and minify JSON online
+- [JSON Validator](https://bracketview.in/json-validator): Real-time syntax validation
+- [JSON Diff](https://bracketview.in/json-diff): Side-by-side JSON comparison
+- [JSONPath Query](https://bracketview.in/jsonpath-query): Query JSON with JSONPath
+- [JQ Playground](https://bracketview.in/jq-playground): jq filters in the browser via WebAssembly
+- [JSON Schema Validator](https://bracketview.in/json-schema-validator): Validate against JSON Schema
+- [JSON Type Generator](https://bracketview.in/json-type-generator): Export types in 9+ languages
+- [Glossary](https://bracketview.in/glossary): JSON terminology reference
+- [Blog](https://bracketview.in/blog): Articles and product updates
+- [LinkedIn](https://www.linkedin.com/company/bracketview): Company page
+- [X (Twitter)](https://x.com/bracket_view): Product news
+- [Instagram](https://www.instagram.com/bracketview): Social updates
+- [YouTube](https://www.youtube.com/@bracketview): Video content
+- [Author on Medium](https://medium.com/@dev-jameel): Blog posts by founder Jameel Shaikh

@@ -9,15 +9,22 @@ import {
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Martian_Mono } from "next/font/google";
-import Analytics, { GTM_ID } from "./components/Analytics";
-import StructuredData from "./components/StructuredData";
-import Footer from "./components/ui/Footer";
-import Navbar from "./components/ui/Navbar";
+import { Fira_Code, Martian_Mono } from "next/font/google";
+import Analytics, { GTM_ID } from "../components/Analytics";
+import StructuredData from "../components/StructuredData";
+import Footer from "../components/ui/Footer";
+import Navbar from "../components/ui/Navbar";
 import "./globals.css";
 
 const martianMono = Martian_Mono({
     variable: "--font-martian-mono",
+    subsets: ["latin"],
+    display: "swap",
+    adjustFontFallback: true,
+});
+
+const firaCode = Fira_Code({
+    variable: "--font-fira-code",
     subsets: ["latin"],
     display: "swap",
     adjustFontFallback: true,
@@ -29,7 +36,6 @@ export const metadata: Metadata = {
     description: META_DESCRIPTION,
     authors: [{ name: "Jameel Shaikh" }],
     robots: { index: true, follow: true },
-    alternates: { canonical: "/" },
     openGraph: {
         title: META_TITLE,
         description: META_DESCRIPTION,
@@ -79,12 +85,19 @@ export default function RootLayout({
         <html
             lang="en"
             data-scroll-behavior="smooth"
-            className={`${martianMono.variable} h-full antialiased`}
+            className={`${martianMono.variable} ${firaCode.variable} h-full antialiased`}
             suppressHydrationWarning
         >
             <head>
                 <meta httpEquiv="x-dns-prefetch-control" content="on" />
+                <link rel="preconnect" href="https://app.bracketview.in" />
                 <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link
+                    rel="me"
+                    href="https://www.linkedin.com/company/bracketview"
+                />
+                <link rel="me" href="https://x.com/bracket_view" />
+                <link rel="me" href="https://medium.com/@dev-jameel" />
                 <link
                     rel="sitemap"
                     type="application/xml"

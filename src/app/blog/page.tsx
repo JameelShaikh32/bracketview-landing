@@ -1,18 +1,38 @@
-import BlogCard from "@/app/components/BlogCard";
-import PageHeader from "@/app/components/motion/PageHeader";
-import StaggerGroup from "@/app/components/motion/StaggerGroup";
 import { blogPosts } from "@/app/data/blog";
-import type { Metadata } from "next";
+import BlogCard from "@/components/BlogCard";
+import PageHeader from "@/components/motion/PageHeader";
+import StaggerGroup from "@/components/motion/StaggerGroup";
+import JsonLd from "@/components/seo/JsonLd";
+import {
+    buildBlogSchema,
+    buildItemListSchema,
+    createPageMetadata,
+    SITE_URL,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
+    path: "/blog",
     title: "Blog | BracketView",
     description:
-        "Articles about BracketView — JSON tooling, AI features, developer productivity, and product updates from Jameel Shaikh on Medium.",
-};
+        "BracketView blog — JSON tooling guides, AI features, developer productivity tips, and product updates from Jameel Shaikh.",
+});
 
 export default function BlogPage() {
+    const schemas = [
+        buildBlogSchema(blogPosts),
+        buildItemListSchema(
+            "BracketView Blog Posts",
+            blogPosts.map((post) => ({
+                name: post.title,
+                description: post.excerpt,
+                url: `${SITE_URL}/blog/${post.slug}`,
+            })),
+        ),
+    ];
+
     return (
         <main className="w-full px-4 pb-24 pt-8 sm:px-6 lg:px-8">
+            <JsonLd data={schemas} />
             <div className="mx-auto max-w-7xl">
                 <PageHeader
                     badge="Blog"
@@ -27,7 +47,9 @@ export default function BlogPage() {
 
                 <StaggerGroup className="mx-auto mt-14 grid max-w-7xl grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
                     {blogPosts.map((post) => (
-                        <BlogCard key={post.slug} {...post} />
+                        <article key={post.slug}>
+                            <BlogCard {...post} />
+                        </article>
                     ))}
                 </StaggerGroup>
             </div>

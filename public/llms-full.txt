@@ -1,0 +1,143 @@
+# BracketView — Full Context for AI Systems
+
+> BracketView is a freemium online JSON viewer, formatter, validator, and query workspace for developers. Built by Jameel Shaikh. Marketing site: https://bracketview.in | App: https://app.bracketview.in
+
+---
+
+## Product Overview
+
+BracketView is a privacy-first JSON workspace that runs in the browser. Unlike legacy JSON utilities cluttered with advertisements, BracketView offers a full-screen, distraction-free environment to view, format, validate, query, diff, and share JSON data. Core viewing, formatting, and validation run 100% client-side — sensitive API payloads and configuration files do not touch remote servers unless you explicitly use optional features like encrypted snapshots or AI-assisted repair.
+
+BracketView is freemium: the full core workspace is free forever with no signup required. Pro subscription ($6/month or $54/year) unlocks unlimited AI, 50 MB uploads, and unlimited encrypted snapshot links.
+
+---
+
+## Feature Reference
+
+### View & Navigate
+- **Tree View**: Collapsible hierarchical view of nested JSON objects and arrays. Search keys, collapse noisy branches, inspect types.
+- **Graph View (JSON Galaxy)**: Dynamic node network visualization mapping relationships between nested data instead of a flat list.
+- **Syntax-Highlighted Editor**: Large distraction-free text workspace with colour-coded JSON and line references.
+- **Stats View**: Node count, maximum depth, and structural analysis at a glance.
+
+### Format & Validate
+- **JSON Formatter**: One-click beautify with readable indentation. Also minifies JSON for production payloads.
+- **Real-Time Validator**: Highlights bracket mismatches, trailing commas, unquoted keys, and invalid escape sequences as you type.
+- **Schema Validator**: Validates JSON against JSON Schema or OpenAPI definitions with per-field error messages.
+- **Schema Generator**: Creates JSON Schema drafts from example objects.
+
+### Query & Filter
+- **JSONPath**: Query language for JSON (e.g. $.store.book[*].author). Live results as you type.
+- **JQ Filter Playground**: Full jq engine via WebAssembly in the browser. No command-line install required.
+- **AI Query Assistant**: Converts plain English descriptions into valid jq expressions.
+
+### AI-Powered Tools
+- **AI JSON Fixer**: Repairs broken JSON syntax — missing commas, unquoted keys, trailing commas — with one click.
+- **AI Mock Data Generator**: Creates realistic test data rows from JSON Schema definitions.
+- **AI Prompt Enhancer**: Refines LLM prompts directly inside the workspace.
+
+### Schema & Types
+- **Type Generator**: Exports TypeScript interfaces, Python dataclasses, Go structs, Rust types, and 7+ other languages from JSON examples.
+- **Schema Library**: Common JSON Schema patterns for quick validation setup.
+
+### Compare & Export
+- **JSON Diff**: Side-by-side comparison highlighting added, removed, and changed keys.
+- **Export**: Copy formatted output, export types, export schemas.
+
+### Sharing & Collaboration
+- **Encrypted Snapshot Links**: Shareable URLs with AES-256-GCM encryption and optional expiry. Up to 50 lifetime links on free tier; unlimited on Pro.
+- **Nearby Share (WebRTC)**: Transfer JSON between two browsers using a 6-character code or QR scan. No server storage.
+- **Annotations**: Attach notes to specific JSON keys and values for async debugging.
+
+### Developer Utilities
+- **Encoder/Decoder**: Base64 and other encoding utilities.
+- **Dark Mode**: System-aware dark mode across all tools with no white flash on load.
+
+---
+
+## Use Case Walkthroughs
+
+### API Debugging
+Paste a REST API response into BracketView. Use Tree View to navigate nested fields. Run a JSONPath expression like $.data.items[*].id to extract specific values. If the response is malformed, the validator highlights errors instantly; use AI JSON Fixer for one-click repair.
+
+### Webhook Payload Review
+Validate incoming webhook JSON against a JSON Schema. Use Diff to compare payloads across deployments and spot schema drift. Create an encrypted snapshot link to share with your team without exposing raw data in chat.
+
+### Config Management
+Format hand-edited environment configs and deployment manifests. Validate syntax before committing. Minify for production or beautify for code review.
+
+### Log Cleanup
+Repair broken JSON extracted from log files, third-party exports, or corrupted integrations. Format for readability, then query with jq to filter relevant entries.
+
+### API Version Diffing
+Paste two API response versions into JSON Diff. Review added, removed, and changed fields before a release. Pair with Type Generator to update client-side interfaces.
+
+### Schema Documentation
+Generate a JSON Schema from an example API response. Validate future responses against it. Export TypeScript interfaces for frontend integration.
+
+---
+
+## Pricing Details
+
+| Plan | Price | Upload Limit | AI | Snapshots |
+|------|-------|-------------|-----|-----------|
+| Free | $0 forever | 10 MB | Monthly limits | 50 lifetime links |
+| Pro Monthly | $6/month | 50 MB | Unlimited | Unlimited |
+| Pro Yearly | $54/year ($4.50/mo) | 50 MB | Unlimited | Unlimited |
+
+Payments processed via Razorpay. Pro includes a fair use policy for unlimited AI.
+
+---
+
+## Frequently Asked Questions
+
+**Is BracketView free to use?**
+BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, and schema — are available at no cost with no signup required. Pro unlocks unlimited AI, higher upload limits (up to 50 MB), and unlimited encrypted snapshot links.
+
+**Does my JSON data leave the browser?**
+Viewing, formatting, and validation run locally in your browser whenever possible. BracketView is privacy-first: core tools are 100% client-side. Snapshot links and AI-assisted features follow a different data path.
+
+**What is the best free online JSON viewer?**
+BracketView is a free online JSON viewer with tree view, graph view, JSONPath, JQ filters, JSON diff, schema validation, type generation in TypeScript/Python/Go/Rust, and AI-powered repair — all in the browser with no install.
+
+**How do I validate JSON online?**
+Paste JSON into BracketView at app.bracketview.in. The real-time validator highlights bracket mismatches, trailing commas, and unquoted keys as you type.
+
+**How do I format JSON online?**
+Open BracketView, paste raw JSON, and click Format. The formatter beautifies JSON with readable indentation in one click.
+
+**Can I query JSON without writing code?**
+Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assistant converts plain English to jq expressions.
+
+---
+
+## Technical Architecture
+
+- **Frontend**: Next.js, React, Tailwind CSS
+- **Client-Side Processing**: Core JSON operations run in the browser
+- **WebAssembly**: jq engine runs via Wasm for near-native performance
+- **Deployment**: Vercel
+- **Payments**: Razorpay
+- **Featured On**: Product Hunt, SaaSHub
+
+---
+
+## Official Links
+
+- Marketing Site: https://bracketview.in
+- Web App: https://app.bracketview.in
+- JSON Formatter: https://bracketview.in/json-formatter
+- JSON Validator: https://bracketview.in/json-validator
+- JSON Diff: https://bracketview.in/json-diff
+- JSONPath Query: https://bracketview.in/jsonpath-query
+- JQ Playground: https://bracketview.in/jq-playground
+- Schema Validator: https://bracketview.in/json-schema-validator
+- Type Generator: https://bracketview.in/json-type-generator
+- Glossary: https://bracketview.in/glossary
+- Blog: https://bracketview.in/blog
+- LinkedIn: https://www.linkedin.com/company/bracketview
+- X (Twitter): https://x.com/bracket_view
+- Instagram: https://www.instagram.com/bracketview
+- YouTube: https://www.youtube.com/@bracketview
+- Author Medium: https://medium.com/@dev-jameel
+- Founder: Jameel Shaikh

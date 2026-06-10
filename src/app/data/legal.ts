@@ -8,6 +8,7 @@ type LegalDocument = {
     intro: string;
     sections: LegalSection[];
     contactLine: string;
+    lastUpdated?: string;
 };
 
 const supportEmail = "support@bracketview.in";

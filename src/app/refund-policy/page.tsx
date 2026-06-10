@@ -1,12 +1,13 @@
-import LegalDocument from "@/app/components/LegalDocument";
 import { refundPolicy } from "@/app/data/legal";
-import type { Metadata } from "next";
+import LegalDocument from "@/components/LegalDocument";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
+    path: "/refund-policy",
     title: "Refund Policy | BracketView",
     description:
-        "How BracketView handles refund requests for Pro purchases made through Razorpay.",
-};
+        "BracketView refund policy — eligibility, process, and timelines for Pro subscription refunds processed via Razorpay.",
+});
 
 export default function RefundPolicyPage() {
     return <LegalDocument {...refundPolicy} />;

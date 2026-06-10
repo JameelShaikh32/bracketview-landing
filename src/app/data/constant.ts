@@ -46,10 +46,16 @@ const howItWorksSteps: HowItWorksStep[] = [
     },
 ];
 
+type RelatedLink = {
+    label: string;
+    href: string;
+};
+
 type UseCaseItem = {
     icon: LucideIcon;
     title: string;
     description: string;
+    relatedLinks?: RelatedLink[];
 };
 
 const useCases: UseCaseItem[] = [
@@ -58,6 +64,10 @@ const useCases: UseCaseItem[] = [
         title: "API debugging",
         description:
             "Inspect REST responses, trace nested fields, and debug endpoints without a local setup.",
+        relatedLinks: [
+            { label: "JSONPath query", href: "/jsonpath-query" },
+            { label: "JQ playground", href: "/jq-playground" },
+        ],
     },
     {
         icon: Webhook,
@@ -82,12 +92,17 @@ const useCases: UseCaseItem[] = [
         title: "Release reviews",
         description:
             "Diff two API versions side by side and see exactly which fields changed.",
+        relatedLinks: [{ label: "JSON diff", href: "/json-diff" }],
     },
     {
         icon: ScrollText,
         title: "Documentation",
         description:
             "Generate draft schemas from example objects and keep API docs accurate.",
+        relatedLinks: [
+            { label: "Schema validator", href: "/json-schema-validator" },
+            { label: "Type generator", href: "/json-type-generator" },
+        ],
     },
 ];
 
@@ -103,21 +118,21 @@ const features: FeatureItem[] = [
         icon: Braces,
         title: "Format & Validate",
         description: "Beautify, minify, and validate JSON as you type",
-        href: "https://app.bracketview.in",
+        href: "/json-formatter",
         cta: "Try formatter",
     },
     {
         icon: SearchCode,
         title: "JSONPath & JQ Query",
         description: "Query large documents with JSONPath or JQ expressions",
-        href: "https://app.bracketview.in",
+        href: "/jsonpath-query",
         cta: "Try JSONPath",
     },
     {
         icon: GitCompare,
         title: "Compare JSON & Export",
         description: "Compare two JSON versions and export formatted output",
-        href: "https://app.bracketview.in/json-diff",
+        href: "/json-diff",
         cta: "Try JSON diff",
     },
 ];
@@ -135,6 +150,7 @@ type PricingPlan = {
     cta: string;
     ctaHref: string;
     highlighted?: boolean;
+    offerSchema?: PricingOfferSchema;
 };
 
 const pricingPlans: PricingPlan[] = [
@@ -154,6 +170,7 @@ const pricingPlans: PricingPlan[] = [
         ],
         cta: "Get started free",
         ctaHref: "https://app.bracketview.in",
+        offerSchema: { price: "0", priceCurrency: "USD" },
     },
     {
         name: "Monthly",
@@ -171,6 +188,7 @@ const pricingPlans: PricingPlan[] = [
         ],
         cta: "Start monthly plan",
         ctaHref: "https://app.bracketview.in/pricing",
+        offerSchema: { price: "6", priceCurrency: "USD" },
     },
     {
         name: "Yearly",
@@ -191,36 +209,14 @@ const pricingPlans: PricingPlan[] = [
         cta: "Start yearly plan",
         ctaHref: "https://app.bracketview.in/pricing",
         highlighted: true,
+        offerSchema: { price: "54", priceCurrency: "USD" },
     },
 ];
 
-type FaqItem = {
-    question: string;
-    answer: string;
+type PricingOfferSchema = {
+    price: string;
+    priceCurrency: string;
 };
-
-const faqItems: FaqItem[] = [
-    {
-        question: "Is BracketView free to use?",
-        answer:
-            "BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, and schema — are available at no cost with no signup required. Pro subscription unlocks unlimited AI, higher upload limits, and unlimited encrypted snapshot links.",
-    },
-    {
-        question: "Does my JSON data leave the browser?",
-        answer:
-            "Viewing, formatting, and validation run locally in your browser whenever possible. Snapshot links and AI-assisted features follow a different data path — review our privacy policy before using those with sensitive data.",
-    },
-    {
-        question: "What does Pro include?",
-        answer:
-            "Pro unlocks unlimited AI across repair, mock data, and conversion helpers, uploads up to 50 MB, unlimited encrypted snapshot links, and no monthly AI caps for signed-in accounts.",
-    },
-    {
-        question: "How large can uploaded files be?",
-        answer:
-            "Free accounts can upload documents up to 10 MB. Pro raises the limit to 50 MB for larger API payloads, exports, and log files.",
-    },
-];
 
 const footerLinks = {
     product: [
@@ -228,6 +224,16 @@ const footerLinks = {
         { label: "View pricing", href: "/#pricing" },
         { label: "How BracketView works", href: "/#how-it-works" },
         { label: "Launch workspace", href: "https://app.bracketview.in", rel: "" },
+    ],
+    tools: [
+        { label: "JSON Formatter", href: "/json-formatter" },
+        { label: "JSON Validator", href: "/json-validator" },
+        { label: "JSON Diff", href: "/json-diff" },
+        { label: "JSONPath Query", href: "/jsonpath-query" },
+        { label: "JQ Playground", href: "/jq-playground" },
+        { label: "Schema Validator", href: "/json-schema-validator" },
+        { label: "Type Generator", href: "/json-type-generator" },
+        { label: "Glossary", href: "/glossary" },
     ],
     company: [
         { label: "About us", href: "/#about" },
@@ -324,7 +330,6 @@ const navLinks = [
 ];
 
 export {
-    faqItems,
     featuredOnLinks,
     features,
     footerLinks,
@@ -334,5 +339,12 @@ export {
     socialLinks,
     useCases
 };
-export type { FaqItem, FeatureItem, HowItWorksStep, PricingPlan, UseCaseItem };
+export type {
+    FeatureItem,
+    HowItWorksStep,
+    PricingOfferSchema,
+    PricingPlan,
+    RelatedLink,
+    UseCaseItem
+};
 

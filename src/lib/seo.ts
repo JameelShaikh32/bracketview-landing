@@ -9,7 +9,7 @@ const META_TITLE =
     "Online JSON Viewer, Formatter & Validator | BracketView";
 
 const META_DESCRIPTION =
-    "BracketView is a freemium online JSON workspace for developers. Format, validate, and query JSON in the browser—no install. JQ, AI JSON repair, encrypted sharing. 100% client-side; your data never leaves your browser.";
+    "Freemium online JSON viewer, formatter & validator. Beautify, pretty-print, validate & edit JSON in your browser — privacy-first, no install. Try BracketView.";
 
 const OG_IMAGE = "/og-image.webp";
 
@@ -622,6 +622,7 @@ export {
     OG_IMAGE_ALT,
     SEO_FAQ_ITEMS,
     SITE_URL,
-    TWITTER_SITE,
+    TWITTER_SITE
 };
 export type { BlogPostInput, DefinedTerm, FaqItem, HowToStep, PageMetadataOptions };
+

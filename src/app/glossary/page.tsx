@@ -1,4 +1,5 @@
 import { glossaryTerms } from "@/app/data/glossary";
+import AdPlacement from "@/components/ads/AdPlacement";
 import PageHeader from "@/components/motion/PageHeader";
 import Reveal from "@/components/motion/Reveal";
 import JsonLd from "@/components/seo/JsonLd";
@@ -48,6 +49,8 @@ export default function GlossaryPage() {
                         })}
                     </time>
                 </p>
+
+                <AdPlacement variant="content" className="mt-10" />
 
                 <div className="mt-12 space-y-8">
                     {glossaryTerms.map((term) => (

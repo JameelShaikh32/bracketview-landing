@@ -10,6 +10,8 @@ import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Fira_Code, Martian_Mono } from "next/font/google";
+import AdSenseScript from "../components/ads/AdSenseScript";
+import CookieConsent from "../components/ads/CookieConsent";
 import Analytics, { GTM_ID } from "../components/Analytics";
 import StructuredData from "../components/StructuredData";
 import Footer from "../components/ui/Footer";
@@ -93,6 +95,10 @@ export default function RootLayout({
                 <link rel="preconnect" href="https://app.bracketview.in" />
                 <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
                 <link
+                    rel="dns-prefetch"
+                    href="https://pagead2.googlesyndication.com"
+                />
+                <link
                     rel="me"
                     href="https://www.linkedin.com/company/bracketview"
                 />
@@ -125,6 +131,8 @@ export default function RootLayout({
                 <Footer />
                 <SpeedInsights />
                 <VercelAnalytics />
+                <AdSenseScript />
+                <CookieConsent />
             </body>
         </html>
     );

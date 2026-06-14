@@ -9,7 +9,7 @@ const rows = [
         chromeExt: "Yes",
     },
     {
-        feature: "100% ads-free",
+        feature: "Ad-free workspace",
         bracketview: "Yes",
         jsonViewerStack: "Yes",
         chromeExt: "No",

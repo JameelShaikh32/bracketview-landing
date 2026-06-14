@@ -1,4 +1,5 @@
 import { featureCategories } from "@/app/data/featuresPage";
+import AdPlacement from "@/components/ads/AdPlacement";
 import FeatureCard from "@/components/FeatureCard";
 import PageHeader from "@/components/motion/PageHeader";
 import Reveal from "@/components/motion/Reveal";
@@ -52,6 +53,8 @@ export default function FeaturesPage() {
                         external: true,
                     }}
                 />
+
+                <AdPlacement variant="content" className="mt-10" />
 
                 <div className="mt-16 space-y-16 sm:mt-20 sm:space-y-20">
                     {featureCategories.map((category) => {

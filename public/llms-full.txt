@@ -6,7 +6,7 @@
 
 ## Product Overview
 
-BracketView is a privacy-first JSON workspace that runs in the browser. Unlike legacy JSON utilities cluttered with advertisements, BracketView offers a full-screen, distraction-free environment to view, format, validate, query, diff, and share JSON data. Core viewing, formatting, and validation run 100% client-side — sensitive API payloads and configuration files do not touch remote servers unless you explicitly use optional features like encrypted snapshots or AI-assisted repair.
+BracketView is a privacy-first JSON workspace that runs in the browser. Unlike legacy JSON utilities cluttered with advertisements inside the editor, BracketView offers a full-screen, ad-free workspace to view, format, validate, query, diff, and share JSON data. This marketing website may show third-party ads; the app at app.bracketview.in does not. Core viewing, formatting, and validation run 100% client-side — sensitive API payloads and configuration files do not touch remote servers unless you explicitly use optional features like encrypted snapshots or AI-assisted repair.
 
 BracketView is freemium: the full core workspace is free forever with no signup required. Pro subscription ($6/month or $54/year) unlocks unlimited AI, 50 MB uploads, and unlimited encrypted snapshot links.
 

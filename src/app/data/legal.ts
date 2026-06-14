@@ -44,9 +44,22 @@ const privacyPolicy: LegalDocument = {
             ],
         },
         {
-            title: "No Tracking",
+            title: "Advertising on this website",
             paragraphs: [
-                "We do not track users across sites or collect personal identifiers beyond optional analytics if configured explicitly in environment variables. You can opt out by not providing analytics keys.",
+                "The BracketView marketing site (bracketview.in) may display third-party advertisements through Google AdSense to help support free core product features. The BracketView application workspace at app.bracketview.in does not show advertisements.",
+                "When ads are enabled, Google may use cookies and similar technologies to serve and measure advertising. We show a cookie consent banner before loading advertising scripts. You can manage ad personalization in your Google Ads Settings.",
+            ],
+        },
+        {
+            title: "Analytics",
+            paragraphs: [
+                "We may use privacy-conscious analytics (such as Vercel Analytics and optional Google Tag Manager) to understand how the marketing site is used. These are separate from advertising cookies and are only loaded when configured.",
+            ],
+        },
+        {
+            title: "Data we do not sell",
+            paragraphs: [
+                "We do not sell your personal data or build advertising profiles ourselves. Third-party ad and analytics partners process limited data under their own policies when those features are enabled on this site.",
             ],
         },
     ],

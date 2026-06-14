@@ -1,6 +1,7 @@
 import { blogPosts, formatBlogDate, type BlogPost } from "@/app/data/blog";
 import { toolPages } from "@/app/data/toolPages";
 import AuthorBio from "@/components/AuthorBio";
+import AdPlacement from "@/components/ads/AdPlacement";
 import JsonLd from "@/components/seo/JsonLd";
 import {
     buildBlogPostingSchema,
@@ -110,6 +111,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <p className="mt-8 text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/75">
                         {post.excerpt}
                     </p>
+
+                    <AdPlacement variant="blog" className="mt-10" />
 
                     <a
                         href={post.url}

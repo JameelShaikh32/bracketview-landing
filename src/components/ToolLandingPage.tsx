@@ -1,4 +1,5 @@
 import type { ToolPage } from "@/app/data/toolPages";
+import AdPlacement from "@/components/ads/AdPlacement";
 import RelatedTools from "@/components/RelatedTools";
 import ToolDemoVideo from "@/components/ToolDemoVideo";
 import PageHeader from "@/components/motion/PageHeader";
@@ -136,6 +137,8 @@ const ToolLandingPage = ({ page }: ToolLandingPageProps) => {
                         ))}
                     </div>
                 </section>
+
+                <AdPlacement variant="content" className="mt-16" />
 
             </div>
 

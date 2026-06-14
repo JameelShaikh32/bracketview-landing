@@ -23,6 +23,10 @@ Open [http://localhost:3000](http://localhost:3000).
 | `NEXT_PUBLIC_GA_ID`                    | No               | Google Analytics measurement ID             |
 | `NEXT_PUBLIC_GTM_ID`                   | No               | Google Tag Manager container ID             |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | No               | Search Console verification code            |
+| `NEXT_PUBLIC_ADSENSE_CLIENT_ID`        | No               | AdSense publisher ID (`ca-pub-…`) — marketing site only |
+| `NEXT_PUBLIC_ADSENSE_SLOT`             | No               | Default ad unit slot ID when ads are enabled |
+| `NEXT_PUBLIC_ADSENSE_SLOT_BLOG`        | No               | Optional blog-specific ad slot              |
+| `NEXT_PUBLIC_ADSENSE_SLOT_CONTENT`     | No               | Optional tool/glossary/features ad slot     |
 | `SMTP_HOST`                            | For contact form | Hostinger SMTP host                         |
 | `SMTP_PORT`                            | For contact form | e.g. `465`                                  |
 | `SMTP_SECURE`                          | For contact form | `true` for port 465                         |
@@ -34,6 +38,15 @@ Open [http://localhost:3000](http://localhost:3000).
 3. Add domain `bracketview.in` in Vercel → Domains and point DNS to Vercel.
 4. Upload `public/og-image.webp` (1200×630) for social previews.
 5. Deploy — `npm run build` runs `next-sitemap` automatically to generate `robots.txt` and `sitemap.xml`.
+
+### Google AdSense (optional)
+
+Ads appear only on the **marketing site** (`bracketview.in`) — blog, tool landing pages, glossary, and features. The app workspace stays ad-free.
+
+1. Apply at [Google AdSense](https://www.google.com/adsense) and create display ad units.
+2. Set `NEXT_PUBLIC_ADSENSE_CLIENT_ID` and `NEXT_PUBLIC_ADSENSE_SLOT` in Vercel env vars.
+3. Update `public/ads.txt` with your real publisher ID (replace `pub-XXXXXXXXXXXXXXXX`).
+4. Visitors see a cookie consent banner before any ad scripts load.
 
 ### Vercel CLI
 

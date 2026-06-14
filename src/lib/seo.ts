@@ -100,6 +100,11 @@ type FaqItem = {
 
 const SEO_FAQ_ITEMS: FaqItem[] = [
     {
+        question: "Does BracketView show ads?",
+        answer:
+            "The BracketView JSON workspace at app.bracketview.in is ad-free — including the free tier. This marketing website (bracketview.in) may display third-party advertisements to help support free core tools. You can decline advertising cookies via the site banner.",
+    },
+    {
         question: "Is BracketView free to use?",
         answer:
             "BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, and schema — are available at no cost with no signup required. Pro subscription unlocks unlimited AI, higher upload limits (up to 50 MB), and unlimited encrypted snapshot links.",

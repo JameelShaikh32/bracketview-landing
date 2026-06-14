@@ -1,4 +1,5 @@
 import { blogPosts } from "@/app/data/blog";
+import AdPlacement from "@/components/ads/AdPlacement";
 import BlogCard from "@/components/BlogCard";
 import PageHeader from "@/components/motion/PageHeader";
 import StaggerGroup from "@/components/motion/StaggerGroup";
@@ -44,6 +45,8 @@ export default function BlogPage() {
                         external: true,
                     }}
                 />
+
+                <AdPlacement variant="blog" className="mt-10" />
 
                 <StaggerGroup className="mx-auto mt-14 grid max-w-7xl grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
                     {blogPosts.map((post) => (

@@ -93,7 +93,7 @@ const blogPosts: BlogPost[] = [
         slug: "tired-of-cluttered-json-tools",
         title: "Tired of Cluttered JSON Tools? Try BracketView",
         excerpt:
-            "A clean, fast JSON viewer with no ads, full-screen workspace, multiple fonts, comparison, export, and formatting — built to eliminate developer frustrations.",
+            "A clean, fast JSON viewer with an ad-free workspace, full-screen editor, multiple fonts, comparison, export, and formatting — built to eliminate developer frustrations.",
         publishedAt: "2025-11-20",
         readTime: "3 min read",
         url: "https://dev-jameel.medium.com/tired-of-cluttered-json-tools-try-bracketview-988ca5841dc6",

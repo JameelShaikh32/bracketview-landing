@@ -44,7 +44,7 @@ const CookieConsent = () => {
                     onClick={accept}
                     className="cursor-pointer rounded-2xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                 >
-                    Accept ads
+                    Accept
                 </button>
                 <button
                     type="button"

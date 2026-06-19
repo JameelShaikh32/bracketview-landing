@@ -1,7 +1,7 @@
 "use client";
 
 import { ADSENSE_CLIENT_ID } from "@/lib/ads";
-import { useAdsConsent } from "@/hooks/useAdsConsent";
+import { useAdsConsent } from "@/components/ads/AdsConsentProvider";
 import { useEffect } from "react";
 
 const AdSenseScript = () => {

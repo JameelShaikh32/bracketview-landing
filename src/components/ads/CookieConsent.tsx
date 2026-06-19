@@ -1,12 +1,12 @@
 "use client";
 
-import { useAdsConsent } from "@/hooks/useAdsConsent";
+import { useAdsConsent } from "@/components/ads/AdsConsentProvider";
 import Link from "next/link";
 
 const CookieConsent = () => {
-    const { needsPrompt, accept, reject, adsEnabled } = useAdsConsent();
+    const { needsPrompt, accept, reject, adsEnabled, ready } = useAdsConsent();
 
-    if (!adsEnabled || !needsPrompt) {
+    if (!adsEnabled || !ready || !needsPrompt) {
         return null;
     }
 
@@ -15,7 +15,7 @@ const CookieConsent = () => {
             role="dialog"
             aria-labelledby="cookie-consent-title"
             aria-describedby="cookie-consent-description"
-            className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-3xl rounded-3xl border border-black/10 bg-white p-5 shadow-lg sm:inset-x-6 sm:p-6 dark:border-foreground/15 dark:bg-muted"
+            className="fixed inset-x-4 bottom-4 z-100 mx-auto max-w-3xl rounded-3xl border border-black/10 bg-white p-5 shadow-lg sm:inset-x-6 sm:p-6 dark:border-foreground/15 dark:bg-muted"
         >
             <h2
                 id="cookie-consent-title"

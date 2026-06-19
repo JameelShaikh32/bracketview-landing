@@ -10,8 +10,7 @@ import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Fira_Code, Martian_Mono } from "next/font/google";
-import AdSenseScript from "../components/ads/AdSenseScript";
-import CookieConsent from "../components/ads/CookieConsent";
+import SiteProviders from "../components/ads/SiteProviders";
 import Analytics, { GTM_ID } from "../components/Analytics";
 import StructuredData from "../components/StructuredData";
 import Footer from "../components/ui/Footer";
@@ -126,13 +125,13 @@ export default function RootLayout({
                         />
                     </noscript>
                 ) : null}
-                <Navbar />
-                {children}
-                <Footer />
-                <SpeedInsights />
-                <VercelAnalytics />
-                <AdSenseScript />
-                <CookieConsent />
+                <SiteProviders>
+                    <Navbar />
+                    {children}
+                    <Footer />
+                    <SpeedInsights />
+                    <VercelAnalytics />
+                </SiteProviders>
             </body>
         </html>
     );

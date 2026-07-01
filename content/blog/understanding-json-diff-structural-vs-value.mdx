@@ -1,0 +1,83 @@
+---
+title: "Understanding JSON Diff: Structural vs Value-Level Comparisons"
+slug: understanding-json-diff-structural-vs-value
+excerpt: "JSON diff tools can report added keys, removed branches, and changed values differently. Learn comparison modes and how to interpret diff output for API reviews."
+publishedAt: "2026-06-12"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [JSON Diff, API, Debugging]
+relatedTools: [json-diff]
+relatedAppTools: [json-diff]
+status: published
+---
+
+Comparing two JSON documents is routine during API version upgrades, config migrations, and test assertions. Not every diff tool labels changes the same way — understanding **structural** vs **value-level** differences helps you review releases faster.
+
+## What "structural" changes mean
+
+Structural changes alter the shape of the tree:
+
+- **Added keys** — new field appears in object B but not A
+- **Removed keys** — field present in A missing in B
+- **Type changes** — `"count": "5"` vs `"count": 5` (string → number)
+- **Array length** — items appended, removed, or reordered
+
+Structural diffs answer: "Did the contract change?"
+
+## What "value-level" changes mean
+
+Value-level changes keep the same path and type but change the scalar or nested content:
+
+- `"status": "pending"` → `"status": "shipped"`
+- Nested object under the same key with different leaf values
+- Number precision: `1.0` vs `1` (may or may not flag depending on normalisation)
+
+Value-level diffs answer: "Did the data change at this path?"
+
+## Array comparison nuances
+
+Arrays are where diff tools disagree most:
+
+- **Order-sensitive** — `[1, 2]` vs `[2, 1]` is a full diff
+- **Order-insensitive** — same multiset, different order → no diff (rare in dev tools)
+- **Index-based** — report `items[2]` changed vs treating array as set
+
+For API snapshots, decide whether order matters (lists usually yes; tag sets sometimes no).
+
+## Object key order
+
+JSON objects are unordered by spec, but serializers often preserve insertion order. Diff tools typically match by **key name**, not position — so reordering keys alone should not appear as a value change.
+
+## Normalisation before diffing
+
+Reduce noise by normalising both sides:
+
+1. Parse and re-serialize with sorted keys (if your workflow allows)
+2. Format with consistent indentation (human review only — not required for machine diff)
+3. Strip volatile fields (`updatedAt`, `requestId`) in test fixtures
+
+## Interpreting diff output in reviews
+
+| Symbol / label | Usually means |
+|----------------|---------------|
+| Added (green) | New path in right-hand document |
+| Removed (red) | Path only in left-hand document |
+| Changed | Same path, different value or type |
+| Unchanged | Hidden in collapsed views |
+
+For release reviews, scan **added/removed keys** first (breaking changes), then **changed values**.
+
+## Side-by-side vs inline
+
+- **Side-by-side** — best for large trees; align paths visually
+- **Inline / unified** — compact for CI logs
+
+BracketView's [JSON Diff](https://app.bracketview.in/json-diff) runs client-side: paste left and right JSON, expand changed branches, and share results without uploading to a server.
+
+## When diff is not enough
+
+- Semantic equivalence (`0` vs `0.0`) may need custom normalisers
+- Large arrays may need jq filters to compare subsets before diffing
+- Schema validation catches contract violations diff alone might miss (new optional field vs wrong type)
+
+Pair diff with [schema validation](/blog/validate-json-against-json-schema) for release gates.

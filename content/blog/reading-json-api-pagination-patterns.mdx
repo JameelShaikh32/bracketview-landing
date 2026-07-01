@@ -1,0 +1,100 @@
+---
+title: "Reading JSON API Pagination Patterns"
+slug: reading-json-api-pagination-patterns
+excerpt: "Offset, cursor, and link-based pagination appear in JSON APIs in predictable shapes. Learn how to spot each pattern and query nested page metadata."
+publishedAt: "2026-06-05"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [API, JSON, Pagination]
+relatedTools: [jsonpath-query, jq-playground]
+relatedAppTools: [jsonpath-query, jq-playground]
+status: published
+---
+
+List endpoints rarely return unbounded arrays. Pagination wraps rows in metadata — `next`, `cursor`, `page`, `total` — and the exact JSON shape varies by API. Recognizing the pattern speeds up debugging and client implementation.
+
+## Offset / page pagination
+
+Response often includes:
+
+```json
+{
+  "data": [ ... ],
+  "page": 2,
+  "pageSize": 50,
+  "total": 437
+}
+```
+
+Or query-driven: `?offset=100&limit=50`.
+
+**Pros:** jump to page N, simple mental model.
+
+**Cons:** unstable when rows insert/delete during iteration; large offsets stress databases.
+
+**JSONPath examples:**
+
+- Items: `$.data[*]`
+- Next page number: `$.page` + 1 if `$.data.length == $.pageSize`
+
+## Cursor pagination
+
+Response includes opaque cursor:
+
+```json
+{
+  "items": [ ... ],
+  "nextCursor": "eyJpZCI6MTIzfQ==",
+  "hasMore": true
+}
+```
+
+Client sends `?cursor=eyJpZCI6MTIzfQ==` on the next request.
+
+**Pros:** stable for live feeds; efficient for large tables.
+
+**Cons:** cannot jump to arbitrary page; cursor semantics are API-specific.
+
+**jq example:** `.items[] | .id` then pass `nextCursor` from prior response manually.
+
+## Link-based (HATEOAS) pagination
+
+```json
+{
+  "results": [ ... ],
+  "_links": {
+    "next": { "href": "/api/items?after=abc" },
+    "prev": { "href": "/api/items?before=xyz" }
+  }
+}
+```
+
+Follow `next.href` until absent. Common in HAL-style APIs.
+
+## Key names to grep for
+
+`next`, `nextPage`, `next_cursor`, `continuationToken`, `after`, `links.next`, `meta.pagination`, `has_more`, `total_count`.
+
+## Debugging pagination bugs
+
+1. Fetch page 1 and 2; [diff](/blog/understanding-json-diff-structural-vs-value) metadata fields only.
+2. Confirm empty page: `data: []` with `hasMore: true` is a server bug.
+3. Validate cursor is URL-safe when copy-pasting from logs.
+4. Use [JSONPath](https://app.bracketview.in) to extract `$.items[*].id` across pages for duplicate detection.
+
+## Client loop pseudocode
+
+```
+cursor = null
+loop:
+  response = GET /items?cursor=cursor
+  process response.items
+  cursor = response.nextCursor
+  break if !response.hasMore
+```
+
+## Schema tip
+
+Document pagination envelope in OpenAPI once; reuse `PaginatedResponse<T>` in generated types. Validate fixtures per page shape in [Schema Validator](/json-schema-validator).
+
+Related: [nested JSON querying](/blog/nested-json-flatten-query-visualize).

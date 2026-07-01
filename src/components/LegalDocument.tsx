@@ -8,8 +8,9 @@ const LegalDocument = ({
     intro,
     sections,
     contactLine,
-    lastUpdated = "2026-06-10",
+    lastUpdated,
 }: LegalDocumentType) => {
+    const updatedDate = lastUpdated ?? "2026-06-10";
     return (
         <main className="w-full px-4 pb-24 pt-8 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
@@ -31,9 +32,9 @@ const LegalDocument = ({
                     </p>
 
                     <p className="mt-4 text-sm text-black/60 dark:text-foreground/60">
-                        <time dateTime={lastUpdated} itemProp="dateModified">
+                        <time dateTime={updatedDate} itemProp="dateModified">
                             Updated{" "}
-                            {new Date(lastUpdated).toLocaleDateString("en-US", {
+                            {new Date(updatedDate).toLocaleDateString("en-US", {
                                 month: "long",
                                 day: "numeric",
                                 year: "numeric",

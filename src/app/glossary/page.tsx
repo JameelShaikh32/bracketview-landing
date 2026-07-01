@@ -1,8 +1,10 @@
-import { glossaryTerms } from "@/app/data/glossary";
+import { glossaryTerms, GLOSSARY_LAST_UPDATED } from "@/app/data/glossary";
 import AdPlacement from "@/components/ads/AdPlacement";
 import PageHeader from "@/components/motion/PageHeader";
 import Reveal from "@/components/motion/Reveal";
+import RelatedArticles from "@/components/RelatedArticles";
 import JsonLd from "@/components/seo/JsonLd";
+import { getAllPosts } from "@/lib/blog-content";
 import {
     buildDefinedTermSetSchema,
     buildWebPageSchema,
@@ -17,9 +19,10 @@ export const metadata = createPageMetadata({
         "Definitions for JSON, JSONPath, JQ, JSON Schema, JSON formatter, validator, diff, and more — the JSON developer glossary by BracketView.",
 });
 
-const LAST_UPDATED = "2026-06-10";
+const LAST_UPDATED = GLOSSARY_LAST_UPDATED;
 
 export default function GlossaryPage() {
+    const allPosts = getAllPosts();
     const schemas = [
         buildDefinedTermSetSchema(glossaryTerms),
         buildWebPageSchema(
@@ -78,10 +81,25 @@ export default function GlossaryPage() {
                                         {term.relatedLink.label} →
                                     </Link>
                                 ) : null}
+                                {term.relatedBlogLink ? (
+                                    <Link
+                                        href={term.relatedBlogLink.href}
+                                        className="mt-2 block text-sm font-medium text-black/70 underline-offset-2 hover:underline dark:text-foreground/70"
+                                    >
+                                        {term.relatedBlogLink.label} →
+                                    </Link>
+                                ) : null}
                             </Reveal>
                         </section>
                     ))}
                 </div>
+
+                <RelatedArticles
+                    currentSlug=""
+                    posts={allPosts}
+                    tags={["JSON", "Validation", "API"]}
+                    limit={3}
+                />
             </div>
         </main>
     );

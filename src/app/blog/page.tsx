@@ -1,4 +1,4 @@
-import { blogPosts } from "@/app/data/blog";
+import { getAllPosts } from "@/lib/blog-content";
 import AdPlacement from "@/components/ads/AdPlacement";
 import BlogCard from "@/components/BlogCard";
 import PageHeader from "@/components/motion/PageHeader";
@@ -13,12 +13,14 @@ import {
 
 export const metadata = createPageMetadata({
     path: "/blog",
-    title: "Blog | BracketView",
+    title: "JSON Guides & Developer Articles | BracketView Blog",
     description:
-        "BracketView blog — JSON tooling guides, AI features, developer productivity tips, and product updates from Jameel Shaikh.",
+        "In-depth JSON tooling guides — syntax errors, JSONPath vs jq, schema validation, diff strategies, security, and API debugging workflows for developers.",
 });
 
 export default function BlogPage() {
+    const blogPosts = getAllPosts();
+
     const schemas = [
         buildBlogSchema(blogPosts),
         buildItemListSchema(
@@ -37,11 +39,11 @@ export default function BlogPage() {
             <div className="mx-auto max-w-7xl">
                 <PageHeader
                     badge="Blog"
-                    title="Updates, guides, and JSON workflow tips"
-                    description="Product announcements, feature deep-dives, and developer stories from the BracketView team — published on Medium by Jameel Shaikh."
+                    title="JSON guides for developers"
+                    description="Practical articles on validating, querying, comparing, and securing JSON — written for API engineers and daily debugging workflows."
                     cta={{
-                        label: "Follow on Medium",
-                        href: "https://medium.com/@dev-jameel",
+                        label: "Open JSON workspace",
+                        href: "https://app.bracketview.in",
                         external: true,
                     }}
                 />

@@ -1,5 +1,4 @@
 import {
-    KEYWORDS,
     META_DESCRIPTION,
     META_TITLE,
     OG_IMAGE,
@@ -69,9 +68,6 @@ export const metadata: Metadata = {
                 type: "image/png",
             },
         ],
-    },
-    other: {
-        keywords: KEYWORDS.join(", "),
     },
 };
 

@@ -2,7 +2,10 @@ import type { DefinedTerm } from "@/lib/seo";
 
 type GlossaryTerm = DefinedTerm & {
     relatedLink?: { label: string; href: string };
+    relatedBlogLink?: { label: string; href: string };
 };
+
+const GLOSSARY_LAST_UPDATED = "2026-07-01";
 
 const glossaryTerms: GlossaryTerm[] = [
     {
@@ -29,6 +32,10 @@ const glossaryTerms: GlossaryTerm[] = [
         relatedLink: {
             label: "Try JSON Validator",
             href: "/json-validator",
+        },
+        relatedBlogLink: {
+            label: "Common JSON syntax errors",
+            href: "/blog/common-json-syntax-errors-and-how-to-fix-them",
         },
     },
     {
@@ -60,6 +67,10 @@ const glossaryTerms: GlossaryTerm[] = [
             label: "Try JSONPath Query",
             href: "/jsonpath-query",
         },
+        relatedBlogLink: {
+            label: "JSONPath vs jq",
+            href: "/blog/jsonpath-vs-jq-when-to-use-which",
+        },
     },
     {
         name: "JQ",
@@ -89,6 +100,10 @@ const glossaryTerms: GlossaryTerm[] = [
         relatedLink: {
             label: "Try Schema Validator",
             href: "/json-schema-validator",
+        },
+        relatedBlogLink: {
+            label: "Validate JSON against a schema",
+            href: "/blog/validate-json-against-json-schema",
         },
     },
     {
@@ -143,10 +158,16 @@ const glossaryTerms: GlossaryTerm[] = [
             "A visual mode that maps JSON relationships as a dynamic node network instead of a hierarchical tree. Useful for understanding complex object references and nested structures.",
     },
     {
+        name: "Performance Mode",
+        slug: "performance-mode",
+        description:
+            "A Pro-only workspace setting that optimizes parsing and rendering for large JSON payloads (up to 50 MB). Keeps tree, graph, and editor views responsive on heavy files. Disabled on Free accounts.",
+    },
+    {
         name: "Encrypted Snapshot",
         slug: "encrypted-snapshot",
         description:
-            "A shareable link that stores an encrypted copy of a JSON document with optional expiry. Used for async debugging and team collaboration without exposing raw data publicly.",
+            "A shareable link that stores an encrypted copy of a JSON document with optional expiry. Free: 5 links per month (up to 10-minute expiry). Pro: unlimited links (up to 2-hour expiry).",
     },
     {
         name: "Mock Data Generator",
@@ -162,5 +183,5 @@ const glossaryTerms: GlossaryTerm[] = [
     },
 ];
 
-export { glossaryTerms };
+export { glossaryTerms, GLOSSARY_LAST_UPDATED };
 export type { GlossaryTerm };

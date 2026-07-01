@@ -129,8 +129,9 @@ const Pricing = () => {
           </h2>
 
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-black/75 sm:mt-8 sm:text-base dark:text-foreground/70">
-            The full JSON workspace is free. Pro unlocks unlimited AI, larger
-            uploads, and unlimited snapshots.
+            Core JSON tools stay free forever. Pro removes limits on AI,
+            uploads, and encrypted snapshot sharing — plus Performance Mode
+            for large JSON files.
           </p>
         </Reveal>
 

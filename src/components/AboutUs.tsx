@@ -1,5 +1,7 @@
+import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
 import StaggerGroup from "@/components/motion/StaggerGroup";
+import { ArrowRight } from "lucide-react";
 
 const aboutHighlights = [
     {
@@ -8,7 +10,8 @@ const aboutHighlights = [
     },
     {
         title: "Freemium model",
-        description: "Core viewer, formatter, validator, and query tools at no cost.",
+        description:
+            "Core viewer, formatter, validator, and query tools stay free. Pro unlocks larger uploads, Performance Mode, unlimited snapshots, and unlimited AI.",
     },
     {
         title: "Built for builders",
@@ -48,6 +51,14 @@ const AboutUs = () => {
                             format, and validate JSON with full clarity — without installing
                             desktop software or uploading sensitive data unnecessarily.
                         </p>
+
+                        <Link
+                            href="/about"
+                            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent transition-opacity hover:opacity-80 dark:text-accent-dark"
+                        >
+                            Read more about BracketView
+                            <ArrowRight size={16} aria-hidden />
+                        </Link>
                     </div>
 
                     <StaggerGroup className="mt-12 grid grid-cols-1 items-stretch gap-4 sm:mt-14 md:grid-cols-3 lg:gap-5">

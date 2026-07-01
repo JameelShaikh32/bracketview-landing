@@ -1,4 +1,5 @@
 import { featuredOnLinks, footerLinks, socialLinks } from "@/app/data/constant";
+import { supportEmail } from "@/app/data/legal";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -174,7 +175,13 @@ const Footer = () => {
             © {new Date().getFullYear()} BracketView. All rights reserved.
           </p>
           <p className="text-sm text-black/55 dark:text-foreground/55">
-            Built for developers who work with JSON every day.
+            Built for developers who work with JSON every day.{" "}
+            <a
+              href={`mailto:${supportEmail}`}
+              className="underline-offset-2 hover:underline"
+            >
+              {supportEmail}
+            </a>
           </p>
         </div>
       </div>

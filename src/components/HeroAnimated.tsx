@@ -50,26 +50,36 @@ const HeroAnimated = () => {
 
           <motion.div
             variants={itemVariant}
-            className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-8"
+            className="mt-10 flex flex-col gap-3 sm:mt-12"
           >
-            <Link
-              href="https://app.bracketview.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-fit items-center gap-2 rounded-2xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
-            >
-              <span className="sm:hidden">Open App</span>
-              <span className="hidden sm:inline">Get Started</span>
-              <ArrowUpRight size={18} aria-hidden />
-            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="https://app.bracketview.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl bg-accent px-5 text-sm font-medium whitespace-nowrap text-white transition-opacity hover:opacity-90 sm:px-6 dark:bg-accent-dark"
+              >
+                <span className="sm:hidden">Open App</span>
+                <span className="hidden sm:inline">Get Started</span>
+                <ArrowUpRight size={18} aria-hidden />
+              </Link>
 
-            <Link
-              href="#features"
-              className="inline-flex w-fit items-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-7 py-3.5 text-sm font-medium text-black transition-all duration-300 hover:bg-gray-200 dark:border-background dark:text-foreground dark:hover:bg-background"
-            >
-              Explore Features
-              <ArrowDownRight size={18} aria-hidden />
-            </Link>
+              <Link
+                href="/blog"
+                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium whitespace-nowrap text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
+              >
+                JSON Guides
+                <ArrowDownRight size={18} aria-hidden />
+              </Link>
+
+              <Link
+                href="#features"
+                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium whitespace-nowrap text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
+              >
+                Explore Features
+                <ArrowDownRight size={18} aria-hidden />
+              </Link>
+            </div>
           </motion.div>
 
           <div className="absolute bottom-0 right-0 h-22 w-16 rounded-tl-3xl bg-background" />

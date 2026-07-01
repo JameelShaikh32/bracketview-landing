@@ -1,0 +1,108 @@
+---
+title: "How to Validate JSON Against a JSON Schema"
+slug: validate-json-against-json-schema
+excerpt: "Step-by-step guide to validating JSON documents against JSON Schema — draft versions, common keywords, and worked examples for API payloads."
+publishedAt: "2026-06-13"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [JSON Schema, Validation, API]
+relatedTools: [json-schema-validator, json-validator]
+relatedAppTools: [json-schema-validator, json-validator]
+status: published
+---
+
+JSON Schema describes the shape of JSON you expect: required fields, types, enums, nested objects, and arrays. Validating instance documents against a schema catches contract drift before it hits production clients.
+
+## JSON Schema basics
+
+A schema is itself a JSON document. Common meta-schema drafts:
+
+- **Draft 2020-12** — current `$schema` for new work
+- **Draft-07** — still common in OpenAPI 3.0 tooling
+
+Always set `"$schema"` in your schema file so validators pick the right ruleset.
+
+Core keywords:
+
+- `type` — `string`, `number`, `integer`, `boolean`, `object`, `array`, `null`
+- `properties` / `required` — object fields
+- `items` — array element schema
+- `enum`, `const` — allowed values
+- `minimum`, `maximum`, `pattern`, `format` — constraints
+
+## Example: user profile schema
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["id", "email"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "email": { "type": "string", "format": "email" },
+    "role": { "type": "string", "enum": ["member", "admin"] },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 10
+    }
+  },
+  "additionalProperties": false
+}
+```
+
+`additionalProperties: false` rejects surprise keys — useful for strict API contracts.
+
+## Example: validating an instance
+
+Valid instance:
+
+```json
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "email": "dev@example.com",
+  "role": "member",
+  "tags": ["api"]
+}
+```
+
+Invalid instance (missing `email`, wrong type on `role`):
+
+```json
+{
+  "id": 123,
+  "role": "superuser"
+}
+```
+
+A good validator reports **paths** to each error: `/id` expected string, `/email` required, `/role` not in enum.
+
+## Workflow for API teams
+
+1. **Author schema** from real response samples or OpenAPI `components.schemas`.
+2. **Validate golden fixtures** in CI — one valid file per endpoint, plus negative cases.
+3. **Version schemas** alongside API versions (`v1/user.schema.json`).
+4. On failure, diff the instance against last-known-good to see what changed.
+
+## OpenAPI and JSON Schema
+
+OpenAPI 3.x embeds JSON Schema (mostly Draft-07 subset) for request/response bodies. The same schema file can power:
+
+- Documentation examples
+- Server-side validation (framework-dependent)
+- Client code generation
+
+Watch for `nullable` (OAS 3.0) vs `type: ["string", "null"]` (plain JSON Schema).
+
+## Common validation pitfalls
+
+- **`integer` vs `number`** — `1.0` fails `integer` type.
+- **Optional vs required** — omitting a key is fine unless listed in `required`.
+- **`format` validation** — not all validators enforce `format`; check your engine.
+- **Unevaluated properties** — Draft 2020-12 uses `unevaluatedProperties` in combinator cases.
+
+## Validate in BracketView
+
+Paste your schema and instance into the [JSON Schema Validator](https://app.bracketview.in/json-schema). Fix syntax errors in either document with the built-in JSON validator first, then read structured error output with JSON Pointer paths.
+
+See also: [JSON Schema glossary term](/glossary#json-schema) and [type generation from JSON](/json-type-generator).

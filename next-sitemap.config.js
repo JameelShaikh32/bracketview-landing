@@ -19,17 +19,10 @@ module.exports = {
             },
         ],
     },
-    additionalPaths: async () => [
-        {
-            loc: "https://bracketview.in/#pricing",
-            changefreq: "weekly",
-            priority: 0.8,
-            lastmod: new Date().toISOString(),
-        },
-    ],
     transform: async (config, path) => {
         const priorities = {
             "/": 1.0,
+            "/about": 0.7,
             "/features": 0.9,
             "/blog": 0.8,
             "/glossary": 0.8,
@@ -43,14 +36,16 @@ module.exports = {
             "/contact": 0.5,
             "/privacy": 0.3,
             "/terms": 0.3,
+            "/disclaimer": 0.3,
             "/refund-policy": 0.3,
             "/cancellation-policy": 0.3,
         };
 
         const frequencies = {
             "/": "daily",
+            "/about": "monthly",
             "/features": "weekly",
-            "/blog": "daily",
+            "/blog": "weekly",
             "/glossary": "monthly",
             "/json-formatter": "weekly",
             "/json-validator": "weekly",

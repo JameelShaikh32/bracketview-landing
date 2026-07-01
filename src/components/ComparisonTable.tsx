@@ -5,68 +5,72 @@ const rows = [
     {
         feature: "Free to use",
         bracketview: "Yes",
-        jsonViewerStack: "Yes",
-        chromeExt: "Yes",
+        otherTools: "Yes",
     },
     {
         feature: "Ad-free workspace",
         bracketview: "Yes",
-        jsonViewerStack: "Yes",
-        chromeExt: "No",
+        otherTools: "Varies",
     },
     {
         feature: "Large viewing workspace",
         bracketview: "Yes",
-        jsonViewerStack: "No",
-        chromeExt: "No",
+        otherTools: "No",
     },
     {
         feature: "JSON Stats",
         bracketview: "Yes",
-        jsonViewerStack: "No",
-        chromeExt: "No",
+        otherTools: "No",
     },
     {
         feature: "JQ Filter Playground",
         bracketview: "Yes (WebAssembly)",
-        jsonViewerStack: "No",
-        chromeExt: "No",
+        otherTools: "No",
     },
     {
         feature: "AI JSON Repair",
         bracketview: "Yes",
-        jsonViewerStack: "No",
-        chromeExt: "No",
+        otherTools: "No",
     },
     {
         feature: "Type generation (TS, Go, Python…)",
         bracketview: "Yes — 9+ languages",
-        jsonViewerStack: "No",
-        chromeExt: "No",
+        otherTools: "No",
     },
     {
         feature: "Encrypted shareable links",
         bracketview: "Yes",
-        jsonViewerStack: "No",
-        chromeExt: "No",
+        otherTools: "No",
     },
     {
         feature: "JSON Schema Validator + Generator",
         bracketview: "Yes",
-        jsonViewerStack: "No",
-        chromeExt: "No",
+        otherTools: "No",
+    },
+    {
+        feature: "Large file uploads (50 MB)",
+        bracketview: "Pro",
+        otherTools: "Varies",
+    },
+    {
+        feature: "Performance Mode (large JSON)",
+        bracketview: "Pro",
+        otherTools: "Varies",
+    },
+    {
+        feature: "Unlimited AI & snapshots",
+        bracketview: "Pro",
+        otherTools: "Varies",
     },
     {
         feature: "100% client-side (privacy-first)",
         bracketview: "Yes",
-        jsonViewerStack: "Yes",
-        chromeExt: "Yes",
+        otherTools: "Yes",
     },
     {
         feature: "Requires install",
         bracketview: "No",
-        jsonViewerStack: "No",
-        chromeExt: "Yes (Chrome only)",
+        otherTools: "Varies",
     },
 ];
 
@@ -123,7 +127,7 @@ const ComparisonTable = () => {
 
                 <Reveal>
                     <div className="overflow-x-auto rounded-4xl bg-white p-4 sm:p-8 dark:bg-muted">
-                        <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+                        <table className="w-full min-w-[480px] border-collapse text-left text-sm">
                             <thead>
                                 <tr className="border-b border-black/10 dark:border-foreground/10">
                                     <th
@@ -142,13 +146,7 @@ const ComparisonTable = () => {
                                         scope="col"
                                         className="px-4 py-3 font-bold"
                                     >
-                                        jsonviewer.stack.hu
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-4 py-3 font-bold"
-                                    >
-                                        JSON Formatter Chrome Extension
+                                        Other JSON tools
                                     </th>
                                 </tr>
                             </thead>
@@ -168,12 +166,7 @@ const ComparisonTable = () => {
                                         </td>
                                         <td className="px-4 py-3">
                                             <ComparisonCell
-                                                value={row.jsonViewerStack}
-                                            />
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            <ComparisonCell
-                                                value={row.chromeExt}
+                                                value={row.otherTools}
                                             />
                                         </td>
                                     </tr>

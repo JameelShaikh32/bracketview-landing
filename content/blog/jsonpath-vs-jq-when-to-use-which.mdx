@@ -1,0 +1,87 @@
+---
+title: "JSONPath vs JQ: When to Use Which"
+slug: jsonpath-vs-jq-when-to-use-which
+excerpt: "JSONPath and jq solve similar problems with different syntax and power. Compare expressiveness, browser support, and pick the right tool for your JSON query task."
+publishedAt: "2026-06-14"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [JSONPath, JQ, Query]
+relatedTools: [jsonpath-query, jq-playground]
+relatedAppTools: [jsonpath-query, jq-playground]
+status: published
+---
+
+Both JSONPath and jq let you pull fields from nested JSON without writing imperative loops. JSONPath feels familiar if you know XPath; jq is a full data-processing language with filters, pipes, and transformations. Choosing the wrong one usually means either fighting the syntax or over-engineering a simple extraction.
+
+## What JSONPath is good at
+
+JSONPath (implementations vary slightly) uses path expressions to select nodes:
+
+- Root: `$`
+- Child: `$.store.book`
+- Index: `$.items[0]`
+- Wildcard: `$.store.*`
+- Recursive descent: `$..author`
+- Filter (where supported): `$.books[?(@.price < 10)]`
+
+**Best for:**
+
+- Quick field lookups in API responses (`$.data.user.email`)
+- Config templates that document paths for non-programmers
+- Tools that already speak JSONPath (Postman tests, some API gateways)
+
+**Limitations:**
+
+- Not a programming language — complex transforms (group-by, map-reduce) get awkward
+- Filter syntax differs between implementations
+- No built-in string/math operations in the core spec
+
+## What jq is good at
+
+jq uses a pipeline model: `input | filter | filter`. Example:
+
+```jq
+.users[] | select(.active == true) | { id, name: .profile.displayName }
+```
+
+**Best for:**
+
+- Shaping API responses for frontends (pick, rename, nest)
+- Aggregations: `group_by`, `map`, `add`, `unique`
+- Cleaning messy arrays before validation
+- Shell scripts: `curl ... | jq '.items[].id'`
+
+**Limitations:**
+
+- Steeper learning curve than JSONPath
+- Heavier runtime (BracketView runs jq via WebAssembly in the browser)
+- Overkill for `$.id` style lookups
+
+## Side-by-side comparison
+
+| Task | JSONPath | jq |
+|------|----------|-----|
+| Get nested field | `$.order.customer.id` | `.order.customer.id` |
+| All items in array | `$.items[*]` | `.items[]` |
+| Filter array | `$.items[?(@.qty > 0)]` | `.items[] \| select(.qty > 0)` |
+| Rename keys in output | Awkward | `{ userId: .id, ... }` |
+| Count / sum | Not native | `map(.qty) \| add` |
+
+## When to use JSONPath
+
+- Your team or tool chain already documents paths in JSONPath notation.
+- You need a one-line extraction with minimal syntax to learn.
+- You are writing tests or docs that non-jq users must read.
+
+## When to use jq
+
+- You need to transform structure, not just read values.
+- You are piping CLI output or building ETL-style steps.
+- Filters depend on multiple fields or computed conditions.
+
+## Running both in BracketView
+
+- [JSONPath Query](https://app.bracketview.in) — paste JSON, run path expressions, inspect matches in the tree.
+- [JQ Playground](https://app.bracketview.in) — full jq engine in the browser; iterate on pipelines with live output.
+
+Start with JSONPath for simple reads; reach for jq when you catch yourself wanting "map this array and group by status."

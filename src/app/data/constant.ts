@@ -10,6 +10,21 @@ import {
     Settings2,
     Webhook,
 } from "lucide-react";
+import {
+    FREE_AI_LABEL,
+    FREE_SNAPSHOT_EXPIRY_LABEL,
+    FREE_SNAPSHOTS_LABEL,
+    FREE_UPLOAD_LABEL,
+    PRICING,
+    PRO_AI_LABEL,
+    PRO_MONTHLY_PRICE_LABEL,
+    PRO_PERFORMANCE_MODE_LABEL,
+    PRO_SNAPSHOT_EXPIRY_LABEL,
+    PRO_SNAPSHOTS_LABEL,
+    PRO_UPLOAD_LABEL,
+    PRO_YEARLY_BILL_LABEL,
+    PRO_YEARLY_MONTHLY_LABEL,
+} from "./planLimits";
 
 type FeatureItem = {
     icon: LucideIcon;
@@ -159,14 +174,15 @@ const pricingPlans: PricingPlan[] = [
         price: "$0",
         period: "forever",
         description:
-            "No credit card. Full workspace with monthly AI limits.",
+            "Core JSON workspace at no cost. Upload, snapshot, and AI limits apply.",
         features: [
             "JSON viewer, editor, format, validate & minify",
             "Tree, graph, JSONPath, JQ, diff & schema tools",
             "Type generators, compare view & utility tools",
-            "Encrypted snapshots (up to 50 lifetime links)",
-            "Document uploads up to 10 MB",
-            "AI repair & helpers with monthly usage limits",
+            `Uploads up to ${FREE_UPLOAD_LABEL}`,
+            FREE_SNAPSHOTS_LABEL,
+            FREE_SNAPSHOT_EXPIRY_LABEL,
+            FREE_AI_LABEL,
         ],
         cta: "Get started free",
         ctaHref: "https://app.bracketview.in",
@@ -174,42 +190,46 @@ const pricingPlans: PricingPlan[] = [
     },
     {
         name: "Monthly",
-        price: "$6",
+        price: PRO_MONTHLY_PRICE_LABEL,
         period: "per month",
         description:
-            "Unlimited AI and higher limits, billed monthly.",
+            "For developers who work in JSON daily — no caps on AI or sharing.",
         features: [
             "Everything in Free",
-            "Uploads up to 50 MB",
-            "Unlimited encrypted snapshot links",
-            "Unlimited AI across all AI features",
-            "No monthly AI caps",
+            `Uploads up to ${PRO_UPLOAD_LABEL}`,
+            PRO_SNAPSHOTS_LABEL,
+            PRO_SNAPSHOT_EXPIRY_LABEL,
+            PRO_AI_LABEL,
+            PRO_PERFORMANCE_MODE_LABEL,
+            "Priority email support",
             "Priority for future Pro capabilities",
         ],
         cta: "Start monthly plan",
         ctaHref: "https://app.bracketview.in/pricing",
-        offerSchema: { price: "6", priceCurrency: "USD" },
+        offerSchema: { price: String(PRICING.monthlyUsd), priceCurrency: "USD" },
     },
     {
         name: "Yearly",
-        originalPrice: "$6",
-        displayPrice: "$4.50 / mo",
-        billingNote: "Annual bill of $54 with no usage limitations.",
-        saveTag: "SAVE 25%",
+        originalPrice: PRO_MONTHLY_PRICE_LABEL,
+        displayPrice: PRO_YEARLY_MONTHLY_LABEL,
+        billingNote: `Annual bill of ${PRO_YEARLY_BILL_LABEL} with no usage limitations.`,
+        saveTag: `SAVE ${PRICING.annualDiscountPercent}%`,
         description:
-            "Best value — same Pro power, billed once a year.",
+            "Best value for power users — same Pro benefits, billed once a year.",
         features: [
             "Everything in Free",
-            "Uploads up to 50 MB",
-            "Unlimited encrypted snapshot links",
-            "Unlimited AI across all AI features",
-            "No monthly AI caps",
+            `Uploads up to ${PRO_UPLOAD_LABEL}`,
+            PRO_SNAPSHOTS_LABEL,
+            PRO_SNAPSHOT_EXPIRY_LABEL,
+            PRO_AI_LABEL,
+            PRO_PERFORMANCE_MODE_LABEL,
+            "Priority email support",
             "Priority for future Pro capabilities",
         ],
         cta: "Start yearly plan",
         ctaHref: "https://app.bracketview.in/pricing",
         highlighted: true,
-        offerSchema: { price: "54", priceCurrency: "USD" },
+        offerSchema: { price: String(PRICING.yearlyUsd), priceCurrency: "USD" },
     },
 ];
 
@@ -236,7 +256,7 @@ const footerLinks = {
         { label: "Glossary", href: "/glossary" },
     ],
     company: [
-        { label: "About us", href: "/#about" },
+        { label: "About us", href: "/about" },
         { label: "Read the blog", href: "/blog" },
         { label: "JSON use cases", href: "/#use-cases" },
         { label: "Help & FAQ", href: "/#faq" },
@@ -245,6 +265,7 @@ const footerLinks = {
     legal: [
         { label: "Privacy", href: "/privacy" },
         { label: "Terms", href: "/terms" },
+        { label: "Disclaimer", href: "/disclaimer" },
         { label: "Refund Policy", href: "/refund-policy" },
         { label: "Cancellation Policy", href: "/cancellation-policy" },
     ],
@@ -313,7 +334,7 @@ const navLinks = [
     },
     {
         label: "About",
-        href: "/#about",
+        href: "/about",
     },
     {
         label: "Blog",

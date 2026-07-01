@@ -1,0 +1,81 @@
+---
+title: "Debugging Malformed API Responses: A Step-by-Step Guide"
+slug: debugging-malformed-api-responses
+excerpt: "When an API returns broken JSON, use this workflow — capture, isolate, validate, compare to schema, and fix at the source — without guessing at syntax errors."
+publishedAt: "2026-06-11"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [API, Debugging, Validation]
+relatedTools: [json-validator, json-schema-validator]
+relatedAppTools: [json-validator, json-schema-validator]
+status: published
+---
+
+Broken API responses waste hours: the HTTP status is 200, but the client throws `JSON.parse` failed. This guide is a repeatable workflow for backend and frontend developers debugging malformed payloads.
+
+## Step 1: Capture the raw bytes
+
+Do not trust pretty-printed views in browser DevTools alone — they sometimes hide truncation or encoding issues.
+
+- Copy **Response** body from Network tab (Raw).
+- Save to a `.json` file with UTF-8 encoding.
+- Note `Content-Type` header — should be `application/json` or `application/json; charset=utf-8`.
+- Record URL, method, and query params for reproduction.
+
+If the body is empty or HTML (`<!DOCTYPE`), you have a routing or auth problem, not a JSON syntax problem.
+
+## Step 2: Validate syntax first
+
+Paste into a [JSON Validator](https://app.bracketview.in). Common API-specific causes:
+
+- **Concatenated JSON** — two objects printed back-to-back
+- **JSON Lines** served as single JSON — see [NDJSON guide](/blog/practical-guide-json-lines-ndjson)
+- **Trailing commas** from Ruby/JS backends configured loosely
+- **NaN / Infinity** from JavaScript `JSON.stringify` hacks
+
+Fix syntax before schema or business-logic analysis.
+
+## Step 3: Compare to contract
+
+If you have OpenAPI or JSON Schema:
+
+1. Validate instance against schema in [Schema Validator](https://app.bracketview.in/json-schema).
+2. List each error path — `/items/3/price` expected number, got string.
+3. Decide: bug in serializer, outdated schema, or intentional deprecation?
+
+## Step 4: Bisect large responses
+
+For megabyte payloads:
+
+- Use JSONPath or jq to extract `$.data` or suspicious branches
+- Validate subtrees independently
+- Binary-search array indices when one element breaks parse (invalid escape in one row)
+
+## Step 5: Check encoding and compression
+
+- **BOM** at file start breaks parsers
+- **gzip** accidentally double-decoded leaves binary garbage
+- **Unicode** in unescaped form from legacy encodings (Latin-1 misread as UTF-8)
+
+## Step 6: Reproduce and report
+
+Minimal bug report for API owners:
+
+- Request curl with headers (redact tokens)
+- Raw response snippet around error offset
+- Validator error message and position
+- Expected schema fragment
+
+## Step 7: Defensive client handling
+
+While waiting for a fix:
+
+- Wrap `response.json()` in try/catch; log `response.text()` on failure
+- Do not assume 200 implies valid JSON
+- Add contract tests with golden files in CI
+
+## Tools in one workspace
+
+BracketView keeps validator, formatter, JSONPath, jq, diff, and schema tools in one [browser workspace](https://app.bracketview.in) — useful when you cannot install CLI jq or schema CLIs on a locked-down machine.
+
+Related: [common syntax errors](/blog/common-json-syntax-errors-and-how-to-fix-them).

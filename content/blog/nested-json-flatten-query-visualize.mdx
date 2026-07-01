@@ -1,0 +1,84 @@
+---
+title: "Nested JSON Structures: How to Flatten, Query, and Visualize Them"
+slug: nested-json-flatten-query-visualize
+excerpt: "Deeply nested JSON is hard to read in raw form. Learn flattening strategies, JSONPath and jq queries, and tree views for exploring complex API payloads."
+publishedAt: "2026-06-09"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [JSON, JSONPath, Visualization]
+relatedTools: [jsonpath-query, jq-playground, json-formatter]
+relatedAppTools: [jsonpath-query, jq-playground]
+status: published
+---
+
+API responses often nest objects five or six levels deep — `data.order.shipment.tracking.events[0].location`. Raw minified JSON makes these structures opaque. Three complementary approaches help: **flattening** for tables, **queries** for targeted extraction, and **tree views** for exploration.
+
+## When nesting becomes a problem
+
+- Log aggregation stores entire request context under one blob
+- GraphQL-style "give me everything" responses
+- Legacy wrappers: `{ "success": true, "payload": { "result": { ... } } }`
+
+Symptoms: you scroll endlessly, miss sibling branches, or grep the wrong string inside escaped JSON.
+
+## Flattening strategies
+
+Flattening maps paths to scalar values:
+
+| Path | Value |
+|------|-------|
+| `user.id` | `42` |
+| `user.address.city` | `Berlin` |
+
+**Dot-notation flatten** — common in CSV export and analytics warehouses.
+
+**Considerations:**
+
+- Arrays need index segments: `items.0.sku`
+- Empty objects vs missing keys
+- Collision if keys contain dots (use a safe delimiter)
+
+Use flattening when feeding spreadsheets or BI tools, not as your only API documentation view.
+
+## Query with JSONPath
+
+Examples on `{ "store": { "books": [{ "title": "A", "price": 9 }, { "title": "B", "price": 14 }] } }`:
+
+- All titles: `$.store.books[*].title`
+- First book price: `$.store.books[0].price`
+- Recursive author search: `$..author`
+
+Run paths in [JSONPath Query](https://app.bracketview.in) with live highlight in the tree.
+
+## Transform with jq
+
+When flatten is not enough, jq reshapes:
+
+```jq
+.store.books | map({ title, price, affordable: (.price < 12) })
+```
+
+Pipelines replace nested imperative code for one-off debugging.
+
+## Visualize with tree and graph views
+
+Tree views in [BracketView](https://app.bracketview.in):
+
+- Collapse branches you are not investigating
+- See array lengths at a glance
+- Jump from search hit to node
+
+Graph views help when relationships (foreign keys, linked entities) matter more than hierarchy.
+
+## Practical workflow
+
+1. **Format** minified JSON for readability.
+2. **Tree-expand** the branch mentioned in your ticket.
+3. **JSONPath/jq** extract the subset you need for a bug report.
+4. **Flatten** only if exporting to CSV or a ticket table.
+
+## Depth limits and performance
+
+Very large nested documents (10k+ nodes) slow down naive flatten-all operations. Query first, flatten the result set.
+
+See: [JSONPath vs jq](/blog/jsonpath-vs-jq-when-to-use-which).

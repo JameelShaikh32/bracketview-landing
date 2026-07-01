@@ -1,0 +1,84 @@
+---
+title: "JSON vs YAML vs XML: Practical Differences for API Design"
+slug: json-vs-yaml-vs-xml-for-api-design
+excerpt: "Choosing a data format for APIs and config affects tooling, readability, and parsing strictness. Compare JSON, YAML, and XML for real developer workflows."
+publishedAt: "2026-06-10"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [JSON, YAML, API Design]
+relatedTools: [json-formatter, json-validator]
+relatedAppTools: [json-formatter]
+status: published
+---
+
+JSON won the default for REST and GraphQL APIs, but YAML dominates config files and XML still appears in enterprise integrations. Picking a format affects validation tooling, human editability, and parser footguns.
+
+## JSON in API design
+
+**Strengths:**
+
+- Native in browsers and every modern language
+- Strict grammar — easy to validate mechanically
+- Maps cleanly to object types in TypeScript, Go, Rust
+
+**Weaknesses:**
+
+- No comments in standard JSON
+- Verbose for deeply nested config compared to YAML
+- No built-in date or binary types (use ISO strings and Base64 conventions)
+
+**Typical uses:** REST/GraphQL bodies, webhook payloads, NoSQL documents, browser-local storage.
+
+## YAML for config and ops
+
+**Strengths:**
+
+- Readable indentation-based structure
+- Comments supported
+- Anchors and aliases reduce duplication in large configs
+
+**Weaknesses:**
+
+- **Ambiguous types** — `yes`/`no`, country codes, octal-looking numbers
+- Indentation errors are syntax errors with poor line numbers in huge files
+- Security: `!!python/object` style tags historically enabled deserialization attacks in naive parsers
+
+**Typical uses:** Kubernetes manifests, GitHub Actions, Docker Compose, CI pipelines.
+
+**Tip:** Convert YAML to JSON for strict validation before deploy when your pipeline only ships a JSON schema.
+
+## XML in legacy and document-centric APIs
+
+**Strengths:**
+
+- Mature schema ecosystem (XSD)
+- Namespaces for mixing vocabularies
+- Attributes + elements model mixed content (documents, SOAP)
+
+**Weaknesses:**
+
+- Verbose; higher parsing cost
+- Heavier client code than JSON for mobile and SPA frontends
+
+**Typical uses:** SOAP, RSS/Atom, SVG, enterprise ERP connectors, government data exchanges.
+
+## Comparison table
+
+| Concern | JSON | YAML | XML |
+|---------|------|------|-----|
+| Comments | No | Yes | Yes |
+| Schema | JSON Schema | JSON Schema (via conversion) | XSD |
+| Browser-native | Yes | No | DOMParser only |
+| Human editing | Moderate | High | Low |
+| Strictness | High | Medium | High (with XSD) |
+
+## API design recommendations
+
+1. **Default to JSON** for public HTTP APIs unless partners require XML.
+2. **Publish JSON Schema** (or OpenAPI) as the contract source of truth.
+3. **Accept YAML in admin UIs** but normalize to JSON server-side for storage.
+4. **Never execute** YAML or XML with unsafe type constructors.
+
+## Working with JSON in BracketView
+
+When you receive YAML or XML from another system, convert to JSON in your pipeline, then use [format](https://app.bracketview.in) and [validate](/json-validator) in BracketView for inspection. BracketView focuses on JSON — the format most API debugging workflows center on today.

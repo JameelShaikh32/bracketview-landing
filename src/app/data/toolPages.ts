@@ -1,4 +1,9 @@
 import type { FaqItem } from "@/lib/seo";
+import { PLAN_LIMITS } from "./planLimits";
+
+const UPLOAD_FEATURE_LINE = `Upload .json files up to ${PLAN_LIMITS.free.uploadMb} MB (${PLAN_LIMITS.pro.uploadMb} MB on Pro)`;
+const UPLOAD_FILES_LINE = `Upload files up to ${PLAN_LIMITS.free.uploadMb} MB (${PLAN_LIMITS.pro.uploadMb} MB on Pro)`;
+const UPLOAD_FAQ_ANSWER = `Yes. Free accounts support uploads up to ${PLAN_LIMITS.free.uploadMb} MB. Pro raises the limit to ${PLAN_LIMITS.pro.uploadMb} MB.`;
 
 type ToolDemoVideo = {
     src?: string;
@@ -39,7 +44,7 @@ const toolPages: Record<string, ToolPage> = {
             "Minify JSON for production payloads",
             "Real-time syntax validation as you type",
             "Syntax highlighting and line numbers",
-            "Upload .json files up to 10 MB (50 MB on Pro)",
+            UPLOAD_FEATURE_LINE,
             "Copy formatted output in one click",
             "Works in any modern browser — no install",
         ],
@@ -110,7 +115,7 @@ const toolPages: Record<string, ToolPage> = {
             "Detects trailing commas and unquoted keys",
             "Bracket and brace mismatch detection",
             "Works alongside formatter and tree view",
-            "Upload files up to 10 MB (50 MB on Pro)",
+            UPLOAD_FILES_LINE,
             "100% client-side — privacy-first",
         ],
         howToName: "How to Validate JSON Online with BracketView",
@@ -180,7 +185,7 @@ const toolPages: Record<string, ToolPage> = {
             "Works with large nested objects",
             "Pair with formatter for readable input",
             "No install — runs in the browser",
-            "Upload files up to 10 MB (50 MB on Pro)",
+            UPLOAD_FILES_LINE,
             "Export or copy diff results",
         ],
         howToName: "How to Compare JSON Online with BracketView",
@@ -223,7 +228,7 @@ const toolPages: Record<string, ToolPage> = {
             {
                 question: "Can I diff large JSON files?",
                 answer:
-                    "Yes. Free accounts support uploads up to 10 MB. Pro raises the limit to 50 MB.",
+                    UPLOAD_FAQ_ANSWER,
             },
             {
                 question: "Does diffing send data to a server?",

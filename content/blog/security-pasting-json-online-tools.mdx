@@ -1,0 +1,67 @@
+---
+title: "Security Considerations When Pasting JSON Into Online Tools"
+slug: security-pasting-json-online-tools
+excerpt: "Online JSON viewers are convenient but paste sensitive API keys, PII, and tokens daily. Learn client-side vs server-side processing and how to evaluate tool trust."
+publishedAt: "2026-06-08"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [Security, Privacy, JSON]
+relatedTools: [json-validator]
+relatedAppTools: [json-validator]
+status: published
+---
+
+Developers paste production API responses into browser tools without a second thought. That habit is convenient — and risky when the tool sends data to a server, logs payloads, or creates shareable URLs.
+
+## What can go wrong
+
+- **Server-side processing** — your JSON transits the vendor's infrastructure
+- **Shareable links** — snapshot URLs may be guessable or long-lived
+- **Analytics and ads** — third-party scripts on marketing pages (separate from the app workspace)
+- **AI features** — content sent to external LLM APIs
+- **Browser extensions** — can read DOM content on any page you use
+
+## Client-side vs server-side tools
+
+**Client-side (browser-only):** parsing, formatting, validation, and diff run in JavaScript/WebAssembly without uploading the document. Network tab should show no POST of your payload for core features.
+
+**Server-side:** file upload, cloud save, collaboration, AI repair without local keys — data leaves your machine by design.
+
+BracketView's core workspace at [app.bracketview.in](https://app.bracketview.in) processes formatter, validator, tree, JSONPath, jq, and diff locally. Optional snapshots and AI follow different paths — see our [Privacy Policy](/privacy).
+
+## Data classification before you paste
+
+| Sensitivity | Examples | Guidance |
+|-------------|----------|----------|
+| Public | Open API samples, docs fixtures | Any trusted tool |
+| Internal | Staging responses, anonymized logs | Prefer client-side tools |
+| Confidential | Prod PII, tokens, keys | Never paste into unknown online tools |
+
+Redact before paste: replace emails, tokens, account IDs with placeholders while keeping structure.
+
+## Evaluating an online JSON tool
+
+Checklist:
+
+1. Does the privacy policy state where processing happens?
+2. Are share/snapshot features opt-in with expiry?
+3. Is there a consent banner for ads/analytics on marketing sites?
+4. Can you work offline or with network disabled for core features?
+5. Is the app on a separate subdomain from ad-supported marketing pages?
+
+## Organizational policy
+
+Teams should document:
+
+- Approved tools for prod data
+- Mandatory redaction steps
+- Ban on public snapshot links for customer data
+
+## Safe workflow with BracketView
+
+1. Use [client-side validation](https://app.bracketview.in) for syntax checks on sensitive payloads.
+2. Avoid snapshot links for secrets — use local export instead.
+3. Configure your own AI API keys only when policy allows; understand provider retention.
+4. Read the [Disclaimer](/disclaimer) — no warranty on processed output.
+
+Related: [Privacy Policy](/privacy) and [About BracketView](/about).

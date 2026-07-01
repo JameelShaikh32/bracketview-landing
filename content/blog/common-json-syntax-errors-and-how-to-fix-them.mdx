@@ -1,0 +1,105 @@
+---
+title: "Common JSON Syntax Errors and How to Fix Them"
+slug: common-json-syntax-errors-and-how-to-fix-them
+excerpt: "Unexpected token, trailing commas, unescaped strings — learn what causes the most common JSON parse errors and how to fix them with a validator workflow."
+publishedAt: "2026-06-15"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [JSON, Validation, Debugging]
+relatedTools: [json-validator, json-formatter]
+relatedAppTools: [json-validator, json-formatter]
+status: published
+---
+
+JSON parsers are strict. A single stray character — an unquoted key, a trailing comma, or a single-quoted string — makes the entire document invalid. This guide walks through the errors you see most often in API responses, log exports, and hand-edited config files, and how to fix them systematically.
+
+## Why JSON parsers fail on small mistakes
+
+Unlike JavaScript object literals, JSON (RFC 8259) allows only double-quoted strings, no comments, no trailing commas, and no `undefined` values. Parsers report the **first** failure they encounter, so the line number in the error may not be where you actually made the mistake — especially in minified payloads.
+
+When debugging:
+
+- Start from the character position in the error message if your tool provides it.
+- Re-format (beautify) only **after** you have valid JSON, or use a repair tool that pinpoints the break.
+- Compare against a known-good sample if the payload was copied from logs or chat.
+
+## Unexpected token — causes and fixes
+
+`SyntaxError: Unexpected token` usually means the parser hit something illegal at the current position.
+
+### Unquoted keys
+
+Invalid:
+
+```json
+{ name: "Ada" }
+```
+
+Valid:
+
+```json
+{ "name": "Ada" }
+```
+
+Object keys must be double-quoted strings. This is the most common error when pasting JavaScript objects into a JSON validator.
+
+### Single-quoted strings
+
+Invalid:
+
+```json
+{ "role": 'admin' }
+```
+
+JSON does not allow single quotes. Replace with double quotes and escape inner quotes: `"He said \"hi\""`.
+
+### Trailing garbage after valid JSON
+
+Concatenated log lines or copy-paste artifacts often leave extra characters after a closing `}` or `]`. Trim whitespace first; if the error persists, search for a second `{` or stray text after the document ends.
+
+## Trailing commas
+
+### In arrays and objects
+
+Invalid:
+
+```json
+{ "items": [1, 2, 3,], "ok": true, }
+```
+
+Remove the comma before `]` and `}`. JSON5 and some JavaScript parsers allow trailing commas; standard JSON does not.
+
+### JSON5 confusion
+
+Tools and APIs that accept JSON5 (comments, unquoted keys, trailing commas) are not validating strict JSON. If your API contract says JSON, strip JSON5 features before submission.
+
+## Unescaped strings and control characters
+
+### Newlines inside strings
+
+Line breaks must be escaped as `\n`, not literal newlines inside `"..."`.
+
+### Backslashes and Unicode
+
+- Backslash starts an escape: `\"`, `\\`, `\/`, `\b`, `\f`, `\n`, `\r`, `\t`, `\uXXXX`.
+- Raw tab characters inside strings can break parsers copied from spreadsheets.
+- Invalid `\u` sequences cause `Unexpected token` at the escape.
+
+### Smart quotes and invisible characters
+
+Word processors replace `"` with curly quotes `"` `"`. Zero-width spaces from web copy break validation with no visible clue — paste into a hex view or re-type quotes if errors persist.
+
+## Numbers and literals
+
+- No leading zeros: `01` is invalid.
+- No `NaN`, `Infinity`, or `undefined` — use `null` or omit the key.
+- No comments: `//` and `/* */` are not JSON.
+
+## Fix workflow in BracketView
+
+1. Paste the raw text into the [JSON Validator](https://app.bracketview.in) — errors highlight at the character level.
+2. Fix the reported issue; repeat until the status shows valid JSON.
+3. Use **Format** to beautify for reading, or **Minify** before sending over the wire.
+4. For large broken exports, use tree view to confirm structure after repair.
+
+Related reading: [JSON escape sequences](/blog/json-escape-sequences-unicode-handling) and [debugging malformed API responses](/blog/debugging-malformed-api-responses).

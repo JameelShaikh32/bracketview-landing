@@ -1,0 +1,89 @@
+---
+title: "JSON Escape Sequences and Unicode Handling"
+slug: json-escape-sequences-unicode-handling
+excerpt: "Backslashes, quotes, and \\uXXXX escapes cause subtle JSON parse failures. Learn valid escape sequences and how to debug Unicode in API strings."
+publishedAt: "2026-06-04"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [JSON, Unicode, Validation]
+relatedTools: [json-validator, json-formatter]
+relatedAppTools: [json-validator]
+status: published
+---
+
+Strings are where JSON looks simple but breaks often. Escaping rules exist so parsers can delimit `"..."` unambiguously. One wrong backslash or a raw newline inside a string fails the entire document.
+
+## Valid escape sequences in JSON strings
+
+Inside double quotes, `\` introduces:
+
+| Escape | Meaning |
+|--------|---------|
+| `\"` | Double quote |
+| `\\` | Backslash |
+| `\/` | Solidus (optional) |
+| `\b` | Backspace |
+| `\f` | Form feed |
+| `\n` | Line feed |
+| `\r` | Carriage return |
+| `\t` | Tab |
+| `\uXXXX` | Unicode code point (4 hex digits) |
+
+Anything else after `\` is invalid in standard JSON — a frequent error when copying from languages with `\'` or `\x` hex escapes.
+
+## Quotes inside strings
+
+```json
+{ "message": "She said \"hello\"" }
+```
+
+Never use single-quoted JSON strings.
+
+## Unicode: literal vs escaped
+
+These are equivalent for U+00E9:
+
+```json
+{ "city": "Montréal" }
+{ "city": "Montr\u00e9al" }
+```
+
+Parsers normalize to the same string value. Byte size on the wire differs — minified UTF-8 may be smaller than `\u` escapes for non-ASCII.
+
+## Surrogate pairs and astral characters
+
+Emoji and rare scripts may appear as:
+
+```json
+{ "icon": "\uD83D\uDE00" }
+```
+
+(two `\u` escapes forming one UTF-16 surrogate pair in some serializers)
+
+If validation fails on emoji, check whether your pipeline double-encodes or splits pairs.
+
+## Control characters
+
+Raw control chars (U+0000–U+001F) inside strings are **invalid** unless escaped. Log pipelines sometimes inject raw tabs or bell characters — hex dump the bytes around the error offset.
+
+## Common copy-paste failures
+
+- Windows paths: `C:\new` — `\n` is interpreted as escape start → use `C:\\new` or forward slashes
+- Regex patterns: every `\` must become `\\` in JSON
+- Smart quotes from Word/Slack
+- Truncated `\u00` (incomplete escape)
+
+## Debugging workflow
+
+1. Paste into [JSON Validator](https://app.bracketview.in); note character index in error.
+2. Jump to that offset; inspect preceding `\`.
+3. Replace raw newlines with `\n`.
+4. Re-format to confirm readable Unicode output.
+
+## Producing safe JSON from code
+
+- Use `JSON.stringify` in JavaScript — do not build strings manually
+- In Python, `json.dumps` with `ensure_ascii=False` for UTF-8 files
+- Avoid concatenating user input into JSON strings without escaping
+
+Related: [common syntax errors](/blog/common-json-syntax-errors-and-how-to-fix-them).

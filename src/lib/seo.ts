@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PLAN_LIMITS, PRICING, PRO_PRICING_FAQ_DETAIL, PRO_SNAPSHOT_EXPIRY_LABEL } from "@/app/data/planLimits";
 
 const SITE_URL =
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://bracketview.in";
@@ -18,79 +19,14 @@ const OG_IMAGE_ALT =
 
 const TWITTER_SITE = "@bracket_view";
 
-const KEYWORDS = [
+const HOME_KEYWORDS = [
+    "JSON viewer",
+    "JSON formatter",
+    "JSON validator",
+    "JSON diff",
+    "JSONPath",
+    "jq",
     "BracketView",
-    "bracketview",
-    "json viewer",
-    "json formatter",
-    "json validator",
-    "json beautifier",
-    "json editor",
-    "json pretty print",
-    "json diff",
-    "json viewer tool",
-    "json viewer chrome",
-    "json viewer mac",
-    "dadroit json viewer",
-    "lottie json viewer",
-    "json viewer pro",
-    "best json viewer",
-    "beautify json",
-    "pretty print json",
-    "pretty json viewer",
-    "validate json",
-    "diff json",
-    "jsonviewer",
-    "jsonviewer stack",
-    "jsonviewer stack hu",
-    "react json viewer",
-    "download json viewer",
-    ".json viewer",
-    "json viewer awesome",
-    "onlinejson viewer",
-    "online json formatter",
-    "online json validator",
-    "online json beautifier",
-    "online json editor",
-    "online json pretty print",
-    "online json diff",
-    "online json viewer tool",
-    "format json",
-    "validate json",
-    "json formatter online",
-    "best json formatter",
-    "json formatter chrome extension",
-    "json formatter and validator",
-    "json formatter extension",
-    "string to json formatter",
-    "text to json formatter",
-    "xml to json formatter",
-    "json formatter & validator",
-    "json formatter compare",
-    "json formatter online free",
-    "json formatter extension chrome",
-    "json formatter viewer",
-    "json formatter validator",
-    "json formatter chrome",
-    "json formatter download",
-    "json formatter onlin",
-    "json viewer online",
-    "json validator online",
-    "json beautifier online",
-    "json editor online",
-    "free json viewer",
-    "json pretty print online",
-    "format json online",
-    "validate json online",
-    "json diff online",
-    "bracketview json viewer",
-    "bracketview json formatter",
-    "bracketview json validator",
-    "bracketview json beautifier",
-    "bracketview json editor",
-    "bracketview json pretty print",
-    "bracketview json diff",
-    "bracketview json viewer tool",
 ] as const;
 
 type FaqItem = {
@@ -107,7 +43,7 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "Is BracketView free to use?",
         answer:
-            "BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, and schema — are available at no cost with no signup required. Pro subscription unlocks unlimited AI, higher upload limits (up to 50 MB), and unlimited encrypted snapshot links.",
+            `BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, and schema — are free with no signup required. Free accounts include ${PLAN_LIMITS.free.uploadMb} MB uploads, ${PLAN_LIMITS.free.snapshotsPerMonth} snapshot links per month, and ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month. Pro unlocks unlimited AI, ${PLAN_LIMITS.pro.uploadMb} MB uploads, and unlimited encrypted snapshot links.`,
     },
     {
         question: "Does my JSON data leave the browser?",
@@ -117,12 +53,17 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "What does BracketView Pro include?",
         answer:
-            "Pro unlocks unlimited AI across repair, mock data, and conversion helpers; uploads up to 50 MB; unlimited encrypted snapshot links; and no monthly AI caps for signed-in accounts. Pro is $6/month or $4.50/month billed annually.",
+            `Pro unlocks unlimited AI across repair, mock data, jq assistant, and conversion helpers; uploads up to ${PLAN_LIMITS.pro.uploadMb} MB; Performance Mode for large JSON payloads; unlimited encrypted snapshot links with ${PRO_SNAPSHOT_EXPIRY_LABEL.toLowerCase()}; and priority email support. Pro is ${PRO_PRICING_FAQ_DETAIL}.`,
+    },
+    {
+        question: "What is Performance Mode in BracketView?",
+        answer:
+            `Performance Mode is a Pro-only workspace setting that optimizes parsing and rendering for large JSON files (up to ${PLAN_LIMITS.pro.uploadMb} MB). It keeps tree, graph, and editor views responsive when you work with heavy API responses, exports, or log dumps. Free accounts see Performance Mode disabled — upgrade to Pro to turn it on.`,
     },
     {
         question: "How large can uploaded JSON files be?",
         answer:
-            "Free accounts can upload documents up to 10 MB. Pro raises the limit to 50 MB for larger API payloads, exports, and log files.",
+            `Free accounts can upload documents up to ${PLAN_LIMITS.free.uploadMb} MB. Pro raises the limit to ${PLAN_LIMITS.pro.uploadMb} MB for larger API payloads, exports, and log files.`,
     },
     {
         question: "What is the best free online JSON viewer?",
@@ -161,6 +102,7 @@ const FEATURE_LIST = [
     "JSON Schema Generator",
     "TypeScript/Python/Go/Rust Type Generator",
     "Encrypted Snapshot Links",
+    "Performance Mode (Pro)",
     "WebRTC Nearby Share",
     "JSON Annotations",
     "Encoder/Decoder",
@@ -183,6 +125,7 @@ type PageMetadataOptions = {
     publishedTime?: string;
     modifiedTime?: string;
     tags?: string[];
+    keywords?: readonly string[];
 };
 
 function createPageMetadata({
@@ -193,6 +136,7 @@ function createPageMetadata({
     publishedTime,
     modifiedTime,
     tags,
+    keywords,
 }: PageMetadataOptions): Metadata {
     const canonicalPath = path === "/" ? "" : path;
     const url = `${SITE_URL}${canonicalPath}`;
@@ -200,6 +144,7 @@ function createPageMetadata({
     return {
         title,
         description,
+        ...(keywords ? { keywords: [...keywords] } : {}),
         alternates: {
             canonical: url,
         },
@@ -251,19 +196,19 @@ function buildSoftwareApplicationSchema() {
                 price: "0",
                 priceCurrency: "USD",
                 description:
-                    "Core JSON workspace with monthly AI limits",
+                    `Core JSON workspace — ${PLAN_LIMITS.free.uploadMb} MB uploads, ${PLAN_LIMITS.free.snapshotsPerMonth} snapshots/month, ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions/month`,
             },
             {
                 "@type": "Offer",
                 name: "Pro Monthly",
-                price: "6",
+                price: String(PRICING.monthlyUsd),
                 priceCurrency: "USD",
                 billingDuration: "P1M",
             },
             {
                 "@type": "Offer",
                 name: "Pro Yearly",
-                price: "54",
+                price: String(PRICING.yearlyUsd),
                 priceCurrency: "USD",
                 billingDuration: "P1Y",
             },
@@ -282,7 +227,7 @@ function buildProductSchema() {
         "@type": "Product",
         name: "BracketView Pro",
         description:
-            "Unlimited AI, 50 MB uploads, and unlimited encrypted snapshot links for BracketView.",
+            `Unlimited AI, ${PLAN_LIMITS.pro.uploadMb} MB uploads, unlimited encrypted snapshot links, and ${PRO_SNAPSHOT_EXPIRY_LABEL.toLowerCase()} for BracketView.`,
         brand: {
             "@type": "Brand",
             name: "BracketView",
@@ -291,11 +236,11 @@ function buildProductSchema() {
             {
                 "@type": "Offer",
                 name: "Pro Monthly",
-                price: "6",
+                price: String(PRICING.monthlyUsd),
                 priceCurrency: "USD",
                 priceSpecification: {
                     "@type": "PriceSpecification",
-                    price: "6",
+                    price: String(PRICING.monthlyUsd),
                     priceCurrency: "USD",
                     billingDuration: "P1M",
                 },
@@ -303,11 +248,11 @@ function buildProductSchema() {
             {
                 "@type": "Offer",
                 name: "Pro Yearly",
-                price: "54",
+                price: String(PRICING.yearlyUsd),
                 priceCurrency: "USD",
                 priceSpecification: {
                     "@type": "PriceSpecification",
-                    price: "54",
+                    price: String(PRICING.yearlyUsd),
                     priceCurrency: "USD",
                     billingDuration: "P1Y",
                 },
@@ -443,7 +388,7 @@ function buildHomepageHowToSchema() {
             {
                 position: 2,
                 name: "Paste or upload your JSON",
-                text: "Paste raw JSON into the editor or upload a .json file up to 10 MB (50 MB on Pro). The real-time validator highlights syntax errors instantly.",
+                text: `Paste raw JSON into the editor or upload a .json file up to ${PLAN_LIMITS.free.uploadMb} MB (${PLAN_LIMITS.pro.uploadMb} MB on Pro). The real-time validator highlights syntax errors instantly.`,
             },
             {
                 position: 3,
@@ -505,9 +450,10 @@ type BlogPostInput = {
     title: string;
     excerpt: string;
     publishedAt: string;
-    url: string;
-    tags: string[];
     updatedAt?: string;
+    author?: string;
+    tags: string[];
+    wordCount?: number;
 };
 
 function buildBlogSchema(posts: BlogPostInput[]) {
@@ -517,7 +463,7 @@ function buildBlogSchema(posts: BlogPostInput[]) {
         name: "BracketView Blog",
         url: `${SITE_URL}/blog`,
         description:
-            "Articles on JSON tooling, developer workflows, and BracketView product updates.",
+            "Practical JSON tooling guides for developers — validation, querying, schema, diff, and API debugging.",
         blogPost: posts.map((post) => ({
             "@type": "BlogPosting",
             headline: post.title,
@@ -529,15 +475,16 @@ function buildBlogSchema(posts: BlogPostInput[]) {
 }
 
 function buildBlogPostingSchema(post: BlogPostInput) {
-    return {
+    const articleUrl = `${SITE_URL}/blog/${post.slug}`;
+  return {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         headline: post.title,
         description: post.excerpt,
         author: {
             "@type": "Person",
-            name: "Jameel Shaikh",
-            url: "https://medium.com/@dev-jameel",
+            name: post.author ?? "Jameel Shaikh",
+            url: `${SITE_URL}/about`,
         },
         publisher: {
             "@type": "Organization",
@@ -551,11 +498,12 @@ function buildBlogPostingSchema(post: BlogPostInput) {
         dateModified: post.updatedAt ?? post.publishedAt,
         mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${SITE_URL}/blog/${post.slug}`,
+            "@id": articleUrl,
         },
-        url: post.url,
+        url: articleUrl,
         image: `${SITE_URL}/og-image.webp`,
         keywords: post.tags.join(", "),
+        ...(post.wordCount ? { wordCount: post.wordCount } : {}),
     };
 }
 
@@ -620,7 +568,7 @@ export {
     buildWebSiteSchema,
     createPageMetadata,
     FEATURE_LIST,
-    KEYWORDS,
+    HOME_KEYWORDS,
     META_DESCRIPTION,
     META_TITLE,
     OG_IMAGE,

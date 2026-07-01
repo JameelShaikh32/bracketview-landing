@@ -7,6 +7,7 @@ import {
     Code2,
     FileJson,
     FileSpreadsheet,
+    Gauge,
     GitBranch,
     GitCompare,
     Layers,
@@ -73,6 +74,14 @@ const featureCategories: FeatureCategory[] = [
                     "Quick analysis of node counts, depth, and structure at a glance.",
                 href: "https://app.bracketview.in",
                 cta: "View JSON stats",
+            },
+            {
+                icon: Gauge,
+                title: "Performance Mode",
+                description:
+                    "Pro-only optimization for large JSON payloads — keeps tree, graph, and editor views responsive on files up to 50 MB. Disabled on Free; upgrade to enable.",
+                href: "https://app.bracketview.in/pricing",
+                cta: "Unlock with Pro",
             },
         ],
     },

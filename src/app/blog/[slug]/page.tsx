@@ -1,13 +1,19 @@
-import { blogPosts, formatBlogDate, type BlogPost } from "@/app/data/blog";
-import { toolPages } from "@/app/data/toolPages";
 import AuthorBio from "@/components/AuthorBio";
+import BlogAppCta from "@/components/BlogAppCta";
+import RelatedArticles from "@/components/RelatedArticles";
 import AdPlacement from "@/components/ads/AdPlacement";
 import JsonLd from "@/components/seo/JsonLd";
 import {
-    buildBlogPostingSchema,
-    createPageMetadata,
-} from "@/lib/seo";
-import { ArrowLeft, ArrowUpRight, Clock3 } from "lucide-react";
+    formatBlogDate,
+    getAllPosts,
+    getPostBySlug,
+    getRelatedAppToolLinks,
+    getRelatedMarketingToolLinks,
+} from "@/lib/blog-content";
+import { buildBlogPostingSchema, createPageMetadata } from "@/lib/seo";
+import mdxComponents from "@/mdx-components";
+import { ArrowLeft, Clock3 } from "lucide-react";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -16,12 +22,12 @@ type BlogPostPageProps = {
 };
 
 export function generateStaticParams() {
-    return blogPosts.map((post) => ({ slug: post.slug }));
+    return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
     const { slug } = await params;
-    const post = blogPosts.find((p) => p.slug === slug);
+    const post = getPostBySlug(slug);
 
     if (!post) return {};
 
@@ -35,40 +41,17 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     });
 }
 
-function getRelatedToolLinks(post: BlogPost) {
-    const tagToTool: Record<string, string> = {
-        JQ: "jq-playground",
-        JSON: "json-formatter",
-        "Developer Tools": "json-validator",
-        AI: "json-formatter",
-        WebRTC: "json-diff",
-        Privacy: "json-validator",
-        Visualization: "json-formatter",
-        "Dark Mode": "jq-playground",
-        WebAssembly: "jq-playground",
-        Productivity: "json-formatter",
-        JavaScript: "json-formatter",
-        Devtools: "json-validator",
-    };
-
-    const slugs = [
-        ...new Set(
-            post.tags
-                .map((tag) => tagToTool[tag])
-                .filter((slug): slug is string => Boolean(slug)),
-        ),
-    ].slice(0, 3);
-
-    return slugs.map((slug) => toolPages[slug]);
-}
-
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
     const { slug } = await params;
-    const post = blogPosts.find((p) => p.slug === slug);
+    const post = getPostBySlug(slug);
 
     if (!post) notFound();
 
-    const relatedTools = getRelatedToolLinks(post);
+    const relatedAppTools = getRelatedAppToolLinks(post.relatedAppTools);
+    const relatedMarketingTools = getRelatedMarketingToolLinks(
+        post.relatedTools,
+    );
+    const allPosts = getAllPosts();
 
     return (
         <main className="w-full px-4 pb-24 pt-8 sm:px-6 lg:px-8">
@@ -99,9 +82,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     </h1>
 
                     <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-black/60 dark:text-foreground/60">
+                        <span>{post.author}</span>
                         <time dateTime={post.publishedAt}>
                             {formatBlogDate(post.publishedAt)}
                         </time>
+                        {post.updatedAt !== post.publishedAt ? (
+                            <time dateTime={post.updatedAt}>
+                                Updated {formatBlogDate(post.updatedAt)}
+                            </time>
+                        ) : null}
                         <span className="inline-flex items-center gap-1.5">
                             <Clock3 size={14} aria-hidden />
                             {post.readTime}
@@ -114,38 +103,47 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
                     <AdPlacement variant="blog" className="mt-10" />
 
-                    <a
-                        href={post.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
-                    >
-                        Read full article on Medium
-                        <ArrowUpRight size={16} aria-hidden />
-                    </a>
+                    <div className="prose-blog mt-10 max-w-none">
+                        <MDXRemote
+                            source={post.content}
+                            components={mdxComponents}
+                        />
+                    </div>
 
-                    <AuthorBio />
+                    {relatedAppTools.length > 0 ? (
+                        <BlogAppCta tools={relatedAppTools} />
+                    ) : null}
 
-                    {relatedTools.length > 0 ? (
+                    <AuthorBio authorName={post.author} />
+
+                    {relatedMarketingTools.length > 0 ? (
                         <section
                             aria-label="Related tools"
                             className="mt-12 border-t border-black/10 pt-8 dark:border-foreground/10"
                         >
-                            <h2 className="text-lg font-bold">Related tools</h2>
+                            <h2 className="text-lg font-bold">
+                                Related BracketView tools
+                            </h2>
                             <ul className="mt-4 space-y-2">
-                                {relatedTools.map((tool) => (
-                                    <li key={tool.slug}>
+                                {relatedMarketingTools.map((tool) => (
+                                    <li key={tool.href}>
                                         <Link
-                                            href={`/${tool.slug}`}
+                                            href={tool.href}
                                             className="text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
                                         >
-                                            {tool.h1}
+                                            {tool.label}
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
                         </section>
                     ) : null}
+
+                    <RelatedArticles
+                        currentSlug={post.slug}
+                        posts={allPosts}
+                        tags={post.tags}
+                    />
                 </article>
             </div>
         </main>

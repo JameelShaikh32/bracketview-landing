@@ -1,12 +1,12 @@
 import {
   buildFaqPageSchema,
   buildHomepageHowToSchema,
-  buildOrganizationSchema,
   buildProductSchema,
   buildSoftwareApplicationSchema,
   buildSpeakableSchema,
   buildWebSiteSchema,
   createPageMetadata,
+  HOME_KEYWORDS,
   META_DESCRIPTION,
   META_TITLE,
 } from "@/lib/seo";
@@ -25,13 +25,13 @@ export const metadata = createPageMetadata({
   path: "/",
   title: META_TITLE,
   description: META_DESCRIPTION,
+  keywords: HOME_KEYWORDS,
 });
 
 export default function Home() {
   const schemas = [
     buildSoftwareApplicationSchema(),
     buildWebSiteSchema(),
-    buildOrganizationSchema(),
     buildFaqPageSchema(),
     buildHomepageHowToSchema(),
     buildSpeakableSchema(),

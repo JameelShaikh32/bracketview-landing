@@ -1,3 +1,5 @@
+import { formatExpiryMinutes, PLAN_LIMITS } from "./planLimits";
+
 type LegalSection = {
     title: string;
     paragraphs: string[];
@@ -15,9 +17,16 @@ const supportEmail = "support@bracketview.in";
 
 const privacyPolicy: LegalDocument = {
     title: "Privacy Policy",
+    lastUpdated: "2026-07-01",
     intro:
         "BracketView is built so most JSON work stays in your browser. Optional features (AI repair, shareable snapshots) can send data to our servers or third parties only when you choose to use them. Read the sections below for specifics.",
     sections: [
+        {
+            title: "Data controller",
+            paragraphs: [
+                "BracketView is operated by Jameel Shaikh. For privacy questions or data requests, contact support@bracketview.in. See also our Disclaimer and Terms of Service.",
+            ],
+        },
         {
             title: "Local Processing",
             paragraphs: [
@@ -47,7 +56,7 @@ const privacyPolicy: LegalDocument = {
             title: "Advertising on this website",
             paragraphs: [
                 "The BracketView marketing site (bracketview.in) may display third-party advertisements through Google AdSense to help support free core product features. The BracketView application workspace at app.bracketview.in does not show advertisements.",
-                "When ads are enabled, Google may use cookies and similar technologies to serve and measure advertising. We show a cookie consent banner before loading advertising scripts. You can manage ad personalization in your Google Ads Settings.",
+                "When ads are enabled, Google may use cookies and similar technologies to serve and measure advertising. We show a cookie consent banner before loading advertising scripts; advertising scripts are not loaded until you accept advertising cookies (or where consent is not required by law). You can manage ad personalization in your Google Ads Settings.",
             ],
         },
         {
@@ -69,8 +78,9 @@ const privacyPolicy: LegalDocument = {
 
 const termsOfService: LegalDocument = {
     title: "Terms and Conditions",
+    lastUpdated: "2026-07-01",
     intro:
-        "By using BracketView, you agree to these terms. If you do not agree, please do not use the service.",
+        "By using BracketView, you agree to these terms. If you do not agree, please do not use the service. For warranty and liability limitations, see our Disclaimer.",
     sections: [
         {
             title: "Service scope",
@@ -85,6 +95,13 @@ const termsOfService: LegalDocument = {
             ],
         },
         {
+            title: "Free and Pro usage limits",
+            paragraphs: [
+                `Core JSON tools (viewer, formatter, validator, tree, graph, JSONPath, jq, diff, and schema) are available on the free tier. Free signed-in accounts include uploads up to ${PLAN_LIMITS.free.uploadMb} MB, ${PLAN_LIMITS.free.snapshotsPerMonth} encrypted snapshot links per month (up to ${formatExpiryMinutes(PLAN_LIMITS.free.snapshotMaxExpiryMinutes)} expiry), and ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month.`,
+                `BracketView Pro unlocks uploads up to ${PLAN_LIMITS.pro.uploadMb} MB, Performance Mode for large JSON payloads, unlimited encrypted snapshot links (up to ${formatExpiryMinutes(PLAN_LIMITS.pro.snapshotMaxExpiryMinutes)} expiry), unlimited AI features, and priority email support. Limits may change with notice; see bracketview.in for current plan details.`,
+            ],
+        },
+        {
             title: "Accounts and billing",
             paragraphs: [
                 "Paid features are billed through our payment partners. You are responsible for the accuracy of account and payment information associated with your plan.",
@@ -93,11 +110,61 @@ const termsOfService: LegalDocument = {
         {
             title: "Disclaimer and liability",
             paragraphs: [
-                'The service is provided "as is" without warranties of any kind. To the extent permitted by law, BracketView is not liable for indirect, incidental, or consequential losses resulting from use of the service.',
+                'The service is provided "as is" without warranties of any kind. To the extent permitted by law, BracketView is not liable for indirect, incidental, or consequential losses resulting from use of the service. See our full Disclaimer for details on processed data, AI output, and user responsibilities.',
             ],
         },
     ],
     contactLine: "For questions about these terms, contact",
+};
+
+const disclaimer: LegalDocument = {
+    title: "Disclaimer",
+    lastUpdated: "2026-07-01",
+    intro:
+        "BracketView provides browser-based JSON tools for developers. This disclaimer explains the limits of the service and your responsibilities when using it.",
+    sections: [
+        {
+            title: "No warranty on processed data",
+            paragraphs: [
+                'BracketView is provided "as is" and "as available" without warranties of any kind, whether express or implied, including fitness for a particular purpose or accuracy of output.',
+                "Formatting, validation, diff, schema checks, type generation, and AI-assisted repairs are helpers — not guarantees. Always verify results before using them in production systems, deployments, or compliance workflows.",
+            ],
+        },
+        {
+            title: "User responsibility for pasted content",
+            paragraphs: [
+                "You are solely responsible for the JSON and other data you paste, upload, or share through BracketView. Do not submit secrets, credentials, personal data, or regulated information unless you understand and accept the risks.",
+                "Optional snapshot links are accessible to anyone with the URL. Core formatting and validation run locally in your browser; optional features (snapshots, AI) may transmit data as described in our Privacy Policy.",
+            ],
+        },
+        {
+            title: "AI output limitations",
+            paragraphs: [
+                "AI-powered features may suggest fixes, generate mock data, or rewrite queries. AI output can be incorrect, incomplete, or unsafe for your use case. Review all AI-generated content before relying on it.",
+                "You configure third-party AI providers with your own API keys where applicable. BracketView does not control how those providers process data sent through your configuration.",
+            ],
+        },
+        {
+            title: "Not professional advice",
+            paragraphs: [
+                "Content on bracketview.in — including blog articles and glossary entries — is for general developer education. It is not legal, financial, security, or compliance advice.",
+            ],
+        },
+        {
+            title: "Limitation of liability",
+            paragraphs: [
+                "To the fullest extent permitted by law, BracketView and its operator are not liable for indirect, incidental, special, consequential, or punitive damages, or for loss of data, revenue, or business arising from use of the service.",
+                "Some jurisdictions do not allow certain limitations; in those cases, our liability is limited to the maximum extent permitted by applicable law.",
+            ],
+        },
+        {
+            title: "Third-party services",
+            paragraphs: [
+                "BracketView may link to or integrate with third-party services (payment processors, analytics, advertising, AI providers). Those services operate under their own terms and policies.",
+            ],
+        },
+    ],
+    contactLine: "For questions about this disclaimer, contact",
 };
 
 const refundPolicy: LegalDocument = {
@@ -174,6 +241,7 @@ const cancellationPolicy: LegalDocument = {
 
 export {
     cancellationPolicy,
+    disclaimer,
     privacyPolicy,
     refundPolicy,
     supportEmail,

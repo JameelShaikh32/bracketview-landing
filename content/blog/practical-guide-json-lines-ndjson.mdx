@@ -1,0 +1,74 @@
+---
+title: "A Practical Guide to JSON Lines (NDJSON)"
+slug: practical-guide-json-lines-ndjson
+excerpt: "JSON Lines (NDJSON) stores one JSON value per line — common in logs and streaming APIs. Learn format rules, validation, and how it differs from a JSON array."
+publishedAt: "2026-06-07"
+updatedAt: "2026-07-01"
+author: Jameel Shaikh
+tags: [NDJSON, JSON Lines, Logs]
+relatedTools: [json-validator, json-formatter]
+relatedAppTools: [json-validator]
+status: published
+---
+
+JSON Lines — also called NDJSON (Newline Delimited JSON) — is a text format where **each line is a complete JSON value**. Log shippers, streaming ETL, and some APIs use it instead of a single giant JSON array.
+
+## Format rules
+
+- One JSON object, array, string, number, or literal per line
+- Lines separated by `\n` (LF); avoid `\r\n` ambiguity in strict parsers
+- No wrapping array — the file is not `[ {...}, {...} ]`
+- Empty lines are often ignored (check your consumer)
+
+Example:
+
+```json
+{"id":1,"event":"login"}
+{"id":2,"event":"purchase","amount":19.99}
+{"id":3,"event":"logout"}
+```
+
+Each line must parse independently with `JSON.parse`.
+
+## NDJSON vs JSON array
+
+| Aspect | JSON array file | JSON Lines |
+|--------|-----------------|------------|
+| Streaming | Must read full file to parse | Process line-by-line |
+| Append | Rewrite file or patch array | Append new line |
+| Invalid line | Whole file fails | Other lines may still parse |
+| Schema per row | One array schema | Often same object shape |
+
+## Common use cases
+
+- Application logs (structured logging to stdout)
+- Kafka / Kinesis export samples
+- Bulk import APIs (`POST` body as stream)
+- Machine learning feature dumps
+
+## Validation workflow
+
+1. Split file by newline (handle large files in chunks).
+2. Validate each line with a [JSON Validator](https://app.bracketview.in).
+3. Track line numbers — error on line 847 points to one bad record, not the whole export.
+4. Optionally validate each object against the same JSON Schema.
+
+## Mistakes that look like NDJSON but are not
+
+- Pretty-printed JSON objects spanning multiple lines — **invalid** JSON Lines
+- Concatenated pretty JSON without commas — invalid single JSON **and** invalid NDJSON
+- Single JSON array exported with newlines inside — that's one value, not NDJSON
+
+## Converting between formats
+
+**Array → lines:** parse array, `items.map(JSON.stringify).join('\n')`
+
+**Lines → array:** split, filter empty, parse each, wrap in `[...]`
+
+Use jq: `jq -c '.[]'` or `jq -s '.'` depending on direction.
+
+## Tooling in BracketView
+
+Validate individual lines in the [JSON Validator](https://app.bracketview.in). For multi-line pretty documents, use the formatter on one object at a time. Full NDJSON file runners belong in CLI scripts or data pipelines — BracketView helps debug the malformed line once you isolate it.
+
+Related: [debugging API responses](/blog/debugging-malformed-api-responses).

@@ -58,7 +58,25 @@ const PRO_VALUE_SUMMARY =
 const FREE_TIER_SUMMARY =
     "Core JSON tools stay free. Paid limits apply to uploads, snapshots, and AI.";
 
+const APP_BASE_URL = "https://app.bracketview.in";
+const APP_PRICING_URL = `${APP_BASE_URL}/pricing`;
+
+type ProCheckoutPlan = "monthly" | "yearly";
+
+/** Deep link — app.bracketview.in reads ?plan=&checkout=1 to start Razorpay checkout. */
+function appPricingCheckoutUrl(plan: ProCheckoutPlan): string {
+    return `${APP_PRICING_URL}?plan=${plan}&checkout=1`;
+}
+
+const APP_PRICING_MONTHLY_CHECKOUT_URL = appPricingCheckoutUrl("monthly");
+const APP_PRICING_YEARLY_CHECKOUT_URL = appPricingCheckoutUrl("yearly");
+
 export {
+    APP_BASE_URL,
+    APP_PRICING_MONTHLY_CHECKOUT_URL,
+    APP_PRICING_URL,
+    APP_PRICING_YEARLY_CHECKOUT_URL,
+    appPricingCheckoutUrl,
     formatExpiryMinutes,
     formatUsd,
     FREE_AI_LABEL,

@@ -22,6 +22,7 @@ import {
     Wand2,
     Zap,
 } from "lucide-react";
+import { APP_PRICING_MONTHLY_CHECKOUT_URL } from "./planLimits";
 
 type FeaturePageItem = {
     icon: LucideIcon;
@@ -80,7 +81,7 @@ const featureCategories: FeatureCategory[] = [
                 title: "Performance Mode",
                 description:
                     "Pro-only optimization for large JSON payloads — keeps tree, graph, and editor views responsive on files up to 50 MB. Disabled on Free; upgrade to enable.",
-                href: "https://app.bracketview.in/pricing",
+                href: APP_PRICING_MONTHLY_CHECKOUT_URL,
                 cta: "Unlock with Pro",
             },
         ],

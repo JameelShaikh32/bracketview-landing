@@ -11,6 +11,8 @@ import {
     Webhook,
 } from "lucide-react";
 import {
+    APP_PRICING_MONTHLY_CHECKOUT_URL,
+    APP_PRICING_YEARLY_CHECKOUT_URL,
     FREE_AI_LABEL,
     FREE_SNAPSHOT_EXPIRY_LABEL,
     FREE_SNAPSHOTS_LABEL,
@@ -205,7 +207,7 @@ const pricingPlans: PricingPlan[] = [
             "Priority for future Pro capabilities",
         ],
         cta: "Start monthly plan",
-        ctaHref: "https://app.bracketview.in/pricing",
+        ctaHref: APP_PRICING_MONTHLY_CHECKOUT_URL,
         offerSchema: { price: String(PRICING.monthlyUsd), priceCurrency: "USD" },
     },
     {
@@ -227,7 +229,7 @@ const pricingPlans: PricingPlan[] = [
             "Priority for future Pro capabilities",
         ],
         cta: "Start yearly plan",
-        ctaHref: "https://app.bracketview.in/pricing",
+        ctaHref: APP_PRICING_YEARLY_CHECKOUT_URL,
         highlighted: true,
         offerSchema: { price: String(PRICING.yearlyUsd), priceCurrency: "USD" },
     },

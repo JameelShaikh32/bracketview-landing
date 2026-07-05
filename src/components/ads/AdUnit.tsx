@@ -1,7 +1,8 @@
 "use client";
 
-import { ADSENSE_CLIENT_ID } from "@/lib/ads";
+import { ADSENSE_READY_EVENT } from "@/components/ads/AdSenseScript";
 import { useAdsConsent } from "@/components/ads/AdsConsentProvider";
+import { ADSENSE_CLIENT_ID } from "@/lib/ads";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
@@ -34,20 +35,11 @@ const AdUnit = ({ slot, className = "" }: AdUnitProps) => {
             return;
         }
 
-        const interval = window.setInterval(() => {
-            if (window.adsbygoogle) {
-                window.clearInterval(interval);
-                pushAd();
-            }
-        }, 150);
-
-        const timeout = window.setTimeout(() => {
-            window.clearInterval(interval);
-        }, 10_000);
+        const onReady = () => pushAd();
+        window.addEventListener(ADSENSE_READY_EVENT, onReady);
 
         return () => {
-            window.clearInterval(interval);
-            window.clearTimeout(timeout);
+            window.removeEventListener(ADSENSE_READY_EVENT, onReady);
         };
     }, [adsEnabled, consent, slot]);
 
@@ -70,7 +62,7 @@ const AdUnit = ({ slot, className = "" }: AdUnitProps) => {
                 </Link>
             </p>
             <ins
-                className="adsbygoogle block min-h-[90px] overflow-hidden rounded-2xl bg-black/[0.03] dark:bg-white/[0.03]"
+                className="adsbygoogle block min-h-[90px] overflow-hidden rounded-2xl bg-black/3 dark:bg-white/3"
                 style={{ display: "block" }}
                 data-ad-client={ADSENSE_CLIENT_ID}
                 data-ad-slot={slot}

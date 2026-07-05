@@ -9,8 +9,9 @@ const APP_URL = "https://app.bracketview.in";
 const META_TITLE =
     "Online JSON Viewer, Formatter & Validator | BracketView";
 
+/** Keep meta descriptions between 100–130 characters for SERP display. */
 const META_DESCRIPTION =
-    "Freemium online JSON viewer, formatter & validator. Beautify, pretty-print, validate & edit JSON in your browser — privacy-first, no install. Try BracketView.";
+    "Free online JSON viewer, formatter & validator. Beautify, validate & edit JSON in your browser — privacy-first, no install.";
 
 const OG_IMAGE = "/og-image.webp";
 
@@ -112,6 +113,7 @@ const SAME_AS = [
     APP_URL,
     "https://www.linkedin.com/company/bracketview",
     "https://x.com/bracket_view",
+    "https://www.facebook.com/bracketview",
     "https://www.instagram.com/bracketview",
     "https://www.youtube.com/@bracketview",
     "https://medium.com/@dev-jameel",
@@ -147,6 +149,10 @@ function createPageMetadata({
         ...(keywords ? { keywords: [...keywords] } : {}),
         alternates: {
             canonical: url,
+            languages: {
+                en: url,
+                "x-default": url,
+            },
         },
         openGraph: {
             title,
@@ -293,8 +299,10 @@ function buildOrganizationSchema() {
         sameAs: [
             "https://www.linkedin.com/company/bracketview",
             "https://x.com/bracket_view",
+            "https://www.facebook.com/bracketview",
             "https://www.instagram.com/bracketview",
             "https://www.youtube.com/@bracketview",
+            "https://medium.com/@dev-jameel",
             "https://www.producthunt.com/products/bracketview",
             "https://www.saashub.com/bracketview",
         ],

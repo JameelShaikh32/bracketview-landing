@@ -3,6 +3,7 @@ import { supportEmail } from "@/app/data/legal";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  FaFacebook,
   FaInstagram,
   FaLinkedinIn,
   FaMedium,
@@ -12,6 +13,7 @@ import {
 const socialIcons = {
   LinkedIn: FaLinkedinIn,
   Twitter: FaXTwitter,
+  Facebook: FaFacebook,
   Instagram: FaInstagram,
   YouTube: FaYoutube,
   Medium: FaMedium,
@@ -96,7 +98,7 @@ const FooterColumn = ({
               link.rel ||
               (link.href.startsWith("http") ? "noopener noreferrer" : undefined)
             }
-            className="text-sm text-black/65 transition-opacity hover:opacity-100 dark:text-foreground/65"
+            className="inline-flex min-h-11 items-center py-2 text-sm text-black/65 transition-opacity hover:opacity-100 dark:text-foreground/65"
           >
             {link.label}
           </Link>
@@ -144,7 +146,7 @@ const Footer = () => {
                     target="_blank"
                     rel={`noopener noreferrer ${social.rel || ""}`}
                     aria-label={social.label}
-                    className="flex size-10 items-center justify-center rounded-xl bg-gray text-black transition-colors duration-300 hover:bg-accent hover:text-white dark:bg-background dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white"
+                    className="flex size-11 items-center justify-center rounded-xl bg-gray text-black transition-colors duration-300 hover:bg-accent hover:text-white dark:bg-background dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white"
                   >
                     <Icon size={18} aria-hidden />
                   </a>

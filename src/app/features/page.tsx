@@ -16,7 +16,7 @@ export const metadata = createPageMetadata({
     path: "/features",
     title: "Features | BracketView",
     description:
-        "BracketView is a JSON workspace for developers. It formats, validates, and queries JSON in the browser. Features include JQ filters, AI repair, schema tools, diff, and encrypted sharing — no install required.",
+        "JSON workspace for developers. Format, validate, and query JSON in the browser — JQ filters, AI repair, schema tools, diff, and sharing.",
 });
 
 export default function FeaturesPage() {

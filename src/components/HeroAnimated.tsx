@@ -11,11 +11,21 @@ import { ArrowDown, ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const HeroAnimated = () => {
   const theme = useTheme();
   const reducedMotion = useReducedMotion();
   const itemVariant = getFadeUpVariant(reducedMotion);
+  const [canHover, setCanHover] = useState(false);
+
+  useEffect(() => {
+    setCanHover(window.matchMedia("(hover: hover)").matches);
+  }, []);
+
+  const heroImageSrc =
+    theme === "dark" ? "/images/hero-dark.webp" : "/images/hero-light.webp";
+  const heroImageHeight = theme === "dark" ? 977 : 976;
 
   return (
     <section className="relative w-full px-4 pb-20 pt-2 sm:px-6 lg:px-8">
@@ -36,7 +46,7 @@ const HeroAnimated = () => {
             </motion.h1>
             <motion.p
               variants={itemVariant}
-              className="hero-description max-w-md text-sm leading-relaxed text-black/70 sm:text-base dark:text-foreground/70"
+              className="hero-description max-w-md text-base leading-relaxed text-black/70 dark:text-foreground/70"
             >
               A fast online JSON viewer, formatter, validator, &amp; query tool
               designed to help developers inspect &amp; work with JSON more
@@ -57,7 +67,7 @@ const HeroAnimated = () => {
                 href="https://app.bracketview.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl bg-accent px-5 text-sm font-medium whitespace-nowrap text-white transition-opacity hover:opacity-90 sm:px-6 dark:bg-accent-dark"
+                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:px-6 dark:bg-accent-dark"
               >
                 <span className="sm:hidden">Open App</span>
                 <span className="hidden sm:inline">Get Started</span>
@@ -66,7 +76,7 @@ const HeroAnimated = () => {
 
               <Link
                 href="/blog"
-                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium whitespace-nowrap text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
+                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
               >
                 JSON Guides
                 <ArrowDownRight size={18} aria-hidden />
@@ -74,7 +84,7 @@ const HeroAnimated = () => {
 
               <Link
                 href="#features"
-                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium whitespace-nowrap text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
+                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
               >
                 Explore Features
                 <ArrowDownRight size={18} aria-hidden />
@@ -99,9 +109,11 @@ const HeroAnimated = () => {
             className="absolute left-5 top-6 z-10 max-w-lg sm:left-8 sm:top-8 sm:max-w-xl"
           >
             <motion.div
-              animate={reducedMotion ? undefined : { y: [0, -6, 0] }}
+              animate={
+                reducedMotion || !canHover ? undefined : { y: [0, -6, 0] }
+              }
               transition={
-                reducedMotion
+                reducedMotion || !canHover
                   ? undefined
                   : {
                     duration: 4,
@@ -112,13 +124,13 @@ const HeroAnimated = () => {
               }
               className="rounded-2xl bg-white/45 p-4 shadow-[0_8px_32px_rgba(25,19,20,0.12)] backdrop-blur-md"
             >
-              <p className="text-xs font-medium uppercase tracking-wider text-black/60 sm:text-sm">
+              <p className="text-sm font-medium uppercase tracking-wider text-black/60 sm:text-sm">
                 Sample parse
               </p>
               <p className="mt-1 text-xl font-bold tracking-tight text-black sm:text-3xl">
                 1,024 nodes
               </p>
-              <p className="mt-1 text-xs text-black/70 sm:text-sm">
+              <p className="mt-1 text-sm text-black/70 sm:text-sm">
                 Formatted in 7ms
               </p>
             </motion.div>
@@ -139,27 +151,16 @@ const HeroAnimated = () => {
               delay: 0.5,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="absolute -bottom-4 left-24 z-0"
+            className="absolute -bottom-4 left-4 z-0 sm:left-24"
           >
             <Image
-              src="/images/hero-light.webp"
+              src={heroImageSrc}
               alt="BracketView JSON editor preview"
               width={1919}
-              height={976}
+              height={heroImageHeight}
               sizes="(max-width: 640px) 672px, (max-width: 1024px) 768px, 1024px"
-              priority={theme === "light"}
-              loading={theme === "light" ? "eager" : "lazy"}
-              className="h-auto w-2xl max-w-none rounded-t-2xl object-contain object-top-left dark:hidden sm:w-3xl lg:w-5xl"
-            />
-            <Image
-              src="/images/hero-dark.webp"
-              alt="BracketView JSON editor preview"
-              width={1919}
-              height={977}
-              sizes="(max-width: 640px) 672px, (max-width: 1024px) 768px, 1024px"
-              priority={theme === "dark"}
-              loading={theme === "dark" ? "eager" : "lazy"}
-              className="hidden h-auto w-2xl max-w-none rounded-t-2xl object-contain object-top-left sm:w-3xl lg:w-5xl dark:block"
+              priority
+              className="h-auto w-full max-w-2xl rounded-t-2xl object-contain object-top-left sm:max-w-none sm:w-3xl lg:w-5xl"
             />
           </motion.div>
 
@@ -170,7 +171,7 @@ const HeroAnimated = () => {
             transition={{ duration: 0.5, delay: 0.7 }}
             className="absolute bottom-0 right-0 z-20 flex h-18 w-38 items-center justify-center rounded-tl-4xl bg-background px-4 md:h-24 md:w-44 sm:h-16 sm:w-48 sm:rounded-tl-6xl"
           >
-            <p className="text-center text-xs font-medium uppercase leading-snug tracking-[0.12em] text-black sm:text-xs dark:text-foreground">
+            <p className="text-center text-sm font-medium uppercase leading-snug tracking-[0.12em] text-black dark:text-foreground">
               Format JSON
               <br />
               With Ease

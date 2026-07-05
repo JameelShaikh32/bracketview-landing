@@ -22,7 +22,7 @@ const getClientSnapshot = () => true;
 const getServerSnapshot = () => false;
 
 const iconButtonClasses =
-  "flex shrink-0 cursor-pointer items-center justify-center rounded-full bg-black p-2.5 text-white transition-colors duration-300 hover:bg-black/10 hover:text-foreground dark:bg-gray dark:text-black dark:hover:bg-gray/30 dark:hover:text-gray";
+  "flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-black text-white transition-colors duration-300 hover:bg-black/10 hover:text-foreground dark:bg-gray dark:text-black dark:hover:bg-gray/30 dark:hover:text-gray";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);

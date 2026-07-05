@@ -19,19 +19,19 @@ const mdxComponents = {
     ),
     p: (props: ComponentProps<"p">) => (
         <p
-            className="mt-4 text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/75"
+            className="mt-4 text-base leading-relaxed text-black/75 dark:text-foreground/75"
             {...props}
         />
     ),
     ul: (props: ComponentProps<"ul">) => (
         <ul
-            className="mt-4 list-disc space-y-2 pl-6 text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/75"
+            className="mt-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-black/75 dark:text-foreground/75"
             {...props}
         />
     ),
     ol: (props: ComponentProps<"ol">) => (
         <ol
-            className="mt-4 list-decimal space-y-2 pl-6 text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/75"
+            className="mt-4 list-decimal space-y-2 pl-6 text-base leading-relaxed text-black/75 dark:text-foreground/75"
             {...props}
         />
     ),

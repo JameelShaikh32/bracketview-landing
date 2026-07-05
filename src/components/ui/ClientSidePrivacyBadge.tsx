@@ -21,7 +21,7 @@ const ClientSidePrivacyBadge = ({
       className={[
         "inline-flex max-w-full items-center gap-1.5 rounded-md border",
         "border-foreground/[0.07] bg-foreground/3 px-2 py-1",
-        "text-[11px] font-medium leading-tight tracking-wide text-foreground/45",
+        "text-xs font-medium leading-tight tracking-wide text-foreground/45 sm:text-sm",
         "shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm",
         "select-none transition-colors duration-200",
         "hover:border-emerald-500/20 hover:text-foreground/60",

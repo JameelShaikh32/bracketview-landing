@@ -43,19 +43,14 @@ const FAQ = () => {
                                         aria-expanded={isOpen}
                                         aria-controls={panelId}
                                     >
-                                        <motion.span
-                                            layout
+                                        <span
                                             className={`flex size-10 shrink-0 items-center justify-center text-sm font-bold sm:size-11 ${isOpen
                                                 ? "rounded-full bg-black text-white dark:bg-foreground dark:text-background"
                                                 : "text-black dark:text-foreground"
                                                 }`}
-                                            transition={{
-                                                duration: 0.25,
-                                                ease: "easeInOut",
-                                            }}
                                         >
                                             {step}
-                                        </motion.span>
+                                        </span>
 
                                         <span className="min-w-0 flex-1 pt-1">
                                             <span className="block text-base font-bold leading-snug text-black sm:text-lg dark:text-foreground">

@@ -264,7 +264,7 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
                             : `Add demo video for ${label}`}
                     </p>
                     {src ? (
-                        <p className="font-mono text-[10px] text-black/40 dark:text-foreground/40">
+                        <p className="hidden font-mono text-xs text-black/40 sm:block dark:text-foreground/40">
                             {src}
                         </p>
                     ) : null}
@@ -330,7 +330,7 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
                         <button
                             type="button"
                             onClick={handleMobilePause}
-                            className="absolute bottom-3 left-3 z-10 flex size-9 items-center justify-center rounded-xl bg-black/55 text-white backdrop-blur-sm transition-colors active:bg-black/75 md:hidden"
+                            className="absolute bottom-3 left-3 z-10 flex size-11 items-center justify-center rounded-xl bg-black/55 text-white backdrop-blur-sm transition-colors active:bg-black/75 md:hidden"
                             aria-label={`Pause ${label} demo`}
                         >
                             <Pause size={16} fill="currentColor" aria-hidden />
@@ -340,7 +340,7 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
                     <button
                         type="button"
                         onClick={handleExpand}
-                        className="absolute bottom-3 right-3 z-10 flex size-9 items-center justify-center rounded-xl bg-black/55 text-white backdrop-blur-sm transition-colors hover:bg-black/75 dark:bg-black/65 dark:hover:bg-black/85"
+                        className="absolute bottom-3 right-3 z-10 flex size-11 items-center justify-center rounded-xl bg-black/55 text-white backdrop-blur-sm transition-colors hover:bg-black/75 dark:bg-black/65 dark:hover:bg-black/85"
                         aria-label="Expand video"
                     >
                         <Maximize2 size={16} aria-hidden />

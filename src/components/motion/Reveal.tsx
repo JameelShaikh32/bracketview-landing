@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
+import type { ReactNode } from "react";
 import {
     fadeUp,
     fadeUpReduced,
@@ -34,6 +35,10 @@ const Reveal = ({
         if (variant === "fadeUp") return fadeUp;
         return scaleIn;
     })();
+
+    if (reducedMotion) {
+        return <div className={className}>{children as ReactNode}</div>;
+    }
 
     return (
         <motion.div

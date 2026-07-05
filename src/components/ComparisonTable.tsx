@@ -126,8 +126,35 @@ const ComparisonTable = () => {
                 </Reveal>
 
                 <Reveal>
-                    <div className="overflow-x-auto rounded-4xl bg-white p-4 sm:p-8 dark:bg-muted">
-                        <table className="w-full min-w-[480px] border-collapse text-left text-sm">
+                    {/* Mobile card layout */}
+                    <div className="space-y-3 rounded-4xl bg-white p-4 sm:hidden dark:bg-muted">
+                        {rows.map((row) => (
+                            <div
+                                key={row.feature}
+                                className="rounded-2xl border border-black/10 p-4 dark:border-foreground/10"
+                            >
+                                <p className="font-bold">{row.feature}</p>
+                                <div className="mt-3 space-y-2 text-sm">
+                                    <div className="flex items-start justify-between gap-3">
+                                        <span className="shrink-0 font-medium text-black/60 dark:text-foreground/60">
+                                            BracketView
+                                        </span>
+                                        <ComparisonCell value={row.bracketview} />
+                                    </div>
+                                    <div className="flex items-start justify-between gap-3">
+                                        <span className="shrink-0 font-medium text-black/60 dark:text-foreground/60">
+                                            Other tools
+                                        </span>
+                                        <ComparisonCell value={row.otherTools} />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Desktop table */}
+                    <div className="hidden overflow-x-auto rounded-4xl bg-white p-4 sm:block sm:p-8 dark:bg-muted">
+                        <table className="w-full border-collapse text-left text-sm">
                             <thead>
                                 <tr className="border-b border-black/10 dark:border-foreground/10">
                                     <th

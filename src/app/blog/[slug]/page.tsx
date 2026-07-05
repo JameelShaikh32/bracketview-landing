@@ -1,6 +1,7 @@
 import AuthorBio from "@/components/AuthorBio";
 import BlogAppCta from "@/components/BlogAppCta";
 import RelatedArticles from "@/components/RelatedArticles";
+import ShareButtons from "@/components/ShareButtons";
 import AdPlacement from "@/components/ads/AdPlacement";
 import JsonLd from "@/components/seo/JsonLd";
 import {
@@ -10,7 +11,7 @@ import {
     getRelatedAppToolLinks,
     getRelatedMarketingToolLinks,
 } from "@/lib/blog-content";
-import { buildBlogPostingSchema, createPageMetadata } from "@/lib/seo";
+import { buildBlogPostingSchema, createPageMetadata, SITE_URL } from "@/lib/seo";
 import mdxComponents from "@/mdx-components";
 import { ArrowLeft, Clock3 } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -109,6 +110,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                             components={mdxComponents}
                         />
                     </div>
+
+                    <ShareButtons
+                        url={`${SITE_URL}/blog/${post.slug}`}
+                        title={post.title}
+                    />
 
                     {relatedAppTools.length > 0 ? (
                         <BlogAppCta tools={relatedAppTools} />

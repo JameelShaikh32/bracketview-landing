@@ -40,6 +40,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
     poweredByHeader: false,
     reactStrictMode: true,
+    experimental: {
+        optimizePackageImports: ["lucide-react", "motion/react", "react-icons"],
+    },
     images: {
         formats: ["image/avif", "image/webp"],
         remotePatterns: [

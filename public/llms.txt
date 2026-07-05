@@ -138,6 +138,15 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 ### Social
 - [LinkedIn](https://www.linkedin.com/company/bracketview): Company updates
 - [X (Twitter)](https://x.com/bracket_view): Product news and tips
+- [Facebook](https://www.facebook.com/bracketview): Community and updates
 - [Instagram](https://www.instagram.com/bracketview): Social updates
 - [YouTube](https://www.youtube.com/@bracketview): Video content
 - [Author on Medium](https://medium.com/@dev-jameel): Blog posts by Jameel Shaikh
+
+### Off-page SEO (manual actions)
+- Submit sitemap (https://bracketview.in/sitemap.xml) to Google Search Console and Bing Webmaster
+- Request indexing for key tool pages: /json-formatter, /json-validator, /jq-playground
+- Share blog posts on LinkedIn, X, Facebook, and Medium after publishing
+- Pursue quality backlinks from developer directories (DevHunt, AlternativeTo) and JSON tool roundups
+- Engage on Product Hunt and SaaSHub listings; respond to reviews
+- Target 10–20 quality dofollow backlinks in the first 90 days

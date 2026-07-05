@@ -4,6 +4,7 @@ import {
     OG_IMAGE,
     OG_IMAGE_ALT,
     SITE_URL,
+    TWITTER_SITE,
 } from "@/lib/seo";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -30,12 +31,24 @@ const firaCode = Fira_Code({
     adjustFontFallback: true,
 });
 
+export const viewport = {
+    width: "device-width",
+    initialScale: 1,
+};
+
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
     title: META_TITLE,
     description: META_DESCRIPTION,
     authors: [{ name: "Jameel Shaikh" }],
     robots: { index: true, follow: true },
+    alternates: {
+        canonical: SITE_URL,
+        languages: {
+            en: SITE_URL,
+            "x-default": SITE_URL,
+        },
+    },
     openGraph: {
         title: META_TITLE,
         description: META_DESCRIPTION,
@@ -53,6 +66,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
+        site: TWITTER_SITE,
+        creator: TWITTER_SITE,
         title: META_TITLE,
         description: META_DESCRIPTION,
         images: [OG_IMAGE],
@@ -98,7 +113,16 @@ export default function RootLayout({
                     href="https://www.linkedin.com/company/bracketview"
                 />
                 <link rel="me" href="https://x.com/bracket_view" />
+                <link rel="me" href="https://www.facebook.com/bracketview" />
                 <link rel="me" href="https://medium.com/@dev-jameel" />
+                <link
+                    rel="me"
+                    href="https://www.instagram.com/bracketview"
+                />
+                <link
+                    rel="me"
+                    href="https://www.youtube.com/@bracketview"
+                />
                 <link
                     rel="sitemap"
                     type="application/xml"

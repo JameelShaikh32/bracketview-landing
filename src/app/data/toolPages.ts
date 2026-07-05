@@ -36,7 +36,7 @@ const toolPages: Record<string, ToolPage> = {
         badge: "JSON Formatter",
         metaTitle: "JSON Formatter Online — Beautify & Pretty Print JSON | BracketView",
         metaDescription:
-            "BracketView is a free online JSON formatter. Beautify, pretty-print, and minify JSON in your browser with real-time validation. No install — 100% client-side.",
+            "Free online JSON formatter. Beautify, pretty-print, and minify JSON in your browser with real-time validation. 100% client-side.",
         intro:
             "A JSON formatter takes raw or minified JSON and reformats it with readable indentation and consistent spacing. BracketView's online JSON formatter lets you beautify (pretty-print) or minify JSON in one click — directly in your browser with no installation. Paste your payload, click Format, and get clean, readable output instantly. The real-time validator highlights syntax errors as you type, so you can fix issues before exporting. Everything runs 100% client-side: your data never leaves your device.",
         features: [
@@ -106,7 +106,7 @@ const toolPages: Record<string, ToolPage> = {
         badge: "JSON Validator",
         metaTitle: "Validate JSON Online — Free Real-Time Checker | BracketView",
         metaDescription:
-            "BracketView validates JSON in real time as you type. Catch bracket mismatches, trailing commas, and unquoted keys instantly. Free online JSON validator — no install.",
+            "Validate JSON in real time as you type. Catch bracket mismatches, trailing commas, and unquoted keys. Free online validator — no install.",
         intro:
             "Validating JSON online means checking whether your data is syntactically correct before you deploy, share, or process it. BracketView's real-time JSON validator highlights errors as you type — bracket mismatches, trailing commas, unquoted keys, and invalid escape sequences are flagged with line numbers so you can fix them fast. Paste a payload from an API response, log file, or config export and get instant feedback. Core validation runs 100% in your browser with no data sent to any server.",
         features: [
@@ -456,7 +456,7 @@ const toolPages: Record<string, ToolPage> = {
         badge: "Type Generator",
         metaTitle: "Generate TypeScript from JSON — 9+ Languages | BracketView",
         metaDescription:
-            "BracketView generates TypeScript interfaces, Python classes, Go structs, and Rust types from JSON. Export types in 9+ languages. Free online type generator — no install.",
+            "Generate TypeScript, Python, Go, and Rust types from JSON. Export in 9+ languages. Free online type generator — no install.",
         intro:
             "Generating types from JSON saves hours of manual interface writing when integrating APIs or parsing responses. BracketView's Type Generator converts any JSON object into accurate type definitions for TypeScript, Python, Go, Rust, and 9+ other languages. Paste an API response or example payload, pick your target language, and copy production-ready types instantly. Pair with the Schema Generator to keep types and validation rules in sync across your stack.",
         features: [

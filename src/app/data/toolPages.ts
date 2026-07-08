@@ -98,7 +98,7 @@ const toolPages: Record<string, ToolPage> = {
         ],
         appUrl: "https://app.bracketview.in",
         ctaLabel: "Format JSON now",
-        relatedTools: ["json-validator", "json-diff", "jsonpath-query"],
+        relatedTools: ["json-validator", "ai-json-fixer", "json-diff"],
     },
     "json-validator": {
         slug: "json-validator",
@@ -168,7 +168,7 @@ const toolPages: Record<string, ToolPage> = {
         ],
         appUrl: "https://app.bracketview.in",
         ctaLabel: "Validate JSON now",
-        relatedTools: ["json-formatter", "json-schema-validator", "json-diff"],
+        relatedTools: ["json-formatter", "ai-json-fixer", "json-schema-validator"],
     },
     "json-diff": {
         slug: "json-diff",
@@ -314,11 +314,11 @@ const toolPages: Record<string, ToolPage> = {
         slug: "jq-playground",
         h1: "JQ Filter Online",
         badge: "JQ Playground",
-        metaTitle: "JQ Filter Online — Run jq in Your Browser | BracketView",
+        metaTitle: "Wasm JQ Playground Online — Run jq in Your Browser | BracketView",
         metaDescription:
-            "BracketView runs a full jq engine in your browser via WebAssembly. Filter, transform, and extract JSON with jq expressions. Free online JQ playground — no install.",
+            "Online JQ playground powered by WebAssembly (Wasm) — run a full jq engine in your browser. Filter, transform & extract JSON with jq expressions. Free — no install.",
         intro:
-            "JQ is a lightweight, powerful command-line JSON processor used to filter, transform, and extract data from JSON documents. BracketView's JQ Filter Playground runs a full jq engine in your browser via WebAssembly — no terminal or installation required. Write expressions like .users[] | select(.active) | .name, see results instantly, and use the AI Query Assistant to generate filters from plain English. Ideal for API debugging, log analysis, and data exploration when JSONPath alone isn't enough.",
+            "BracketView's JQ Playground runs a full jq engine online via WebAssembly (Wasm) — filter, transform, and extract JSON directly in your browser with no terminal or installation required. jq is a lightweight, powerful JSON processor for pipelines like .users[] | select(.active) | .name; write expressions and see results instantly, or use the AI Query Assistant to generate filters from plain English. Ideal for API debugging, log analysis, and data exploration when JSONPath alone isn't enough.",
         features: [
             "Full jq engine via WebAssembly in the browser",
             "Live filter results as you type",
@@ -454,11 +454,11 @@ const toolPages: Record<string, ToolPage> = {
         slug: "json-type-generator",
         h1: "Generate TypeScript from JSON",
         badge: "Type Generator",
-        metaTitle: "Generate TypeScript from JSON — 9+ Languages | BracketView",
+        metaTitle: "Convert JSON to TypeScript Online — 9+ Languages | BracketView",
         metaDescription:
-            "Generate TypeScript, Python, Go, and Rust types from JSON. Export in 9+ languages. Free online type generator — no install.",
+            "Convert JSON to TypeScript online for free. Generate TypeScript interfaces, plus Python, Go & Rust types, from any JSON object. No install — runs in your browser.",
         intro:
-            "Generating types from JSON saves hours of manual interface writing when integrating APIs or parsing responses. BracketView's Type Generator converts any JSON object into accurate type definitions for TypeScript, Python, Go, Rust, and 9+ other languages. Paste an API response or example payload, pick your target language, and copy production-ready types instantly. Pair with the Schema Generator to keep types and validation rules in sync across your stack.",
+            "Converting JSON to TypeScript online saves hours of manual interface writing when integrating APIs or parsing responses. BracketView's Type Generator converts any JSON object into accurate TypeScript interfaces — plus Python, Go, Rust, and 9+ other languages. Paste an API response or example payload, pick your target language, and copy production-ready types instantly. Pair with the Schema Generator to keep types and validation rules in sync across your stack.",
         features: [
             "TypeScript interfaces and type aliases",
             "Python dataclasses and TypedDict",
@@ -519,6 +519,76 @@ const toolPages: Record<string, ToolPage> = {
         appUrl: "https://app.bracketview.in",
         ctaLabel: "Generate types now",
         relatedTools: ["json-schema-validator", "json-formatter", "json-validator"],
+    },
+    "ai-json-fixer": {
+        slug: "ai-json-fixer",
+        h1: "Fix Broken JSON Online with AI",
+        badge: "AI JSON Fixer",
+        metaTitle: "AI JSON Fixer — Repair Broken JSON Online | BracketView",
+        metaDescription:
+            "Fix broken JSON online with AI. Repair missing brackets, trailing commas, unquoted keys & truncated payloads instantly. Free AI JSON syntax repair — no install.",
+        intro:
+            "Malformed JSON — from hand-edited configs, truncated API responses, or copy-pasted payloads — often breaks standard parsers with a single missing bracket or trailing comma. BracketView's AI JSON Fixer analyzes broken JSON and automatically repairs syntax errors while preserving your original structure and values as closely as possible. Paste JSON that fails to parse, click Fix, and get valid, well-formed output in seconds — no manual bracket-hunting required. The AI runs as a request to BracketView's servers, so it's not part of the 100% client-side core toolset; review the privacy policy before repairing sensitive data.",
+        features: [
+            "AI-powered repair for missing or mismatched brackets",
+            "Fixes trailing commas and unquoted keys automatically",
+            "Handles unescaped characters and truncated payloads",
+            "Preserves original structure and values where possible",
+            "Pairs with the real-time validator to confirm the fix",
+            UPLOAD_FEATURE_LINE,
+            "Copy repaired JSON in one click",
+        ],
+        howToName: "How to Fix Broken JSON Online with AI Using BracketView",
+        howToDescription:
+            "Repair malformed JSON in three steps using BracketView's AI JSON Fixer.",
+        howToSteps: [
+            {
+                position: 1,
+                name: "Open BracketView",
+                text: "Go to app.bracketview.in in any browser.",
+                url: "https://app.bracketview.in",
+            },
+            {
+                position: 2,
+                name: "Paste your broken JSON",
+                text: "Paste JSON that fails to parse — the validator flags it as invalid.",
+            },
+            {
+                position: 3,
+                name: "Click AI Fix",
+                text: "Run the AI JSON Fixer to repair syntax errors and get valid, formatted output.",
+            },
+        ],
+        faqs: [
+            {
+                question: "How does the AI fix broken JSON?",
+                answer:
+                    "BracketView's AI JSON Fixer analyzes malformed JSON — missing brackets, trailing commas, unquoted keys, unescaped characters, and truncated payloads — and reconstructs valid, well-formed JSON while preserving your original data and structure as closely as possible.",
+            },
+            {
+                question: "Is my JSON data sent to a server?",
+                answer:
+                    "For AI-assisted repair specifically, yes — the JSON is sent to process the AI request. Core tools like the formatter and validator remain 100% client-side. Review the privacy policy before repairing sensitive data with AI.",
+            },
+            {
+                question: "What kinds of JSON errors can it fix?",
+                answer:
+                    "The AI Fixer handles common syntax issues: missing or mismatched brackets and braces, trailing commas, unquoted keys, invalid escape sequences, and truncated or cut-off payloads.",
+            },
+            {
+                question: "Is the AI JSON Fixer free?",
+                answer:
+                    `Yes. Free accounts get ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month, including AI JSON repair. Pro unlocks unlimited AI actions.`,
+            },
+            {
+                question: "Will fixing my JSON change my data?",
+                answer:
+                    "The AI Fixer aims to preserve your original keys, values, and structure exactly — it only corrects syntax errors that prevent parsing. Always review the repaired output before using it in production.",
+            },
+        ],
+        appUrl: "https://app.bracketview.in",
+        ctaLabel: "Fix my JSON now",
+        relatedTools: ["json-formatter", "json-validator", "json-schema-validator"],
     },
 };
 

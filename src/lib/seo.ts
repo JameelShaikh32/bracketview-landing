@@ -13,6 +13,14 @@ const META_TITLE =
 const META_DESCRIPTION =
     "Free online JSON viewer, formatter & validator. Beautify, validate & edit JSON in your browser — privacy-first, no install.";
 
+/** Homepage-only title — distinct from META_TITLE (the sitewide fallback used in layout.tsx). */
+const HOME_TITLE =
+    "BracketView: Next-Gen AI JSON Viewer & JQ Playground";
+
+/** Homepage-only description emphasizing privacy-first, AI repair, and Wasm JQ USPs. */
+const HOME_DESCRIPTION =
+    "Ad-free, privacy-first JSON viewer with AI-powered syntax repair and a WebAssembly-powered JQ playground. Format, validate & query JSON locally — nothing leaves your browser.";
+
 const OG_IMAGE = "/og-image.webp";
 
 const OG_IMAGE_ALT =
@@ -86,6 +94,16 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
         answer:
             "Yes. BracketView supports JSONPath expressions (like $.store.book[*].author) and a full JQ filter playground powered by WebAssembly. The AI Query Assistant lets you describe what you need in plain English and generates a valid jq filter instantly.",
     },
+    {
+        question: "Is my JSON data sent to a server?",
+        answer:
+            "No, not for core tools. Viewing, formatting, validating, and querying JSON with JSONPath or JQ run 100% locally in your browser — your data never leaves your device. AI-assisted features (like AI JSON repair) and snapshot links do send data to process the request; review the privacy policy before using those with sensitive data.",
+    },
+    {
+        question: "How does the AI fix broken JSON?",
+        answer:
+            "BracketView's AI JSON Fixer analyzes malformed JSON — missing brackets, trailing commas, unquoted keys, unescaped characters, and truncated payloads — and reconstructs valid, well-formed JSON while preserving your original data and structure as closely as possible. It's designed for messy API responses, hand-edited configs, and copy-pasted payloads that fail standard parsers.",
+    },
 ];
 
 const FEATURE_LIST = [
@@ -95,13 +113,13 @@ const FEATURE_LIST = [
     "JSON Minifier",
     "JSON Validator",
     "JSONPath Query",
-    "JQ Filter Playground (WebAssembly)",
-    "AI JSON Fixer",
+    "WebAssembly JQ Playground",
+    "AI-Powered JSON Syntax Repair",
     "AI Mock Data Generator",
     "JSON Diff & Compare",
     "JSON Schema Validator",
     "JSON Schema Generator",
-    "TypeScript/Python/Go/Rust Type Generator",
+    "JSON to TypeScript/Python/Go/Rust Converter",
     "Encrypted Snapshot Links",
     "Performance Mode (Pro)",
     "WebRTC Nearby Share",
@@ -193,7 +211,7 @@ function buildSoftwareApplicationSchema() {
         url: SITE_URL,
         sameAs: SAME_AS,
         description:
-            "BracketView is a freemium online JSON viewer, formatter, validator, and query workspace. Features include tree view, graph view, JSONPath, JQ filters, AI JSON repair, JSON diff, schema validation, type generation in 9+ languages, encrypted shareable snapshots, and more — all client-side.",
+            "BracketView is a freemium, ad-free, privacy-first online JSON viewer, formatter, and validator. Features include AI-powered JSON syntax repair, a WebAssembly JQ playground, JSONPath queries, JSON diff, schema validation, JSON-to-TypeScript (and 9+ language) type generation, encrypted shareable snapshots, and more — all running client-side in your browser.",
         featureList: FEATURE_LIST,
         offers: [
             {
@@ -576,7 +594,9 @@ export {
     buildWebSiteSchema,
     createPageMetadata,
     FEATURE_LIST,
+    HOME_DESCRIPTION,
     HOME_KEYWORDS,
+    HOME_TITLE,
     META_DESCRIPTION,
     META_TITLE,
     OG_IMAGE,

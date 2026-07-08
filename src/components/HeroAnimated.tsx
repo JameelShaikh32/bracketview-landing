@@ -42,15 +42,16 @@ const HeroAnimated = () => {
               variants={itemVariant}
               className="max-w-xl text-3xl font-bold leading-snug text-black md:text-5xl dark:text-foreground"
             >
-              JSON Viewer, Formatter &amp; Validator for Modern Developers
+              AI-Powered JSON Viewer, Formatter &amp; Validator
             </motion.h1>
             <motion.p
               variants={itemVariant}
               className="hero-description max-w-md text-base leading-relaxed text-black/70 dark:text-foreground/70"
             >
-              A fast online JSON viewer, formatter, validator, &amp; query tool
-              designed to help developers inspect &amp; work with JSON more
-              efficiently.
+              A fast, privacy-first JSON workspace with AI-powered syntax
+              repair and a WebAssembly-powered JQ playground — format,
+              validate &amp; query JSON without your data ever leaving the
+              browser.
             </motion.p>
 
             <motion.div variants={itemVariant}>
@@ -155,7 +156,7 @@ const HeroAnimated = () => {
           >
             <Image
               src={heroImageSrc}
-              alt="BracketView JSON editor preview"
+              alt="BracketView dark-mode JSON viewer showing AI-powered syntax repair and the WebAssembly JQ playground"
               width={1919}
               height={heroImageHeight}
               sizes="(max-width: 640px) 672px, (max-width: 1024px) 768px, 1024px"

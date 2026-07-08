@@ -19,12 +19,13 @@ const Features = () => {
                     </span>
 
                     <h2 className="mt-8 max-w-3xl text-3xl font-bold leading-snug tracking-tight text-black sm:mt-10 sm:text-4xl md:text-[2.75rem] dark:text-foreground">
-                        A fast, intuitive, and efficient JSON workspace
+                        An AI-powered, ad-free JSON workspace
                     </h2>
 
                     <p className="mt-6 max-w-xl text-sm leading-relaxed text-black/75 sm:mt-8 sm:text-base dark:text-foreground/70">
                         Everything you need to inspect, format, validate, and query
-                        structured data — all in one browser tab.
+                        structured data — including AI-powered syntax repair and a
+                        WebAssembly JQ playground — all in one private browser tab.
                     </p>
                 </Reveal>
 

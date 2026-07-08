@@ -21,7 +21,7 @@ const BlogAppCta = ({ tools }: BlogAppCtaProps) => {
             </p>
             <ul className="mt-4 flex flex-wrap gap-3">
                 {tools.map((tool) => (
-                    <li key={tool.url}>
+                    <li key={tool.label}>
                         <a
                             href={tool.url}
                             target="_blank"

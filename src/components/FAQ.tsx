@@ -34,94 +34,96 @@ const FAQ = () => {
 
                             return (
                                 <li key={item.question}>
-                                    <button
-                                        type="button"
-                                        onClick={() =>
-                                            setOpenIndex(isOpen ? -1 : index)
-                                        }
-                                        className="flex w-full cursor-pointer items-start gap-4 py-6 text-left sm:gap-6 sm:py-8"
-                                        aria-expanded={isOpen}
-                                        aria-controls={panelId}
-                                    >
-                                        <span
-                                            className={`flex size-10 shrink-0 items-center justify-center text-sm font-bold sm:size-11 ${isOpen
-                                                ? "rounded-full bg-black text-white dark:bg-foreground dark:text-background"
-                                                : "text-black dark:text-foreground"
-                                                }`}
+                                    <h3 className="m-0">
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                setOpenIndex(isOpen ? -1 : index)
+                                            }
+                                            className="flex w-full cursor-pointer items-start gap-4 py-6 text-left sm:gap-6 sm:py-8"
+                                            aria-expanded={isOpen}
+                                            aria-controls={panelId}
                                         >
-                                            {step}
-                                        </span>
-
-                                        <span className="min-w-0 flex-1 pt-1">
-                                            <span className="block text-base font-bold leading-snug text-black sm:text-lg dark:text-foreground">
-                                                {item.question}
+                                            <span
+                                                className={`flex size-10 shrink-0 items-center justify-center text-sm font-bold sm:size-11 ${isOpen
+                                                    ? "rounded-full bg-black text-white dark:bg-foreground dark:text-background"
+                                                    : "text-black dark:text-foreground"
+                                                    }`}
+                                            >
+                                                {step}
                                             </span>
-                                        </span>
 
-                                        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent text-black dark:bg-accent-dark dark:text-white sm:size-11">
-                                            <AnimatePresence mode="wait" initial={false}>
-                                                {isOpen ? (
-                                                    <motion.span
-                                                        key="minus"
-                                                        initial={{
-                                                            opacity: 0,
-                                                            rotate: -90,
-                                                            scale: 0.8,
-                                                        }}
-                                                        animate={{
-                                                            opacity: 1,
-                                                            rotate: 0,
-                                                            scale: 1,
-                                                        }}
-                                                        exit={{
-                                                            opacity: 0,
-                                                            rotate: 90,
-                                                            scale: 0.8,
-                                                        }}
-                                                        transition={{
-                                                            duration: 0.2,
-                                                        }}
-                                                        className="flex items-center justify-center"
-                                                    >
-                                                        <Minus
-                                                            size={18}
-                                                            strokeWidth={2.5}
-                                                            aria-hidden
-                                                        />
-                                                    </motion.span>
-                                                ) : (
-                                                    <motion.span
-                                                        key="plus"
-                                                        initial={{
-                                                            opacity: 0,
-                                                            rotate: -90,
-                                                            scale: 0.8,
-                                                        }}
-                                                        animate={{
-                                                            opacity: 1,
-                                                            rotate: 0,
-                                                            scale: 1,
-                                                        }}
-                                                        exit={{
-                                                            opacity: 0,
-                                                            rotate: 90,
-                                                            scale: 0.8,
-                                                        }}
-                                                        transition={{
-                                                            duration: 0.2,
-                                                        }}
-                                                        className="flex items-center justify-center"
-                                                    >
-                                                        <Plus
-                                                            size={18}
-                                                            strokeWidth={2.5}
-                                                            aria-hidden
-                                                        />
-                                                    </motion.span>
-                                                )}
-                                            </AnimatePresence>
-                                        </span>
-                                    </button>
+                                            <span className="min-w-0 flex-1 pt-1">
+                                                <span className="block text-base font-bold leading-snug text-black sm:text-lg dark:text-foreground">
+                                                    {item.question}
+                                                </span>
+                                            </span>
+
+                                            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent text-black dark:bg-accent-dark dark:text-white sm:size-11">
+                                                <AnimatePresence mode="wait" initial={false}>
+                                                    {isOpen ? (
+                                                        <motion.span
+                                                            key="minus"
+                                                            initial={{
+                                                                opacity: 0,
+                                                                rotate: -90,
+                                                                scale: 0.8,
+                                                            }}
+                                                            animate={{
+                                                                opacity: 1,
+                                                                rotate: 0,
+                                                                scale: 1,
+                                                            }}
+                                                            exit={{
+                                                                opacity: 0,
+                                                                rotate: 90,
+                                                                scale: 0.8,
+                                                            }}
+                                                            transition={{
+                                                                duration: 0.2,
+                                                            }}
+                                                            className="flex items-center justify-center"
+                                                        >
+                                                            <Minus
+                                                                size={18}
+                                                                strokeWidth={2.5}
+                                                                aria-hidden
+                                                            />
+                                                        </motion.span>
+                                                    ) : (
+                                                        <motion.span
+                                                            key="plus"
+                                                            initial={{
+                                                                opacity: 0,
+                                                                rotate: -90,
+                                                                scale: 0.8,
+                                                            }}
+                                                            animate={{
+                                                                opacity: 1,
+                                                                rotate: 0,
+                                                                scale: 1,
+                                                            }}
+                                                            exit={{
+                                                                opacity: 0,
+                                                                rotate: 90,
+                                                                scale: 0.8,
+                                                            }}
+                                                            transition={{
+                                                                duration: 0.2,
+                                                            }}
+                                                            className="flex items-center justify-center"
+                                                        >
+                                                            <Plus
+                                                                size={18}
+                                                                strokeWidth={2.5}
+                                                                aria-hidden
+                                                            />
+                                                        </motion.span>
+                                                    )}
+                                                </AnimatePresence>
+                                            </span>
+                                        </button>
+                                    </h3>
 
                                     <div
                                         id={panelId}

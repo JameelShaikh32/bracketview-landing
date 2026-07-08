@@ -7,9 +7,9 @@ import {
   buildSpeakableSchema,
   buildWebSiteSchema,
   createPageMetadata,
+  HOME_DESCRIPTION,
   HOME_KEYWORDS,
-  META_DESCRIPTION,
-  META_TITLE,
+  HOME_TITLE,
 } from "@/lib/seo";
 import AboutUs from "../components/AboutUs";
 import CtaSection from "../components/CtaSection";
@@ -25,8 +25,8 @@ const FAQ = dynamic(() => import("../components/FAQ"));
 
 export const metadata = createPageMetadata({
   path: "/",
-  title: META_TITLE,
-  description: META_DESCRIPTION,
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
   keywords: HOME_KEYWORDS,
 });
 

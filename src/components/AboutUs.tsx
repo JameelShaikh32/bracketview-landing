@@ -32,7 +32,10 @@ const AboutUs = () => {
                             About us
                         </span>
 
-                        <h2 className="mt-8 max-w-6xl text-3xl font-bold leading-snug tracking-tight text-black sm:mt-10 sm:text-4xl md:text-[2.75rem] dark:text-foreground">
+                        <h2
+                            id="what-is-bracketview"
+                            className="mt-8 max-w-6xl text-3xl font-bold leading-snug tracking-tight text-black sm:mt-10 sm:text-4xl md:text-[2.75rem] dark:text-foreground"
+                        >
                             What is BracketView?
                         </h2>
 

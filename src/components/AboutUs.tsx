@@ -57,7 +57,7 @@ const AboutUs = () => {
 
                         <Link
                             href="/about"
-                            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent transition-opacity hover:opacity-80 dark:text-accent-dark"
+                            className="mt-6 inline-flex min-h-11 items-center gap-2 py-2 text-sm font-medium text-accent transition-opacity hover:opacity-80 dark:text-accent-dark"
                         >
                             Read more about BracketView
                             <ArrowRight size={16} aria-hidden />

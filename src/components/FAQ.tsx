@@ -2,8 +2,6 @@
 
 import Reveal from "@/components/motion/Reveal";
 import { SEO_FAQ_ITEMS } from "@/lib/seo";
-import { Minus, Plus } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 const FAQ = () => {
@@ -59,95 +57,38 @@ const FAQ = () => {
                                                 </span>
                                             </span>
 
-                                            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent text-black dark:bg-accent-dark dark:text-white sm:size-11">
-                                                <AnimatePresence mode="wait" initial={false}>
-                                                    {isOpen ? (
-                                                        <motion.span
-                                                            key="minus"
-                                                            initial={{
-                                                                opacity: 0,
-                                                                rotate: -90,
-                                                                scale: 0.8,
-                                                            }}
-                                                            animate={{
-                                                                opacity: 1,
-                                                                rotate: 0,
-                                                                scale: 1,
-                                                            }}
-                                                            exit={{
-                                                                opacity: 0,
-                                                                rotate: 90,
-                                                                scale: 0.8,
-                                                            }}
-                                                            transition={{
-                                                                duration: 0.2,
-                                                            }}
-                                                            className="flex items-center justify-center"
-                                                        >
-                                                            <Minus
-                                                                size={18}
-                                                                strokeWidth={2.5}
-                                                                aria-hidden
-                                                            />
-                                                        </motion.span>
-                                                    ) : (
-                                                        <motion.span
-                                                            key="plus"
-                                                            initial={{
-                                                                opacity: 0,
-                                                                rotate: -90,
-                                                                scale: 0.8,
-                                                            }}
-                                                            animate={{
-                                                                opacity: 1,
-                                                                rotate: 0,
-                                                                scale: 1,
-                                                            }}
-                                                            exit={{
-                                                                opacity: 0,
-                                                                rotate: 90,
-                                                                scale: 0.8,
-                                                            }}
-                                                            transition={{
-                                                                duration: 0.2,
-                                                            }}
-                                                            className="flex items-center justify-center"
-                                                        >
-                                                            <Plus
-                                                                size={18}
-                                                                strokeWidth={2.5}
-                                                                aria-hidden
-                                                            />
-                                                        </motion.span>
-                                                    )}
-                                                </AnimatePresence>
+                                            <span className="relative flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent text-black dark:bg-accent-dark dark:text-white sm:size-11">
+                                                <span
+                                                    aria-hidden
+                                                    className="absolute h-[2px] w-[16px] rounded-full bg-current"
+                                                />
+                                                <span
+                                                    aria-hidden
+                                                    className={`absolute h-[16px] w-[2px] rounded-full bg-current transition-transform duration-200 ease-out motion-reduce:transition-none ${isOpen ? "scale-y-0" : "scale-y-100"
+                                                        }`}
+                                                />
                                             </span>
                                         </button>
                                     </h3>
 
+                                    {/* Height is toggled instantly (not animated) because animating
+                                        grid-template-rows/height forces a layout recalculation on every
+                                        frame, which is a major cause of poor INP. Only compositor-only
+                                        properties (opacity/transform) are transitioned below. */}
                                     <div
                                         id={panelId}
-                                        className={`grid transition-[grid-template-rows] duration-300 ease-in-out motion-reduce:transition-none ${isOpen
-                                            ? "grid-rows-[1fr]"
-                                            : "grid-rows-[0fr]"
-                                            }`}
+                                        className={`grid ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
                                         aria-hidden={!isOpen}
                                     >
                                         <div className="overflow-hidden">
-                                            <motion.p
-                                                initial={false}
-                                                animate={{
-                                                    opacity: isOpen ? 1 : 0,
-                                                    y: isOpen ? 0 : -8,
-                                                }}
-                                                transition={{
-                                                    duration: 0.3,
-                                                    ease: "easeOut",
-                                                }}
-                                                className="pb-6 pl-14 pr-14 text-sm leading-relaxed text-black/75 sm:pb-8 sm:pl-19 sm:pr-16 dark:text-foreground/75"
+                                            <p
+                                                className={`pb-6 pl-14 pr-14 text-sm leading-relaxed text-black/75 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none sm:pb-8 sm:pl-19 sm:pr-16 dark:text-foreground/75 ${isOpen
+                                                    ? "translate-y-0 opacity-100"
+                                                    : "-translate-y-2 opacity-0"
+                                                    }`}
                                             >
                                                 {item.answer}
-                                            </motion.p>
+                                            </p>
                                         </div>
                                     </div>
                                 </li>

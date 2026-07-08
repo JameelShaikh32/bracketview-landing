@@ -88,7 +88,7 @@ const FooterColumn = ({
     <h3 className="text-sm font-bold text-black dark:text-foreground">
       {title}
     </h3>
-    <ul className="mt-4 space-y-3">
+    <ul className="mt-2">
       {links.map((link) => (
         <li key={link.label}>
           <Link

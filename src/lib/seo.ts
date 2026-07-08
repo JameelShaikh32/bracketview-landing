@@ -17,9 +17,9 @@ const META_DESCRIPTION =
 const HOME_TITLE =
     "BracketView: Next-Gen AI JSON Viewer & JQ Playground";
 
-/** Homepage-only description emphasizing privacy-first, AI repair, and Wasm JQ USPs. */
+/** Homepage-only description emphasizing privacy-first, AI repair, and Wasm JQ USPs. Keep 100–130 chars. */
 const HOME_DESCRIPTION =
-    "Ad-free, privacy-first JSON viewer with AI-powered syntax repair and a WebAssembly-powered JQ playground. Format, validate & query JSON locally — nothing leaves your browser.";
+    "Ad-free JSON viewer with AI-powered syntax repair and a WebAssembly JQ playground. Privacy-first — nothing leaves your browser.";
 
 const OG_IMAGE = "/og-image.webp";
 

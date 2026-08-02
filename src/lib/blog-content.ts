@@ -34,6 +34,10 @@ const APP_TOOL_URLS: Record<string, { label: string; url: string }> = {
         label: "Type Generator",
         url: toolPages["json-type-generator"].appUrl,
     },
+    "webhook-tester": {
+        label: "Webhook Tester",
+        url: toolPages["webhook-tester"].appUrl,
+    },
 };
 
 type BlogPostMeta = {

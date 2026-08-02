@@ -34,6 +34,7 @@ module.exports = {
             "/json-schema-validator": 0.8,
             "/json-type-generator": 0.8,
             "/ai-json-fixer": 0.8,
+            "/webhook-tester": 0.8,
             "/contact": 0.5,
             "/privacy": 0.3,
             "/terms": 0.3,
@@ -56,6 +57,7 @@ module.exports = {
             "/json-schema-validator": "weekly",
             "/json-type-generator": "weekly",
             "/ai-json-fixer": "weekly",
+            "/webhook-tester": "weekly",
             "/contact": "monthly",
         };
 

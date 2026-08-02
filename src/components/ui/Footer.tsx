@@ -28,7 +28,7 @@ const FeaturedOnBadge = ({
   imageHeight,
   rel,
 }: {
-  type: "producthunt" | "saashub";
+  type: "producthunt" | "saashub" | "g2" | "capterra";
   label: string;
   href: string;
   imageSrc?: string;

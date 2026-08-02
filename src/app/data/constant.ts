@@ -17,6 +17,7 @@ import {
     FREE_SNAPSHOT_EXPIRY_LABEL,
     FREE_SNAPSHOTS_LABEL,
     FREE_UPLOAD_LABEL,
+    FREE_WEBHOOK_LABEL,
     PRICING,
     PRO_AI_LABEL,
     PRO_MONTHLY_PRICE_LABEL,
@@ -24,6 +25,8 @@ import {
     PRO_SNAPSHOT_EXPIRY_LABEL,
     PRO_SNAPSHOTS_LABEL,
     PRO_UPLOAD_LABEL,
+    PRO_WEBHOOK_LABEL,
+    PRO_WEBHOOK_SHARE_LABEL,
     PRO_YEARLY_BILL_LABEL,
     PRO_YEARLY_MONTHLY_LABEL,
 } from "./planLimits";
@@ -90,7 +93,11 @@ const useCases: UseCaseItem[] = [
         icon: Webhook,
         title: "Webhook review",
         description:
-            "Validate incoming payloads, spot schema drift, and share snapshots with your team.",
+            "Generate a disposable public URL, point Stripe, GitHub, or Shopify at it, and inspect live headers and bodies — then mock responses or replay to localhost.",
+        relatedLinks: [
+            { label: "Webhook Tester", href: "/webhook-tester" },
+            { label: "Schema validator", href: "/json-schema-validator" },
+        ],
     },
     {
         icon: Settings2,
@@ -146,11 +153,12 @@ const features: FeatureItem[] = [
         cta: "Try JSONPath",
     },
     {
-        icon: GitCompare,
-        title: "Compare JSON & Export",
-        description: "Compare two JSON versions and export formatted output",
-        href: "/json-diff",
-        cta: "Try JSON diff",
+        icon: Webhook,
+        title: "Webhook Tester",
+        description:
+            "Disposable public webhook URLs — capture live headers, bodies, and mock responses",
+        href: "/webhook-tester",
+        cta: "Open Webhook Tester",
     },
 ];
 
@@ -176,11 +184,12 @@ const pricingPlans: PricingPlan[] = [
         price: "$0",
         period: "forever",
         description:
-            "Core JSON workspace at no cost. Upload, snapshot, and AI limits apply.",
+            "Core JSON workspace at no cost. Upload, snapshot, AI, and Webhook Tester limits apply.",
         features: [
             "JSON viewer, editor, format, validate & minify",
             "Tree, graph, JSONPath, JQ, diff & schema tools",
             "Type generators, compare view & utility tools",
+            FREE_WEBHOOK_LABEL,
             `Uploads up to ${FREE_UPLOAD_LABEL}`,
             FREE_SNAPSHOTS_LABEL,
             FREE_SNAPSHOT_EXPIRY_LABEL,
@@ -195,10 +204,12 @@ const pricingPlans: PricingPlan[] = [
         price: PRO_MONTHLY_PRICE_LABEL,
         period: "per month",
         description:
-            "For developers who work in JSON daily — no caps on AI or sharing.",
+            "For developers who work in JSON daily — higher caps on uploads, webhooks, AI, and sharing.",
         features: [
             "Everything in Free",
             `Uploads up to ${PRO_UPLOAD_LABEL}`,
+            PRO_WEBHOOK_LABEL,
+            PRO_WEBHOOK_SHARE_LABEL,
             PRO_SNAPSHOTS_LABEL,
             PRO_SNAPSHOT_EXPIRY_LABEL,
             PRO_AI_LABEL,
@@ -214,13 +225,15 @@ const pricingPlans: PricingPlan[] = [
         name: "Yearly",
         originalPrice: PRO_MONTHLY_PRICE_LABEL,
         displayPrice: PRO_YEARLY_MONTHLY_LABEL,
-        billingNote: `Annual bill of ${PRO_YEARLY_BILL_LABEL} with no usage limitations.`,
+        billingNote: `Annual bill of ${PRO_YEARLY_BILL_LABEL} with raised Pro caps.`,
         saveTag: `SAVE ${PRICING.annualDiscountPercent}%`,
         description:
             "Best value for power users — same Pro benefits, billed once a year.",
         features: [
             "Everything in Free",
             `Uploads up to ${PRO_UPLOAD_LABEL}`,
+            PRO_WEBHOOK_LABEL,
+            PRO_WEBHOOK_SHARE_LABEL,
             PRO_SNAPSHOTS_LABEL,
             PRO_SNAPSHOT_EXPIRY_LABEL,
             PRO_AI_LABEL,
@@ -255,6 +268,7 @@ const footerLinks = {
         { label: "JQ Playground", href: "/jq-playground" },
         { label: "Schema Validator", href: "/json-schema-validator" },
         { label: "Type Generator", href: "/json-type-generator" },
+        { label: "Webhook Tester", href: "/webhook-tester" },
         { label: "Glossary", href: "/glossary" },
     ],
     company: [
@@ -293,6 +307,26 @@ const featuredOnLinks = [
         imageAlt: "BracketView badge",
         imageWidth: 150,
         imageHeight: 50,
+        rel: "",
+    },
+    {
+        label: "G2",
+        type: "g2" as const,
+        href: "https://www.g2.com/products/bracketview",
+        imageSrc: "/images/g2-logo.webp",
+        imageAlt: "BracketView on G2",
+        imageWidth: 54,
+        imageHeight: 54,
+        rel: "",
+    },
+    {
+        label: "Capterra",
+        type: "capterra" as const,
+        href: "https://www.capterra.com/p/10053145/BracketView/",
+        imageSrc: "/images/capterra.webp",
+        imageAlt: "BracketView on Capterra",
+        imageWidth: 200,
+        imageHeight: 46,
         rel: "",
     },
 ];

@@ -1,9 +1,15 @@
 import type { FaqItem } from "@/lib/seo";
-import { PLAN_LIMITS } from "./planLimits";
+import {
+    APP_WEBHOOKS_URL,
+    formatCount,
+    PLAN_LIMITS,
+} from "./planLimits";
 
 const UPLOAD_FEATURE_LINE = `Upload .json files up to ${PLAN_LIMITS.free.uploadMb} MB (${PLAN_LIMITS.pro.uploadMb} MB on Pro)`;
 const UPLOAD_FILES_LINE = `Upload files up to ${PLAN_LIMITS.free.uploadMb} MB (${PLAN_LIMITS.pro.uploadMb} MB on Pro)`;
 const UPLOAD_FAQ_ANSWER = `Yes. Free accounts support uploads up to ${PLAN_LIMITS.free.uploadMb} MB. Pro raises the limit to ${PLAN_LIMITS.pro.uploadMb} MB.`;
+const FREE_WEBHOOK_CAPS = `${PLAN_LIMITS.free.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each, ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention`;
+const PRO_WEBHOOK_CAPS = `${PLAN_LIMITS.pro.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} requests each, ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day retention`;
 
 type ToolDemoVideo = {
     src?: string;
@@ -589,6 +595,84 @@ const toolPages: Record<string, ToolPage> = {
         appUrl: "https://app.bracketview.in",
         ctaLabel: "Fix my JSON now",
         relatedTools: ["json-formatter", "json-validator", "json-schema-validator"],
+    },
+    "webhook-tester": {
+        slug: "webhook-tester",
+        h1: "Webhook Tester Online",
+        badge: "Webhook Tester",
+        metaTitle:
+            "Webhook Tester — Capture & Inspect Webhooks Online | BracketView",
+        metaDescription:
+            "Free webhook tester and catcher. Generate a disposable public webhook URL, capture live headers and bodies, mock responses, and verify Stripe, GitHub, and Shopify signatures. Try free with clear freemium caps.",
+        intro:
+            "Generate a public webhook URL, send events from any service, and debug the payload in real time—next to the rest of your JSON toolkit. BracketView Webhook Tester gives you disposable endpoints for Stripe, GitHub, Shopify, and custom APIs: inspect method, headers, query params, and body (JSON, form, XML, or text), build mock responses for future requests, replay captures to localhost or staging, and verify HMAC signatures in the browser. URL shape: https://hooks.bracketview.in/e/{token}. Endpoints are public—anyone with the link can POST—and history expires on a short retention schedule by design.",
+        features: [
+            "Disposable named endpoints (e.g. “Stripe test”) with free and Pro caps",
+            "Capture GET, POST, PUT, PATCH, DELETE, HEAD, and OPTIONS",
+            "Live request feed without full-page refresh; pause while inspecting",
+            "Inspect method, path, timestamp, headers (sensitive values masked), query, body, and returned response",
+            "Mock response builder: status, headers, body, optional delay — applies to future requests only",
+            "Replay or edit-and-resend captures to a target URL with status, body, and timing",
+            "Client-side HMAC helpers for Stripe, GitHub, and Shopify — secret stays in the browser",
+            "History: filter, search, delete one, clear all, export JSON",
+            `Free: ${FREE_WEBHOOK_CAPS}; Pro: ${PRO_WEBHOOK_CAPS} plus encrypted share of a single capture`,
+        ],
+        howToName: "How to Capture and Inspect Webhooks with BracketView",
+        howToDescription:
+            "Create a disposable webhook URL and inspect live HTTP captures in three steps.",
+        howToSteps: [
+            {
+                position: 1,
+                name: "Open Webhook Tester",
+                text: "Go to app.bracketview.in/webhooks and create an endpoint (name it for your integration).",
+                url: APP_WEBHOOKS_URL,
+            },
+            {
+                position: 2,
+                name: "Point your service at the public URL",
+                text: "Paste the endpoint URL into Stripe, GitHub, Shopify, a tunnel, or any API that POSTs events.",
+            },
+            {
+                position: 3,
+                name: "Inspect, mock, or replay",
+                text: "Watch requests land live. Expand headers and body, set a mock response for future hits, or resend to localhost.",
+            },
+        ],
+        faqs: [
+            {
+                question: "What is a webhook tester?",
+                answer:
+                    "A webhook tester (or webhook catcher) gives you a public URL that records incoming HTTP requests so you can debug integrations without standing up your own server. BracketView includes a Webhook Tester next to its JSON viewer and formatter.",
+            },
+            {
+                question: "Is Webhook Tester free?",
+                answer:
+                    `Yes — free and guest use is real, with caps. Free: ${FREE_WEBHOOK_CAPS}. Pro: ${PRO_WEBHOOK_CAPS}, plus encrypted read-only share links for a single captured request.`,
+            },
+            {
+                question: "Are webhook URLs private?",
+                answer:
+                    "No. Webhook URLs are public — anyone who has the link can POST data to it. Do not send secrets you would not put in a short-lived public channel. Endpoints and history expire on a retention schedule.",
+            },
+            {
+                question: "Does mock response apply to past requests?",
+                answer:
+                    "No. The mock response builder (custom status, headers, body, optional delay) applies only to future requests that hit the endpoint after you save the mock.",
+            },
+            {
+                question: "Can multiple teammates share one live endpoint in real time?",
+                answer:
+                    "v1 is designed for personal debugging sessions, not true multi-user collaboration on one endpoint. Pro can share a single captured request via an encrypted snapshot-style link.",
+            },
+            {
+                question: "How is this different from client-side JSON tools?",
+                answer:
+                    "Core format/validate tools keep JSON in your browser. Webhook Tester stores short-lived captures so services can POST to a public URL — data is temporary by design, not unlimited long-term storage.",
+            },
+        ],
+        appUrl: APP_WEBHOOKS_URL,
+        ctaLabel: "Open Webhook Tester",
+        relatedTools: ["json-formatter", "json-diff", "json-schema-validator"],
     },
 };
 

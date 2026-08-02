@@ -129,9 +129,9 @@ const Pricing = () => {
           </h2>
 
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-black/75 sm:mt-8 sm:text-base dark:text-foreground/70">
-            Core JSON tools stay free forever. Pro removes limits on AI,
-            uploads, and encrypted snapshot sharing — plus Performance Mode
-            for large JSON files.
+            Core JSON tools stay free forever. Pro raises limits on AI, uploads,
+            encrypted snapshots, and Webhook Tester retention — plus Performance
+            Mode for large JSON files.
           </p>
         </Reveal>
 

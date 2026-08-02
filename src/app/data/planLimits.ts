@@ -5,10 +5,20 @@ const PLAN_LIMITS = {
         snapshotsPerMonth: 5,
         aiActionsPerMonth: 20,
         snapshotMaxExpiryMinutes: 10,
+        webhookEndpoints: 3,
+        webhookRequestsPerEndpoint: 25,
+        webhookMaxRetentionDays: 2,
+        webhookDefaultRetentionDays: 2,
+        webhookMaxBodyKb: 256,
     },
     pro: {
         uploadMb: 50,
         snapshotMaxExpiryMinutes: 120,
+        webhookEndpoints: 25,
+        webhookRequestsPerEndpoint: 5_000,
+        webhookMaxRetentionDays: 30,
+        webhookDefaultRetentionDays: 7,
+        webhookMaxBodyMb: 1,
     },
 } as const;
 
@@ -21,6 +31,10 @@ const PRICING = {
 
 function formatUsd(amount: number): string {
     return amount % 1 === 0 ? `$${amount}` : `$${amount.toFixed(2)}`;
+}
+
+function formatCount(n: number): string {
+    return n.toLocaleString("en-US");
 }
 
 const PRO_MONTHLY_PRICE_LABEL = formatUsd(PRICING.monthlyUsd);
@@ -52,14 +66,20 @@ const PRO_PERFORMANCE_MODE_LABEL =
 const FREE_SNAPSHOT_EXPIRY_LABEL = `Snapshot links up to ${formatExpiryMinutes(PLAN_LIMITS.free.snapshotMaxExpiryMinutes)} expiry`;
 const PRO_SNAPSHOT_EXPIRY_LABEL = `Snapshot links up to ${formatExpiryMinutes(PLAN_LIMITS.pro.snapshotMaxExpiryMinutes)} expiry`;
 
+const FREE_WEBHOOK_LABEL = `Webhook Tester: ${PLAN_LIMITS.free.webhookEndpoints} endpoints · ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each · ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention`;
+const PRO_WEBHOOK_LABEL = `Webhook Tester: ${PLAN_LIMITS.pro.webhookEndpoints} endpoints · ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} requests each · ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day retention`;
+const PRO_WEBHOOK_SHARE_LABEL =
+    "Share captured webhook requests via encrypted snapshot links";
+
 const PRO_VALUE_SUMMARY =
-    "Pro is for daily JSON work — larger files, Performance Mode, unlimited sharing, and unlimited AI.";
+    "Pro is for daily JSON work — larger files, Performance Mode, higher Webhook Tester caps with capture share links, unlimited snapshot sharing, and unlimited AI.";
 
 const FREE_TIER_SUMMARY =
-    "Core JSON tools stay free. Paid limits apply to uploads, snapshots, and AI.";
+    "Core JSON tools stay free. Paid limits apply to uploads, snapshots, AI, and Webhook Tester caps.";
 
 const APP_BASE_URL = "https://app.bracketview.in";
 const APP_PRICING_URL = `${APP_BASE_URL}/pricing`;
+const APP_WEBHOOKS_URL = `${APP_BASE_URL}/webhooks`;
 
 type ProCheckoutPlan = "monthly" | "yearly";
 
@@ -76,7 +96,9 @@ export {
     APP_PRICING_MONTHLY_CHECKOUT_URL,
     APP_PRICING_URL,
     APP_PRICING_YEARLY_CHECKOUT_URL,
+    APP_WEBHOOKS_URL,
     appPricingCheckoutUrl,
+    formatCount,
     formatExpiryMinutes,
     formatUsd,
     FREE_AI_LABEL,
@@ -84,6 +106,7 @@ export {
     FREE_SNAPSHOTS_LABEL,
     FREE_TIER_SUMMARY,
     FREE_UPLOAD_LABEL,
+    FREE_WEBHOOK_LABEL,
     PLAN_LIMITS,
     PRICING,
     PRO_AI_LABEL,
@@ -93,6 +116,8 @@ export {
     PRO_PRICING_SUMMARY,
     PRO_SNAPSHOT_EXPIRY_LABEL,
     PRO_SNAPSHOTS_LABEL,
+    PRO_WEBHOOK_LABEL,
+    PRO_WEBHOOK_SHARE_LABEL,
     PRO_YEARLY_BILL_LABEL,
     PRO_YEARLY_MONTHLY_LABEL,
     PRO_UPLOAD_LABEL,

@@ -1,4 +1,8 @@
-import { formatExpiryMinutes, PLAN_LIMITS } from "./planLimits";
+import {
+    formatCount,
+    formatExpiryMinutes,
+    PLAN_LIMITS,
+} from "./planLimits";
 
 type LegalSection = {
     title: string;
@@ -19,7 +23,7 @@ const privacyPolicy: LegalDocument = {
     title: "Privacy Policy",
     lastUpdated: "2026-07-01",
     intro:
-        "BracketView is built so most JSON work stays in your browser. Optional features (AI repair, shareable snapshots) can send data to our servers or third parties only when you choose to use them. Read the sections below for specifics.",
+        "BracketView is built so most JSON work stays in your browser. Optional features (AI repair, shareable snapshots, Webhook Tester) can send or store data on our servers only when you choose to use them. Read the sections below for specifics.",
     sections: [
         {
             title: "Data controller",
@@ -38,6 +42,13 @@ const privacyPolicy: LegalDocument = {
             paragraphs: [
                 "If you create a temporary snapshot link, your JSON text and any annotations you add are uploaded and stored until the expiry time you select so anyone with the link can open it. Payloads are encrypted at rest (AES-256-GCM).",
                 "Links use hard-to-guess ids but are public to anyone who has the URL — do not snapshot secrets, personal data, or anything you would not want exposed. After expiry, snapshots are intended to be removed from storage. Do not rely on snapshots for long-term backup.",
+            ],
+        },
+        {
+            title: "Webhook Tester",
+            paragraphs: [
+                "Webhook Tester provides public disposable endpoints that record incoming HTTP requests (headers, body, query, and related metadata) so you can debug integrations. Captures are stored for a limited retention period (by plan) and then expire. Anyone who knows the endpoint URL can POST data to it — treat webhook URLs like short-lived public channels and do not send secrets you would not expose.",
+                "This is different from client-side JSON editing: webhook traffic must reach our capture infrastructure so third-party services can deliver events. History is short-lived by design, not long-term storage.",
             ],
         },
         {
@@ -97,8 +108,8 @@ const termsOfService: LegalDocument = {
         {
             title: "Free and Pro usage limits",
             paragraphs: [
-                `Core JSON tools (viewer, formatter, validator, tree, graph, JSONPath, jq, diff, and schema) are available on the free tier. Free signed-in accounts include uploads up to ${PLAN_LIMITS.free.uploadMb} MB, ${PLAN_LIMITS.free.snapshotsPerMonth} encrypted snapshot links per month (up to ${formatExpiryMinutes(PLAN_LIMITS.free.snapshotMaxExpiryMinutes)} expiry), and ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month.`,
-                `BracketView Pro unlocks uploads up to ${PLAN_LIMITS.pro.uploadMb} MB, Performance Mode for large JSON payloads, unlimited encrypted snapshot links (up to ${formatExpiryMinutes(PLAN_LIMITS.pro.snapshotMaxExpiryMinutes)} expiry), unlimited AI features, and priority email support. Limits may change with notice; see bracketview.in for current plan details.`,
+                `Core JSON tools (viewer, formatter, validator, tree, graph, JSONPath, jq, diff, and schema) and Webhook Tester are available on the free tier. Free signed-in accounts include uploads up to ${PLAN_LIMITS.free.uploadMb} MB, ${PLAN_LIMITS.free.snapshotsPerMonth} encrypted snapshot links per month (up to ${formatExpiryMinutes(PLAN_LIMITS.free.snapshotMaxExpiryMinutes)} expiry), ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month, and Webhook Tester with up to ${PLAN_LIMITS.free.webhookEndpoints} active endpoints, ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests per endpoint, and up to ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention.`,
+                `BracketView Pro unlocks uploads up to ${PLAN_LIMITS.pro.uploadMb} MB, Performance Mode for large JSON payloads, unlimited encrypted snapshot links (up to ${formatExpiryMinutes(PLAN_LIMITS.pro.snapshotMaxExpiryMinutes)} expiry), unlimited AI features, Webhook Tester with up to ${PLAN_LIMITS.pro.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} requests per endpoint, and up to ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day retention, plus encrypted share of a single captured webhook request, and priority email support. Limits may change with notice; see bracketview.in for current plan details.`,
             ],
         },
         {
@@ -134,7 +145,7 @@ const disclaimer: LegalDocument = {
             title: "User responsibility for pasted content",
             paragraphs: [
                 "You are solely responsible for the JSON and other data you paste, upload, or share through BracketView. Do not submit secrets, credentials, personal data, or regulated information unless you understand and accept the risks.",
-                "Optional snapshot links are accessible to anyone with the URL. Core formatting and validation run locally in your browser; optional features (snapshots, AI) may transmit data as described in our Privacy Policy.",
+                "Optional snapshot links and public webhook endpoint URLs are accessible to anyone with the link. Core formatting and validation run locally in your browser; optional features (snapshots, AI, Webhook Tester) may transmit or store data as described in our Privacy Policy.",
             ],
         },
         {

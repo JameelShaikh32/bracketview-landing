@@ -20,9 +20,14 @@ import {
     StickyNote,
     Terminal,
     Wand2,
+    Webhook,
     Zap,
 } from "lucide-react";
-import { APP_PRICING_MONTHLY_CHECKOUT_URL } from "./planLimits";
+import {
+    APP_PRICING_MONTHLY_CHECKOUT_URL,
+    APP_WEBHOOKS_URL,
+    FREE_WEBHOOK_LABEL,
+} from "./planLimits";
 
 type FeaturePageItem = {
     icon: LucideIcon;
@@ -267,6 +272,13 @@ const featureCategories: FeatureCategory[] = [
         description:
             "Extra tools that keep you in one workspace instead of tab-hopping.",
         features: [
+            {
+                icon: Webhook,
+                title: "Webhook Tester",
+                description: `Generate disposable public webhook URLs, capture live HTTP requests, mock responses, and verify signatures. Free tier: ${FREE_WEBHOOK_LABEL.replace("Webhook Tester: ", "")}.`,
+                href: APP_WEBHOOKS_URL,
+                cta: "Open Webhook Tester",
+            },
             {
                 icon: Binary,
                 title: "Encoder / Decoder",

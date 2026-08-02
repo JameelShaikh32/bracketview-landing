@@ -18,14 +18,16 @@ const UseCaseCard = ({
         <motion.article
             whileHover={{ y: -4 }}
             transition={springTransition}
-            className="group flex min-h-56 flex-col rounded-4xl bg-white p-6 text-black transition-colors duration-300 hover:bg-accent sm:min-h-64 sm:p-8 dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white"
+            className="group flex h-full min-h-56 flex-col rounded-4xl bg-white p-6 text-black transition-colors duration-300 hover:bg-accent sm:min-h-64 sm:p-8 dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white"
         >
-            <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-gray text-black transition-colors duration-300 group-hover:bg-white sm:mb-8 sm:size-14 dark:bg-background dark:text-foreground dark:group-hover:bg-white dark:group-hover:text-black">
+            <div className="mb-6 flex size-12 shrink-0 items-center justify-center rounded-2xl bg-gray text-black transition-colors duration-300 group-hover:bg-white sm:mb-8 sm:size-14 dark:bg-background dark:text-foreground dark:group-hover:bg-white dark:group-hover:text-black">
                 <Icon size={22} strokeWidth={1.75} aria-hidden />
             </div>
 
             <h3 className="text-xl font-bold leading-snug sm:text-2xl">{title}</h3>
-            <p className="mt-3 text-sm leading-relaxed opacity-80">{description}</p>
+            <p className="mt-3 flex-1 text-sm leading-relaxed opacity-80">
+                {description}
+            </p>
             {relatedLinks && relatedLinks.length > 0 ? (
                 <div className="mt-4 flex flex-wrap gap-3">
                     {relatedLinks.map((link) => (

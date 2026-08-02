@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { PLAN_LIMITS, PRICING, PRO_PRICING_FAQ_DETAIL, PRO_SNAPSHOT_EXPIRY_LABEL } from "@/app/data/planLimits";
+import {
+    formatCount,
+    PLAN_LIMITS,
+    PRICING,
+    PRO_PRICING_FAQ_DETAIL,
+    PRO_SNAPSHOT_EXPIRY_LABEL,
+} from "@/app/data/planLimits";
 
 const SITE_URL =
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://bracketview.in";
@@ -52,17 +58,17 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "Is BracketView free to use?",
         answer:
-            `BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, and schema — are free with no signup required. Free accounts include ${PLAN_LIMITS.free.uploadMb} MB uploads, ${PLAN_LIMITS.free.snapshotsPerMonth} snapshot links per month, and ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month. Pro unlocks unlimited AI, ${PLAN_LIMITS.pro.uploadMb} MB uploads, and unlimited encrypted snapshot links.`,
+            `BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, schema, and Webhook Tester — are free with no signup required. Free accounts include ${PLAN_LIMITS.free.uploadMb} MB uploads, ${PLAN_LIMITS.free.snapshotsPerMonth} snapshot links per month, ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month, and Webhook Tester with ${PLAN_LIMITS.free.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each, and ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention. Pro unlocks unlimited AI, ${PLAN_LIMITS.pro.uploadMb} MB uploads, unlimited encrypted snapshot links, and higher webhook caps.`,
     },
     {
         question: "Does my JSON data leave the browser?",
         answer:
-            "Viewing, formatting, and validation run locally in your browser whenever possible. BracketView is privacy-first: core tools are 100% client-side. Snapshot links and AI-assisted features follow a different data path — review the privacy policy before using those with sensitive data.",
+            "Viewing, formatting, and validation run locally in your browser whenever possible. BracketView is privacy-first: core tools are 100% client-side. Snapshot links, AI-assisted features, and Webhook Tester captures follow a different data path — review the privacy policy before using those with sensitive data.",
     },
     {
         question: "What does BracketView Pro include?",
         answer:
-            `Pro unlocks unlimited AI across repair, mock data, jq assistant, and conversion helpers; uploads up to ${PLAN_LIMITS.pro.uploadMb} MB; Performance Mode for large JSON payloads; unlimited encrypted snapshot links with ${PRO_SNAPSHOT_EXPIRY_LABEL.toLowerCase()}; and priority email support. Pro is ${PRO_PRICING_FAQ_DETAIL}.`,
+            `Pro unlocks unlimited AI across repair, mock data, jq assistant, and conversion helpers; uploads up to ${PLAN_LIMITS.pro.uploadMb} MB; Performance Mode for large JSON payloads; unlimited encrypted snapshot links with ${PRO_SNAPSHOT_EXPIRY_LABEL.toLowerCase()}; Webhook Tester with ${PLAN_LIMITS.pro.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} requests each, and ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day retention plus encrypted share of a single capture; and priority email support. Pro is ${PRO_PRICING_FAQ_DETAIL}.`,
     },
     {
         question: "What is Performance Mode in BracketView?",
@@ -104,6 +110,11 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
         answer:
             "BracketView's AI JSON Fixer analyzes malformed JSON — missing brackets, trailing commas, unquoted keys, unescaped characters, and truncated payloads — and reconstructs valid, well-formed JSON while preserving your original data and structure as closely as possible. It's designed for messy API responses, hand-edited configs, and copy-pasted payloads that fail standard parsers.",
     },
+    {
+        question: "What is Webhook Tester in BracketView?",
+        answer:
+            `Webhook Tester gives you a disposable public webhook URL so you can capture and inspect live HTTP requests from Stripe, GitHub, Shopify, or any service that POSTs events. Free: ${PLAN_LIMITS.free.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each, ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention. Pro: ${PLAN_LIMITS.pro.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} requests each, ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day retention, plus encrypted share of a single capture. Endpoints are public and history is short-lived by design. Open it at app.bracketview.in/webhooks.`,
+    },
 ];
 
 const FEATURE_LIST = [
@@ -121,6 +132,7 @@ const FEATURE_LIST = [
     "JSON Schema Generator",
     "JSON to TypeScript/Python/Go/Rust Converter",
     "Encrypted Snapshot Links",
+    "Webhook Tester",
     "Performance Mode (Pro)",
     "WebRTC Nearby Share",
     "JSON Annotations",
@@ -313,6 +325,16 @@ function buildOrganizationSchema() {
                 name: "SaaSHub",
                 url: "https://www.saashub.com",
             },
+            {
+                "@type": "Organization",
+                name: "G2",
+                url: "https://www.g2.com",
+            },
+            {
+                "@type": "Organization",
+                name: "Capterra",
+                url: "https://www.capterra.com",
+            },
         ],
         sameAs: [
             "https://www.linkedin.com/company/bracketview",
@@ -323,6 +345,8 @@ function buildOrganizationSchema() {
             "https://medium.com/@dev-jameel",
             "https://www.producthunt.com/products/bracketview",
             "https://www.saashub.com/bracketview",
+            "https://www.g2.com/products/bracketview",
+            "https://www.capterra.com/p/10053145/BracketView/",
         ],
         knowsAbout: [
             "JSON formatting",

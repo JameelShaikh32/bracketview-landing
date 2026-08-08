@@ -135,8 +135,8 @@ const features: FeatureItem[] = [
         icon: GitBranch,
         title: "Tree & Graph Viewer",
         description: "Explore nested JSON with collapsible tree and graph views",
-        href: "https://app.bracketview.in",
-        cta: "Open tree viewer",
+        href: "/json-viewer",
+        cta: "Open JSON Viewer",
     },
     {
         icon: Braces,
@@ -246,6 +246,61 @@ const pricingPlans: PricingPlan[] = [
         highlighted: true,
         offerSchema: { price: String(PRICING.yearlyUsd), priceCurrency: "USD" },
     },
+    {
+        name: "Team",
+        price: "Contact",
+        period: "",
+        description:
+            "Shared collections and team workspaces for agencies and product squads. Join the waitlist while we roll out collaboration.",
+        features: [
+            "Everything in Pro",
+            "Shared collections (coming soon)",
+            "Team workspaces & activity timeline (coming soon)",
+            "Pooled AI fair-use pool",
+            "Priority onboarding help",
+        ],
+        cta: "Contact for Team",
+        ctaHref: "/contact?subject=team-plan",
+    },
+    {
+        name: "Enterprise",
+        price: "Custom",
+        period: "",
+        description:
+            "Security-first deployment for regulated teams — SSO, audit logs, and custom retention on the roadmap.",
+        features: [
+            "Everything in Team",
+            "SSO (coming soon)",
+            "Audit logs & custom retention (coming soon)",
+            "Security review support",
+            "Dedicated success contact",
+        ],
+        cta: "Contact sales",
+        ctaHref: "/contact?subject=enterprise",
+    },
+];
+
+const pricingFaqs = [
+    {
+        question: "Is BracketView privacy-first?",
+        answer:
+            "Yes. Viewing, formatting, and validation run client-side in your browser whenever possible. Your JSON does not leave the device for core tools. Snapshot links, AI features, and Webhook Tester follow a different path — review the privacy policy before using them with sensitive data.",
+    },
+    {
+        question: "Do you collect my JSON payloads?",
+        answer:
+            "Core workspace processing is designed so payloads stay local. We do not sell customer JSON. Optional cloud features store only what those features need (encrypted snapshots, webhook captures, AI prompts) under stated retention limits.",
+    },
+    {
+        question: "What is the ROI of Pro?",
+        answer:
+            "Pro removes AI and snapshot friction for daily API work, raises upload and webhook caps, and unlocks Performance Mode for large payloads — typically replacing multiple paid single-purpose tools.",
+    },
+    {
+        question: "When will Team and Enterprise ship?",
+        answer:
+            "Team workspaces and Enterprise SSO are on the product roadmap. Contact us to join the waitlist and influence priority.",
+    },
 ];
 
 type PricingOfferSchema = {
@@ -253,14 +308,63 @@ type PricingOfferSchema = {
     priceCurrency: string;
 };
 
+type Testimonial = {
+    name: string;
+    role: string;
+    quote: string;
+    title?: string;
+    rating?: number;
+    source?: string;
+    sourceUrl?: string;
+};
+
+/** Verified reviews from Software Advice (https://www.softwareadvice.com/product/560735-BracketView/) */
+const testimonials: Testimonial[] = [
+    {
+        name: "Ritesh Shrichandra Y.",
+        role: "Computer & Network Security · 2–10 employees",
+        title: "Bracket viewer for everyone",
+        rating: 5,
+        quote:
+            "Its UI and interface is so attractive. And also it has great functions that help to visualise things easily.",
+        source: "Software Advice",
+        sourceUrl:
+            "https://www.softwareadvice.com/product/560735-BracketView/#reviews",
+    },
+    {
+        name: "Musab M.",
+        role: "Marketing and Advertising · 201–500 employees",
+        title: 'More than just "A JSON Viewer"',
+        rating: 5,
+        quote:
+            "BracketView is more than just a JSON viewer. It has a large deck of functionality which makes it the default choice for working with JSON. You don't need another Chrome tab once you are at BracketView — AI support, Graph View, JQ filters, and TS generator. Usually buffet tools mess up UI/UX, but not BracketView. Pocket-friendly pricing too.",
+        source: "Software Advice",
+        sourceUrl:
+            "https://www.softwareadvice.com/product/560735-BracketView/#reviews",
+    },
+    {
+        name: "Sachin Y.",
+        role: "Information Technology and Services · 501–1000 employees",
+        title: "Clean, lightweight, and super fast for daily JSON debugging",
+        rating: 5,
+        quote:
+            "It's become my go-to web tool whenever I need to inspect or format JSON quickly without opening a heavy desktop app. It eliminates the usual clutter and ads and just gives you a clean workspace. A lot of online JSON formatters get laggy with huge payloads, but BracketView handles large datasets smoothly.",
+        source: "Software Advice",
+        sourceUrl:
+            "https://www.softwareadvice.com/product/560735-BracketView/#reviews",
+    },
+];
+
 const footerLinks = {
     product: [
         { label: "All features", href: "/features" },
-        { label: "View pricing", href: "/#pricing" },
+        { label: "View pricing", href: "/pricing" },
         { label: "How BracketView works", href: "/#how-it-works" },
+        { label: "Learn hub", href: "/learn" },
         { label: "Launch workspace", href: "https://app.bracketview.in", rel: "" },
     ],
     tools: [
+        { label: "JSON Viewer", href: "/json-viewer" },
         { label: "JSON Formatter", href: "/json-formatter" },
         { label: "JSON Validator", href: "/json-validator" },
         { label: "JSON Diff", href: "/json-diff" },
@@ -268,6 +372,7 @@ const footerLinks = {
         { label: "JQ Playground", href: "/jq-playground" },
         { label: "Schema Validator", href: "/json-schema-validator" },
         { label: "Type Generator", href: "/json-type-generator" },
+        { label: "AI JSON Fixer", href: "/ai-json-fixer" },
         { label: "Webhook Tester", href: "/webhook-tester" },
         { label: "Glossary", href: "/glossary" },
     ],
@@ -379,7 +484,11 @@ const navLinks = [
     },
     {
         label: "Pricing",
-        href: "/#pricing",
+        href: "/pricing",
+    },
+    {
+        label: "Learn",
+        href: "/learn",
     },
     {
         label: "About",
@@ -405,8 +514,10 @@ export {
     footerLinks,
     howItWorksSteps,
     navLinks,
+    pricingFaqs,
     pricingPlans,
     socialLinks,
+    testimonials,
     useCases
 };
 export type {
@@ -415,6 +526,7 @@ export type {
     PricingOfferSchema,
     PricingPlan,
     RelatedLink,
+    Testimonial,
     UseCaseItem
 };
 

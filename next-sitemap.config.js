@@ -24,8 +24,11 @@ module.exports = {
             "/": 1.0,
             "/about": 0.7,
             "/features": 0.9,
+            "/pricing": 0.9,
+            "/learn": 0.9,
             "/blog": 0.8,
             "/glossary": 0.8,
+            "/json-viewer": 0.85,
             "/json-formatter": 0.8,
             "/json-validator": 0.8,
             "/json-diff": 0.8,
@@ -47,8 +50,11 @@ module.exports = {
             "/": "daily",
             "/about": "monthly",
             "/features": "weekly",
+            "/pricing": "weekly",
+            "/learn": "weekly",
             "/blog": "weekly",
             "/glossary": "monthly",
+            "/json-viewer": "weekly",
             "/json-formatter": "weekly",
             "/json-validator": "weekly",
             "/json-diff": "weekly",
@@ -62,13 +68,14 @@ module.exports = {
         };
 
         const isBlogPost = path.startsWith("/blog/") && path !== "/blog";
+        const isLearnPost = path.startsWith("/learn/") && path !== "/learn";
 
         return {
             loc: path,
-            changefreq: isBlogPost
+            changefreq: isBlogPost || isLearnPost
                 ? "monthly"
                 : (frequencies[path] ?? "monthly"),
-            priority: isBlogPost ? 0.7 : (priorities[path] ?? 0.5),
+            priority: isLearnPost ? 0.75 : isBlogPost ? 0.7 : (priorities[path] ?? 0.5),
             lastmod: new Date().toISOString(),
         };
     },

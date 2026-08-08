@@ -81,8 +81,9 @@ const PricingCard = ({
 
       <Link
         href={ctaHref}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(ctaHref.startsWith("http")
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
         className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-medium transition-colors duration-300 ${highlighted
             ? "bg-black text-white hover:opacity-90 dark:bg-foreground dark:text-background"
             : "bg-accent text-white group-hover:bg-black dark:bg-accent-dark dark:group-hover:bg-foreground dark:group-hover:text-background"
@@ -136,10 +137,23 @@ const Pricing = () => {
         </Reveal>
 
         <StaggerGroup className="mt-14 grid grid-cols-1 items-stretch gap-4 sm:mt-16 md:grid-cols-3 lg:gap-5">
-          {pricingPlans.map((plan) => (
-            <PricingCard key={plan.name} {...plan} />
-          ))}
+          {pricingPlans
+            .filter((plan) =>
+              ["Free", "Monthly", "Yearly"].includes(plan.name),
+            )
+            .map((plan) => (
+              <PricingCard key={plan.name} {...plan} />
+            ))}
         </StaggerGroup>
+
+        <Reveal className="mx-auto mt-8 text-center">
+          <Link
+            href="/pricing"
+            className="text-sm font-medium text-accent-dark underline-offset-4 hover:underline dark:text-accent"
+          >
+            Compare Free, Pro, Team &amp; Enterprise →
+          </Link>
+        </Reveal>
 
         <Reveal className="mx-auto mt-10 max-w-2xl text-center">
           <p className="text-xs leading-relaxed text-black/55 dark:text-foreground/50">

@@ -29,6 +29,53 @@
   --color-gray: var(--gray);
   --font-sans: var(--font-martian-mono);
   --font-mono: var(--font-fira-code);
+
+  /* App workspace tokens (extracted from app/globals.css) */
+  --color-dark-bg: #0f0d0e;
+  --color-dark-surface: #161b22;
+  --color-dark-card: #1c2128;
+  --color-dark-border: #30363d;
+  --color-dark-border-light: #21262d;
+  --color-dark-text: #e6edf3;
+  --color-dark-text-secondary: #8b949e;
+  --color-dark-hover: #1f242b;
+  --color-dark-active: #262c36;
+}
+
+/* Viewer scrollbar — matches app (amber light / purple dark) */
+.viewer-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.viewer-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.viewer-scrollbar::-webkit-scrollbar-thumb {
+  background: #f59e0b;
+  border-radius: 9999px;
+}
+
+.viewer-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
+
+.viewer-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #f59e0b transparent;
+}
+
+.dark .viewer-scrollbar::-webkit-scrollbar-thumb {
+  background: #7c3aed;
+}
+
+.dark .viewer-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
+
+.dark .viewer-scrollbar {
+  scrollbar-color: #7c3aed transparent;
 }
 
 html {

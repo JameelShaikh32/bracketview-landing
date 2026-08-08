@@ -17,6 +17,17 @@ type ToolDemoVideo = {
     label?: string;
 };
 
+type ToolUseCase = {
+    title: string;
+    description: string;
+};
+
+type ToolCodeExample = {
+    title: string;
+    language: string;
+    code: string;
+};
+
 type ToolPage = {
     slug: string;
     h1: string;
@@ -24,6 +35,10 @@ type ToolPage = {
     metaTitle: string;
     metaDescription: string;
     intro: string;
+    problem?: string;
+    useCases?: ToolUseCase[];
+    codeExamples?: ToolCodeExample[];
+    interactiveDemo?: "formatter" | "validator" | "viewer" | "diff";
     demoVideo?: ToolDemoVideo;
     features: string[];
     howToSteps: { position: number; name: string; text: string; url?: string }[];
@@ -36,6 +51,109 @@ type ToolPage = {
 };
 
 const toolPages: Record<string, ToolPage> = {
+    "json-viewer": {
+        slug: "json-viewer",
+        h1: "Online JSON Viewer",
+        badge: "JSON Viewer",
+        metaTitle:
+            "JSON Viewer Online — Inspect Nested JSON Trees | BracketView",
+        metaDescription:
+            "Free online JSON viewer with collapsible tree, graph view, path copy, and search. Privacy-first — your data stays in the browser.",
+        intro:
+            "A JSON viewer turns opaque payloads into a navigable structure. BracketView's online JSON viewer lets you expand nested objects, jump to paths, copy values, and switch between tree and graph views — entirely in your browser. Paste an API response, explore keys without scrolling a wall of text, and share an encrypted snapshot when you need a second pair of eyes.",
+        problem:
+            "Large API responses and nested configs are hard to read as raw text. Developers waste time hunting keys, copying fragile paths by hand, and losing context when switching tools.",
+        useCases: [
+            {
+                title: "Debug API responses",
+                description:
+                    "Paste a REST or GraphQL payload and walk the tree to the failing field.",
+            },
+            {
+                title: "Inspect webhook bodies",
+                description:
+                    "Open a captured event and expand only the branches that matter.",
+            },
+            {
+                title: "Review config dumps",
+                description:
+                    "Browse environment exports and deployment manifests without pretty-printing in the terminal.",
+            },
+        ],
+        codeExamples: [
+            {
+                title: "Copy a JSONPath from the tree",
+                language: "jsonpath",
+                code: "$.data.items[0].sku",
+            },
+            {
+                title: "Sample nested payload",
+                language: "json",
+                code: '{\n  "data": {\n    "items": [{ "sku": "A-1", "qty": 3 }]\n  }\n}',
+            },
+        ],
+        interactiveDemo: "viewer",
+        features: [
+            "Collapsible tree with type-aware coloring",
+            "Graph view for relationship exploration",
+            "Copy node value, path, or JSON snippet",
+            "Search keys and values in the tree",
+            "Path breadcrumbs and node statistics",
+            UPLOAD_FEATURE_LINE,
+            "100% client-side viewing — data stays local",
+        ],
+        howToName: "How to View JSON Online with BracketView",
+        howToDescription:
+            "Inspect nested JSON in three steps using BracketView's free online viewer.",
+        howToSteps: [
+            {
+                position: 1,
+                name: "Open BracketView",
+                text: "Go to app.bracketview.in in any browser.",
+                url: "https://app.bracketview.in",
+            },
+            {
+                position: 2,
+                name: "Paste your JSON",
+                text: "Paste a payload into the editor. Invalid syntax is highlighted instantly.",
+            },
+            {
+                position: 3,
+                name: "Open the Viewer tab",
+                text: "Switch to Viewer to expand the tree, copy paths, and explore the graph.",
+            },
+        ],
+        faqs: [
+            {
+                question: "What is a JSON viewer?",
+                answer:
+                    "A JSON viewer displays structured JSON as a navigable tree or graph so you can inspect nested fields without reading minified text. BracketView's JSON viewer runs free in the browser.",
+            },
+            {
+                question: "Is the JSON viewer free?",
+                answer:
+                    "Yes. Core viewing, formatting, and validation are free with no signup required.",
+            },
+            {
+                question: "Does viewing JSON send data to a server?",
+                answer:
+                    "No. Tree and graph viewing run client-side. Optional features like encrypted snapshots and AI repair use a different path — see the privacy policy.",
+            },
+            {
+                question: "Can I search inside large JSON?",
+                answer:
+                    "Yes. Use tree search to highlight matching keys and values, then copy the path of the match.",
+            },
+        ],
+        appUrl: "https://app.bracketview.in/?sample=api-error",
+        ctaLabel: "Open JSON Viewer",
+        relatedTools: [
+            "json-formatter",
+            "json-validator",
+            "jsonpath-query",
+            "json-diff",
+        ],
+    },
     "json-formatter": {
         slug: "json-formatter",
         h1: "JSON Formatter Online",
@@ -45,6 +163,38 @@ const toolPages: Record<string, ToolPage> = {
             "Free online JSON formatter. Beautify, pretty-print, and minify JSON in your browser with real-time validation. 100% client-side.",
         intro:
             "A JSON formatter takes raw or minified JSON and reformats it with readable indentation and consistent spacing. BracketView's online JSON formatter lets you beautify (pretty-print) or minify JSON in one click — directly in your browser with no installation. Paste your payload, click Format, and get clean, readable output instantly. The real-time validator highlights syntax errors as you type, so you can fix issues before exporting. Everything runs 100% client-side: your data never leaves your device.",
+        problem:
+            "Minified API payloads and log dumps are unreadable. Manual indentation is error-prone and slow when you need to share or debug quickly.",
+        useCases: [
+            {
+                title: "Pretty-print API responses",
+                description:
+                    "Format a production payload before pasting into a ticket or PR.",
+            },
+            {
+                title: "Minify for transport",
+                description:
+                    "Strip whitespace before embedding JSON in configs or CLI args.",
+            },
+            {
+                title: "Clean exports",
+                description:
+                    "Normalize indentation across team-shared sample files.",
+            },
+        ],
+        codeExamples: [
+            {
+                title: "Before (minified)",
+                language: "json",
+                code: '{"user":{"id":1,"name":"Ada"}}',
+            },
+            {
+                title: "After (formatted)",
+                language: "json",
+                code: '{\n  "user": {\n    "id": 1,\n    "name": "Ada"\n  }\n}',
+            },
+        ],
+        interactiveDemo: "formatter",
         features: [
             "One-click beautify with consistent 2-space indentation",
             "Minify JSON for production payloads",
@@ -104,7 +254,12 @@ const toolPages: Record<string, ToolPage> = {
         ],
         appUrl: "https://app.bracketview.in",
         ctaLabel: "Format JSON now",
-        relatedTools: ["json-validator", "ai-json-fixer", "json-diff"],
+        relatedTools: [
+            "json-viewer",
+            "json-validator",
+            "ai-json-fixer",
+            "json-diff",
+        ],
     },
     "json-validator": {
         slug: "json-validator",
@@ -115,6 +270,23 @@ const toolPages: Record<string, ToolPage> = {
             "Validate JSON in real time as you type. Catch bracket mismatches, trailing commas, and unquoted keys. Free online validator — no install.",
         intro:
             "Validating JSON online means checking whether your data is syntactically correct before you deploy, share, or process it. BracketView's real-time JSON validator highlights errors as you type — bracket mismatches, trailing commas, unquoted keys, and invalid escape sequences are flagged with line numbers so you can fix them fast. Paste a payload from an API response, log file, or config export and get instant feedback. Core validation runs 100% in your browser with no data sent to any server.",
+        problem:
+            "A single syntax error can break pipelines, webhook handlers, and client parsers — and error messages are often hard to locate in large payloads.",
+        useCases: [
+            {
+                title: "Pre-commit checks",
+                description: "Validate configs before they hit CI.",
+            },
+            {
+                title: "API response QA",
+                description: "Confirm a partner payload is well-formed.",
+            },
+            {
+                title: "Log triage",
+                description: "Find the first bad token in a dumped body.",
+            },
+        ],
+        interactiveDemo: "validator",
         features: [
             "Real-time validation as you type",
             "Inline error highlighting with line numbers",
@@ -672,7 +844,12 @@ const toolPages: Record<string, ToolPage> = {
         ],
         appUrl: APP_WEBHOOKS_URL,
         ctaLabel: "Open Webhook Tester",
-        relatedTools: ["json-formatter", "json-diff", "json-schema-validator"],
+        relatedTools: [
+            "json-viewer",
+            "json-formatter",
+            "json-diff",
+            "json-schema-validator",
+        ],
     },
 };
 

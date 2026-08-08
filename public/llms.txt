@@ -122,6 +122,7 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 - [BracketView marketing site](https://bracketview.in): Product overview, pricing, features, and documentation
 
 ### Tool pages
+- [JSON Viewer](https://bracketview.in/json-viewer): Collapsible tree and graph JSON viewer
 - [JSON Formatter](https://bracketview.in/json-formatter): Beautify and minify JSON online
 - [JSON Validator](https://bracketview.in/json-validator): Real-time syntax validation with inline errors
 - [JSON Diff](https://bracketview.in/json-diff): Side-by-side comparison of two JSON documents
@@ -129,7 +130,24 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 - [JQ Playground](https://bracketview.in/jq-playground): Full jq filter engine in the browser via WebAssembly
 - [JSON Schema Validator](https://bracketview.in/json-schema-validator): Validate JSON against JSON Schema
 - [JSON Type Generator](https://bracketview.in/json-type-generator): Export TypeScript, Python, Go, Rust, and more from JSON
+- [AI JSON Fixer](https://bracketview.in/ai-json-fixer): Repair malformed JSON with AI
 - [Webhook Tester](https://bracketview.in/webhook-tester): Capture and inspect webhooks online
+- [Pricing](https://bracketview.in/pricing): Free, Pro, Team, and Enterprise plans
+
+### Learn hub (AEO / GEO)
+- [Learn hub](https://bracketview.in/learn): Answer-first JSON guides
+- [What is JSON?](https://bracketview.in/learn/what-is-json)
+- [What is JSONPath?](https://bracketview.in/learn/what-is-jsonpath)
+- [How to validate JSON](https://bracketview.in/learn/how-to-validate-json)
+- [How to fix invalid JSON](https://bracketview.in/learn/how-to-fix-invalid-json)
+- [How to compare JSON files](https://bracketview.in/learn/how-to-compare-json-files)
+- [What is JQ?](https://bracketview.in/learn/what-is-jq)
+- [JSON vs YAML](https://bracketview.in/learn/json-vs-yaml)
+- [Best JSON Viewer](https://bracketview.in/learn/best-json-viewer)
+- [JSONPath cheatsheet](https://bracketview.in/learn/jsonpath-cheatsheet)
+- [JQ filter examples](https://bracketview.in/learn/jq-filter-examples)
+- [Webhook debugging guide](https://bracketview.in/learn/webhook-debugging-guide)
+- [API debugging with JSON](https://bracketview.in/learn/api-debugging-with-json)
 
 ### Documentation
 - [Features](https://bracketview.in/features): Full feature list and capabilities

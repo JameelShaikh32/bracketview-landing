@@ -21,11 +21,11 @@ const META_DESCRIPTION =
 
 /** Homepage-only title — distinct from META_TITLE (the sitewide fallback used in layout.tsx). */
 const HOME_TITLE =
-    "BracketView: Next-Gen AI JSON Viewer & JQ Playground";
+    "BracketView – AI JSON Viewer, Formatter & Validator";
 
 /** Homepage-only description emphasizing privacy-first, AI repair, and Wasm JQ USPs. Keep 100–130 chars. */
 const HOME_DESCRIPTION =
-    "Ad-free JSON viewer with AI-powered syntax repair and a WebAssembly JQ playground. Privacy-first — nothing leaves your browser.";
+    "AI-powered JSON workspace for developers. View, format, validate, query, compare, repair, and explore JSON with powerful visualization and debugging tools.";
 
 const OG_IMAGE = "/og-image.webp";
 

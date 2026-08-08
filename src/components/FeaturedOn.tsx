@@ -7,7 +7,7 @@ const FeaturedOn = () => {
     <section
       id="featured-on"
       aria-label="Featured On"
-      className="relative w-full px-4 pb-8 pt-4 sm:px-6 lg:px-8"
+      className="relative w-full px-4 pb-8 pt-12 sm:px-6 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <Reveal className="flex flex-col items-center">

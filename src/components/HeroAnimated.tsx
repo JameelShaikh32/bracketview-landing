@@ -146,7 +146,7 @@ const HeroAnimated = () => {
             </motion.div>
           </motion.div>
 
-          {/* App preview */}
+          {/* App preview — fills panel with a thin orange frame on top/left */}
           <motion.div
             initial={
               reducedMotion
@@ -161,16 +161,16 @@ const HeroAnimated = () => {
               delay: 0.5,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="absolute bottom-8 left-8 z-0 sm:left-28 scale-115"
+            className="absolute inset-0 z-0 pl-3 pt-3 sm:pl-4 sm:pt-4"
           >
             <Image
               src={heroImageSrc}
               alt="BracketView dark-mode JSON viewer showing AI-powered syntax repair and the WebAssembly JQ playground"
               width={1919}
               height={heroImageHeight}
-              sizes="(max-width: 640px) 672px, (max-width: 1024px) 768px, 1024px"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               priority
-              className="h-auto w-full max-w-2xl rounded-t-2xl object-contain object-top-left sm:max-w-none sm:w-3xl lg:w-5xl"
+              className="h-full w-full rounded-tl-2xl object-cover object-top-left"
             />
           </motion.div>
 

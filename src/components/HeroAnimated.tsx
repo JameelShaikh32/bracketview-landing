@@ -126,11 +126,11 @@ const HeroAnimated = () => {
                 reducedMotion || !canHover
                   ? undefined
                   : {
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1,
-                  }
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 1,
+                    }
               }
               className="rounded-xl bg-white/45 p-2.5 shadow-[0_8px_32px_rgba(25,19,20,0.12)] backdrop-blur-md sm:p-3"
             >

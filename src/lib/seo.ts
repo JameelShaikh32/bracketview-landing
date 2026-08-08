@@ -335,6 +335,16 @@ function buildOrganizationSchema() {
                 name: "Capterra",
                 url: "https://www.capterra.com",
             },
+            {
+                "@type": "Organization",
+                name: "Software Advice",
+                url: "https://www.softwareadvice.com",
+            },
+            {
+                "@type": "Organization",
+                name: "GetApp",
+                url: "https://www.getapp.com",
+            },
         ],
         sameAs: [
             "https://www.linkedin.com/company/bracketview",
@@ -347,6 +357,8 @@ function buildOrganizationSchema() {
             "https://www.saashub.com/bracketview",
             "https://www.g2.com/products/bracketview",
             "https://www.capterra.com/p/10053145/BracketView/",
+            "https://www.softwareadvice.com/product/560735-BracketView/",
+            "https://www.getapp.com/all-software/a/bracketview/",
         ],
         knowsAbout: [
             "JSON formatting",

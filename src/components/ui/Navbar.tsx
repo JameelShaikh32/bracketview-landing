@@ -2,7 +2,7 @@
 
 import { navLinks } from "@/app/data/constant";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-import { Menu, X } from "lucide-react";
+import { Menu, Rocket, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,7 +17,7 @@ import { createPortal } from "react-dom";
 
 const SCROLL_THRESHOLD = 24;
 
-const subscribeToClient = () => () => { };
+const subscribeToClient = () => () => {};
 const getClientSnapshot = () => true;
 const getServerSnapshot = () => false;
 
@@ -128,10 +128,11 @@ const Navbar = () => {
       <nav
         ref={navRef}
         aria-label="Main navigation"
-        className={`relative mx-auto flex w-full min-w-0 items-center gap-3 transition-all duration-300 ease-out ${scrolled
-          ? "max-w-7xl rounded-full bg-white/70 px-3 py-2 shadow-[0_8px_32px_rgba(25,19,20,0.08)] backdrop-blur-md dark:bg-black/60 dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)] sm:px-4 sm:py-2.5 md:px-6"
-          : "bg-transparent px-1 py-3 sm:px-2"
-          }`}
+        className={`relative mx-auto flex w-full min-w-0 items-center gap-3 transition-all duration-300 ease-out ${
+          scrolled
+            ? "max-w-7xl rounded-full bg-white/70 px-3 py-2 shadow-[0_8px_32px_rgba(25,19,20,0.08)] backdrop-blur-md dark:bg-black/60 dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)] sm:px-4 sm:py-2.5 md:px-6"
+            : "bg-transparent px-1 py-3 sm:px-2"
+        }`}
       >
         <Link
           href="/"
@@ -153,7 +154,11 @@ const Navbar = () => {
 
         <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {navLinks.map((link: { label: string; href: string }) => (
-            <Link key={link.label} href={link.href} className="text-sm cursor-pointer rounded-xl bg-transparent px-3 py-1 transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray dark:hover:text-black">
+            <Link
+              key={link.label}
+              href={link.href}
+              className="text-sm cursor-pointer rounded-xl bg-transparent px-3 py-1 transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray dark:hover:text-black"
+            >
               {link.label}
             </Link>
           ))}
@@ -166,7 +171,8 @@ const Navbar = () => {
             rel="noopener noreferrer nofollow"
             className="hidden rounded-2xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-85 md:inline-flex dark:bg-accent-dark"
           >
-            Open App
+            <Rocket size={16} className="mr-2 mt-0.5" aria-hidden />
+            Launch App
           </Link>
 
           <div className="hidden md:block">

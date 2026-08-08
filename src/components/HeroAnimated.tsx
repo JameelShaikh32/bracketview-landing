@@ -11,18 +11,28 @@ import { ArrowDown, ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+const hoverMediaQuery = "(hover: hover)";
+
+const subscribeHoverCapability = (onStoreChange: () => void) => {
+  const mediaQuery = window.matchMedia(hoverMediaQuery);
+  mediaQuery.addEventListener("change", onStoreChange);
+  return () => mediaQuery.removeEventListener("change", onStoreChange);
+};
+
+const getCanHover = () => window.matchMedia(hoverMediaQuery).matches;
+const getServerCanHover = () => false;
 
 const HeroAnimated = () => {
   const theme = useTheme();
   const reducedMotion = useReducedMotion();
   const itemVariant = getFadeUpVariant(reducedMotion);
-  const [canHover, setCanHover] = useState(false);
-
-  useEffect(() => {
-    setCanHover(window.matchMedia("(hover: hover)").matches);
-  }, []);
-
+  const canHover = useSyncExternalStore(
+    subscribeHoverCapability,
+    getCanHover,
+    getServerCanHover,
+  );
   const heroImageSrc =
     theme === "dark" ? "/images/hero-dark.webp" : "/images/hero-light.webp";
   const heroImageHeight = theme === "dark" ? 977 : 976;
@@ -48,10 +58,9 @@ const HeroAnimated = () => {
               variants={itemVariant}
               className="hero-description max-w-md text-base leading-relaxed text-black/70 dark:text-foreground/70"
             >
-              A fast, privacy-first JSON workspace with AI-powered syntax
-              repair and a WebAssembly-powered JQ playground — format,
-              validate &amp; query JSON without your data ever leaving the
-              browser.
+              A fast, privacy-first JSON workspace with AI-powered syntax repair
+              and a WebAssembly-powered JQ playground — format, validate &amp;
+              query JSON without your data ever leaving the browser.
             </motion.p>
 
             <motion.div variants={itemVariant}>
@@ -107,7 +116,7 @@ const HeroAnimated = () => {
               delay: 0.4,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="absolute left-5 top-6 z-10 max-w-lg sm:left-8 sm:top-8 sm:max-w-xl"
+            className="absolute left-5 top-6 z-10 max-w-38 sm:left-8 sm:top-8 sm:max-w-44"
           >
             <motion.div
               animate={
@@ -123,15 +132,15 @@ const HeroAnimated = () => {
                     delay: 1,
                   }
               }
-              className="rounded-2xl bg-white/45 p-4 shadow-[0_8px_32px_rgba(25,19,20,0.12)] backdrop-blur-md"
+              className="rounded-xl bg-white/45 p-2.5 shadow-[0_8px_32px_rgba(25,19,20,0.12)] backdrop-blur-md sm:p-3"
             >
-              <p className="text-sm font-medium uppercase tracking-wider text-black/60 sm:text-sm">
+              <p className="text-[0.65rem] font-medium uppercase tracking-wider text-black/60 sm:text-xs">
                 Sample parse
               </p>
-              <p className="mt-1 text-xl font-bold tracking-tight text-black sm:text-3xl">
+              <p className="mt-0.5 text-base font-bold tracking-tight text-black sm:text-lg">
                 1,024 nodes
               </p>
-              <p className="mt-1 text-sm text-black/70 sm:text-sm">
+              <p className="mt-0.5 text-[0.65rem] text-black/70 sm:text-xs">
                 Formatted in 7ms
               </p>
             </motion.div>
@@ -152,7 +161,7 @@ const HeroAnimated = () => {
               delay: 0.5,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="absolute -bottom-4 left-4 z-0 sm:left-24"
+            className="absolute bottom-8 left-8 z-0 sm:left-28 scale-115"
           >
             <Image
               src={heroImageSrc}

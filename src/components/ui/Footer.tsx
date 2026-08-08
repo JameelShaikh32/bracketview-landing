@@ -1,4 +1,4 @@
-import { featuredOnLinks, footerLinks, socialLinks } from "@/app/data/constant";
+import { footerLinks, socialLinks } from "@/app/data/constant";
 import { supportEmail } from "@/app/data/legal";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +10,7 @@ import {
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
+
 const socialIcons = {
   LinkedIn: FaLinkedinIn,
   Twitter: FaXTwitter,
@@ -18,64 +19,6 @@ const socialIcons = {
   YouTube: FaYoutube,
   Medium: FaMedium,
 } as const;
-
-const FeaturedOnBadge = ({
-  label,
-  href,
-  imageSrc,
-  imageAlt,
-  imageWidth,
-  imageHeight,
-  rel,
-}: {
-  type: "producthunt" | "saashub" | "g2" | "capterra";
-  label: string;
-  href: string;
-  imageSrc?: string;
-  imageAlt?: string;
-  imageWidth?: number;
-  imageHeight?: number;
-  rel?: string;
-}) => {
-  if (!imageSrc || !imageWidth || !imageHeight) return null;
-
-  const isExternal = imageSrc.startsWith("http");
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel={`noopener noreferrer ${rel || ""}`}
-      className="inline-block transition-opacity hover:opacity-85"
-    >
-      {isExternal ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={imageSrc}
-          alt={imageAlt ?? label}
-          width={imageWidth}
-          height={imageHeight}
-          loading="lazy"
-          decoding="async"
-          className="h-auto max-w-full object-contain"
-          style={{ width: imageWidth, height: "auto" }}
-        />
-      ) : (
-        <Image
-          src={imageSrc}
-          alt={imageAlt ?? label}
-          width={imageWidth}
-          height={imageHeight}
-          sizes={`${imageWidth}px`}
-          loading="lazy"
-          decoding="async"
-          className="h-auto max-w-full object-contain"
-          style={{ width: imageWidth, height: "auto" }}
-        />
-      )}
-    </a>
-  );
-};
 
 const FooterColumn = ({
   title,
@@ -112,7 +55,7 @@ const Footer = () => {
   return (
     <footer className="mt-auto w-full px-4 pb-8 pt-8 sm:px-6 lg:px-8">
       <div className="rounded-4xl bg-white p-8 sm:p-10 lg:p-12 dark:bg-muted">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-7 lg:gap-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-6 lg:gap-8">
           <div className="lg:col-span-2">
             <Link
               href="/"
@@ -159,17 +102,6 @@ const Footer = () => {
           <FooterColumn title="Tools" links={footerLinks.tools} />
           <FooterColumn title="Company" links={footerLinks.company} />
           <FooterColumn title="Legal" links={footerLinks.legal} />
-
-          <div>
-            <h3 className="text-sm font-bold text-black dark:text-foreground">
-              Featured On
-            </h3>
-            <div className="mt-4 flex flex-col gap-3">
-              {featuredOnLinks.map((item) => (
-                <FeaturedOnBadge key={item.label} {...item} />
-              ))}
-            </div>
-          </div>
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-black/10 pt-8 sm:flex-row dark:border-foreground/10">

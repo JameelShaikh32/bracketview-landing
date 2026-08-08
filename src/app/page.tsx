@@ -13,6 +13,7 @@ import {
 } from "@/lib/seo";
 import AboutUs from "../components/AboutUs";
 import CtaSection from "../components/CtaSection";
+import FeaturedOn from "../components/FeaturedOn";
 import Features from "../components/Features";
 import HeroSection from "../components/HeroSection";
 import HowItWorks from "../components/HowItWorks";
@@ -44,6 +45,7 @@ export default function Home() {
     <main>
       <JsonLd data={schemas} />
       <HeroSection />
+      <FeaturedOn />
       <AboutUs />
       <Features />
       <HowItWorks />

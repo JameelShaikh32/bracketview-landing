@@ -29,9 +29,6 @@ const FAQ = dynamic(() => import("../components/FAQ"));
 const StickyCtaBar = dynamic(
   () => import("../components/marketing/StickyCtaBar"),
 );
-const ExitIntentModal = dynamic(
-  () => import("../components/marketing/ExitIntentModal"),
-);
 
 export const metadata = createPageMetadata({
   path: "/",
@@ -67,7 +64,6 @@ export default function Home() {
       <FAQ />
       <CtaSection />
       <StickyCtaBar />
-      <ExitIntentModal />
     </main>
   );
 }

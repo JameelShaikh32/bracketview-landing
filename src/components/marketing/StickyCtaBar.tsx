@@ -21,7 +21,7 @@ const StickyCtaBar = () => {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 px-3 pb-3 transition-all duration-300 sm:px-4 sm:pb-4 ${
+      className={`fixed inset-x-0 bottom-0 z-40 hidden px-3 pb-3 transition-all duration-300 md:block sm:px-4 sm:pb-4 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"

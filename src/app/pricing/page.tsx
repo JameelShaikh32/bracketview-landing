@@ -1,6 +1,5 @@
 import { pricingFaqs, pricingPlans } from "@/app/data/constant";
 import PricingMatrix from "@/components/marketing/PricingMatrix";
-import ExitIntentModal from "@/components/marketing/ExitIntentModal";
 import StickyCtaBar from "@/components/marketing/StickyCtaBar";
 import Reveal from "@/components/motion/Reveal";
 import StaggerGroup from "@/components/motion/StaggerGroup";
@@ -204,7 +203,6 @@ const PricingPage = () => {
         </section>
       </div>
       <StickyCtaBar />
-      <ExitIntentModal />
     </main>
   );
 };

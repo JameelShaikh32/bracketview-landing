@@ -15,6 +15,7 @@ import Analytics, { GTM_ID } from "../components/Analytics";
 import StructuredData from "../components/StructuredData";
 import Footer from "../components/ui/Footer";
 import Navbar from "../components/ui/Navbar";
+import ScrollToTop from "../components/ui/ScrollToTop";
 import "./globals.css";
 
 const martianMono = Martian_Mono({
@@ -149,6 +150,7 @@ export default function RootLayout({
                     <Navbar />
                     {children}
                     <Footer />
+                    <ScrollToTop />
                     <SpeedInsights />
                     <VercelAnalytics />
                 </SiteProviders>

@@ -147,7 +147,7 @@ const Navbar = () => {
             sizes="32px"
             className="size-8 shrink-0"
           />
-          <span className="truncate text-lg font-medium tracking-tight md:text-xl">
+          <span className="truncate text-lg font-semibold tracking-tight md:text-xl">
             BracketView
           </span>
         </Link>

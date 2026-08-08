@@ -1,7 +1,6 @@
 import type { ToolPage } from "@/app/data/toolPages";
 import AdPlacement from "@/components/ads/AdPlacement";
 import InteractiveToolDemo from "@/components/marketing/InteractiveToolDemo";
-import ExitIntentModal from "@/components/marketing/ExitIntentModal";
 import StickyCtaBar from "@/components/marketing/StickyCtaBar";
 import RelatedTools from "@/components/RelatedTools";
 import ToolDemoVideo from "@/components/ToolDemoVideo";
@@ -258,7 +257,6 @@ const ToolLandingPage = ({ page }: ToolLandingPageProps) => {
 
       <RelatedTools currentSlug={page.slug} />
       <StickyCtaBar />
-      <ExitIntentModal />
     </main>
   );
 };

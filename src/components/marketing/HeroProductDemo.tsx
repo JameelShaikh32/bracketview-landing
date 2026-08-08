@@ -72,7 +72,7 @@ const HeroProductDemo = () => {
   const errorLine = scene === "fix" && fixing ? 3 : null;
 
   return (
-    <div className="flex h-full min-h-80 flex-col overflow-hidden rounded-t-2xl shadow-[0_8px_32px_rgba(25,19,20,0.18)]">
+    <div className="flex h-full min-h-80 flex-col overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(25,19,20,0.18)] md:rounded-t-2xl md:rounded-b-none">
       {/* Scene switcher sits above app chrome so demos can rotate */}
       <div
         className="flex gap-1 bg-[#ededed] px-2 py-1.5 dark:bg-dark-bg"

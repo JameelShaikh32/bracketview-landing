@@ -25,7 +25,7 @@ const HeroAnimated = () => {
           initial="hidden"
           animate="visible"
           variants={heroStaggerContainer}
-          className="hero-left-panel relative flex flex-col justify-start gap-2 rounded-t-4xl rounded-bl-4xl bg-white px-4 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14 dark:bg-muted"
+          className="hero-left-panel relative flex flex-col justify-start gap-2 rounded-4xl bg-white px-4 py-10 sm:px-10 sm:py-12 md:rounded-t-4xl md:rounded-bl-4xl md:rounded-br-none lg:px-12 lg:py-14 dark:bg-muted"
         >
           <div className="flex flex-col gap-6">
             <motion.p
@@ -89,11 +89,11 @@ const HeroAnimated = () => {
             </div>
           </motion.div>
 
-          <div className="absolute bottom-0 right-0 h-22 w-16 rounded-tl-3xl bg-background" />
+          <div className="absolute bottom-0 right-0 hidden h-22 w-16 rounded-tl-3xl bg-background md:block" />
         </motion.div>
 
-        <div className="hero-right-panel relative min-h-88 overflow-hidden rounded-tl-4xl rounded-tr-4xl bg-[#e5e0de] sm:min-h-104 lg:min-h-0 dark:bg-dark-card">
-          <div className="absolute inset-0 z-0 overflow-hidden rounded-tl-2xl rounded-tr-2xl p-3 sm:p-4">
+        <div className="hero-right-panel relative min-h-88 overflow-hidden rounded-[1.75rem] bg-[#e5e0de] sm:min-h-104 md:rounded-tl-4xl md:rounded-tr-4xl md:rounded-br-none md:rounded-bl-none lg:min-h-0 dark:bg-dark-card">
+          <div className="absolute inset-0 z-0 overflow-hidden rounded-2xl p-3 sm:p-4 md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-br-none md:rounded-bl-none">
             <HeroProductDemo />
           </div>
 
@@ -101,7 +101,7 @@ const HeroAnimated = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
-            className="absolute bottom-0 right-0 z-20 flex h-18 w-38 items-center justify-center rounded-tl-4xl bg-background px-4 md:h-24 md:w-44 sm:h-16 sm:w-48 sm:rounded-tl-6xl"
+            className="absolute bottom-0 right-0 z-20 hidden h-18 w-38 items-center justify-center rounded-tl-4xl bg-background px-4 md:flex md:h-24 md:w-44 sm:h-16 sm:w-48 sm:rounded-tl-6xl"
           >
             <p className="text-center text-sm font-medium uppercase leading-snug tracking-[0.12em] text-black dark:text-foreground">
               Understand APIs
@@ -110,13 +110,13 @@ const HeroAnimated = () => {
             </p>
           </motion.div>
 
-          <div className="absolute bottom-0 left-0 h-22 w-16 rounded-tr-3xl bg-background" />
+          <div className="absolute bottom-0 left-0 hidden h-22 w-16 rounded-tr-3xl bg-background md:block" />
           <div
-            className="absolute bottom-18 right-0 h-10 w-10 rounded-full bg-transparent md:bottom-24"
+            className="absolute bottom-18 right-0 hidden h-10 w-10 rounded-full bg-transparent md:bottom-24 md:block"
             style={{ boxShadow: "14px 14px 0 var(--background)" }}
           />
           <div
-            className="absolute bottom-0 right-38 h-10 w-10 rounded-full bg-transparent md:right-44"
+            className="absolute bottom-0 right-38 hidden h-10 w-10 rounded-full bg-transparent md:right-44 md:block"
             style={{ boxShadow: "14px 14px 0 var(--background)" }}
           />
         </div>

@@ -4,6 +4,23 @@
     "regions": [
         "bom1"
     ],
+    "redirects": [
+        {
+            "source": "/index.html",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/index.php",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/index.htm",
+            "destination": "/",
+            "permanent": true
+        }
+    ],
     "functions": {
         "src/app/api/contact/route.ts": {
             "maxDuration": 30

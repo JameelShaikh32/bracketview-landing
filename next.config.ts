@@ -57,7 +57,24 @@ const nextConfig: NextConfig = {
         ],
     },
     async redirects() {
-        return [];
+        return [
+            // SiteChecker / SEO: canonicalize index filenames to the clean root URL
+            {
+                source: "/index.html",
+                destination: "/",
+                permanent: true,
+            },
+            {
+                source: "/index.php",
+                destination: "/",
+                permanent: true,
+            },
+            {
+                source: "/index.htm",
+                destination: "/",
+                permanent: true,
+            },
+        ];
     },
     async headers() {
         return [

@@ -53,10 +53,10 @@ type ToolPage = {
 const toolPages: Record<string, ToolPage> = {
     "json-viewer": {
         slug: "json-viewer",
-        h1: "Online JSON Viewer",
+        h1: "Free Online JSON Viewer",
         badge: "JSON Viewer",
         metaTitle:
-            "JSON Viewer Online — Inspect Nested JSON Trees | BracketView",
+            "Free Online JSON Viewer – Tree View & Formatter | BracketView",
         metaDescription:
             "Free online JSON viewer with collapsible tree, graph view, path copy, and search. Privacy-first — your data stays in the browser.",
         intro:
@@ -100,7 +100,7 @@ const toolPages: Record<string, ToolPage> = {
             "Search keys and values in the tree",
             "Path breadcrumbs and node statistics",
             UPLOAD_FEATURE_LINE,
-            "100% client-side viewing — data stays local",
+            "Browser-side viewing — data stays local for core tools",
         ],
         howToName: "How to View JSON Online with BracketView",
         howToDescription:
@@ -158,11 +158,11 @@ const toolPages: Record<string, ToolPage> = {
         slug: "json-formatter",
         h1: "JSON Formatter Online",
         badge: "JSON Formatter",
-        metaTitle: "JSON Formatter Online — Beautify & Pretty Print JSON | BracketView",
+        metaTitle: "JSON Formatter Online – Beautify and Minify JSON | BracketView",
         metaDescription:
-            "Free online JSON formatter. Beautify, pretty-print, and minify JSON in your browser with real-time validation. 100% client-side.",
+            "Free online JSON formatter. Beautify, pretty-print, and minify JSON in your browser with real-time validation.",
         intro:
-            "A JSON formatter takes raw or minified JSON and reformats it with readable indentation and consistent spacing. BracketView's online JSON formatter lets you beautify (pretty-print) or minify JSON in one click — directly in your browser with no installation. Paste your payload, click Format, and get clean, readable output instantly. The real-time validator highlights syntax errors as you type, so you can fix issues before exporting. Everything runs 100% client-side: your data never leaves your device.",
+            "A JSON formatter takes raw or minified JSON and reformats it with readable indentation and consistent spacing. BracketView's online JSON formatter lets you beautify (pretty-print) or minify JSON in one click — directly in your browser with no installation. Paste your payload, click Format, and get clean, readable output instantly. The real-time validator highlights syntax errors as you type, so you can fix issues before exporting. Formatting and validation run in your browser. Optional AI and snapshots use the server when you choose them.",
         problem:
             "Minified API payloads and log dumps are unreadable. Manual indentation is error-prone and slow when you need to share or debug quickly.",
         useCases: [
@@ -263,9 +263,9 @@ const toolPages: Record<string, ToolPage> = {
     },
     "json-validator": {
         slug: "json-validator",
-        h1: "Validate JSON Online",
+        h1: "JSON Validator Online",
         badge: "JSON Validator",
-        metaTitle: "Validate JSON Online — Free Real-Time Checker | BracketView",
+        metaTitle: "JSON Validator Online – Validate JSON Syntax | BracketView",
         metaDescription:
             "Validate JSON in real time as you type. Catch bracket mismatches, trailing commas, and unquoted keys. Free online validator — no install.",
         intro:
@@ -294,7 +294,7 @@ const toolPages: Record<string, ToolPage> = {
             "Bracket and brace mismatch detection",
             "Works alongside formatter and tree view",
             UPLOAD_FILES_LINE,
-            "100% client-side — privacy-first",
+            "Browser-side validation — privacy-first",
         ],
         howToName: "How to Validate JSON Online with BracketView",
         howToDescription:
@@ -341,7 +341,7 @@ const toolPages: Record<string, ToolPage> = {
             {
                 question: "Is my data private when validating?",
                 answer:
-                    "Yes. Core validation runs 100% client-side. Your JSON does not leave your browser.",
+                    "Yes. Core validation runs in your browser. Your JSON does not leave the device for validation.",
             },
         ],
         appUrl: "https://app.bracketview.in",
@@ -352,7 +352,7 @@ const toolPages: Record<string, ToolPage> = {
         slug: "json-diff",
         h1: "Compare JSON Online",
         badge: "JSON Diff",
-        metaTitle: "Compare JSON Online — Side-by-Side JSON Diff | BracketView",
+        metaTitle: "Compare JSON Online – JSON Diff Tool | BracketView",
         metaDescription:
             "BracketView compares two JSON documents side by side. Highlight added, removed, and changed keys instantly. Free online JSON diff tool — no install.",
         intro:
@@ -420,9 +420,9 @@ const toolPages: Record<string, ToolPage> = {
     },
     "jsonpath-query": {
         slug: "jsonpath-query",
-        h1: "JSONPath Query Tool",
+        h1: "JSONPath Tester Online",
         badge: "JSONPath",
-        metaTitle: "JSONPath Query Tool — Extract Data from JSON Online | BracketView",
+        metaTitle: "JSONPath Tester Online | BracketView",
         metaDescription:
             "BracketView runs JSONPath queries in your browser. Extract nested values with expressions like $.store.book[*].author. Free online JSONPath tool — no install.",
         intro:
@@ -434,7 +434,7 @@ const toolPages: Record<string, ToolPage> = {
             "Pair with tree view for exploration",
             "AI Query Assistant for plain-English to jq",
             "No install — runs in the browser",
-            "100% client-side for core queries",
+            "Browser-side for core queries",
         ],
         howToName: "How to Query JSON with JSONPath in BracketView",
         howToDescription:
@@ -490,9 +490,9 @@ const toolPages: Record<string, ToolPage> = {
     },
     "jq-playground": {
         slug: "jq-playground",
-        h1: "JQ Filter Online",
+        h1: "Online jq Playground",
         badge: "JQ Playground",
-        metaTitle: "Wasm JQ Playground Online — Run jq in Your Browser | BracketView",
+        metaTitle: "Online jq Playground | BracketView",
         metaDescription:
             "Online JQ playground powered by WebAssembly (Wasm) — run a full jq engine in your browser. Filter, transform & extract JSON with jq expressions. Free — no install.",
         intro:
@@ -504,7 +504,7 @@ const toolPages: Record<string, ToolPage> = {
             "Dynamic quick-filter chips from your JSON structure",
             "Pair with JSONPath for complete query coverage",
             "No install or command line required",
-            "100% client-side jq execution",
+            "Browser-side jq execution (WebAssembly)",
         ],
         howToName: "How to Run JQ Filters Online with BracketView",
         howToDescription:
@@ -706,7 +706,7 @@ const toolPages: Record<string, ToolPage> = {
         metaDescription:
             "Fix broken JSON online with AI. Repair missing brackets, trailing commas, unquoted keys & truncated payloads instantly. Free AI JSON syntax repair — no install.",
         intro:
-            "Malformed JSON — from hand-edited configs, truncated API responses, or copy-pasted payloads — often breaks standard parsers with a single missing bracket or trailing comma. BracketView's AI JSON Fixer analyzes broken JSON and automatically repairs syntax errors while preserving your original structure and values as closely as possible. Paste JSON that fails to parse, click Fix, and get valid, well-formed output in seconds — no manual bracket-hunting required. The AI runs as a request to BracketView's servers, so it's not part of the 100% client-side core toolset; review the privacy policy before repairing sensitive data.",
+            "Malformed JSON — from hand-edited configs, truncated API responses, or copy-pasted payloads — often breaks standard parsers with a single missing bracket or trailing comma. BracketView's AI JSON Fixer analyzes broken JSON and automatically repairs syntax errors while preserving your original structure and values as closely as possible. Paste JSON that fails to parse, click Fix, and get valid, well-formed output in seconds — no manual bracket-hunting required. The AI runs as a request to BracketView's servers, so it's not part of the local-only core toolset; review the privacy policy before repairing sensitive data.",
         features: [
             "AI-powered repair for missing or mismatched brackets",
             "Fixes trailing commas and unquoted keys automatically",
@@ -746,7 +746,7 @@ const toolPages: Record<string, ToolPage> = {
             {
                 question: "Is my JSON data sent to a server?",
                 answer:
-                    "For AI-assisted repair specifically, yes — the JSON is sent to process the AI request. Core tools like the formatter and validator remain 100% client-side. Review the privacy policy before repairing sensitive data with AI.",
+                    "For AI-assisted repair specifically, yes — the JSON is sent to process the AI request. Core tools like the formatter and validator remain browser-local. Review the privacy policy before repairing sensitive data with AI.",
             },
             {
                 question: "What kinds of JSON errors can it fix?",

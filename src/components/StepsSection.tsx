@@ -155,7 +155,7 @@ const StepsSection = ({
                     {badge}
                 </span>
 
-                <h2 className="mt-8 max-w-3xl text-3xl font-bold leading-snug tracking-tight text-black sm:mt-10 sm:text-4xl md:text-[2.75rem] dark:text-foreground">
+                <h2 className="mt-8 max-w-3xl text-3xl font-bold leading-normal tracking-tight text-black sm:mt-10 sm:text-4xl md:text-[2.75rem] dark:text-foreground">
                     {title}
                 </h2>
 

@@ -11,17 +11,19 @@ import {
   HOME_TITLE,
 } from "@/lib/seo";
 import dynamic from "next/dynamic";
-import AboutUs from "../components/AboutUs";
+import CoreBenefits from "../components/CoreBenefits";
 import CtaSection from "../components/CtaSection";
 import FeaturedOn from "../components/FeaturedOn";
 import Features from "../components/Features";
 import HeroSection from "../components/HeroSection";
 import HowItWorks from "../components/HowItWorks";
 import FeatureDemoChapter from "../components/marketing/FeatureDemoChapter";
-import TestimonialGrid from "../components/marketing/TestimonialGrid";
-// import TrustStrip from "../components/marketing/TrustStrip";
+import HomepageViewTracker from "../components/marketing/HomepageViewTracker";
+import PrivacyExplainer from "../components/PrivacyExplainer";
 import JsonLd from "../components/seo/JsonLd";
+import ToolsDirectory from "../components/ToolsDirectory";
 import UseCases from "../components/UseCases";
+import WhatIsBracketView from "../components/WhatIsBracketView";
 
 const ComparisonTable = dynamic(() => import("../components/ComparisonTable"));
 const Pricing = dynamic(() => import("../components/Pricing"));
@@ -49,16 +51,18 @@ export default function Home() {
 
   return (
     <main>
+      <HomepageViewTracker />
       <JsonLd data={schemas} />
       <HeroSection />
-      {/* <TrustStrip /> */}
       <FeaturedOn />
-      <AboutUs />
+      <WhatIsBracketView />
       <FeatureDemoChapter />
-      <Features />
+      <CoreBenefits />
       <HowItWorks />
+      <Features />
+      <PrivacyExplainer />
       <UseCases />
-      <TestimonialGrid />
+      <ToolsDirectory />
       <ComparisonTable />
       <Pricing />
       <FAQ />

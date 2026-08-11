@@ -12,7 +12,8 @@ import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 
 const APP_URL = "https://app.bracketview.in";
-const PLAYGROUND_URL = "https://app.bracketview.in/?sample=api-error";
+const VALIDATE_URL = "https://app.bracketview.in/?sample=api-error";
+const COMPARE_URL = "https://app.bracketview.in/json-diff";
 
 const HeroAnimated = () => {
   const reducedMotion = useReducedMotion();
@@ -32,21 +33,20 @@ const HeroAnimated = () => {
               variants={itemVariant}
               className="text-xs font-medium uppercase tracking-[0.14em] text-accent-dark dark:text-accent"
             >
-              AI-Powered JSON Workspace for Modern Developers
+              BracketView
             </motion.p>
             <motion.h1
               variants={itemVariant}
-              className="max-w-xl text-3xl font-bold leading-snug text-black md:text-5xl dark:text-foreground"
+              className="max-w-xl text-3xl font-bold leading-normal text-black md:text-5xl md:leading-normal dark:text-foreground"
             >
-              Debug, Validate & Understand JSON Instantly
+              Free Online JSON Viewer
             </motion.h1>
             <motion.p
               variants={itemVariant}
               className="hero-description max-w-md text-base leading-relaxed text-black/70 dark:text-foreground/70"
             >
-              AI-powered JSON workspace for developers. View, format,
-              validate, query, compare, repair, and explore JSON with
-              powerful visualization and debugging tools.
+              View JSON in a clean interactive tree, format and validate it,
+              search nested data, and inspect large payloads in your browser.
             </motion.p>
 
             <motion.div variants={itemVariant}>
@@ -65,25 +65,27 @@ const HeroAnimated = () => {
                 rel="noopener noreferrer"
                 className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:px-6 dark:bg-accent-dark"
               >
-                Try Free
+                Open JSON Viewer
                 <ArrowUpRight size={18} aria-hidden />
               </Link>
 
               <Link
-                href={PLAYGROUND_URL}
+                href={VALIDATE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
               >
-                Open Playground
+                Validate JSON
                 <ArrowUpRight size={18} aria-hidden />
               </Link>
 
               <Link
-                href="/features"
+                href={COMPARE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
               >
-                View Features
+                Compare JSON
                 <ArrowDownRight size={18} aria-hidden />
               </Link>
             </div>

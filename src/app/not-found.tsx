@@ -6,6 +6,7 @@ export const metadata = createPageMetadata({
     title: "Page Not Found | BracketView",
     description:
         "The page you requested was not found. Browse JSON guides, tools, or return to the BracketView homepage.",
+    noIndex: true,
 });
 
 export default function NotFound() {

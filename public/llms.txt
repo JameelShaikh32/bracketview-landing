@@ -1,10 +1,10 @@
 # BracketView
 
-> BracketView is a freemium online JSON viewer, formatter, validator, query workspace, and webhook tester for developers. Core JSON tools run 100% client-side in the browser — no install required. Built by Jameel Shaikh. Marketing site: https://bracketview.in | App: https://app.bracketview.in
+> BracketView is a freemium online JSON viewer, formatter, validator, query workspace, and webhook tester for developers. Core JSON tools run in the browser — no install required. Built by Jameel Shaikh. Marketing site: https://bracketview.in | App: https://app.bracketview.in
 
 ## Product Overview
 
-BracketView is a privacy-first JSON workspace that runs in the browser. Unlike legacy JSON utilities cluttered with advertisements inside the editor, BracketView offers a full-screen, ad-free workspace to view, format, validate, query, diff, and share JSON data — plus a Webhook Tester for disposable public capture URLs. This marketing website may show third-party ads; the app at app.bracketview.in does not. Core viewing, formatting, and validation run 100% client-side — sensitive API payloads and configuration files do not touch remote servers unless you explicitly use optional features like encrypted snapshots, AI-assisted repair, or Webhook Tester.
+BracketView is a privacy-first JSON workspace that runs in the browser. Unlike legacy JSON utilities cluttered with advertisements inside the editor, BracketView offers a full-screen, ad-free workspace to view, format, validate, query, diff, and share JSON data — plus a Webhook Tester for disposable public capture URLs. This marketing website may show third-party ads; the app at app.bracketview.in does not. Core viewing, formatting, and validation run in the browser. Sensitive payloads do not touch remote servers unless you use optional features like encrypted snapshots, AI-assisted repair, or Webhook Tester.
 
 BracketView is freemium: core JSON tools are free with no signup required. Free accounts include 5 MB uploads, 5 encrypted snapshot links per month (up to 10-minute expiry), 20 AI actions per month, and Webhook Tester with 3 endpoints · 25 requests each · 2-day retention. Pro ($3/month or $27/year) unlocks unlimited AI, 50 MB uploads, Performance Mode for large JSON payloads, unlimited snapshot links (up to 2-hour expiry), and Webhook Tester with 25 endpoints · 5,000 requests each · 30-day retention plus encrypted share of a single capture.
 
@@ -87,7 +87,7 @@ Payments processed via Razorpay. Pro includes a fair use policy for unlimited AI
 BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, schema, and Webhook Tester — are free with no signup required. Free accounts include 5 MB uploads, 5 snapshot links per month, 20 AI actions per month, and Webhook Tester with 3 endpoints / 25 requests / 2-day retention. Pro unlocks unlimited AI, 50 MB uploads, Performance Mode, unlimited encrypted snapshot links, and higher webhook caps (25 / 5,000 / 30-day) plus capture share.
 
 **Does my JSON data leave the browser?**
-Viewing, formatting, and validation run locally in your browser whenever possible. BracketView is privacy-first: core tools are 100% client-side. Snapshot links, AI-assisted features, and Webhook Tester captures follow a different data path.
+Viewing, formatting, and validation run locally in your browser whenever possible. BracketView is privacy-first: core tools run in the browser. Snapshot links, AI-assisted features, and Webhook Tester captures follow a different data path.
 
 **What is Webhook Tester?**
 A free webhook catcher built into BracketView. Generate a public URL, send events from Stripe/GitHub/Shopify or custom APIs, inspect live captures, mock responses, and verify signatures. See freemium caps above. App: https://app.bracketview.in/webhooks
@@ -163,7 +163,6 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 ### Social
 - [LinkedIn](https://www.linkedin.com/company/bracketview): Company updates
 - [X (Twitter)](https://x.com/bracket_view): Product news and tips
-- [Facebook](https://www.facebook.com/bracketview): Community and updates
 - [Instagram](https://www.instagram.com/bracketview): Social updates
 - [YouTube](https://www.youtube.com/@bracketview): Video content
 - [Author on Medium](https://medium.com/@dev-jameel): Blog posts by Jameel Shaikh
@@ -171,7 +170,7 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 ### Off-page SEO (manual actions)
 - Submit sitemap (https://bracketview.in/sitemap.xml) to Google Search Console and Bing Webmaster
 - Request indexing for key tool pages: /json-formatter, /json-validator, /jq-playground, /webhook-tester
-- Share blog posts on LinkedIn, X, Facebook, and Medium after publishing
+- Share blog posts on LinkedIn, X, and Medium after publishing
 - Pursue quality backlinks from developer directories (DevHunt, AlternativeTo) and JSON tool roundups
 - Engage on Product Hunt, SaaSHub, G2, and Capterra listings; respond to reviews
 - Target 10–20 quality dofollow backlinks in the first 90 days

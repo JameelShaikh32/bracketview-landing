@@ -7,8 +7,10 @@ import ToolDemoVideo from "@/components/ToolDemoVideo";
 import PageHeader from "@/components/motion/PageHeader";
 import Reveal from "@/components/motion/Reveal";
 import StepsSection from "@/components/StepsSection";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import JsonLd from "@/components/seo/JsonLd";
 import {
+  buildBreadcrumbListSchema,
   buildFaqPageSchema,
   buildHowToSchema,
   buildItemListSchema,
@@ -24,6 +26,11 @@ type ToolLandingPageProps = {
 
 const ToolLandingPage = ({ page }: ToolLandingPageProps) => {
   const pageUrl = `${SITE_URL}/${page.slug}`;
+  const breadcrumbItems = [
+    { name: "Home", path: "/" },
+    { name: "Tools", path: "/features" },
+    { name: page.h1, path: `/${page.slug}` },
+  ];
 
   const schemas = [
     buildToolSoftwareApplicationSchema(page.h1, page.intro, pageUrl),
@@ -33,12 +40,14 @@ const ToolLandingPage = ({ page }: ToolLandingPageProps) => {
       `${page.h1} Features`,
       page.features.map((feature) => ({ name: feature })),
     ),
+    buildBreadcrumbListSchema(breadcrumbItems),
   ];
 
   return (
     <main className="w-full px-4 pb-24 pt-8 sm:px-6 lg:px-8">
       <JsonLd data={schemas} />
       <div className="mx-auto max-w-7xl">
+        <Breadcrumbs items={breadcrumbItems} className="mb-6" />
         <PageHeader
           badge={page.badge}
           title={page.h1}
@@ -237,6 +246,32 @@ const ToolLandingPage = ({ page }: ToolLandingPageProps) => {
           </div>
         </section>
 
+        <Reveal className="mt-16">
+          <section
+            aria-labelledby={`${page.slug}-privacy`}
+            className="rounded-4xl bg-white p-6 sm:p-10 dark:bg-muted"
+          >
+            <h2
+              id={`${page.slug}-privacy`}
+              className="text-2xl font-bold sm:text-3xl"
+            >
+              Privacy and security
+            </h2>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/75">
+              Core viewing, formatting, validation, JSONPath, and jq run in your
+              browser. Optional AI features, encrypted snapshots, and Webhook
+              Tester send or store data when you use them. Review the{" "}
+              <Link
+                href="/privacy"
+                className="font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
+              >
+                privacy policy
+              </Link>{" "}
+              before pasting sensitive payloads into optional cloud features.
+            </p>
+          </section>
+        </Reveal>
+
         <div className="mt-12 flex flex-wrap gap-3">
           <Link
             href="/pricing"
@@ -248,7 +283,7 @@ const ToolLandingPage = ({ page }: ToolLandingPageProps) => {
             href="/learn"
             className="inline-flex h-11 items-center rounded-2xl border-2 border-black/10 px-5 text-sm font-medium dark:border-foreground/15"
           >
-            JSON learning hub
+            Learn guides
           </Link>
         </div>
 

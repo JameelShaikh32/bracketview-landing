@@ -21,11 +21,11 @@ const META_DESCRIPTION =
 
 /** Homepage-only title — distinct from META_TITLE (the sitewide fallback used in layout.tsx). */
 const HOME_TITLE =
-    "BracketView – AI JSON Viewer, Formatter & Validator";
+    "Free Online JSON Viewer – Tree View & Formatter | BracketView";
 
-/** Homepage-only description emphasizing privacy-first, AI repair, and Wasm JQ USPs. Keep 100–130 chars. */
+/** Homepage-only description. Keep ~120–155 chars for SERP display. */
 const HOME_DESCRIPTION =
-    "AI-powered JSON workspace for developers. View, format, validate, query, compare, repair, and explore JSON with powerful visualization and debugging tools.";
+    "View, format, validate, query, and compare JSON in a clean browser-based workspace. Privacy-first core tools — no install.";
 
 const OG_IMAGE = "/og-image.webp";
 
@@ -63,7 +63,7 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "Does my JSON data leave the browser?",
         answer:
-            "Viewing, formatting, and validation run locally in your browser whenever possible. BracketView is privacy-first: core tools are 100% client-side. Snapshot links, AI-assisted features, and Webhook Tester captures follow a different data path — review the privacy policy before using those with sensitive data.",
+            "Core tools — viewing, formatting, validation, JSONPath, and jq — run locally in your browser. Optional features (encrypted snapshot links, AI-assisted repair and conversion, Webhook Tester, and signed-in history previews) send or store data on BracketView servers or AI providers when you use them. Review the privacy policy before pasting sensitive data into those features.",
     },
     {
         question: "What does BracketView Pro include?",
@@ -103,7 +103,7 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "Is my JSON data sent to a server?",
         answer:
-            "No, not for core tools. Viewing, formatting, validating, and querying JSON with JSONPath or JQ run 100% locally in your browser — your data never leaves your device. AI-assisted features (like AI JSON repair) and snapshot links do send data to process the request; review the privacy policy before using those with sensitive data.",
+            "Not for core tools. Viewing, formatting, validating, and querying with JSONPath or jq run locally in your browser. AI-assisted features, snapshot links, Webhook Tester, and signed-in history previews do send or store data when you use them — review the privacy policy before using those with sensitive data.",
     },
     {
         question: "How does the AI fix broken JSON?",
@@ -143,7 +143,6 @@ const SAME_AS = [
     APP_URL,
     "https://www.linkedin.com/company/bracketview",
     "https://x.com/bracket_view",
-    "https://www.facebook.com/bracketview",
     "https://www.instagram.com/bracketview",
     "https://www.youtube.com/@bracketview",
     "https://medium.com/@dev-jameel",
@@ -158,6 +157,7 @@ type PageMetadataOptions = {
     modifiedTime?: string;
     tags?: string[];
     keywords?: readonly string[];
+    noIndex?: boolean;
 };
 
 function createPageMetadata({
@@ -169,6 +169,7 @@ function createPageMetadata({
     modifiedTime,
     tags,
     keywords,
+    noIndex = false,
 }: PageMetadataOptions): Metadata {
     const canonicalPath = path === "/" ? "" : path;
     const url = `${SITE_URL}${canonicalPath}`;
@@ -177,6 +178,14 @@ function createPageMetadata({
         title,
         description,
         ...(keywords ? { keywords: [...keywords] } : {}),
+        ...(noIndex
+            ? {
+                  robots: {
+                      index: false,
+                      follow: true,
+                  },
+              }
+            : {}),
         alternates: {
             canonical: url,
             languages: {
@@ -223,7 +232,7 @@ function buildSoftwareApplicationSchema() {
         url: SITE_URL,
         sameAs: SAME_AS,
         description:
-            "BracketView is a freemium, ad-free, privacy-first online JSON viewer, formatter, and validator. Features include AI-powered JSON syntax repair, a WebAssembly JQ playground, JSONPath queries, JSON diff, schema validation, JSON-to-TypeScript (and 9+ language) type generation, encrypted shareable snapshots, and more — all running client-side in your browser.",
+            "BracketView is a freemium, privacy-first online JSON viewer, formatter, and validator for developers. View, format, validate, query, and compare JSON in the browser. Core tools run client-side; optional AI repair, encrypted snapshots, and Webhook Tester use the server when you choose them. The app workspace is ad-free.",
         featureList: FEATURE_LIST,
         offers: [
             {
@@ -349,7 +358,6 @@ function buildOrganizationSchema() {
         sameAs: [
             "https://www.linkedin.com/company/bracketview",
             "https://x.com/bracket_view",
-            "https://www.facebook.com/bracketview",
             "https://www.instagram.com/bracketview",
             "https://www.youtube.com/@bracketview",
             "https://medium.com/@dev-jameel",
@@ -612,10 +620,29 @@ function buildToolSoftwareApplicationSchema(
     };
 }
 
+type BreadcrumbItem = {
+    name: string;
+    path: string;
+};
+
+function buildBreadcrumbListSchema(items: BreadcrumbItem[]) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: items.map((item, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: item.name,
+            item: `${SITE_URL}${item.path === "/" ? "" : item.path}`,
+        })),
+    };
+}
+
 export {
     APP_URL,
     buildBlogPostingSchema,
     buildBlogSchema,
+    buildBreadcrumbListSchema,
     buildDefinedTermSetSchema,
     buildFaqPageSchema,
     buildHomepageHowToSchema,
@@ -641,5 +668,5 @@ export {
     SITE_URL,
     TWITTER_SITE
 };
-export type { BlogPostInput, DefinedTerm, FaqItem, HowToStep, PageMetadataOptions };
+export type { BlogPostInput, BreadcrumbItem, DefinedTerm, FaqItem, HowToStep, PageMetadataOptions };
 

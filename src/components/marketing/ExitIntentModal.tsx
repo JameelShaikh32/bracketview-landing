@@ -105,7 +105,7 @@ const ExitIntentModal = () => {
             onClick={dismiss}
             className="inline-flex h-11 flex-1 items-center justify-center rounded-2xl border-2 border-black/10 px-4 text-sm font-medium text-black transition-colors hover:bg-black/5 dark:border-foreground/15 dark:text-foreground dark:hover:bg-foreground/10"
           >
-            Try Free
+            Open JSON Viewer
           </Link>
         </div>
       </div>

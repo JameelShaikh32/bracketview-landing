@@ -36,7 +36,7 @@ const PageHeader = ({ badge, title, description, cta }: PageHeaderProps) => {
 
       <motion.h1
         variants={itemVariant}
-        className="mt-8 text-3xl font-bold leading-snug tracking-tight text-black sm:text-4xl md:text-[2.75rem] dark:text-foreground"
+        className="mt-8 text-3xl font-bold leading-normal tracking-tight text-black sm:text-4xl md:text-[2.75rem] dark:text-foreground"
       >
         {title}
       </motion.h1>

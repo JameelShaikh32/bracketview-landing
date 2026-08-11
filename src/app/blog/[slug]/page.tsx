@@ -11,7 +11,8 @@ import {
     getRelatedAppToolLinks,
     getRelatedMarketingToolLinks,
 } from "@/lib/blog-content";
-import { buildBlogPostingSchema, createPageMetadata, SITE_URL } from "@/lib/seo";
+import { buildBlogPostingSchema, buildBreadcrumbListSchema, createPageMetadata, SITE_URL } from "@/lib/seo";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import mdxComponents from "@/mdx-components";
 import { ArrowLeft, Clock3 } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -53,11 +54,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         post.relatedTools,
     );
     const allPosts = getAllPosts();
+    const breadcrumbItems = [
+        { name: "Home", path: "/" },
+        { name: "Blog", path: "/blog" },
+        { name: post.title, path: `/blog/${post.slug}` },
+    ];
 
     return (
         <main className="w-full px-4 pb-24 pt-8 sm:px-6 lg:px-8">
-            <JsonLd data={buildBlogPostingSchema(post)} />
+            <JsonLd
+                data={[
+                    buildBlogPostingSchema(post),
+                    buildBreadcrumbListSchema(breadcrumbItems),
+                ]}
+            />
             <div className="mx-auto max-w-6xl">
+                <Breadcrumbs items={breadcrumbItems} className="mb-6" />
                 <Link
                     href="/blog"
                     className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-black/70 transition-opacity hover:opacity-100 dark:text-foreground/70"
@@ -78,7 +90,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         ))}
                     </div>
 
-                    <h1 className="text-3xl font-bold leading-tight sm:text-4xl">
+                    <h1 className="text-3xl font-bold leading-snug sm:text-4xl">
                         {post.title}
                     </h1>
 

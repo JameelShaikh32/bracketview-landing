@@ -2,8 +2,10 @@ import { learnPages, type LearnPage } from "@/app/data/learnPages";
 import { toolPages } from "@/app/data/toolPages";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import JsonLd from "@/components/seo/JsonLd";
 import {
+  buildBreadcrumbListSchema,
   buildFaqPageSchema,
   buildHowToSchema,
   SITE_URL,
@@ -16,6 +18,11 @@ type LearnArticleProps = {
 
 const LearnArticle = ({ page }: LearnArticleProps) => {
   const pageUrl = `${SITE_URL}/learn/${page.slug}`;
+  const breadcrumbItems = [
+    { name: "Home", path: "/" },
+    { name: "Learn", path: "/learn" },
+    { name: page.title, path: `/learn/${page.slug}` },
+  ];
   const schemas = [
     {
       "@context": "https://schema.org",
@@ -26,6 +33,7 @@ const LearnArticle = ({ page }: LearnArticleProps) => {
       author: { "@type": "Organization", name: "BracketView" },
     },
     buildFaqPageSchema(page.faqs),
+    buildBreadcrumbListSchema(breadcrumbItems),
     ...(page.steps
       ? [
           buildHowToSchema(
@@ -45,11 +53,12 @@ const LearnArticle = ({ page }: LearnArticleProps) => {
     <article className="w-full px-4 pb-24 pt-8 sm:px-6 lg:px-8">
       <JsonLd data={schemas} />
       <div className="mx-auto max-w-3xl">
+        <Breadcrumbs items={breadcrumbItems} className="mb-6" />
         <Badge>Learn</Badge>
-        <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="mt-4 text-3xl font-bold leading-snug tracking-tight sm:text-4xl sm:leading-snug">
           {page.title}
         </h1>
-        <p className="mt-6 rounded-3xl bg-white p-5 text-sm leading-relaxed text-black/80 sm:text-base dark:bg-muted dark:text-foreground/85">
+        <p className="mt-6 rounded-3xl bg-white p-5 text-sm leading-relaxed text-black/80 sm:text-base sm:leading-relaxed dark:bg-muted dark:text-foreground/85">
           <strong className="font-bold">Direct answer: </strong>
           {page.answerFirst}
         </p>
@@ -68,8 +77,8 @@ const LearnArticle = ({ page }: LearnArticleProps) => {
                   <p className="text-xs font-medium uppercase tracking-wider text-accent-dark dark:text-accent">
                     Step {index + 1}
                   </p>
-                  <h3 className="mt-1 font-bold">{step.name}</h3>
-                  <p className="mt-2 text-sm text-black/70 dark:text-foreground/70">
+                  <h3 className="mt-1 font-bold leading-snug">{step.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-black/70 dark:text-foreground/70">
                     {step.text}
                   </p>
                 </li>
@@ -109,8 +118,8 @@ const LearnArticle = ({ page }: LearnArticleProps) => {
                 key={faq.question}
                 className="rounded-3xl bg-white p-5 dark:bg-muted"
               >
-                <h3 className="font-bold">{faq.question}</h3>
-                <p className="mt-2 text-sm text-black/70 dark:text-foreground/70">
+                <h3 className="font-bold leading-snug">{faq.question}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-black/70 dark:text-foreground/70">
                   {faq.answer}
                 </p>
               </div>

@@ -19,6 +19,16 @@
             "source": "/index.htm",
             "destination": "/",
             "permanent": true
+        },
+        {
+            "source": "/jsonpath",
+            "destination": "/jsonpath-query",
+            "permanent": true
+        },
+        {
+            "source": "/json-to-typescript",
+            "destination": "/json-type-generator",
+            "permanent": true
         }
     ],
     "functions": {

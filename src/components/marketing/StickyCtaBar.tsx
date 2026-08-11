@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const APP_URL = "https://app.bracketview.in";
-const PLAYGROUND_URL = "https://app.bracketview.in/?sample=api-error";
 
 const StickyCtaBar = () => {
   const [visible, setVisible] = useState(false);
@@ -35,12 +34,12 @@ const StickyCtaBar = () => {
         </p>
         <div className="flex w-full items-center justify-end gap-2 sm:w-auto">
           <Link
-            href={PLAYGROUND_URL}
+            href="https://app.bracketview.in/?sample=api-error"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-10 items-center justify-center rounded-xl border border-black/15 px-3 text-xs font-medium text-black transition-colors hover:bg-black/5 sm:px-4 sm:text-sm dark:border-foreground/20 dark:text-foreground dark:hover:bg-foreground/10"
           >
-            Open Playground
+            Validate JSON
           </Link>
           <Link
             href={APP_URL}
@@ -48,7 +47,7 @@ const StickyCtaBar = () => {
             rel="noopener noreferrer"
             className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-accent px-3 text-xs font-medium text-white transition-opacity hover:opacity-90 sm:px-4 sm:text-sm dark:bg-accent-dark"
           >
-            Try Free
+            Open JSON Viewer
             <ArrowUpRight size={14} aria-hidden />
           </Link>
         </div>

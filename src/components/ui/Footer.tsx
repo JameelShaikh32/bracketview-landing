@@ -3,7 +3,6 @@ import { supportEmail } from "@/app/data/legal";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  FaFacebook,
   FaInstagram,
   FaLinkedinIn,
   FaMedium,
@@ -14,18 +13,35 @@ import {
 const socialIcons = {
   LinkedIn: FaLinkedinIn,
   Twitter: FaXTwitter,
-  Facebook: FaFacebook,
   Instagram: FaInstagram,
   YouTube: FaYoutube,
   Medium: FaMedium,
 } as const;
+
+type FooterLink = { label: string; href: string; rel?: string };
+
+const FooterLinkItem = ({ link }: { link: FooterLink }) => (
+  <li>
+    <Link
+      href={link.href}
+      target={link.href.startsWith("http") ? "_blank" : undefined}
+      rel={
+        link.rel ||
+        (link.href.startsWith("http") ? "noopener noreferrer" : undefined)
+      }
+      className="inline-flex min-h-11 items-center py-2 text-sm text-black/65 transition-opacity hover:opacity-100 dark:text-foreground/65"
+    >
+      {link.label}
+    </Link>
+  </li>
+);
 
 const FooterColumn = ({
   title,
   links,
 }: {
   title: string;
-  links: { label: string; href: string; rel?: string }[];
+  links: FooterLink[];
 }) => (
   <div>
     <h3 className="text-sm font-bold text-black dark:text-foreground">
@@ -33,29 +49,45 @@ const FooterColumn = ({
     </h3>
     <ul className="mt-2">
       {links.map((link) => (
-        <li key={link.label}>
-          <Link
-            href={link.href}
-            target={link.href.startsWith("http") ? "_blank" : undefined}
-            rel={
-              link.rel ||
-              (link.href.startsWith("http") ? "noopener noreferrer" : undefined)
-            }
-            className="inline-flex min-h-11 items-center py-2 text-sm text-black/65 transition-opacity hover:opacity-100 dark:text-foreground/65"
-          >
-            {link.label}
-          </Link>
-        </li>
+        <FooterLinkItem key={link.label} link={link} />
       ))}
     </ul>
   </div>
 );
 
+const CORE_TOOL_HREFS = new Set([
+  "/json-viewer",
+  "/json-formatter",
+  "/json-validator",
+  "/json-diff",
+  "/jsonpath-query",
+  "/jq-playground",
+]);
+
+const ToolsColumns = ({ links }: { links: FooterLink[] }) => {
+  const coreTools = links.filter((link) => CORE_TOOL_HREFS.has(link.href));
+  const advancedTools = links.filter((link) => !CORE_TOOL_HREFS.has(link.href));
+
+  return (
+    <div className="grid grid-cols-2 gap-x-6 sm:col-span-2 lg:col-span-2">
+      <FooterColumn title="Core Tools" links={coreTools} />
+      <FooterColumn title="Advanced Tools" links={advancedTools} />
+    </div>
+  );
+};
+
 const Footer = () => {
   return (
     <footer className="mt-auto w-full px-4 pb-8 pt-8 sm:px-6 lg:px-8">
-      <div className="rounded-4xl bg-white p-8 sm:p-10 lg:p-12 dark:bg-muted">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-6 lg:gap-8">
+      <div className="relative overflow-hidden rounded-4xl bg-white p-8 sm:p-10 lg:p-12 dark:bg-muted">
+        <p
+          aria-hidden
+          className="pointer-events-none absolute bottom-16 left-1/2 z-0 hidden -translate-x-1/2 select-none whitespace-nowrap font-sans text-[clamp(4.25rem,22vw,11rem)] font-bold italic leading-none tracking-tight text-black/5.5 sm:bottom-12 md:block dark:text-foreground/7.5"
+        >
+          BRACKETVIEW
+        </p>
+
+        <div className="relative z-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-7 lg:gap-8">
           <div className="lg:col-span-2">
             <Link
               href="/"
@@ -99,12 +131,12 @@ const Footer = () => {
           </div>
 
           <FooterColumn title="Product" links={footerLinks.product} />
-          <FooterColumn title="Tools" links={footerLinks.tools} />
+          <ToolsColumns links={footerLinks.tools} />
           <FooterColumn title="Company" links={footerLinks.company} />
           <FooterColumn title="Legal" links={footerLinks.legal} />
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-black/10 pt-8 sm:flex-row dark:border-foreground/10">
+        <div className="relative z-10 mt-10 flex flex-col items-center justify-between gap-4 border-t border-black/10 pt-8 sm:flex-row dark:border-foreground/10">
           <p className="text-sm text-black/55 dark:text-foreground/55">
             © {new Date().getFullYear()} BracketView. All rights reserved.
           </p>

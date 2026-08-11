@@ -23,7 +23,7 @@ const LegalDocument = ({
                 </Link>
 
                 <article className="rounded-4xl bg-white p-8 sm:p-12 dark:bg-muted">
-                    <h1 className="text-3xl font-bold leading-tight text-black sm:text-4xl dark:text-foreground">
+                    <h1 className="text-3xl font-bold leading-snug text-black sm:text-4xl dark:text-foreground">
                         {title}
                     </h1>
 

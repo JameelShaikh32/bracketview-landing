@@ -60,7 +60,7 @@ const privacyPolicy: LegalDocument = {
         {
             title: "AI Features",
             paragraphs: [
-                "If you enable AI-powered fixing, the application may send the JSON data (or a minimal excerpt necessary to produce a fix) to the configured AI provider. You must configure any API keys yourself; we do not ship or store keys on our servers. Please review your provider's privacy terms for details on how they handle data.",
+                "If you use AI-powered features (such as JSON repair, conversion helpers, mock data generation, or the jq assistant), BracketView may send your JSON (or an excerpt) to third-party AI providers (currently Groq and/or Google Gemini) via our servers. API keys for those providers are held by BracketView on the server; you do not need to supply your own keys for standard product AI features. Review each provider's privacy terms before using AI with sensitive data.",
             ],
         },
         {
@@ -152,7 +152,7 @@ const disclaimer: LegalDocument = {
             title: "AI output limitations",
             paragraphs: [
                 "AI-powered features may suggest fixes, generate mock data, or rewrite queries. AI output can be incorrect, incomplete, or unsafe for your use case. Review all AI-generated content before relying on it.",
-                "You configure third-party AI providers with your own API keys where applicable. BracketView does not control how those providers process data sent through your configuration.",
+                "BracketView routes standard product AI requests through its servers to configured providers. BracketView does not control how those providers process data once received. Do not send secrets or regulated data to AI features unless you accept that risk.",
             ],
         },
         {

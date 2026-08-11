@@ -68,7 +68,7 @@ const rows = [
     otherTools: "Varies",
   },
   {
-    feature: "100% client-side (privacy-first)",
+    feature: "Browser-first core tools (privacy-first)",
     bracketview: "Yes",
     otherTools: "Yes",
   },

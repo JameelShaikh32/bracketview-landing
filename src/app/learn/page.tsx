@@ -15,10 +15,10 @@ export default function LearnHubPage() {
     <main className="w-full px-4 pb-24 pt-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Badge>Developer learning center</Badge>
-        <h1 className="mt-4 max-w-3xl text-3xl font-bold tracking-tight sm:text-5xl">
+        <h1 className="mt-4 max-w-3xl text-3xl font-bold leading-snug tracking-tight sm:text-5xl sm:leading-snug">
           Learn JSON tooling the answer-first way
         </h1>
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-black/70 sm:text-base dark:text-foreground/70">
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-black/70 sm:text-base sm:leading-relaxed dark:text-foreground/70">
           Direct answers, steps, examples, and FAQs — built for developers and
           optimized for ChatGPT, Claude, Gemini, and Perplexity retrieval.
         </p>
@@ -36,11 +36,11 @@ export default function LearnHubPage() {
               >
                 <h2
                   id={`cluster-${cluster.id}`}
-                  className="text-2xl font-bold"
+                  className="text-2xl font-bold leading-snug"
                 >
                   {cluster.title}
                 </h2>
-                <p className="mt-2 text-sm text-black/65 dark:text-foreground/65">
+                <p className="mt-2 text-sm leading-relaxed text-black/65 dark:text-foreground/65">
                   {cluster.description}
                 </p>
                 <ul className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -50,8 +50,8 @@ export default function LearnHubPage() {
                         href={`/learn/${page.slug}`}
                         className="block rounded-3xl bg-white p-5 transition-colors hover:bg-accent/10 dark:bg-muted dark:hover:bg-accent-dark/20"
                       >
-                        <p className="font-bold">{page.title}</p>
-                        <p className="mt-2 line-clamp-2 text-sm text-black/65 dark:text-foreground/65">
+                        <p className="font-bold leading-snug">{page.title}</p>
+                        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-black/65 dark:text-foreground/65">
                           {page.answerFirst}
                         </p>
                       </Link>

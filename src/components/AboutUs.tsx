@@ -34,19 +34,17 @@ const AboutUs = () => {
 
                         <h2
                             id="what-is-bracketview"
-                            className="mt-8 max-w-6xl text-3xl font-bold leading-snug tracking-tight text-black sm:mt-10 sm:text-4xl md:text-[2.75rem] dark:text-foreground"
+                            className="mt-8 max-w-6xl text-3xl font-bold leading-normal tracking-tight text-black sm:mt-10 sm:text-4xl md:text-[2.75rem] dark:text-foreground"
                         >
                             What is BracketView?
                         </h2>
 
                         <p className="mt-6 max-w-6xl text-sm leading-relaxed text-black/75 sm:mt-8 sm:text-base dark:text-foreground/70">
                             BracketView is a freemium online JSON viewer and formatter
-                            for developers. It lets you format, validate, query, and
-                            share JSON directly in your browser — no installation
-                            required. Core tools including the formatter, validator,
-                            tree view, JSONPath query, JQ filters, and JSON diff run
-                            100% client-side, meaning your data never leaves your
-                            device.
+                            for developers. View, format, validate, query, and compare
+                            JSON in your browser — no installation required. Core tools
+                            run locally; optional AI, snapshots, and Webhook Tester use
+                            the server when you choose them.
                         </p>
 
                         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/70">

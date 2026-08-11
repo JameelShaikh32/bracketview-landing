@@ -74,6 +74,27 @@ const nextConfig: NextConfig = {
                 destination: "/",
                 permanent: true,
             },
+            // Alias paths for common search intents (keep primary indexed URLs)
+            {
+                source: "/jsonpath",
+                destination: "/jsonpath-query",
+                permanent: true,
+            },
+            {
+                source: "/jsonpath/",
+                destination: "/jsonpath-query",
+                permanent: true,
+            },
+            {
+                source: "/json-to-typescript",
+                destination: "/json-type-generator",
+                permanent: true,
+            },
+            {
+                source: "/json-to-typescript/",
+                destination: "/json-type-generator",
+                permanent: true,
+            },
         ];
     },
     async headers() {

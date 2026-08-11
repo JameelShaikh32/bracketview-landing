@@ -32,3 +32,13 @@ CTAs should deep-link to the matching app workspace URL (for example `https://ap
 - **App (`app.bracketview.in`):** Mostly `noindex` / restrictive `robots` allow-list. Prefer marketing pages as the search landing for tool intent; the app is for product use after the click.
 
 Do not claim rankings, impression counts, or Lighthouse scores in public copy without verification in Search Console / field data.
+
+## Off-page SEO & backlinks
+
+Directory blurbs, preferred anchors, brand assets, UTM conventions, and a submission checklist live in **[backlinks.md](./backlinks.md)**.
+
+Related:
+
+- Public marketing repo README (product links + post-publish GitHub checklist)
+- [`public/llms.txt`](../public/llms.txt) — long-form product summary for AI crawlers
+- Submit `https://bracketview.in/sitemap.xml` to Google Search Console and Bing Webmaster

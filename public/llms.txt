@@ -174,3 +174,4 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 - Pursue quality backlinks from developer directories (DevHunt, AlternativeTo) and JSON tool roundups
 - Engage on Product Hunt, SaaSHub, G2, and Capterra listings; respond to reviews
 - Target 10–20 quality dofollow backlinks in the first 90 days
+- Public marketing repo (blurbs, assets, checklist): https://github.com/JameelShaikh32/bracketview-landing (see docs/backlinks.md in that repo)

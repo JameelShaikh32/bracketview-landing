@@ -2,6 +2,33 @@
   "name": "bracketview-landing",
   "version": "0.1.0",
   "private": true,
+  "description": "Marketing site for BracketView — AI-powered JSON viewer, formatter, validator, JSONPath, jq playground, and webhook tester.",
+  "homepage": "https://bracketview.in",
+  "license": "UNLICENSED",
+  "author": "Jameel Shaikh",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JameelShaikh32/bracketview-landing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JameelShaikh32/bracketview-landing/issues",
+    "email": "support@bracketview.in"
+  },
+  "keywords": [
+    "json",
+    "json-viewer",
+    "json-formatter",
+    "json-validator",
+    "jsonpath",
+    "jq",
+    "json-diff",
+    "json-schema",
+    "webhook-tester",
+    "api-debugging",
+    "developer-tools",
+    "nextjs",
+    "bracketview"
+  ],
   "engines": {
     "node": ">=20"
   },

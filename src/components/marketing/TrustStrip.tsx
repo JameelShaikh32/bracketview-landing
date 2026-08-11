@@ -17,7 +17,7 @@ const metrics = [
   },
   {
     label: "GitHub community",
-    value: "Open source friendly",
+    value: "Public on GitHub",
     icon: FaGithub,
     href: "https://github.com/JameelShaikh32/bracketview-landing",
   },

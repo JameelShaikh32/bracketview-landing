@@ -8,6 +8,12 @@ export const metadata = createPageMetadata({
   path: "/json-viewer",
   title: page.metaTitle,
   description: page.metaDescription,
+  keywords: [
+    "free online JSON viewer",
+    "JSON tree viewer",
+    "online JSON viewer",
+    "BracketView",
+  ],
 });
 
 export default function JsonViewerPage() {

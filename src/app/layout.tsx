@@ -130,6 +130,12 @@ export default function RootLayout({
                     type="application/xml"
                     href="/sitemap.xml"
                 />
+                <link
+                    rel="alternate"
+                    type="text/plain"
+                    href="/llms.txt"
+                    title="LLM information"
+                />
                 <StructuredData />
                 <Analytics />
             </head>

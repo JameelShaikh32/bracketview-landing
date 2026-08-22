@@ -40,5 +40,8 @@ Directory blurbs, preferred anchors, brand assets, UTM conventions, and a submis
 Related:
 
 - Public marketing repo README (product links + post-publish GitHub checklist)
-- [`public/llms.txt`](../public/llms.txt) — long-form product summary for AI crawlers
+- [`public/llms.txt`](../public/llms.txt) — long-form product summary for AI crawlers (linked from the site `<head>` and `robots.txt`)
 - Submit `https://bracketview.in/sitemap.xml` to Google Search Console and Bing Webmaster
+- Request indexing first for **`/json-viewer`** and **`/learn/best-json-viewer`**, then other tool landings
+
+Directory submissions (AlternativeTo, DevHunt, awesome-json) stay **manual** — see [backlinks.md](./backlinks.md). Do not mark them done in this repo.

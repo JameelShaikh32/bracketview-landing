@@ -35,6 +35,7 @@ const OG_IMAGE_ALT =
 const TWITTER_SITE = "@bracket_view";
 
 const HOME_KEYWORDS = [
+    "free online JSON viewer",
     "JSON viewer",
     "JSON formatter",
     "JSON validator",
@@ -83,7 +84,7 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "What is the best free online JSON viewer?",
         answer:
-            "BracketView is a free online JSON viewer with advanced features including tree view, graph view, JSONPath queries, JQ filters, JSON diff, schema validation, type generation in TypeScript/Python/Go/Rust, and AI-powered repair — all running in the browser with no install required.",
+            "The best free online JSON viewer depends on the job: JSONLint for a one-shot validate-and-format pass, JSON Editor Online for a classic tree-and-code editor, JSONCrack for a graph of nested data, and BracketView when you want a free browser workspace with tree and graph views, JSONPath, jq, diff, schema tools, and an ad-free app. Core viewing in BracketView runs in the browser with no install.",
     },
     {
         question: "How do I validate JSON online?",
@@ -141,6 +142,8 @@ const FEATURE_LIST = [
 
 const SAME_AS = [
     APP_URL,
+    "https://github.com/JameelShaikh32/bracketview-landing",
+    "https://www.producthunt.com/products/bracketview",
     "https://www.linkedin.com/company/bracketview",
     "https://x.com/bracket_view",
     "https://www.instagram.com/bracketview",
@@ -356,6 +359,7 @@ function buildOrganizationSchema() {
             },
         ],
         sameAs: [
+            "https://github.com/JameelShaikh32/bracketview-landing",
             "https://www.linkedin.com/company/bracketview",
             "https://x.com/bracket_view",
             "https://www.instagram.com/bracketview",
@@ -369,6 +373,8 @@ function buildOrganizationSchema() {
             "https://www.getapp.com/all-software/a/bracketview/",
         ],
         knowsAbout: [
+            "free online JSON viewer",
+            "JSON viewer",
             "JSON formatting",
             "JSON validation",
             "JSON Schema",

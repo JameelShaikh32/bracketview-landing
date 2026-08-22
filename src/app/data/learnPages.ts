@@ -1,3 +1,9 @@
+import {
+  HOMEPAGE_LEARN_COMPARISON,
+  JSON_VIEWER_LISTED_TOOLS,
+  type LearnComparisonTable,
+  type ListedJsonTool,
+} from "@/app/data/jsonToolComparison";
 import type { FaqItem } from "@/lib/seo";
 
 export type LearnPage = {
@@ -5,8 +11,17 @@ export type LearnPage = {
   title: string;
   metaTitle: string;
   metaDescription: string;
-  cluster: "viewer" | "jsonpath" | "jq" | "api" | "fundamentals";
+  cluster:
+    | "viewer"
+    | "jsonpath"
+    | "jq"
+    | "api"
+    | "fundamentals"
+    | "comparisons";
   answerFirst: string;
+  sections?: { heading: string; body: string }[];
+  comparison?: LearnComparisonTable;
+  listedTools?: ListedJsonTool[];
   steps?: { name: string; text: string }[];
   examples?: { title: string; code: string }[];
   faqs: FaqItem[];
@@ -152,7 +167,7 @@ export const learnPages: Record<string, LearnPage> = {
       },
     ],
     relatedTools: ["json-validator", "json-schema-validator", "ai-json-fixer"],
-    relatedLearn: ["how-to-fix-invalid-json", "what-is-json"],
+    relatedLearn: ["how-to-fix-invalid-json", "what-is-json", "best-json-viewer"],
   },
   "how-to-fix-invalid-json": {
     slug: "how-to-fix-invalid-json",
@@ -224,7 +239,7 @@ export const learnPages: Record<string, LearnPage> = {
       },
     ],
     relatedTools: ["json-diff", "json-viewer", "json-formatter"],
-    relatedLearn: ["what-is-json", "best-json-viewer"],
+    relatedLearn: ["what-is-json", "best-json-viewer", "bracketview-vs-jsonlint"],
   },
   "what-is-jq": {
     slug: "what-is-jq",
@@ -306,12 +321,36 @@ export const learnPages: Record<string, LearnPage> = {
   "best-json-viewer": {
     slug: "best-json-viewer",
     title: "Best JSON Viewer",
-    metaTitle: "Best JSON Viewer in 2026 — Criteria & Recommendation | BracketView",
+    metaTitle: "Best Free Online JSON Viewer (2026) — Criteria & Tools | BracketView",
     metaDescription:
-      "What makes the best JSON viewer? Privacy, tree navigation, search, schema tools, and client-side processing. See why BracketView ranks well.",
+      "Compare free online JSON viewers: JSONLint, JSON Editor Online, JSONCrack, and BracketView. Criteria: tree navigation, privacy, search, and adjacent tools.",
     cluster: "viewer",
     answerFirst:
-      "The best JSON viewer for developers combines a fast collapsible tree, path copy, search, validation, and privacy-first client-side processing. BracketView adds AI repair, jq/JSONPath, schema tools, and encrypted snapshots in one workspace—without ads in the app editor.",
+      "The best free online JSON viewer depends on the job. Use JSONLint to validate and pretty-print, JSON Editor Online for a classic tree-and-code editor, JSONCrack for a graph map of nested data, and BracketView when you want a free browser workspace that combines tree and graph viewing with JSONPath, jq, diff, schema, and an ad-free app. Prefer tools that parse JSON in the browser for sensitive payloads.",
+    sections: [
+      {
+        heading: "How to choose a JSON viewer",
+        body: "Look for a collapsible tree, search, and path copy before cosmetics. For API work, format and validate should sit next to the viewer so you are not bouncing between sites. If the payload is private, confirm that viewing runs in the browser and that ads or share links do not upload the document by default.",
+      },
+      {
+        heading: "JSONLint — best for a one-shot syntax check",
+        body: "JSONLint is the default name for “is this valid JSON?” Paste, validate, pretty-print, done. It is not a tree viewer: you still read a wall of text after formatting. Many lint-style sites also process JSON on a server, which is a poor fit for tokens or production dumps.",
+      },
+      {
+        heading: "JSON Editor Online — best for classic tree plus code",
+        body: "JSON Editor Online is the long-standing tree, code, and table editor. It is the right pick when you already know the UI and only need to inspect or tweak a document. The trade-off is ads in the free experience and fewer query, diff, and schema tools in the same workspace.",
+      },
+      {
+        heading: "JSONCrack — best for a graph of nested JSON",
+        body: "JSONCrack renders JSON as a node graph, which helps when relationships matter more than a nested list. Use it to see structure at a glance. You will still want a tree, formatter, and query tools for everyday debugging — JSONCrack is strongest as a visualizer, not a full workspace.",
+      },
+      {
+        heading: "BracketView — best for a free JSON workspace",
+        body: "BracketView is a free online JSON viewer with tree and graph views, path copy, search, formatter, validator, JSONPath, a WebAssembly jq playground, JSON diff, schema tools, and type export. Core viewing, formatting, and validation run in the browser. The app workspace is ad-free; Pro raises upload, AI, snapshot, and webhook limits. Choose BracketView when the viewer has to sit next to the rest of the debug loop.",
+      },
+    ],
+    comparison: HOMEPAGE_LEARN_COMPARISON,
+    listedTools: JSON_VIEWER_LISTED_TOOLS,
     steps: [
       {
         name: "Prioritize privacy",
@@ -323,18 +362,33 @@ export const learnPages: Record<string, LearnPage> = {
       },
       {
         name: "Check adjacent workflows",
-        text: "Diff, schema, and query tools should live beside the viewer.",
+        text: "Diff, schema, and query tools should live beside the viewer so you do not switch sites mid-debug.",
       },
     ],
     faqs: [
       {
-        question: "Is BracketView free?",
+        question: "What is the best free online JSON viewer?",
         answer:
-          "Yes for core viewer/formatter/validator features. Pro raises AI, upload, snapshot, and webhook limits.",
+          "There is no single winner. JSONLint is best for a quick validate-and-format pass, JSON Editor Online for a familiar tree editor, JSONCrack for graphs, and BracketView for a free online JSON viewer that also formats, validates, queries, and diffs in one ad-free app.",
+      },
+      {
+        question: "Is BracketView a free JSON viewer?",
+        answer:
+          "Yes. Core viewer, formatter, and validator features are free with no signup required. Pro raises AI, upload, snapshot, and webhook limits.",
+      },
+      {
+        question: "Should I paste secrets into an online JSON viewer?",
+        answer:
+          "Prefer client-side viewers and redact tokens. Review whether the tool uploads JSON before you paste production data.",
       },
     ],
     relatedTools: ["json-viewer", "json-formatter", "json-diff"],
-    relatedLearn: ["what-is-json", "how-to-validate-json", "how-to-compare-json-files"],
+    relatedLearn: [
+      "bracketview-vs-jsonlint",
+      "bracketview-vs-json-editor-online",
+      "bracketview-vs-jsoncrack",
+      "json-formatter-vs-viewer",
+    ],
   },
   "jsonpath-cheatsheet": {
     slug: "jsonpath-cheatsheet",
@@ -359,6 +413,189 @@ export const learnPages: Record<string, LearnPage> = {
     ],
     relatedTools: ["jsonpath-query", "json-viewer"],
     relatedLearn: ["what-is-jsonpath", "what-is-jq"],
+  },
+  "bracketview-vs-jsonlint": {
+    slug: "bracketview-vs-jsonlint",
+    title: "BracketView vs JSONLint",
+    metaTitle: "BracketView vs JSONLint — Viewer vs Validator | BracketView",
+    metaDescription:
+      "JSONLint validates and pretty-prints JSON. BracketView is a free online JSON viewer with tree, query, diff, and client-side core tools. When to use each.",
+    cluster: "comparisons",
+    answerFirst:
+      "Use JSONLint when you only need to know whether a string is valid JSON and want it pretty-printed. Use BracketView when you also need a tree viewer, search, JSONPath or jq, diff, or schema tools, and you want viewing to stay in the browser. JSONLint is a linter; BracketView is a workspace.",
+    sections: [
+      {
+        heading: "What JSONLint is for",
+        body: "JSONLint is the fastest path from “this might be broken” to a syntax error or a formatted document. That single-purpose flow is why it still shows up in “free JSON viewer” lists even though it is not a tree viewer. If your job ends after validate-and-beautify, JSONLint is enough.",
+      },
+      {
+        heading: "What BracketView adds",
+        body: "After the payload parses, most API work is navigation: expand one branch, copy a path, search a key, compare two versions, or extract a field. BracketView’s free online JSON viewer runs those steps in the same tab, with core viewing and formatting in the browser and an ad-free app workspace.",
+      },
+      {
+        heading: "Privacy and ads",
+        body: "Lint websites often send the document to a server to validate. BracketView’s core viewer, formatter, and validator run locally. The marketing site may show ads; the app at app.bracketview.in does not. Optional AI, encrypted snapshots, and Webhook Tester use the server only when you choose them.",
+      },
+      {
+        heading: "When to pick JSONLint anyway",
+        body: "Pick JSONLint for a throwaway syntax check on non-sensitive sample data, or when a teammate already expects that URL. Pick BracketView when the JSON is nested, large, or private, or when you will query or diff it next.",
+      },
+    ],
+    comparison: {
+      caption:
+        "JSONLint is a validator and formatter. BracketView is a free JSON viewer plus the rest of the debug loop.",
+      columns: ["BracketView", "JSONLint"],
+      rows: [
+        { feature: "Tree viewer", values: ["Yes", "No"] },
+        { feature: "Format and validate", values: ["Yes", "Yes"] },
+        { feature: "JSONPath / jq", values: ["Yes", "No"] },
+        { feature: "JSON diff", values: ["Yes", "No"] },
+        { feature: "Ad-free app workspace", values: ["Yes", "No"] },
+        { feature: "Browser-first core tools", values: ["Yes", "Often server-side"] },
+        { feature: "Free core use", values: ["Yes", "Yes"] },
+      ],
+    },
+    faqs: [
+      {
+        question: "Is JSONLint a JSON viewer?",
+        answer:
+          "It is a validator and pretty-printer. You read formatted text, not a collapsible tree. BracketView is the viewer when you need to expand nested objects.",
+      },
+      {
+        question: "Is BracketView free like JSONLint?",
+        answer:
+          "Core viewing, formatting, and validation are free with no signup. Pro is optional for higher AI, upload, snapshot, and webhook limits.",
+      },
+    ],
+    relatedTools: ["json-viewer", "json-validator", "json-formatter"],
+    relatedLearn: [
+      "best-json-viewer",
+      "bracketview-vs-json-editor-online",
+      "how-to-validate-json",
+    ],
+  },
+  "bracketview-vs-json-editor-online": {
+    slug: "bracketview-vs-json-editor-online",
+    title: "BracketView vs JSON Editor Online",
+    metaTitle:
+      "BracketView vs JSON Editor Online — JSON Workspace Comparison",
+    metaDescription:
+      "JSON Editor Online is the classic tree and code editor. BracketView is a free online JSON viewer with jq, JSONPath, diff, schema, and an ad-free app.",
+    cluster: "comparisons",
+    answerFirst:
+      "Choose JSON Editor Online if you want the familiar tree-plus-code-plus-table editor you have used for years. Choose BracketView if you want that tree in a free workspace that also runs JSONPath and jq, diffs two documents, validates schemas, and keeps the app ad-free with client-side core tools.",
+    sections: [
+      {
+        heading: "Where JSON Editor Online wins",
+        body: "It defined the “online JSON editor” pattern: code on one side, collapsible tree on the other, table mode for arrays. If you only need to inspect or tweak a document and you already know the UI, it is still a strong default.",
+      },
+      {
+        heading: "Where BracketView wins",
+        body: "Debugging an API rarely stops at the tree. BracketView keeps formatter, validator, JSONPath, a WebAssembly jq playground, JSON diff, schema generate/validate, and type export beside the viewer. Graph view (JSON Galaxy) sits next to the tree when a list of nodes is not enough.",
+      },
+      {
+        heading: "Ads, accounts, and privacy",
+        body: "JSON Editor Online’s free experience includes ads and optional accounts for extra features. BracketView’s app workspace is ad-free on the free tier. Core viewing and formatting run in the browser; encrypted snapshot links and AI are opt-in.",
+      },
+      {
+        heading: "When to stay on JSON Editor Online",
+        body: "Stay if your workflow is “open JSON, edit a value, copy it back.” Switch to BracketView when you need queries, diffs, schema, webhooks, or a quieter editor for longer sessions.",
+      },
+    ],
+    comparison: {
+      caption:
+        "Both offer a collapsible tree. BracketView adds query, diff, schema, and an ad-free app.",
+      columns: ["BracketView", "JSON Editor Online"],
+      rows: [
+        { feature: "Tree + code views", values: ["Yes", "Yes"] },
+        { feature: "Table view for arrays", values: ["Stats + tree", "Yes"] },
+        { feature: "Graph view", values: ["Yes", "No"] },
+        { feature: "JSONPath and jq", values: ["Yes", "No"] },
+        { feature: "JSON diff", values: ["Yes", "Limited"] },
+        { feature: "Schema and types", values: ["Yes", "Limited"] },
+        { feature: "Ad-free app workspace", values: ["Yes", "No"] },
+        { feature: "Free core use", values: ["Yes", "Yes"] },
+      ],
+    },
+    faqs: [
+      {
+        question: "Is JSON Editor Online still a good JSON viewer?",
+        answer:
+          "Yes, for classic tree-and-code editing. It is less of a fit if you need jq, JSONPath, structural diff, or an ad-free workspace.",
+      },
+      {
+        question: "Does BracketView replace JSON Editor Online?",
+        answer:
+          "For most API debugging, yes: you get a tree viewer plus formatter and query tools. If you only need the old split editor and already prefer that layout, JSON Editor Online remains a valid choice.",
+      },
+    ],
+    relatedTools: ["json-viewer", "json-formatter", "jsonpath-query"],
+    relatedLearn: [
+      "best-json-viewer",
+      "bracketview-vs-jsoncrack",
+      "json-formatter-vs-viewer",
+    ],
+  },
+  "bracketview-vs-jsoncrack": {
+    slug: "bracketview-vs-jsoncrack",
+    title: "BracketView vs JSONCrack",
+    metaTitle: "BracketView vs JSONCrack — Tree Workspace vs Graph Viewer",
+    metaDescription:
+      "JSONCrack maps JSON as a graph. BracketView is a free online JSON viewer with tree and graph views plus JSONPath, jq, diff, and schema tools.",
+    cluster: "comparisons",
+    answerFirst:
+      "Use JSONCrack when you want a graph of nested JSON and that picture is the whole job. Use BracketView when you still need a tree, search, path copy, formatter, and queries after you see the graph. BracketView includes a graph view (JSON Galaxy) inside a broader free workspace; JSONCrack is strongest as a dedicated visualizer.",
+    sections: [
+      {
+        heading: "What JSONCrack is for",
+        body: "JSONCrack turns objects and arrays into a node network. That is the right mental model for deeply nested configs, CMS payloads, or anything where “what points at what” matters more than line numbers. It is a visualizer first.",
+      },
+      {
+        heading: "What BracketView is for",
+        body: "BracketView is a free online JSON viewer for the full debug loop: paste, validate, expand a tree, copy a path, run JSONPath or jq, diff two versions, and optionally capture a webhook. Graph view is one tab, not the only product.",
+      },
+      {
+        heading: "Privacy",
+        body: "JSONCrack’s editor is typically client-side, which is a good default for sensitive JSON. BracketView’s core viewer, formatter, validator, JSONPath, and jq also run in the browser. Treat share links and AI features as a different path on both products.",
+      },
+      {
+        heading: "When to pick JSONCrack anyway",
+        body: "Pick JSONCrack for a presentation-quality graph or when you already live in that UI. Pick BracketView when the graph is a step toward fixing a field, writing a filter, or comparing two API versions.",
+      },
+    ],
+    comparison: {
+      caption:
+        "JSONCrack is a graph visualizer. BracketView is a viewer workspace that also includes a graph.",
+      columns: ["BracketView", "JSONCrack"],
+      rows: [
+        { feature: "Graph / visual map", values: ["Yes", "Yes"] },
+        { feature: "Collapsible tree", values: ["Yes", "Limited"] },
+        { feature: "Format and validate", values: ["Yes", "Yes"] },
+        { feature: "JSONPath / jq", values: ["Yes", "No"] },
+        { feature: "JSON diff", values: ["Yes", "No"] },
+        { feature: "Webhook tester", values: ["Yes", "No"] },
+        { feature: "Browser-first core", values: ["Yes", "Yes"] },
+        { feature: "Ad-free app workspace", values: ["Yes", "Mostly"] },
+      ],
+    },
+    faqs: [
+      {
+        question: "Does BracketView have a graph view like JSONCrack?",
+        answer:
+          "Yes. JSON Galaxy maps nested data as a node network. Use it beside the tree when you need both a map and path copy.",
+      },
+      {
+        question: "Which is better for large JSON?",
+        answer:
+          "Graphs get busy on huge payloads. BracketView’s tree plus search is usually faster for large API dumps; Pro Performance Mode is built for that case. JSONCrack remains excellent for medium documents you want to see as a diagram.",
+      },
+    ],
+    relatedTools: ["json-viewer", "jsonpath-query", "json-diff"],
+    relatedLearn: [
+      "best-json-viewer",
+      "bracketview-vs-json-editor-online",
+      "how-to-compare-json-files",
+    ],
   },
   "jq-filter-examples": {
     slug: "jq-filter-examples",
@@ -476,7 +713,11 @@ export const learnPages: Record<string, LearnPage> = {
       },
     ],
     relatedTools: ["json-formatter", "json-viewer"],
-    relatedLearn: ["best-json-viewer", "what-is-json"],
+    relatedLearn: [
+      "best-json-viewer",
+      "bracketview-vs-json-editor-online",
+      "what-is-json",
+    ],
   },
 };
 
@@ -507,5 +748,11 @@ export const learnClusters = [
     id: "api",
     title: "API & webhooks",
     description: "Debugging guides for integrations.",
+  },
+  {
+    id: "comparisons",
+    title: "Comparisons",
+    description:
+      "Fair, named comparisons with JSONLint, JSON Editor Online, and JSONCrack.",
   },
 ] as const;

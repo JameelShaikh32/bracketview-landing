@@ -11,12 +11,19 @@
   --background: var(--gray);
   --foreground: var(--black);
   --muted: var(--gray);
+
+  --scrollbar-size: 6px;
+  --scrollbar-thumb: color-mix(in srgb, var(--black) 28%, transparent);
+  --scrollbar-thumb-hover: var(--accent);
 }
 
 .dark {
   --background: #0f0d0e;
   --foreground: #f4f4f4;
   --muted: #1a1718;
+
+  --scrollbar-thumb: color-mix(in srgb, var(--foreground) 32%, transparent);
+  --scrollbar-thumb-hover: var(--accent);
 }
 
 @theme inline {
@@ -42,40 +49,38 @@
   --color-dark-active: #262c36;
 }
 
-/* Viewer scrollbar — matches app (amber light / purple dark) */
-.viewer-scrollbar::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+/* Thin, branded scrollbar — page + overflow panes (Firefox + Chromium/Safari) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 
-.viewer-scrollbar::-webkit-scrollbar-track {
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.viewer-scrollbar::-webkit-scrollbar-thumb {
-  background: #f59e0b;
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
   border-radius: 9999px;
 }
 
-.viewer-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #d97706;
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
 }
 
-.viewer-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #f59e0b transparent;
+*::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
-.dark .viewer-scrollbar::-webkit-scrollbar-thumb {
-  background: #7c3aed;
-}
-
-.dark .viewer-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #8b5cf6;
-}
-
-.dark .viewer-scrollbar {
-  scrollbar-color: #7c3aed transparent;
+/* Viewer panes stay slightly slimmer than the page bar */
+.viewer-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
 }
 
 html {

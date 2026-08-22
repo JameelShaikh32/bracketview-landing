@@ -136,7 +136,9 @@ Target: **10–20 quality dofollow backlinks** in the first 90 days of active ou
 ## Search Console (related off-page)
 
 - Submit `https://bracketview.in/sitemap.xml` to Google Search Console and Bing Webmaster
-- Request indexing for key tools: `/json-formatter`, `/json-validator`, `/jq-playground`, `/webhook-tester`
+- Request indexing first for **`/json-viewer`** and **`/learn/best-json-viewer`** (primary “free online JSON viewer” URLs)
+- Then request: `/json-formatter`, `/json-validator`, `/jq-playground`, `/webhook-tester`
+- Comparison guides (index after the roundup): `/learn/bracketview-vs-jsonlint`, `/learn/bracketview-vs-json-editor-online`, `/learn/bracketview-vs-jsoncrack`
 - Keep marketing vs app indexing rules in [seo.md](./seo.md)
 
 ## Related docs

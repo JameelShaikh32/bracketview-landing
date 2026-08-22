@@ -144,6 +144,11 @@ const toolPages: Record<string, ToolPage> = {
                 answer:
                     "Yes. Use tree search to highlight matching keys and values, then copy the path of the match.",
             },
+            {
+                question: "What is the best free online JSON viewer?",
+                answer:
+                    "It depends on the job. JSONLint is a validator, JSON Editor Online is a classic tree editor, and JSONCrack is a graph visualizer. BracketView is a free online JSON viewer with tree and graph views plus formatter, JSONPath, jq, and diff in an ad-free app. See the comparison at bracketview.in/learn/best-json-viewer.",
+            },
         ],
         appUrl: "https://app.bracketview.in/?sample=api-error",
         ctaLabel: "Open JSON Viewer",

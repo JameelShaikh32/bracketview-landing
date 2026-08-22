@@ -32,7 +32,7 @@ const PricingCard = ({
       transition={springTransition}
       className={`group flex h-full w-full flex-col rounded-4xl p-6 sm:p-8 ${highlighted
           ? "bg-accent text-black dark:bg-accent-dark dark:text-white"
-          : "bg-white text-black transition-colors duration-300 hover:bg-accent dark:bg-muted dark:text-foreground dark:hover:bg-accent-dark dark:hover:text-white"
+          : "bg-white text-black dark:bg-muted dark:text-foreground"
         }`}
     >
       {offerSchema ? (
@@ -52,30 +52,26 @@ const PricingCard = ({
         )}
       </div>
 
-      {originalPrice && displayPrice ? (
-        <div className="mt-6">
-          <div className="flex flex-wrap items-baseline gap-3">
-            <span className="text-4xl font-bold tracking-tight line-through decoration-2 sm:text-5xl">
+      <div className="mt-6">
+        <div className="flex flex-wrap items-end gap-2">
+          {originalPrice ? (
+            <span className="mb-1 text-xl font-bold tracking-tight line-through decoration-2 opacity-50">
               {originalPrice}
             </span>
-            <span className="text-lg font-medium opacity-80 sm:text-xl">
-              {displayPrice}
-            </span>
-          </div>
-          {billingNote && (
-            <p className="mt-2 text-sm leading-relaxed opacity-70">
-              {billingNote}
-            </p>
-          )}
-        </div>
-      ) : (
-        <div className="mt-6 flex items-end gap-2">
+          ) : null}
           <span className="text-4xl font-bold tracking-tight sm:text-5xl">
-            {price}
+            {displayPrice ?? price}
           </span>
-          <span className="mb-1.5 text-sm opacity-75">{period}</span>
+          {period ? (
+            <span className="mb-1.5 text-sm opacity-75">{period}</span>
+          ) : null}
         </div>
-      )}
+        {billingNote ? (
+          <p className="mt-2 text-sm leading-relaxed opacity-70">
+            {billingNote}
+          </p>
+        ) : null}
+      </div>
 
       <p className="mt-4 text-sm leading-relaxed opacity-80">{description}</p>
 
@@ -84,9 +80,9 @@ const PricingCard = ({
         {...(ctaHref.startsWith("http")
           ? { target: "_blank", rel: "noopener noreferrer" }
           : {})}
-        className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-colors duration-300 ${highlighted
+        className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-medium ${highlighted
             ? "bg-black text-white hover:opacity-90 dark:bg-foreground dark:text-background"
-            : "bg-accent text-white group-hover:bg-black dark:bg-accent-dark dark:group-hover:bg-foreground dark:group-hover:text-background"
+            : "bg-accent text-white dark:bg-accent-dark"
           }`}
       >
         {cta}
@@ -98,8 +94,8 @@ const PricingCard = ({
           <li key={feature} className="flex items-start gap-3 text-sm">
             <span
               className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full ${highlighted
-                  ? "bg-black text-white dark:bg-accent"
-                  : "bg-emerald-500 text-white transition-all duration-300 group-hover:bg-black dark:bg-emerald-700"
+                  ? "bg-black text-white dark:bg-foreground dark:text-background"
+                  : "bg-black/10 text-black dark:bg-foreground/15 dark:text-foreground"
                 }`}
             >
               <Check size={12} strokeWidth={3} aria-hidden />

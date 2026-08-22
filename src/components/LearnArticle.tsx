@@ -1,5 +1,6 @@
 import { learnPages, type LearnPage } from "@/app/data/learnPages";
 import { toolPages } from "@/app/data/toolPages";
+import JsonToolComparisonTable from "@/components/JsonToolComparisonTable";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
@@ -8,6 +9,7 @@ import {
   buildBreadcrumbListSchema,
   buildFaqPageSchema,
   buildHowToSchema,
+  buildItemListSchema,
   SITE_URL,
 } from "@/lib/seo";
 import Link from "next/link";
@@ -47,12 +49,24 @@ const LearnArticle = ({ page }: LearnArticleProps) => {
           ),
         ]
       : []),
+    ...(page.listedTools?.length
+      ? [
+          buildItemListSchema(
+            page.title,
+            page.listedTools.map((tool) => ({
+              name: tool.name,
+              description: tool.description,
+              url: tool.url,
+            })),
+          ),
+        ]
+      : []),
   ];
 
   return (
     <article className="w-full px-4 pb-24 pt-8 sm:px-6 lg:px-8">
       <JsonLd data={schemas} />
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-6xl">
         <Breadcrumbs items={breadcrumbItems} className="mb-6" />
         <Badge>Learn</Badge>
         <h1 className="mt-4 text-3xl font-bold leading-snug tracking-tight sm:text-4xl sm:leading-snug">
@@ -62,6 +76,43 @@ const LearnArticle = ({ page }: LearnArticleProps) => {
           <strong className="font-bold">Direct answer: </strong>
           {page.answerFirst}
         </p>
+
+        {page.sections?.length ? (
+          <div className="mt-12 space-y-10">
+            {page.sections.map((section) => {
+              const headingId = `section-${section.heading
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-|-$/g, "")}`;
+              return (
+                <section key={section.heading} aria-labelledby={headingId}>
+                  <h2 id={headingId} className="text-2xl font-bold">
+                    {section.heading}
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-black/70 sm:text-base dark:text-foreground/70">
+                    {section.body}
+                  </p>
+                </section>
+              );
+            })}
+          </div>
+        ) : null}
+
+        {page.comparison ? (
+          <section className="mt-12" aria-labelledby="comparison-heading">
+            <h2 id="comparison-heading" className="text-2xl font-bold">
+              Feature comparison
+            </h2>
+            <div className="mt-6 rounded-3xl bg-white p-4 sm:p-6 dark:bg-muted">
+              <JsonToolComparisonTable
+                columns={page.comparison.columns}
+                rows={page.comparison.rows}
+                caption={page.comparison.caption}
+                compact
+              />
+            </div>
+          </section>
+        ) : null}
 
         {page.steps?.length ? (
           <section className="mt-12" aria-labelledby="steps-heading">

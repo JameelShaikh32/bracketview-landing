@@ -111,12 +111,12 @@ const HeroAnimated = () => {
         </div>
 
         <motion.a
-          href="#about"
+          href="#what-is-bracketview"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.9 }}
           className="absolute bottom-0 left-1/2 z-30 hidden -translate-x-1/2 translate-y-[38%] lg:flex"
-          aria-label="Learn more about features"
+          aria-label="Learn more about BracketView"
         >
           <div className="relative flex items-center justify-center rounded-full bg-gray p-2 dark:bg-background">
             <CircularText

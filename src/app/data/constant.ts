@@ -325,6 +325,7 @@ const footerLinks = {
         { label: "Download for Windows", href: "/downloads" },
         { label: "How BracketView works", href: "/#how-it-works" },
         { label: "Learn hub", href: "/learn" },
+        { label: "Best JSON viewer", href: "/learn/best-json-viewer" },
         { label: "Launch workspace", href: "https://app.bracketview.in", rel: "" },
     ],
     tools: [

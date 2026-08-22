@@ -11,6 +11,11 @@ module.exports = {
             { userAgent: "ClaudeBot", allow: "/" },
             { userAgent: "PerplexityBot", allow: "/" },
             { userAgent: "Googlebot", allow: "/" },
+            { userAgent: "Google-Extended", allow: "/" },
+            { userAgent: "Applebot-Extended", allow: "/" },
+            { userAgent: "CCBot", allow: "/" },
+            { userAgent: "meta-externalagent", allow: "/" },
+            { userAgent: "Amazonbot", allow: "/" },
             { userAgent: "BingBot", allow: "/" },
             {
                 userAgent: "*",
@@ -18,6 +23,8 @@ module.exports = {
                 disallow: ["/api/"],
             },
         ],
+        transformRobotsTxt: async (_, robotsTxt) =>
+            `${robotsTxt.trim()}\n\n# LLM product summary: https://bracketview.in/llms.txt\n`,
     },
     transform: async (config, path) => {
         const priorities = {
@@ -29,7 +36,7 @@ module.exports = {
             "/learn": 0.9,
             "/blog": 0.8,
             "/glossary": 0.8,
-            "/json-viewer": 0.85,
+            "/json-viewer": 0.95,
             "/json-formatter": 0.8,
             "/json-validator": 0.8,
             "/json-diff": 0.8,
@@ -71,13 +78,21 @@ module.exports = {
 
         const isBlogPost = path.startsWith("/blog/") && path !== "/blog";
         const isLearnPost = path.startsWith("/learn/") && path !== "/learn";
+        const learnPriority =
+            path === "/learn/best-json-viewer"
+                ? 0.85
+                : isLearnPost
+                    ? 0.75
+                    : undefined;
 
         return {
             loc: path,
             changefreq: isBlogPost || isLearnPost
                 ? "monthly"
                 : (frequencies[path] ?? "monthly"),
-            priority: isLearnPost ? 0.75 : isBlogPost ? 0.7 : (priorities[path] ?? 0.5),
+            priority:
+                learnPriority ??
+                (isBlogPost ? 0.7 : (priorities[path] ?? 0.5)),
             lastmod: new Date().toISOString(),
         };
     },

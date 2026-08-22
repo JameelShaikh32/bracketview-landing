@@ -10,7 +10,6 @@ import CircularText from "@/components/ui/CircularText";
 import ClientSidePrivacyBadge from "@/components/ui/ClientSidePrivacyBadge";
 import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { motion } from "motion/react";
-import Image from "next/image";
 import Link from "next/link";
 
 const APP_URL = "https://app.bracketview.in";

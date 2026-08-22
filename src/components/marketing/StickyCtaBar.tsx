@@ -36,11 +36,11 @@ const StickyCtaBar = () => {
         <div className="flex w-full items-center justify-end gap-2 sm:w-auto">
           <Link
             href="/downloads"
-            className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl border border-black/60 bg-white px-3 text-xs font-medium text-black transition-colors hover:bg-black/5 sm:px-4 sm:text-sm dark:border-background dark:bg-white dark:text-black"
+            className="inline-flex h-11 items-center justify-center gap-1.5 rounded-xl border border-black/60 bg-white px-3 text-sm font-medium text-black transition-colors hover:bg-black/5 sm:px-4 dark:border-background dark:bg-white dark:text-black"
           >
             <Image
               src="/logo.webp"
-              alt=""
+              alt="BracketView logo"
               width={16}
               height={16}
               sizes="16px"
@@ -52,7 +52,7 @@ const StickyCtaBar = () => {
             href={APP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-accent px-3 text-xs font-medium text-white transition-opacity hover:opacity-90 sm:px-4 sm:text-sm dark:bg-accent-dark"
+            className="inline-flex h-11 items-center justify-center gap-1.5 rounded-xl bg-accent px-3 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:px-4 dark:bg-accent-dark"
           >
             Open JSON Viewer
             <ArrowUpRight size={14} aria-hidden />

@@ -6,13 +6,12 @@ import {
     SITE_URL,
     TWITTER_SITE,
 } from "@/lib/seo";
-import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Fira_Code, Martian_Mono } from "next/font/google";
 import Script from "next/script";
 import SiteProviders from "../components/ads/SiteProviders";
 import Analytics, { GTM_ID } from "../components/Analytics";
+import DeferredMetrics from "../components/DeferredMetrics";
 import StructuredData from "../components/StructuredData";
 import Footer from "../components/ui/Footer";
 import Navbar from "../components/ui/Navbar";
@@ -36,6 +35,7 @@ const firaCode = Fira_Code({
 export const viewport = {
     width: "device-width",
     initialScale: 1,
+    maximumScale: 5,
 };
 
 export const metadata: Metadata = {
@@ -160,8 +160,7 @@ export default function RootLayout({
                     {children}
                     <Footer />
                     <ScrollToTop />
-                    <SpeedInsights />
-                    <VercelAnalytics />
+                    <DeferredMetrics />
                 </SiteProviders>
             </body>
         </html>

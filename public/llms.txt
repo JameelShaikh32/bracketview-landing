@@ -167,6 +167,7 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 ### Social
 - [LinkedIn](https://www.linkedin.com/company/bracketview): Company updates
 - [X (Twitter)](https://x.com/bracket_view): Product news and tips
+- [Facebook](https://www.facebook.com/bracketview): Company page
 - [Instagram](https://www.instagram.com/bracketview): Social updates
 - [YouTube](https://www.youtube.com/@bracketview): Video content
 - [Author on Medium](https://medium.com/@dev-jameel): Blog posts by Jameel Shaikh

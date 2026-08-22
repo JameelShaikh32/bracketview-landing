@@ -56,7 +56,7 @@ const toolPages: Record<string, ToolPage> = {
         h1: "Free Online JSON Viewer",
         badge: "JSON Viewer",
         metaTitle:
-            "Free Online JSON Viewer – Tree View & Formatter | BracketView",
+            "Free Online JSON Viewer & Formatter | BracketView",
         metaDescription:
             "Free online JSON viewer with collapsible tree, graph view, path copy, and search. Privacy-first — your data stays in the browser.",
         intro:

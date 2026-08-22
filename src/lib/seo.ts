@@ -21,7 +21,7 @@ const META_DESCRIPTION =
 
 /** Homepage-only title — distinct from META_TITLE (the sitewide fallback used in layout.tsx). */
 const HOME_TITLE =
-    "Free Online JSON Viewer – Tree View & Formatter | BracketView";
+    "Free Online JSON Viewer & Formatter | BracketView";
 
 /** Homepage-only description. Keep ~120–155 chars for SERP display. */
 const HOME_DESCRIPTION =
@@ -146,6 +146,7 @@ const SAME_AS = [
     "https://www.producthunt.com/products/bracketview",
     "https://www.linkedin.com/company/bracketview",
     "https://x.com/bracket_view",
+    "https://www.facebook.com/bracketview",
     "https://www.instagram.com/bracketview",
     "https://www.youtube.com/@bracketview",
     "https://medium.com/@dev-jameel",
@@ -362,6 +363,7 @@ function buildOrganizationSchema() {
             "https://github.com/JameelShaikh32/bracketview-landing",
             "https://www.linkedin.com/company/bracketview",
             "https://x.com/bracket_view",
+            "https://www.facebook.com/bracketview",
             "https://www.instagram.com/bracketview",
             "https://www.youtube.com/@bracketview",
             "https://medium.com/@dev-jameel",

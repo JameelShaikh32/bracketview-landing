@@ -3,6 +3,7 @@ import { supportEmail } from "@/app/data/legal";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaMedium,
@@ -13,6 +14,7 @@ import {
 const socialIcons = {
   LinkedIn: FaLinkedinIn,
   Twitter: FaXTwitter,
+  Facebook: FaFacebookF,
   Instagram: FaInstagram,
   YouTube: FaYoutube,
   Medium: FaMedium,

@@ -78,7 +78,7 @@ const TrustStrip = () => {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="opacity-70 transition-opacity hover:opacity-100"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center opacity-70 transition-opacity hover:opacity-100"
               >
                 <Image
                   src={item.imageSrc}

@@ -23,7 +23,7 @@ const ThemeToggle = () => {
       aria-label={
         theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
       }
-      className="flex size-10 shrink-0 items-center justify-center rounded-full bg-black dark:bg-gray text-white dark:text-black transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray/30 hover:text-foreground dark:hover:text-gray cursor-pointer"
+      className="flex size-11 shrink-0 items-center justify-center rounded-full bg-black dark:bg-gray text-white dark:text-black transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray/30 hover:text-foreground dark:hover:text-gray cursor-pointer"
     >
       {theme === "dark" ? (
         <HiSun size={20} aria-hidden />

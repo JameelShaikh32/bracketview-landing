@@ -157,7 +157,7 @@ const Navbar = () => {
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm cursor-pointer rounded-xl bg-transparent px-3 py-1 transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray dark:hover:text-black"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl px-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray dark:hover:text-black"
             >
               {link.label}
             </Link>
@@ -169,7 +169,7 @@ const Navbar = () => {
             href="https://app.bracketview.in"
             target="_blank"
             rel="noopener noreferrer nofollow"
-            className="hidden rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-85 md:inline-flex dark:bg-accent-dark"
+            className="hidden min-h-11 items-center rounded-xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-85 md:inline-flex dark:bg-accent-dark"
           >
             <Rocket size={16} className="mr-2 mt-0.5" aria-hidden />
             Open JSON Viewer

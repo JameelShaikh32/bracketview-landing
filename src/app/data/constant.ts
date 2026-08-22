@@ -421,6 +421,11 @@ const socialLinks = [
         rel: "",
     },
     {
+        label: "Facebook",
+        href: "https://www.facebook.com/bracketview",
+        rel: "",
+    },
+    {
         label: "Instagram",
         href: "https://www.instagram.com/bracketview",
         rel: "",

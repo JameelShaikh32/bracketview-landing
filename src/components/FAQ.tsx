@@ -43,7 +43,7 @@ const FAQ = () => {
                                             aria-controls={panelId}
                                         >
                                             <span
-                                                className={`flex size-10 shrink-0 items-center justify-center text-sm font-bold sm:size-11 ${isOpen
+                                                className={`flex size-11 shrink-0 items-center justify-center text-sm font-bold ${isOpen
                                                     ? "rounded-full bg-black text-white dark:bg-foreground dark:text-background"
                                                     : "text-black dark:text-foreground"
                                                     }`}
@@ -57,14 +57,14 @@ const FAQ = () => {
                                                 </span>
                                             </span>
 
-                                            <span className="relative flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent text-black dark:bg-accent-dark dark:text-white sm:size-11">
+                                            <span className="relative flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent text-black dark:bg-accent-dark dark:text-white">
                                                 <span
                                                     aria-hidden
-                                                    className="absolute h-[2px] w-[16px] rounded-full bg-current"
+                                                    className="absolute h-0.5 w-4 rounded-full bg-current"
                                                 />
                                                 <span
                                                     aria-hidden
-                                                    className={`absolute h-[16px] w-[2px] rounded-full bg-current transition-transform duration-200 ease-out motion-reduce:transition-none ${isOpen ? "scale-y-0" : "scale-y-100"
+                                                    className={`absolute h-4 w-0.5 rounded-full bg-current transition-transform duration-200 ease-out motion-reduce:transition-none ${isOpen ? "scale-y-0" : "scale-y-100"
                                                         }`}
                                                 />
                                             </span>

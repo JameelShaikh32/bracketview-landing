@@ -1,7 +1,8 @@
 "use client";
 
+import { useHydratedReducedMotion } from "@/components/motion/useHydratedReducedMotion";
 import { Maximize2, Pause, Play, X } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import {
     useCallback,
     useEffect,
@@ -57,7 +58,7 @@ const ToolDemoVideo = ({ src, poster, label = "Tool demo" }: ToolDemoVideoProps)
     const [isExpanded, setIsExpanded] = useState(false);
     const mounted = useIsClient();
     const isMobile = useIsMobileViewport();
-    const reducedMotion = useReducedMotion();
+    const reducedMotion = useHydratedReducedMotion();
 
     const layoutTransition = reducedMotion
         ? { layout: { duration: 0.15 } }

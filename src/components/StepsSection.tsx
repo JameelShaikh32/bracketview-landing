@@ -191,7 +191,7 @@ const StepsSection = ({
                         {...(cta.external
                             ? { target: "_blank", rel: "noopener noreferrer" }
                             : {})}
-                        className="inline-flex items-center gap-2 rounded-2xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
+                        className="inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                     >
                         {cta.label}
                         <ArrowUpRight size={18} aria-hidden />

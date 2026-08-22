@@ -26,7 +26,7 @@ const FeatureCard = ({
                 {...(href.startsWith("http")
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                className="mt-10 inline-flex w-fit items-center gap-2 rounded-2xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 group-hover:bg-black dark:bg-accent-dark dark:group-hover:bg-foreground dark:group-hover:text-background sm:mt-12"
+                className="mt-10 inline-flex w-fit items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 group-hover:bg-black dark:bg-accent-dark dark:group-hover:bg-foreground dark:group-hover:text-background sm:mt-12"
             >
                 {cta}
                 <ArrowUpRight size={16} aria-hidden />

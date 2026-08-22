@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
+import { motion, type HTMLMotionProps } from "motion/react";
 import type { ReactNode } from "react";
+import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
 import {
     fadeUp,
     fadeUpReduced,
@@ -25,7 +26,7 @@ const Reveal = ({
     className,
     ...props
 }: RevealProps) => {
-    const reducedMotion = useReducedMotion();
+    const reducedMotion = useHydratedReducedMotion();
 
     const variants = (() => {
         if (variant === "fadeLeft") return getDirectionalVariant("left", reducedMotion);

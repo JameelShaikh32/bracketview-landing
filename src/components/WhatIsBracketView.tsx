@@ -24,16 +24,25 @@ const WhatIsBracketView = () => {
                   Core tools (viewer, formatter, validator, tree, JSONPath, jq,
                   and diff) run in your browser. Optional AI, encrypted
                   snapshots, and Webhook Tester use the server when you choose
-                  them.
+                  them. BracketView is also a Windows desktop app. Linux is
+                  coming soon.
                 </p>
-                <Link
-                  href="https://app.bracketview.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-flex min-h-11 items-center text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
-                >
-                  Open the JSON workspace
-                </Link>
+                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+                  <Link
+                    href="https://app.bracketview.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
+                  >
+                    Open the JSON workspace
+                  </Link>
+                  <Link
+                    href="/downloads"
+                    className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
+                  >
+                    Download for Windows
+                  </Link>
+                </div>
               </div>
 
               <div className="relative">

@@ -43,7 +43,7 @@ const AboutPage = () => {
                 <PageHeader
                     badge="About"
                     title="About BracketView"
-                    description="A privacy-first JSON workspace for developers who need to format, validate, query, and compare API data without installing desktop software."
+                    description="A privacy-first JSON workspace for developers who need to format, validate, query, and compare API data in the browser, or as a local Windows app."
                 />
 
                 <div className="mx-auto mt-14 max-w-7xl space-y-8">
@@ -79,7 +79,7 @@ const AboutPage = () => {
                             </p>
                             <a
                                 href="https://app.bracketview.in"
-                                className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
+                                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                             >
                                 Open BracketView workspace
                                 <ArrowUpRight size={16} aria-hidden />
@@ -137,7 +137,7 @@ const AboutPage = () => {
                                 </div>
                                 <a
                                     href="https://app.bracketview.in"
-                                    className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
+                                    className="mt-8 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                                 >
                                     Try BracketView
                                     <ArrowUpRight size={16} aria-hidden />

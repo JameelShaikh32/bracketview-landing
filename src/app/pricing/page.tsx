@@ -14,9 +14,9 @@ import Link from "next/link";
 
 export const metadata = createPageMetadata({
   path: "/pricing",
-  title: "Pricing — Free, Pro, Team & Enterprise | BracketView",
+  title: "Pricing — Free & Pro | BracketView",
   description:
-    "Start free with client-side JSON tools. Upgrade to Pro for AI, Performance Mode, and higher limits — or contact us for Team and Enterprise.",
+    "Start free with client-side JSON tools. Upgrade to Pro for AI, Performance Mode, and higher limits.",
   keywords: [
     "BracketView pricing",
     "JSON viewer pricing",
@@ -108,7 +108,7 @@ const PricingPage = () => {
                   {...(external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className={`mt-6 inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-medium ${
+                  className={`mt-6 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-medium ${
                     plan.highlighted
                       ? "bg-black text-white dark:bg-foreground dark:text-background"
                       : "bg-accent text-white dark:bg-accent-dark"
@@ -166,7 +166,6 @@ const PricingPage = () => {
               "Encrypted snapshot links with TTL",
               "Webhook captures with short retention",
               "OAuth login via Google / GitHub",
-              "Enterprise SSO on the roadmap",
             ].map((item) => (
               <li
                 key={item}

@@ -10,8 +10,6 @@ const ADSENSE_SLOT_CONTENT =
     process.env.NEXT_PUBLIC_ADSENSE_SLOT ??
     "";
 
-const ADS_CONSENT_KEY = "bracketview-ads-consent";
-
 type AdsConsent = "granted" | "denied";
 
 const ADSENSE_ENABLED = Boolean(ADSENSE_CLIENT_ID);
@@ -21,7 +19,6 @@ function isAdSlotConfigured(slot: string): boolean {
 }
 
 export {
-    ADS_CONSENT_KEY,
     ADSENSE_CLIENT_ID,
     ADSENSE_ENABLED,
     ADSENSE_SLOT_BLOG,

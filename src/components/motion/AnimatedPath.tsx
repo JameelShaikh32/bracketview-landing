@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
 
 interface AnimatedPathProps {
     d: string;
@@ -19,7 +20,7 @@ const AnimatedPath = ({
     strokeLinecap = "round",
     delay = 0,
 }: AnimatedPathProps) => {
-    const reducedMotion = useReducedMotion();
+    const reducedMotion = useHydratedReducedMotion();
 
     return (
         <motion.path

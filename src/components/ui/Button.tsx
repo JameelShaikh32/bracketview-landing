@@ -21,7 +21,7 @@ type ButtonProps = {
 } & Omit<ComponentProps<"button">, "className">;
 
 const base =
-  "inline-flex h-11 items-center justify-center gap-2 rounded-2xl px-5 text-sm font-medium transition-colors";
+  "inline-flex h-11 items-center justify-center gap-2 rounded-xl px-5 text-sm font-medium transition-colors";
 
 const Button = ({
   variant = "primary",

@@ -118,7 +118,7 @@ const ToolLandingPage = ({ page }: ToolLandingPageProps) => {
                   href={page.appUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex h-11 items-center gap-2 rounded-2xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
+                  className="mt-6 inline-flex h-11 items-center gap-2 rounded-xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                 >
                   {page.ctaLabel}
                   <ArrowUpRight size={16} aria-hidden />
@@ -275,13 +275,13 @@ const ToolLandingPage = ({ page }: ToolLandingPageProps) => {
         <div className="mt-12 flex flex-wrap gap-3">
           <Link
             href="/pricing"
-            className="inline-flex h-11 items-center rounded-2xl border-2 border-black/10 px-5 text-sm font-medium dark:border-foreground/15"
+            className="inline-flex h-11 items-center rounded-xl border-2 border-black/10 px-5 text-sm font-medium dark:border-foreground/15"
           >
             View pricing
           </Link>
           <Link
             href="/learn"
-            className="inline-flex h-11 items-center rounded-2xl border-2 border-black/10 px-5 text-sm font-medium dark:border-foreground/15"
+            className="inline-flex h-11 items-center rounded-xl border-2 border-black/10 px-5 text-sm font-medium dark:border-foreground/15"
           >
             Learn guides
           </Link>

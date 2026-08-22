@@ -1,22 +1,22 @@
 "use client";
 
+import HeroProductDemo from "@/components/marketing/HeroProductDemo";
+import { useHydratedReducedMotion } from "@/components/motion/useHydratedReducedMotion";
 import {
   getFadeUpVariant,
   heroStaggerContainer,
 } from "@/components/motion/variants";
-import HeroProductDemo from "@/components/marketing/HeroProductDemo";
 import CircularText from "@/components/ui/CircularText";
 import ClientSidePrivacyBadge from "@/components/ui/ClientSidePrivacyBadge";
-import { ArrowDown, ArrowDownRight, ArrowUpRight } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
+import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 
 const APP_URL = "https://app.bracketview.in";
-const VALIDATE_URL = "https://app.bracketview.in/?sample=api-error";
-const COMPARE_URL = "https://app.bracketview.in/json-diff";
 
 const HeroAnimated = () => {
-  const reducedMotion = useReducedMotion();
+  const reducedMotion = useHydratedReducedMotion();
   const itemVariant = getFadeUpVariant(reducedMotion);
 
   return (
@@ -63,30 +63,18 @@ const HeroAnimated = () => {
                 href={APP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:px-6 dark:bg-accent-dark"
+                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:px-6 dark:bg-accent-dark"
               >
                 Open JSON Viewer
                 <ArrowUpRight size={18} aria-hidden />
               </Link>
 
               <Link
-                href={VALIDATE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
+                href="/downloads"
+                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-black/60 dark:border-background bg-white px-2 text-sm font-medium text-black transition-colors hover:bg-dark-bg hover:text-white sm:px-6 dark:text-black"
               >
-                Validate JSON
-                <ArrowUpRight size={18} aria-hidden />
-              </Link>
-
-              <Link
-                href={COMPARE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-transparent px-5 text-sm font-medium text-black transition-colors duration-300 hover:bg-gray-100 sm:px-6 dark:border-background dark:text-foreground dark:hover:bg-background"
-              >
-                Compare JSON
-                <ArrowDownRight size={18} aria-hidden />
+                <Download size={18} aria-hidden />
+                Download
               </Link>
             </div>
           </motion.div>

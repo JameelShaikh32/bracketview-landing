@@ -1,8 +1,9 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import Link from "next/link";
+import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
 import { getFadeUpVariant, heroStaggerContainer } from "./variants";
 
 interface PageHeaderProps {
@@ -17,7 +18,7 @@ interface PageHeaderProps {
 }
 
 const PageHeader = ({ badge, title, description, cta }: PageHeaderProps) => {
-  const reducedMotion = useReducedMotion();
+  const reducedMotion = useHydratedReducedMotion();
   const itemVariant = getFadeUpVariant(reducedMotion);
 
   return (
@@ -54,7 +55,7 @@ const PageHeader = ({ badge, title, description, cta }: PageHeaderProps) => {
             href={cta.href}
             target={cta.external ? "_blank" : undefined}
             rel={cta.external ? "noopener noreferrer" : undefined}
-            className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
           >
             {cta.label}
             <ArrowUpRight size={18} aria-hidden />

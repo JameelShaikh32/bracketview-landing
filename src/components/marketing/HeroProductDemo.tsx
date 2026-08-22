@@ -14,7 +14,7 @@ import {
   FIXED_JSON,
   SCHEMA_SAMPLE,
 } from "@/components/app-demo/samples";
-import { useReducedMotion } from "motion/react";
+import { useHydratedReducedMotion } from "@/components/motion/useHydratedReducedMotion";
 import { useEffect, useMemo, useState } from "react";
 
 type SceneId = "tree" | "fix" | "schema" | "diff";
@@ -27,7 +27,7 @@ const SCENES: { id: SceneId; label: string; tab: AppDemoTab }[] = [
 ];
 
 const HeroProductDemo = () => {
-  const reducedMotion = useReducedMotion();
+  const reducedMotion = useHydratedReducedMotion();
   const [scene, setScene] = useState<SceneId>("tree");
   const [fixing, setFixing] = useState(false);
   const [fixText, setFixText] = useState(BROKEN_JSON);

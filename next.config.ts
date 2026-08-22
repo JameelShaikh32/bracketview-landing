@@ -58,6 +58,71 @@ const nextConfig: NextConfig = {
     },
     async redirects() {
         return [
+            {
+                source: "/",
+                has: [
+                    {
+                        type: "host",
+                        value: "downloads.bracketview.in",
+                    },
+                ],
+                destination: "https://bracketview.in/downloads",
+                statusCode: 302,
+            },
+            {
+                source: "/download",
+                has: [
+                    {
+                        type: "host",
+                        value: "downloads.bracketview.in",
+                    },
+                ],
+                destination: "https://bracketview.in/downloads",
+                statusCode: 302,
+            },
+            {
+                source: "/download/",
+                has: [
+                    {
+                        type: "host",
+                        value: "downloads.bracketview.in",
+                    },
+                ],
+                destination: "https://bracketview.in/downloads",
+                statusCode: 302,
+            },
+            {
+                source: "/downloads",
+                has: [
+                    {
+                        type: "host",
+                        value: "downloads.bracketview.in",
+                    },
+                ],
+                destination: "https://bracketview.in/downloads",
+                statusCode: 302,
+            },
+            {
+                source: "/downloads/",
+                has: [
+                    {
+                        type: "host",
+                        value: "downloads.bracketview.in",
+                    },
+                ],
+                destination: "https://bracketview.in/downloads",
+                statusCode: 302,
+            },
+            {
+                source: "/download",
+                destination: "/downloads",
+                permanent: true,
+            },
+            {
+                source: "/download/",
+                destination: "/downloads",
+                permanent: true,
+            },
             // SiteChecker / SEO: canonicalize index filenames to the clean root URL
             {
                 source: "/index.html",

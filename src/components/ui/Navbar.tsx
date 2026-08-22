@@ -169,7 +169,7 @@ const Navbar = () => {
             href="https://app.bracketview.in"
             target="_blank"
             rel="noopener noreferrer nofollow"
-            className="hidden rounded-2xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-85 md:inline-flex dark:bg-accent-dark"
+            className="hidden rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-85 md:inline-flex dark:bg-accent-dark"
           >
             <Rocket size={16} className="mr-2 mt-0.5" aria-hidden />
             Open JSON Viewer

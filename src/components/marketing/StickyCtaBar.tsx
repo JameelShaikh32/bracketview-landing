@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -34,12 +35,18 @@ const StickyCtaBar = () => {
         </p>
         <div className="flex w-full items-center justify-end gap-2 sm:w-auto">
           <Link
-            href="https://app.bracketview.in/?sample=api-error"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-10 items-center justify-center rounded-xl border border-black/15 px-3 text-xs font-medium text-black transition-colors hover:bg-black/5 sm:px-4 sm:text-sm dark:border-foreground/20 dark:text-foreground dark:hover:bg-foreground/10"
+            href="/downloads"
+            className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl border border-black/60 bg-white px-3 text-xs font-medium text-black transition-colors hover:bg-black/5 sm:px-4 sm:text-sm dark:border-background dark:bg-white dark:text-black"
           >
-            Validate JSON
+            <Image
+              src="/logo.webp"
+              alt=""
+              width={16}
+              height={16}
+              sizes="16px"
+              className="size-4"
+            />
+            Download
           </Link>
           <Link
             href={APP_URL}

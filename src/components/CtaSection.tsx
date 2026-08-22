@@ -6,8 +6,9 @@ import {
     getScaleInVariant,
     staggerContainer,
 } from "@/components/motion/variants";
+import { useHydratedReducedMotion } from "@/components/motion/useHydratedReducedMotion";
 import { ArrowUpRight } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import Link from "next/link";
 
 const avatarColors = [
@@ -37,7 +38,7 @@ const statBadges = [
 ];
 
 const CtaSection = () => {
-    const reducedMotion = useReducedMotion();
+    const reducedMotion = useHydratedReducedMotion();
     const scaleVariant = getScaleInVariant(reducedMotion);
 
     return (
@@ -62,7 +63,7 @@ const CtaSection = () => {
                             href="https://app.bracketview.in"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex w-fit items-center gap-2 rounded-2xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
+                            className="inline-flex w-fit items-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                         >
                             Open JSON Viewer
                             <ArrowUpRight size={18} aria-hidden />

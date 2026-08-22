@@ -67,7 +67,7 @@ const privacyPolicy: LegalDocument = {
             title: "Advertising on this website",
             paragraphs: [
                 "The BracketView marketing site (bracketview.in) may display third-party advertisements through Google AdSense to help support free core product features. The BracketView application workspace at app.bracketview.in does not show advertisements.",
-                "When ads are enabled, Google may use cookies and similar technologies to serve and measure advertising. We show a cookie consent banner before loading advertising scripts; advertising scripts are not loaded until you accept advertising cookies (or where consent is not required by law). You can manage ad personalization in your Google Ads Settings.",
+                "When ads are enabled, Google may use cookies and similar technologies to serve and measure advertising. You can manage ad personalization in your Google Ads Settings.",
             ],
         },
         {

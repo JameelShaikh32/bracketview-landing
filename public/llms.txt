@@ -132,7 +132,7 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 - [JSON Type Generator](https://bracketview.in/json-type-generator): Export TypeScript, Python, Go, Rust, and more from JSON
 - [AI JSON Fixer](https://bracketview.in/ai-json-fixer): Repair malformed JSON with AI
 - [Webhook Tester](https://bracketview.in/webhook-tester): Capture and inspect webhooks online
-- [Pricing](https://bracketview.in/pricing): Free, Pro, Team, and Enterprise plans
+- [Pricing](https://bracketview.in/pricing): Free and Pro plans
 
 ### Learn hub (AEO / GEO)
 - [Learn hub](https://bracketview.in/learn): Answer-first JSON guides

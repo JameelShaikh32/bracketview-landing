@@ -84,7 +84,7 @@ const PricingCard = ({
         {...(ctaHref.startsWith("http")
           ? { target: "_blank", rel: "noopener noreferrer" }
           : {})}
-        className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-medium transition-colors duration-300 ${highlighted
+        className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-colors duration-300 ${highlighted
             ? "bg-black text-white hover:opacity-90 dark:bg-foreground dark:text-background"
             : "bg-accent text-white group-hover:bg-black dark:bg-accent-dark dark:group-hover:bg-foreground dark:group-hover:text-background"
           }`}
@@ -151,7 +151,7 @@ const Pricing = () => {
             href="/pricing"
             className="text-sm font-medium text-accent-dark underline-offset-4 hover:underline dark:text-accent"
           >
-            Compare Free, Pro, Team &amp; Enterprise →
+            Compare Free and Pro →
           </Link>
         </Reveal>
 

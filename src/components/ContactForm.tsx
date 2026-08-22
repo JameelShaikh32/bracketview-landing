@@ -1,9 +1,10 @@
 "use client";
 
 import { supportEmail } from "@/app/data/legal";
+import { useHydratedReducedMotion } from "@/components/motion/useHydratedReducedMotion";
 import SubjectDropdown from "@/components/ui/SubjectDropdown";
 import { ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { useState } from "react";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -15,7 +16,7 @@ const ContactForm = () => {
     const [formState, setFormState] = useState<FormState>("idle");
     const [errorMessage, setErrorMessage] = useState("");
     const [subject, setSubject] = useState("");
-    const reducedMotion = useReducedMotion();
+    const reducedMotion = useHydratedReducedMotion();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -88,7 +89,7 @@ const ContactForm = () => {
                         setSubject("");
                         setFormState("idle");
                     }}
-                    className="mt-8 rounded-2xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark cursor-pointer"
+                    className="mt-8 rounded-xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark cursor-pointer"
                 >
                     Send another message
                 </button>
@@ -221,7 +222,7 @@ const ContactForm = () => {
                 <button
                     type="submit"
                     disabled={formState === "submitting"}
-                    className="inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-accent-dark"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-accent-dark"
                 >
                     {formState === "submitting" ? (
                         <>

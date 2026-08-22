@@ -6,71 +6,41 @@ const rows = [
     feature: "JSON viewer, formatter, validator",
     free: true,
     pro: true,
-    team: true,
-    enterprise: true,
   },
   {
     feature: "Tree, graph, JSONPath, JQ",
     free: true,
     pro: true,
-    team: true,
-    enterprise: true,
   },
   {
     feature: "Schema validate / generate",
     free: true,
     pro: true,
-    team: true,
-    enterprise: true,
   },
   {
     feature: "Webhook Tester",
     free: "Limited",
     pro: "Higher caps",
-    team: "Shared endpoints*",
-    enterprise: "Custom",
   },
   {
     feature: "AI actions / month",
     free: "20",
     pro: "Unlimited†",
-    team: "Pooled†",
-    enterprise: "Custom",
   },
   {
     feature: "Encrypted snapshots",
     free: "Limited",
     pro: "Unlimited",
-    team: "Shared collections*",
-    enterprise: "Custom retention",
   },
   {
     feature: "Performance Mode (large JSON)",
     free: false,
     pro: true,
-    team: true,
-    enterprise: true,
-  },
-  {
-    feature: "Team workspaces & version history",
-    free: false,
-    pro: false,
-    team: "Coming soon",
-    enterprise: true,
-  },
-  {
-    feature: "SSO / audit logs",
-    free: false,
-    pro: false,
-    team: false,
-    enterprise: "Coming soon",
   },
   {
     feature: "Priority support",
     free: false,
     pro: "Email",
-    team: "Priority",
-    enterprise: "Dedicated",
   },
 ] as const;
 
@@ -110,20 +80,18 @@ const PricingMatrix = () => {
           Feature comparison
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-black/70 dark:text-foreground/70">
-          Core tools stay free. Upgrade when you need higher limits, Performance
-          Mode, or team workflows.
+          Core tools stay free. Upgrade to Pro for higher limits and Performance
+          Mode.
         </p>
       </Reveal>
 
       <div className="mt-8 overflow-x-auto rounded-4xl bg-white dark:bg-muted">
-        <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+        <table className="w-full min-w-[480px] border-collapse text-left text-sm">
           <thead>
             <tr className="border-b border-black/8 dark:border-foreground/10">
               <th className="px-4 py-4 font-bold sm:px-6">Capability</th>
               <th className="px-3 py-4 font-bold">Free</th>
-              <th className="px-3 py-4 font-bold">Pro</th>
-              <th className="px-3 py-4 font-bold">Team</th>
-              <th className="px-3 py-4 font-bold sm:px-6">Enterprise</th>
+              <th className="px-3 py-4 font-bold sm:px-6">Pro</th>
             </tr>
           </thead>
           <tbody>
@@ -138,14 +106,8 @@ const PricingMatrix = () => {
                 <td className="px-3 py-3.5">
                   <Cell value={row.free} />
                 </td>
-                <td className="px-3 py-3.5">
-                  <Cell value={row.pro} />
-                </td>
-                <td className="px-3 py-3.5">
-                  <Cell value={row.team} />
-                </td>
                 <td className="px-3 py-3.5 sm:px-6">
-                  <Cell value={row.enterprise} />
+                  <Cell value={row.pro} />
                 </td>
               </tr>
             ))}
@@ -153,8 +115,7 @@ const PricingMatrix = () => {
         </table>
       </div>
       <p className="mt-4 text-xs text-black/50 dark:text-foreground/45">
-        * Team shared collections and endpoints roll out with workspaces. † Fair
-        use applies to unlimited AI.
+        † Fair use applies to unlimited AI.
       </p>
     </section>
   );

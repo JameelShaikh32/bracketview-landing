@@ -1,7 +1,8 @@
 "use client";
 
 import { Children, isValidElement, type ReactNode } from "react";
-import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
+import { motion, type HTMLMotionProps } from "motion/react";
+import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
 import { getFadeUpVariant, staggerContainer } from "./variants";
 
 interface StaggerGroupProps extends Omit<HTMLMotionProps<"div">, "children"> {
@@ -16,7 +17,7 @@ const StaggerGroup = ({
     className,
     ...props
 }: StaggerGroupProps) => {
-    const reducedMotion = useReducedMotion();
+    const reducedMotion = useHydratedReducedMotion();
     const childVariant = getFadeUpVariant(reducedMotion);
 
     return (

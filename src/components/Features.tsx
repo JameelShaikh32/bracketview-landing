@@ -38,7 +38,7 @@ const Features = () => {
                 <Reveal className="mt-12 flex justify-center sm:mt-14">
                     <Link
                         href="/features"
-                        className="inline-flex items-center gap-2 rounded-2xl border-2 border-black/15 px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-black hover:text-white dark:border-foreground/20 dark:text-foreground dark:hover:bg-foreground dark:hover:text-background"
+                        className="inline-flex items-center gap-2 rounded-xl border-2 border-black/15 px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-black hover:text-white dark:border-foreground/20 dark:text-foreground dark:hover:bg-foreground dark:hover:text-background"
                     >
                         View all features
                         <ArrowUpRight size={16} aria-hidden />

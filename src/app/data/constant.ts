@@ -246,38 +246,6 @@ const pricingPlans: PricingPlan[] = [
         highlighted: true,
         offerSchema: { price: String(PRICING.yearlyUsd), priceCurrency: "USD" },
     },
-    {
-        name: "Team",
-        price: "Contact",
-        period: "",
-        description:
-            "Shared collections and team workspaces for agencies and product squads. Join the waitlist while we roll out collaboration.",
-        features: [
-            "Everything in Pro",
-            "Shared collections (coming soon)",
-            "Team workspaces & activity timeline (coming soon)",
-            "Pooled AI fair-use pool",
-            "Priority onboarding help",
-        ],
-        cta: "Contact for Team",
-        ctaHref: "/contact?subject=team-plan",
-    },
-    {
-        name: "Enterprise",
-        price: "Custom",
-        period: "",
-        description:
-            "Security-first deployment for regulated teams — SSO, audit logs, and custom retention on the roadmap.",
-        features: [
-            "Everything in Team",
-            "SSO (coming soon)",
-            "Audit logs & custom retention (coming soon)",
-            "Security review support",
-            "Dedicated success contact",
-        ],
-        cta: "Contact sales",
-        ctaHref: "/contact?subject=enterprise",
-    },
 ];
 
 const pricingFaqs = [
@@ -295,11 +263,6 @@ const pricingFaqs = [
         question: "What is the ROI of Pro?",
         answer:
             "Pro removes AI and snapshot friction for daily API work, raises upload and webhook caps, and unlocks Performance Mode for large payloads — typically replacing multiple paid single-purpose tools.",
-    },
-    {
-        question: "When will Team and Enterprise ship?",
-        answer:
-            "Team workspaces and Enterprise SSO are on the product roadmap. Contact us to join the waitlist and influence priority.",
     },
 ];
 
@@ -359,6 +322,7 @@ const footerLinks = {
     product: [
         { label: "All features", href: "/features" },
         { label: "View pricing", href: "/pricing" },
+        { label: "Download for Windows", href: "/downloads" },
         { label: "How BracketView works", href: "/#how-it-works" },
         { label: "Learn hub", href: "/learn" },
         { label: "Launch workspace", href: "https://app.bracketview.in", rel: "" },
@@ -482,8 +446,8 @@ const navLinks = [
         href: "/pricing",
     },
     {
-        label: "Learn",
-        href: "/learn",
+        label: "Download",
+        href: "/downloads",
     },
     {
         label: "About",
@@ -492,10 +456,6 @@ const navLinks = [
     {
         label: "Blog",
         href: "/blog",
-    },
-    {
-        label: "FAQ",
-        href: "/#faq",
     },
     {
         label: "Contact",

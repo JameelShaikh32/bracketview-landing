@@ -45,7 +45,7 @@ const BlogCard = ({
 
             <Link
                 href={`/blog/${slug}`}
-                className="mt-10 inline-flex w-fit items-center gap-2 rounded-2xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 group-hover:bg-black sm:mt-12 dark:bg-accent-dark dark:group-hover:bg-foreground dark:group-hover:text-background"
+                className="mt-10 inline-flex w-fit items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 group-hover:bg-black sm:mt-12 dark:bg-accent-dark dark:group-hover:bg-foreground dark:group-hover:text-background"
             >
                 Read article
                 <ArrowRight size={16} aria-hidden />

@@ -53,7 +53,7 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "Does BracketView show ads?",
         answer:
-            "The BracketView JSON workspace at app.bracketview.in is ad-free — including the free tier. This marketing website (bracketview.in) may display third-party advertisements to help support free core tools. You can decline advertising cookies via the site banner.",
+            "The BracketView JSON workspace at app.bracketview.in is ad-free — including the free tier. This marketing website (bracketview.in) may display third-party advertisements to help support free core tools.",
     },
     {
         question: "Is BracketView free to use?",

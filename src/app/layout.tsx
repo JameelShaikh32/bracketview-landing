@@ -10,6 +10,7 @@ import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Fira_Code, Martian_Mono } from "next/font/google";
+import Script from "next/script";
 import SiteProviders from "../components/ads/SiteProviders";
 import Analytics, { GTM_ID } from "../components/Analytics";
 import StructuredData from "../components/StructuredData";
@@ -129,13 +130,15 @@ export default function RootLayout({
                     type="application/xml"
                     href="/sitemap.xml"
                 />
-                <script
-                    dangerouslySetInnerHTML={{ __html: themeInitScript }}
-                />
                 <StructuredData />
                 <Analytics />
             </head>
             <body className="min-h-full flex flex-col bg-background pt-20 text-foreground">
+                <Script
+                    id="theme-init"
+                    strategy="beforeInteractive"
+                    dangerouslySetInnerHTML={{ __html: themeInitScript }}
+                />
                 {GTM_ID ? (
                     <noscript>
                         <iframe

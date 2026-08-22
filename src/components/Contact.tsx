@@ -76,7 +76,7 @@ const Contact = () => {
                                             href={link.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 rounded-2xl border border-black/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white dark:border-foreground/15 dark:hover:bg-foreground dark:hover:text-background"
+                                            className="inline-flex items-center gap-2 rounded-xl border border-black/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white dark:border-foreground/15 dark:hover:bg-foreground dark:hover:text-background"
                                         >
                                             {link.label}
                                             <ArrowUpRight size={14} aria-hidden />

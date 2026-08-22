@@ -11,6 +11,7 @@ import {
     createPageMetadata,
     SITE_URL,
 } from "@/lib/seo";
+import Link from "next/link";
 
 export const metadata = createPageMetadata({
     path: "/features",
@@ -46,13 +47,22 @@ export default function FeaturesPage() {
                 <PageHeader
                     badge="Features"
                     title="Everything in one JSON workspace"
-                    description="BracketView combines viewing, formatting, validation, querying, AI repair, schema tools, diffing, and sharing — all in your browser with no install required."
+                    description="BracketView combines viewing, formatting, validation, querying, AI repair, schema tools, diffing, and sharing — all in your browser with no install required. BracketView is also a Windows desktop app. Linux coming soon."
                     cta={{
                         label: "Open BracketView",
                         href: "https://app.bracketview.in",
                         external: true,
                     }}
                 />
+
+                <div className="mt-6 text-center">
+                    <Link
+                        href="/downloads"
+                        className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
+                    >
+                        Download the Windows app
+                    </Link>
+                </div>
 
                 <AdPlacement variant="content" className="mt-10" />
 

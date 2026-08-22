@@ -139,7 +139,7 @@ const LearnArticle = ({ page }: LearnArticleProps) => {
                 <li key={slug}>
                   <Link
                     href={`/${slug}`}
-                    className="inline-flex rounded-2xl bg-white px-4 py-2 text-sm font-medium dark:bg-muted"
+                    className="inline-flex rounded-xl bg-white px-4 py-2 text-sm font-medium dark:bg-muted"
                   >
                     {tool.badge}
                   </Link>

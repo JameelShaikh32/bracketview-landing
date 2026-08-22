@@ -26,7 +26,7 @@ const BlogAppCta = ({ tools }: BlogAppCtaProps) => {
                             href={tool.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-2xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
+                            className="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                         >
                             {tool.label}
                             <ArrowUpRight size={14} aria-hidden />

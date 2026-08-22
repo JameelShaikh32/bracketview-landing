@@ -93,7 +93,7 @@ const ExitIntentModal = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={dismiss}
-            className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-2xl bg-accent px-4 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
+            className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-accent px-4 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
           >
             Open Playground
             <ArrowUpRight size={16} aria-hidden />
@@ -103,7 +103,7 @@ const ExitIntentModal = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={dismiss}
-            className="inline-flex h-11 flex-1 items-center justify-center rounded-2xl border-2 border-black/10 px-4 text-sm font-medium text-black transition-colors hover:bg-black/5 dark:border-foreground/15 dark:text-foreground dark:hover:bg-foreground/10"
+            className="inline-flex h-11 flex-1 items-center justify-center rounded-xl border-2 border-black/10 px-4 text-sm font-medium text-black transition-colors hover:bg-black/5 dark:border-foreground/15 dark:text-foreground dark:hover:bg-foreground/10"
           >
             Open JSON Viewer
           </Link>

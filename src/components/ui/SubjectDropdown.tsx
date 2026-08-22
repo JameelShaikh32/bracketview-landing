@@ -103,7 +103,7 @@ const SubjectDropdown = ({ value, onChange }: SubjectDropdownProps) => {
                     );
                 }}
                 onKeyDown={handleKeyDown}
-                className={`flex w-full items-center justify-between rounded-2xl border bg-gray px-4 py-3 text-left text-sm outline-none transition-colors dark:bg-background ${
+                className={`flex w-full items-center justify-between rounded-xl border bg-gray px-4 py-3 text-left text-sm outline-none transition-colors dark:bg-background ${
                     open
                         ? "border-accent ring-2 ring-accent/20 dark:border-accent-dark dark:ring-accent-dark/20"
                         : "border-black/10 dark:border-foreground/15"

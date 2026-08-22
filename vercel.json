@@ -6,6 +6,71 @@
     ],
     "redirects": [
         {
+            "source": "/",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "downloads.bracketview.in"
+                }
+            ],
+            "destination": "https://bracketview.in/downloads",
+            "statusCode": 302
+        },
+        {
+            "source": "/download",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "downloads.bracketview.in"
+                }
+            ],
+            "destination": "https://bracketview.in/downloads",
+            "statusCode": 302
+        },
+        {
+            "source": "/download/",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "downloads.bracketview.in"
+                }
+            ],
+            "destination": "https://bracketview.in/downloads",
+            "statusCode": 302
+        },
+        {
+            "source": "/downloads",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "downloads.bracketview.in"
+                }
+            ],
+            "destination": "https://bracketview.in/downloads",
+            "statusCode": 302
+        },
+        {
+            "source": "/downloads/",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "downloads.bracketview.in"
+                }
+            ],
+            "destination": "https://bracketview.in/downloads",
+            "statusCode": 302
+        },
+        {
+            "source": "/download",
+            "destination": "/downloads",
+            "permanent": true
+        },
+        {
+            "source": "/download/",
+            "destination": "/downloads",
+            "permanent": true
+        },
+        {
             "source": "/index.html",
             "destination": "/",
             "permanent": true
@@ -35,5 +100,33 @@
         "src/app/api/contact/route.ts": {
             "maxDuration": 30
         }
-    }
+    },
+    "headers": [
+        {
+            "source": "/releases/:version/:file.msi",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/x-msi"
+                },
+                {
+                    "key": "Content-Disposition",
+                    "value": "attachment"
+                }
+            ]
+        },
+        {
+            "source": "/releases/:version/:file.exe",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/octet-stream"
+                },
+                {
+                    "key": "Content-Disposition",
+                    "value": "attachment"
+                }
+            ]
+        }
+    ]
 }

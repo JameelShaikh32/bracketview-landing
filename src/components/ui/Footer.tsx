@@ -82,7 +82,7 @@ const Footer = () => {
       <div className="relative overflow-hidden rounded-4xl bg-white p-8 sm:p-10 lg:p-12 dark:bg-muted">
         <p
           aria-hidden
-          className="pointer-events-none absolute bottom-16 left-1/2 z-0 hidden -translate-x-1/2 select-none whitespace-nowrap font-sans text-[clamp(4.25rem,22vw,11rem)] font-bold italic leading-none tracking-tight text-black/5.5 sm:bottom-12 md:block dark:text-foreground/7.5"
+          className="pointer-events-none absolute inset-x-0 bottom-16 z-0 hidden select-none text-center font-sans text-[clamp(4.25rem,22vw,11rem)] font-bold italic leading-none tracking-tight text-black/5.5 sm:bottom-12 md:block dark:text-foreground/7.5"
         >
           BRACKETVIEW
         </p>
@@ -136,7 +136,7 @@ const Footer = () => {
           <FooterColumn title="Legal" links={footerLinks.legal} />
         </div>
 
-        <div className="relative z-10 mt-10 flex flex-col items-center justify-between gap-4 border-t border-black/10 pt-8 sm:flex-row dark:border-foreground/10">
+        <div className="relative z-10 mt-10 flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-sm text-black/55 dark:text-foreground/55">
             © {new Date().getFullYear()} BracketView. All rights reserved.
           </p>

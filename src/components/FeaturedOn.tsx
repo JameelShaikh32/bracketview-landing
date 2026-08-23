@@ -1,4 +1,5 @@
 import { featuredOnLinks } from "@/app/data/constant";
+import LaunchKiwiBadge from "@/components/LaunchKiwiBadge";
 import Reveal from "@/components/motion/Reveal";
 import Image from "next/image";
 
@@ -16,6 +17,9 @@ const FeaturedOn = () => {
           </p>
 
           <ul className="mt-6 flex w-full flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:mt-8 sm:gap-x-10 md:gap-x-12">
+            <li>
+              <LaunchKiwiBadge className="opacity-90 transition-opacity hover:opacity-100" />
+            </li>
             {featuredOnLinks.map((item) => (
               <li key={item.label}>
                 <a

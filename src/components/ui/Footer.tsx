@@ -1,5 +1,6 @@
 import { footerLinks, socialLinks } from "@/app/data/constant";
 import { supportEmail } from "@/app/data/legal";
+import LaunchKiwiBadge from "@/components/LaunchKiwiBadge";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -129,6 +130,10 @@ const Footer = () => {
                   </a>
                 );
               })}
+            </div>
+
+            <div className="mt-6">
+              <LaunchKiwiBadge />
             </div>
           </div>
 

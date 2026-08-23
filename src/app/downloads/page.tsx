@@ -23,18 +23,23 @@ const DOWNLOAD_TITLE = "Download BracketView for Windows | BracketView";
 const DOWNLOAD_DESCRIPTION =
     "Download BracketView 0.1.0 for Windows x64. Open JSON files locally — offline, no account. Linux coming soon.";
 
-export const metadata = createPageMetadata({
-    path: DOWNLOADS_PAGE_PATH,
-    title: DOWNLOAD_TITLE,
-    description: DOWNLOAD_DESCRIPTION,
-    keywords: [
-        "BracketView download",
-        "JSON viewer Windows",
-        "open JSON file",
-        "desktop JSON editor",
-        "offline JSON tools",
-    ],
-});
+export const metadata = {
+    ...createPageMetadata({
+        path: DOWNLOADS_PAGE_PATH,
+        title: DOWNLOAD_TITLE,
+        description: DOWNLOAD_DESCRIPTION,
+        keywords: [
+            "BracketView download",
+            "JSON viewer Windows",
+            "open JSON file",
+            "desktop JSON editor",
+            "offline JSON tools",
+        ],
+    }),
+    other: {
+        "buildmole-verification": "4988e15d-b28e-45f2-b28f-25aede7f324e",
+    },
+};
 
 const desktopBenefits = [
     {

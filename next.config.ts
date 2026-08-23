@@ -177,6 +177,15 @@ const nextConfig: NextConfig = {
                     },
                 ],
             },
+            {
+                source: "/.well-known/buildmole-verify.txt",
+                headers: [
+                    {
+                        key: "Content-Type",
+                        value: "text/plain; charset=utf-8",
+                    },
+                ],
+            },
         ];
     },
     async rewrites() {

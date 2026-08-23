@@ -76,6 +76,9 @@ export const metadata: Metadata = {
     },
     verification: {
         google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        other: {
+            "buildmole-verification": "4988e15d-b28e-45f2-b28f-25aede7f324e",
+        },
     },
     icons: {
         apple: [

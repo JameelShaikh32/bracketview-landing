@@ -1,4 +1,5 @@
 import {
+    DESKTOP_LOCAL_FILE_LABEL,
     DESKTOP_VERSION,
     DOWNLOADS_PAGE_PATH,
     LINUX_STATUS,
@@ -6,6 +7,7 @@ import {
     WINDOWS_EXE_URL,
     WINDOWS_MSI_URL,
 } from "@/app/data/desktop";
+import { FREE_UPLOAD_LABEL } from "@/app/data/planLimits";
 import PageHeader from "@/components/motion/PageHeader";
 import Reveal from "@/components/motion/Reveal";
 import StaggerGroup from "@/components/motion/StaggerGroup";
@@ -19,9 +21,10 @@ import {
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-const DOWNLOAD_TITLE = "Download BracketView for Windows | BracketView";
+const DOWNLOAD_TITLE =
+    "Download BracketView: Node, Table, 200 MB | BracketView";
 const DOWNLOAD_DESCRIPTION =
-    `Download BracketView ${DESKTOP_VERSION} for Windows x64. Open JSON files locally — offline, no account. Linux coming soon.`;
+    `Download BracketView ${DESKTOP_VERSION} for Windows. Local JSON workspace: text, tree, graph, node, table, encoder, and compare. Files up to 200 MB. No account.`;
 
 export const metadata = {
     ...createPageMetadata({
@@ -34,6 +37,8 @@ export const metadata = {
             "open JSON file",
             "desktop JSON editor",
             "offline JSON tools",
+            "JSON node view",
+            "JSON table view",
         ],
     }),
     other: {
@@ -43,14 +48,24 @@ export const metadata = {
 
 const desktopBenefits = [
     {
-        title: "Open JSON files directly",
+        title: "Five views plus tools",
         description:
-            "Open any .json file with BracketView from File Explorer — double-click or choose Open with. No copy-paste into a browser tab.",
+            "Text, tree, graph, node, table, stats, and jq — the same free viewer tabs as the web app, running on your machine.",
     },
     {
-        title: "Full local workspace",
+        title: "Diff, schema, and types",
         description:
-            "Viewer, editor, tree and graph, stats, jq and JSONPath, diff, schema, and types — running on your machine.",
+            "Compare payloads, validate schemas, and export types locally. Encoder/decoder and text compare work offline.",
+    },
+    {
+        title: "Native View and Tools menus",
+        description:
+            "Open files from File Explorer, use the app menus, and stay in a local workspace — no browser tab required.",
+    },
+    {
+        title: `${DESKTOP_LOCAL_FILE_LABEL} local files`,
+        description:
+            `Open JSON up to ${DESKTOP_LOCAL_FILE_LABEL} on disk. The web Free ${FREE_UPLOAD_LABEL} cap does not apply to the Windows app.`,
     },
     {
         title: "Works offline",
@@ -60,14 +75,14 @@ const desktopBenefits = [
     {
         title: "No account, no cloud",
         description:
-            "No sign-in, AI, or cloud on desktop. JSON never leaves your computer.",
+            "No sign-in, AI, snapshots, or webhook tester on desktop. JSON never leaves your computer.",
     },
 ] as const;
 
 export default function DownloadsPage() {
     const schema = buildWebPageSchema(
         DOWNLOADS_PAGE_PATH,
-        "Download BracketView for desktop",
+        "Download BracketView for Windows",
         DOWNLOAD_DESCRIPTION,
     );
 
@@ -77,8 +92,8 @@ export default function DownloadsPage() {
             <div className="mx-auto max-w-7xl">
                 <PageHeader
                     badge="Desktop"
-                    title="Download BracketView for desktop"
-                    description="A local JSON workspace. Open JSON files directly with BracketView — viewer, editor, tree/graph, stats, jq/JSONPath, diff, schema, and types. No sign-in, AI, or cloud."
+                    title="Download BracketView for Windows"
+                    description={`A local JSON workspace (${DESKTOP_VERSION}). Text, tree, graph, node, table, stats, jq, diff, schema, types, encoder/decoder, and text compare. Native View and Tools menus. Files up to ${DESKTOP_LOCAL_FILE_LABEL}. No sign-in, AI, snapshots, or webhook tester. Linux coming soon.`}
                 />
 
                 <Reveal className="mx-auto mt-14 max-w-3xl">
@@ -129,7 +144,8 @@ export default function DownloadsPage() {
                             <span className="font-medium text-black dark:text-foreground">
                                 Run anyway
                             </span>
-                            . JSON stays on the device.
+                            . JSON stays on the device. Node, Table, languages, and
+                            encoder/compare do not require Pro.
                         </p>
 
                         <Link
@@ -138,7 +154,7 @@ export default function DownloadsPage() {
                             rel="noopener noreferrer"
                             className="mt-8 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
                         >
-                            Open in browser
+                            Open the workspace
                             <ArrowUpRight size={16} aria-hidden />
                         </Link>
                     </section>
@@ -156,8 +172,9 @@ export default function DownloadsPage() {
                             Why use the desktop app
                         </h2>
                         <p className="mt-3 text-sm leading-relaxed text-black/70 sm:text-base dark:text-foreground/70">
-                            Same core JSON tools, installed locally — built for files
-                            on your machine.
+                            Same core JSON views locally — built for files on your
+                            machine, including payloads larger than the web Free
+                            cap.
                         </p>
                     </Reveal>
 

@@ -172,7 +172,7 @@ const Navbar = () => {
             className="hidden min-h-11 items-center rounded-xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-85 md:inline-flex dark:bg-accent-dark"
           >
             <Rocket size={16} className="mr-2 mt-0.5" aria-hidden />
-            Open JSON Viewer
+            Open the workspace
           </Link>
 
           <div className="hidden md:block">

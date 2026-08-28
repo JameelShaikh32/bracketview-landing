@@ -1,3 +1,4 @@
+import { DESKTOP_VERSION } from "@/app/data/desktop";
 import Reveal from "@/components/motion/Reveal";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,13 +19,14 @@ const WhatIsBracketView = () => {
                   What is BracketView?
                 </h2>
                 <p className="mt-6 text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/75">
-                  BracketView is a free online JSON viewer and workspace for
-                  developers. View, format, validate, query, and compare JSON in
-                  a clean browser-based workspace — no installation required.
-                  Core tools (viewer, formatter, validator, tree, JSONPath, jq,
-                  and diff) run in your browser. Optional AI, encrypted
-                  snapshots, and Webhook Tester use the server when you choose
-                  them. BracketView is also a Windows desktop app. Linux is
+                  BracketView is a privacy-first JSON workspace: view, format,
+                  validate, query (JSONPath + jq), diff, schema, and types in
+                  the browser. See JSON as text, tree, graph, node cards, or a
+                  nested table — seven tabs in all, with Stats and JQ beside
+                  those views. The UI is in nine languages (Workspace settings
+                  in the header gear). Optional server features: AI, encrypted
+                  snapshots, webhook tester, signed-in history. BracketView is
+                  also a Windows desktop app ({DESKTOP_VERSION}). Linux is
                   coming soon.
                 </p>
                 <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -34,7 +36,7 @@ const WhatIsBracketView = () => {
                     rel="noopener noreferrer"
                     className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
                   >
-                    Open the JSON workspace
+                    Open the workspace
                   </Link>
                   <Link
                     href="/downloads"
@@ -49,7 +51,7 @@ const WhatIsBracketView = () => {
                 <div className="overflow-hidden rounded-2xl border border-black/8 bg-gray shadow-[0_24px_60px_-28px_rgba(25,19,20,0.35)] dark:border-foreground/10 dark:bg-background dark:shadow-[0_24px_60px_-28px_rgba(0,0,0,0.55)]">
                   <Image
                     src="/images/what-is-bracketview-light.webp"
-                    alt="BracketView JSON viewer workspace showing tree and editor"
+                    alt="BracketView JSON workspace with Tree, Graph, Node, Table, and Text tabs"
                     width={1200}
                     height={900}
                     className="h-auto w-full dark:hidden"
@@ -57,7 +59,7 @@ const WhatIsBracketView = () => {
                   />
                   <Image
                     src="/images/what-is-bracketview-dark.webp"
-                    alt="BracketView JSON viewer workspace showing tree and editor"
+                    alt="BracketView JSON workspace with Tree, Graph, Node, Table, and Text tabs"
                     width={1200}
                     height={900}
                     className="hidden h-auto w-full dark:block"

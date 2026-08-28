@@ -3,38 +3,33 @@
 import AppWorkspaceShell, {
   type AppDemoTab,
 } from "@/components/app-demo/AppWorkspaceShell";
-import DemoDiffView from "@/components/app-demo/DemoDiffView";
+import DemoJSONNode from "@/components/app-demo/DemoJSONNode";
+import DemoJSONTable from "@/components/app-demo/DemoJSONTable";
 import DemoJSONTree from "@/components/app-demo/DemoJSONTree";
 import DemoTextEditor from "@/components/app-demo/DemoTextEditor";
 import {
-  BROKEN_JSON,
   DEMO_NESTED,
-  DIFF_LEFT,
-  DIFF_RIGHT,
   FIXED_JSON,
-  SCHEMA_SAMPLE,
 } from "@/components/app-demo/samples";
 import { useHydratedReducedMotion } from "@/components/motion/useHydratedReducedMotion";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
-type SceneId = "tree" | "fix" | "schema" | "diff";
+type SceneId = "tree" | "node" | "table" | "fix";
 
 const SCENES: { id: SceneId; label: string; tab: AppDemoTab }[] = [
   { id: "tree", label: "Tree", tab: "viewer" },
+  { id: "node", label: "Node", tab: "node" },
+  { id: "table", label: "Table", tab: "table" },
   { id: "fix", label: "AI Fix", tab: "text" },
-  { id: "schema", label: "Schema", tab: "text" },
-  { id: "diff", label: "Diff", tab: "viewer" },
 ];
 
 const HeroProductDemo = () => {
   const reducedMotion = useHydratedReducedMotion();
   const [scene, setScene] = useState<SceneId>("tree");
-  const [fixing, setFixing] = useState(false);
-  const [fixText, setFixText] = useState(BROKEN_JSON);
 
   useEffect(() => {
     if (reducedMotion) return;
-    const order: SceneId[] = ["tree", "fix", "schema", "diff"];
+    const order: SceneId[] = ["tree", "node", "table", "fix"];
     let index = 0;
     const id = window.setInterval(() => {
       index = (index + 1) % order.length;
@@ -43,39 +38,12 @@ const HeroProductDemo = () => {
     return () => window.clearInterval(id);
   }, [reducedMotion]);
 
-  useEffect(() => {
-    if (scene !== "fix") {
-      setFixText(BROKEN_JSON);
-      setFixing(false);
-      return;
-    }
-    setFixText(BROKEN_JSON);
-    setFixing(true);
-    const t1 = window.setTimeout(() => {
-      setFixText(FIXED_JSON);
-      setFixing(false);
-    }, 1200);
-    return () => window.clearTimeout(t1);
-  }, [scene]);
-
   const active = SCENES.find((item) => item.id === scene) ?? SCENES[0];
-
-  const schemaValid = useMemo(() => {
-    try {
-      JSON.parse(SCHEMA_SAMPLE);
-      return true;
-    } catch {
-      return false;
-    }
-  }, []);
-
-  const errorLine = scene === "fix" && fixing ? 3 : null;
 
   return (
     <div className="flex h-full min-h-80 flex-col overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(25,19,20,0.18)] md:rounded-t-2xl md:rounded-b-none">
-      {/* Scene switcher sits above app chrome so demos can rotate */}
       <div
-        className="flex gap-1 bg-[#ededed] px-2 py-1.5 dark:bg-dark-bg"
+        className="flex gap-1 overflow-x-auto bg-[#ededed] px-2 py-1.5 dark:bg-dark-bg"
         role="tablist"
         aria-label="Product demo scenes"
       >
@@ -100,9 +68,11 @@ const HeroProductDemo = () => {
       <div className="min-h-0 flex-1 bg-[#ededed] dark:bg-dark-bg">
         <AppWorkspaceShell
           activeTab={active.tab}
-          fixing={fixing}
+          fixing={false}
           onTabChange={(tab) => {
             if (tab === "viewer") setScene("tree");
+            if (tab === "node") setScene("node");
+            if (tab === "table") setScene("table");
             if (tab === "text") setScene("fix");
           }}
           onAction={(action) => {
@@ -112,68 +82,25 @@ const HeroProductDemo = () => {
           footer={
             scene === "tree"
               ? "Last parse duration: 7ms"
-              : scene === "fix"
-                ? fixing
-                  ? "Repairing with AI…"
+              : scene === "node"
+                ? "Node view · free"
+                : scene === "table"
+                  ? "Table view · free"
                   : "JSON fixed successfully by AI!"
-                : scene === "schema"
-                  ? "Schema validation · 0 errors"
-                  : "2 fields changed"
           }
         >
           {scene === "tree" ? (
             <DemoJSONTree data={DEMO_NESTED} autoExpand={!reducedMotion} />
           ) : null}
 
+          {scene === "node" ? <DemoJSONNode data={DEMO_NESTED} /> : null}
+
+          {scene === "table" ? <DemoJSONTable data={DEMO_NESTED} /> : null}
+
           {scene === "fix" ? (
             <DemoTextEditor
-              value={fixText}
+              value={FIXED_JSON}
               readOnly
-              errorLine={errorLine}
-            />
-          ) : null}
-
-          {scene === "schema" ? (
-            <div className="flex h-full min-h-0 flex-col">
-              <div className="min-h-0 flex-1">
-                <DemoTextEditor
-                  value={SCHEMA_SAMPLE}
-                  readOnly
-                  className="h-full"
-                />
-              </div>
-              <div
-                className={`shrink-0 border-t px-3 py-2 text-xs font-medium ${
-                  schemaValid
-                    ? "border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-900/20 dark:text-emerald-200"
-                    : "border-red-200 bg-red-50 text-red-800"
-                }`}
-              >
-                {schemaValid
-                  ? "✓ Valid against OrderSchema — 0 errors"
-                  : "✗ Schema validation failed"}
-              </div>
-            </div>
-          ) : null}
-
-          {scene === "diff" ? (
-            <DemoDiffView
-              left={DIFF_LEFT}
-              right={DIFF_RIGHT}
-              changes={[
-                {
-                  path: "plan",
-                  kind: "modified",
-                  left: '"free"',
-                  right: '"pro"',
-                },
-                {
-                  path: "limit",
-                  kind: "modified",
-                  left: "20",
-                  right: "null",
-                },
-              ]}
             />
           ) : null}
         </AppWorkspaceShell>

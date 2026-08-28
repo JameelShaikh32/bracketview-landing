@@ -1,4 +1,6 @@
 import Reveal from "@/components/motion/Reveal";
+import { DESKTOP_LOCAL_FILE_LABEL } from "@/app/data/desktop";
+import { FREE_UPLOAD_LABEL, PLAN_LIMITS } from "@/app/data/planLimits";
 import { Check, Minus } from "lucide-react";
 
 const rows = [
@@ -8,12 +10,17 @@ const rows = [
     pro: true,
   },
   {
-    feature: "Tree, graph, JSONPath, JQ",
+    feature: "Tree, graph, node, table, JSONPath, JQ",
     free: true,
     pro: true,
   },
   {
-    feature: "Schema validate / generate",
+    feature: "Nine UI languages",
+    free: true,
+    pro: true,
+  },
+  {
+    feature: "Schema validate / generate, types, compare",
     free: true,
     pro: true,
   },
@@ -24,7 +31,7 @@ const rows = [
   },
   {
     feature: "AI actions / month",
-    free: "20",
+    free: String(PLAN_LIMITS.free.aiActionsPerMonth),
     pro: "Unlimited†",
   },
   {
@@ -36,11 +43,6 @@ const rows = [
     feature: "Performance Mode (large JSON)",
     free: false,
     pro: true,
-  },
-  {
-    feature: "Priority support",
-    free: false,
-    pro: "Email",
   },
 ] as const;
 
@@ -55,7 +57,7 @@ const Cell = ({ value }: { value: boolean | string }) => {
   if (value === false) {
     return (
       <span className="inline-flex size-6 items-center justify-center rounded-full bg-black/10 text-black/40 dark:bg-foreground/10 dark:text-foreground/40">
-        <Minus size={12} aria-hidden />
+        <Minus size={12} strokeWidth={3} aria-hidden />
       </span>
     );
   }
@@ -80,13 +82,13 @@ const PricingMatrix = () => {
           Feature comparison
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-black/70 dark:text-foreground/70">
-          Core tools stay free. Upgrade to Pro for higher limits and Performance
-          Mode.
+          Core tools stay free — including Node, Table, and languages. Upgrade
+          to Pro for higher limits and Performance Mode.
         </p>
       </Reveal>
 
       <div className="mt-8 overflow-x-auto rounded-4xl bg-white dark:bg-muted">
-        <table className="w-full min-w-[480px] border-collapse text-left text-sm">
+        <table className="w-full min-w-120 border-collapse text-left text-sm">
           <thead>
             <tr className="border-b border-black/8 dark:border-foreground/10">
               <th className="px-4 py-4 font-bold sm:px-6">Capability</th>
@@ -115,7 +117,9 @@ const PricingMatrix = () => {
         </table>
       </div>
       <p className="mt-4 text-xs text-black/50 dark:text-foreground/45">
-        † Fair use applies to unlimited AI.
+        † Fair use applies to unlimited AI. Web Free uploads are{" "}
+        {FREE_UPLOAD_LABEL}; the Windows app opens local files up to{" "}
+        {DESKTOP_LOCAL_FILE_LABEL}.
       </p>
     </section>
   );

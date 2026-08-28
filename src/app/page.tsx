@@ -24,6 +24,7 @@ import JsonLd from "../components/seo/JsonLd";
 import ToolsDirectory from "../components/ToolsDirectory";
 import UseCases from "../components/UseCases";
 import WhatIsBracketView from "../components/WhatIsBracketView";
+import WhatsNew from "../components/marketing/WhatsNew";
 
 const ComparisonTable = dynamic(() => import("../components/ComparisonTable"));
 const Pricing = dynamic(() => import("../components/Pricing"));
@@ -56,6 +57,7 @@ export default function Home() {
       <HeroSection />
       <FeaturedOn />
       <WhatIsBracketView />
+      <WhatsNew />
       <FeatureDemoChapter />
       <CoreBenefits />
       <HowItWorks />

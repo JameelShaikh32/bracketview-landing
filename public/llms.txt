@@ -1,21 +1,26 @@
 # BracketView
 
-> BracketView is a freemium online JSON viewer, formatter, validator, query workspace, and webhook tester for developers. Core JSON tools run in the browser — no install required. Built by Jameel Shaikh. Marketing site: https://bracketview.in | App: https://app.bracketview.in
+> BracketView is a privacy-first JSON workspace: view, format, validate, query (JSONPath + jq), diff, schema, and types in the browser. See JSON as text, tree, graph, node cards, or a nested table — in nine languages, in the browser or as a Windows app. Optional server features: AI, encrypted snapshots, webhook tester, signed-in history. Built by Jameel Shaikh. Marketing site: https://bracketview.in | App: https://app.bracketview.in
 
 ## Product Overview
 
-BracketView is a privacy-first JSON workspace that runs in the browser. Unlike legacy JSON utilities cluttered with advertisements inside the editor, BracketView offers a full-screen, ad-free workspace to view, format, validate, query, diff, and share JSON data — plus a Webhook Tester for disposable public capture URLs. This marketing website may show third-party ads; the app at app.bracketview.in does not. Core viewing, formatting, and validation run in the browser. Sensitive payloads do not touch remote servers unless you use optional features like encrypted snapshots, AI-assisted repair, or Webhook Tester.
+BracketView is a privacy-first JSON workspace that runs in the browser. See JSON as text, tree, graph, node cards, or a nested table. Stats and JQ Filter sit beside those five views. The UI is in nine languages (Workspace settings in the header gear). Unlike legacy JSON utilities cluttered with advertisements inside the editor, BracketView offers a full-screen, ad-free workspace. This marketing website may show third-party ads; the app at app.bracketview.in does not. Core viewing, formatting, and validation run in the browser. Sensitive payloads do not touch remote servers unless you use optional features like encrypted snapshots, AI-assisted repair, or Webhook Tester.
 
-BracketView is freemium: core JSON tools are free with no signup required. Free accounts include 5 MB uploads, 5 encrypted snapshot links per month (up to 10-minute expiry), 20 AI actions per month, and Webhook Tester with 3 endpoints · 25 requests each · 2-day retention. Pro ($3/month or $27/year) unlocks unlimited AI, 50 MB uploads, Performance Mode for large JSON payloads, unlimited snapshot links (up to 2-hour expiry), and Webhook Tester with 25 endpoints · 5,000 requests each · 30-day retention plus encrypted share of a single capture.
+BracketView is freemium: core JSON tools are free with no signup required — including Node view, Table view, and UI languages. Free accounts include 5 MB uploads, 5 encrypted snapshot links per month (up to 10-minute expiry), 20 AI actions per month, and Webhook Tester with 3 endpoints, 25 requests each, 2-day retention. Pro ($3/month or $27/year, 25% off vs monthly × 12) is power + persistence + AI: 50 MB uploads + Performance Mode, unlimited snapshot links up to 2 hours, AI without a monthly cap (Fix, Explain, Types), and Webhook Tester with 25 endpoints, 5,000 captures each, 30-day history. USD list; Razorpay charges local currency. The Windows app (0.1.3) is a local workspace (no sign-in, AI, snapshots, or webhook tester) with files up to 200 MB.
 
 ## Feature Reference
 
 ### View & Navigate
-- **Tree View**: Collapsible hierarchical view of nested JSON objects and arrays. Search keys, collapse noisy branches, inspect types.
-- **Graph View (JSON Galaxy)**: Dynamic node network visualization mapping relationships between nested data instead of a flat list.
-- **Syntax-Highlighted Editor**: Large distraction-free text workspace with colour-coded JSON and line references.
-- **Stats View**: Node count, maximum depth, and structural analysis at a glance.
-- **Performance Mode (Pro)**: Optimizes parsing and rendering for large JSON payloads (up to 50 MB). Keeps tree, graph, and editor views responsive. Disabled on Free accounts.
+The workspace has seven tabs. Five are views (text, tree, graph, node, table). Stats and JQ Filter are tools beside those views. All of these are free — not Pro.
+- **Text**: Monaco editor — paste, format, minify, stringify.
+- **Tree View**: Virtualized collapsible tree, search, breadcrumbs, path copy.
+- **Graph View**: Force-directed galaxy map of the payload.
+- **Node View**: JSON Crack–style canvas — object cards, bezier edges, arrays of objects as table-shaped nodes, zoom/fit/lock, search. Nested objects stay inside the parent until they need their own card.
+- **Table View**: Nested spreadsheet — objects as Key/Value, arrays of objects as columns, expand/collapse, virtualized long lists.
+- **Stats View**: Counts, types, depth.
+- **JQ Filter**: jq + JSONPath playground.
+- **Nine UI languages** (Workspace settings / header gear, not the profile page): English, Simplified Chinese (简体中文), Japanese (日本語), Korean (한국어), Português (Brasil), Spanish, French, German, Russian.
+- **Performance Mode (Pro)**: Optimizes parsing and rendering for large JSON payloads (up to 50 MB). Keeps views responsive. Node and Table stay available on Free.
 
 ### Format & Validate
 - **JSON Formatter**: One-click beautify with readable indentation. Also minifies JSON for production payloads.
@@ -34,7 +39,7 @@ BracketView is freemium: core JSON tools are free with no signup required. Free 
 - **AI Prompt Enhancer**: Refines LLM prompts directly inside the workspace.
 
 ### Schema & Types
-- **Type Generator**: Exports TypeScript interfaces, Python dataclasses, Go structs, Rust types, and 7+ other languages from JSON examples.
+- **Type Generator**: Exports TypeScript interfaces, Python dataclasses, Go structs, Rust types, and more from JSON examples. This is code generation — not the nine UI languages.
 - **Schema Library**: Common JSON Schema patterns for quick validation setup.
 
 ### Compare & Export
@@ -75,16 +80,18 @@ Generate a JSON Schema from an example API response. Validate future responses a
 
 | Plan | Price | Upload | AI | Snapshots | Webhook Tester | Performance Mode |
 |------|-------|--------|-----|-----------|----------------|------------------|
-| Free | $0 forever | 5 MB | 20 actions/month | 5/month (10-min max expiry) | 3 endpoints · 25 req each · 2-day retention | No |
-| Pro Monthly | $3/month | 50 MB | Unlimited | Unlimited (2-hour max expiry) | 25 endpoints · 5,000 req each · 30-day retention + capture share | Yes |
-| Pro Yearly | $27/year ($2.25/mo) | 50 MB | Unlimited | Unlimited (2-hour max expiry) | 25 endpoints · 5,000 req each · 30-day retention + capture share | Yes |
+| Free | $0 forever | 5 MB (web) | 20 actions/month | 5/month (10-min max expiry) | 3 endpoints, 25 requests each, 2-day retention | No |
+| Pro Monthly | $3/month | 50 MB | No monthly cap (Fix, Explain, Types) | Unlimited (2-hour max expiry) | 25 endpoints, 5,000 captures each, 30-day history | Yes |
+| Pro Yearly | $27/year ($2.25/mo, 25% off vs monthly × 12) | 50 MB | No monthly cap (Fix, Explain, Types) | Unlimited (2-hour max expiry) | 25 endpoints, 5,000 captures each, 30-day history | Yes |
 
-Payments processed via Razorpay. Pro includes a fair use policy for unlimited AI. Pro webhooks are not unlimited endpoints or unlimited retention.
+Windows app 0.1.3: local files up to 200 MB. Web Free 5 MB does not apply. Node, Table, languages, encoder/compare, and the desktop viewer do not require Pro.
+
+Payments processed via Razorpay (USD list; charged in local currency). Pro includes a fair use policy for unlimited AI. Pro webhooks are not unlimited endpoints or unlimited retention.
 
 ## Frequently Asked Questions
 
 **Is BracketView free to use?**
-BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, schema, and Webhook Tester — are free with no signup required. Free accounts include 5 MB uploads, 5 snapshot links per month, 20 AI actions per month, and Webhook Tester with 3 endpoints / 25 requests / 2-day retention. Pro unlocks unlimited AI, 50 MB uploads, Performance Mode, unlimited encrypted snapshot links, and higher webhook caps (25 / 5,000 / 30-day) plus capture share.
+BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, node, table, JSONPath, diff, schema, and Webhook Tester — are free with no signup required. Nine UI languages are free. Free accounts include 5 MB uploads, 5 snapshot links per month, 20 AI actions per month, and Webhook Tester with 3 endpoints / 25 requests / 2-day retention. Pro unlocks AI without a monthly cap, 50 MB uploads, Performance Mode, unlimited encrypted snapshot links (up to 2 hours), and higher webhook caps (25 / 5,000 / 30-day).
 
 **Does my JSON data leave the browser?**
 Viewing, formatting, and validation run locally in your browser whenever possible. BracketView is privacy-first: core tools run in the browser. Snapshot links, AI-assisted features, and Webhook Tester captures follow a different data path.
@@ -93,7 +100,7 @@ Viewing, formatting, and validation run locally in your browser whenever possibl
 A free webhook catcher built into BracketView. Generate a public URL, send events from Stripe/GitHub/Shopify or custom APIs, inspect live captures, mock responses, and verify signatures. See freemium caps above. App: https://app.bracketview.in/webhooks
 
 **What is the best free online JSON viewer?**
-It depends on the job. JSONLint is best for a one-shot validate-and-format pass. JSON Editor Online is the classic tree-and-code editor. JSONCrack is best as a graph of nested JSON. BracketView is a free online JSON viewer with tree and graph views, JSONPath, jq, diff, schema tools, and an ad-free app — core viewing runs in the browser with no install. Roundup: https://bracketview.in/learn/best-json-viewer
+It depends on the job. JSONLint is best for a one-shot validate-and-format pass. JSON Editor Online is the classic tree-and-code editor. JSONCrack is best as a graph of nested JSON. BracketView is a free online JSON viewer with text, tree, graph, node, and table views, JSONPath, jq, diff, schema tools, nine UI languages, and an ad-free app — core viewing runs in the browser with no install. Roundup: https://bracketview.in/learn/best-json-viewer
 
 **How do I validate JSON online?**
 Paste JSON into BracketView at app.bracketview.in. The real-time validator highlights bracket mismatches, trailing commas, and unquoted keys as you type.
@@ -122,7 +129,9 @@ Yes. BracketView supports JSONPath and a JQ filter playground. The AI Query Assi
 - [BracketView marketing site](https://bracketview.in): Product overview, pricing, features, and documentation
 
 ### Tool pages
-- [JSON Viewer](https://bracketview.in/json-viewer): Collapsible tree and graph JSON viewer
+- [JSON Viewer](https://bracketview.in/json-viewer): Tree, graph, node, and table JSON viewer
+- [Changelog](https://bracketview.in/changelog): August 2026 product notes
+- [Download for Windows](https://bracketview.in/downloads): Desktop app 0.1.3
 - [JSON Formatter](https://bracketview.in/json-formatter): Beautify and minify JSON online
 - [JSON Validator](https://bracketview.in/json-validator): Real-time syntax validation with inline errors
 - [JSON Diff](https://bracketview.in/json-diff): Side-by-side comparison of two JSON documents

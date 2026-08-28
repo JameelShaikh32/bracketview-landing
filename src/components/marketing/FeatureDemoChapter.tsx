@@ -1,14 +1,13 @@
 "use client";
 
 import AppWorkspaceShell from "@/components/app-demo/AppWorkspaceShell";
-import DemoDiffView from "@/components/app-demo/DemoDiffView";
+import DemoJSONNode from "@/components/app-demo/DemoJSONNode";
+import DemoJSONTable from "@/components/app-demo/DemoJSONTable";
 import DemoJSONTree from "@/components/app-demo/DemoJSONTree";
 import DemoTextEditor from "@/components/app-demo/DemoTextEditor";
 import {
   BROKEN_JSON,
   DEMO_API_RESPONSE,
-  DIFF_LEFT,
-  DIFF_RIGHT,
   FIXED_JSON,
 } from "@/components/app-demo/samples";
 import Reveal from "@/components/motion/Reveal";
@@ -18,12 +17,28 @@ import { useState } from "react";
 
 const chapters = [
   {
+    id: "node",
+    title: "See objects as node cards",
+    description:
+      "JSON Crack–style canvas: object cards, bezier edges, arrays of objects as table-shaped nodes. Free.",
+    href: "/json-viewer",
+    cta: "Open Node view",
+  },
+  {
+    id: "table",
+    title: "Read JSON as a nested table",
+    description:
+      "Objects as Key/Value, arrays of objects as columns — expand, collapse, and scroll long lists. Free.",
+    href: "/json-viewer",
+    cta: "Open Table view",
+  },
+  {
     id: "tree",
     title: "Explore nested JSON as a tree",
     description:
       "Expand nodes, copy paths, and jump through large API responses without losing context.",
     href: "/json-viewer",
-    cta: "Open JSON Viewer",
+    cta: "Open the workspace",
   },
   {
     id: "ai",
@@ -32,22 +47,6 @@ const chapters = [
       "Missing commas, trailing garbage, and truncated payloads — fix locally first, then AI when needed.",
     href: "/ai-json-fixer",
     cta: "Try AI JSON Fixer",
-  },
-  {
-    id: "diff",
-    title: "See structural diffs instantly",
-    description:
-      "Compare two payloads side by side and highlight added, removed, and changed fields.",
-    href: "/json-diff",
-    cta: "Open Diff Tool",
-  },
-  {
-    id: "webhook",
-    title: "Capture webhooks in real time",
-    description:
-      "Disposable public URLs for Stripe, GitHub, and Shopify — inspect headers, body, and replay.",
-    href: "/webhook-tester",
-    cta: "Open Webhook Tester",
   },
 ] as const;
 
@@ -106,8 +105,32 @@ const FeatureDemoChapter = () => {
           </ul>
 
           <div className="flex min-h-80 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-[#ededed] shadow-sm dark:border-dark-border dark:bg-dark-bg sm:min-h-96">
+            {chapter.id === "node" ? (
+              <AppWorkspaceShell
+                className="min-h-0 flex-1"
+                activeTab="node"
+                footer="Node view · free"
+              >
+                <DemoJSONNode data={DEMO_API_RESPONSE} />
+              </AppWorkspaceShell>
+            ) : null}
+
+            {chapter.id === "table" ? (
+              <AppWorkspaceShell
+                className="min-h-0 flex-1"
+                activeTab="table"
+                footer="Table view · free"
+              >
+                <DemoJSONTable data={DEMO_API_RESPONSE} />
+              </AppWorkspaceShell>
+            ) : null}
+
             {chapter.id === "tree" ? (
-              <AppWorkspaceShell activeTab="viewer" footer="Last parse duration: 7ms">
+              <AppWorkspaceShell
+                className="min-h-0 flex-1"
+                activeTab="viewer"
+                footer="Last parse duration: 7ms"
+              >
                 <DemoJSONTree data={DEMO_API_RESPONSE} autoExpand />
               </AppWorkspaceShell>
             ) : null}
@@ -146,66 +169,6 @@ const FeatureDemoChapter = () => {
                   </div>
                 </div>
               </AppWorkspaceShell>
-            ) : null}
-
-            {chapter.id === "diff" ? (
-              <AppWorkspaceShell activeTab="viewer" showActionBar={false} footer="2 fields changed">
-                <DemoDiffView
-                  left={DIFF_LEFT}
-                  right={DIFF_RIGHT}
-                  changes={[
-                    {
-                      path: "plan",
-                      kind: "modified",
-                      left: '"free"',
-                      right: '"pro"',
-                    },
-                    {
-                      path: "limit",
-                      kind: "modified",
-                      left: "20",
-                      right: "null",
-                    },
-                  ]}
-                />
-              </AppWorkspaceShell>
-            ) : null}
-
-            {chapter.id === "webhook" ? (
-              <div className="flex h-full flex-col bg-white dark:bg-dark-surface">
-                <div className="border-b border-gray-200 px-3 py-2 text-xs font-semibold dark:border-dark-border dark:text-dark-text">
-                  Webhook Tester · live feed
-                </div>
-                <div className="viewer-scrollbar flex-1 space-y-2 overflow-auto p-3">
-                  {[
-                    {
-                      method: "POST",
-                      path: "/e/stripe_test",
-                      ms: "48ms",
-                      status: 200,
-                    },
-                    {
-                      method: "POST",
-                      path: "/e/stripe_test",
-                      ms: "51ms",
-                      status: 200,
-                    },
-                  ].map((row, index) => (
-                    <div
-                      key={index}
-                      className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 font-mono text-[11px] dark:border-dark-border dark:bg-dark-card dark:text-dark-text"
-                    >
-                      <span className="font-semibold text-teal-700 dark:text-teal-300">
-                        {row.method}
-                      </span>{" "}
-                      {row.path} · {row.status} · {row.ms}
-                      <p className="mt-1 text-gray-500 dark:text-dark-text-secondary">
-                        stripe-signature · application/json · 2.1 KB
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
             ) : null}
 
             <div className="border-t border-gray-200 bg-white p-3 dark:border-dark-border dark:bg-dark-surface">

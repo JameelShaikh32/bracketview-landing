@@ -1,6 +1,5 @@
 import { footerLinks, socialLinks } from "@/app/data/constant";
 import { supportEmail } from "@/app/data/legal";
-import LaunchKiwiBadge from "@/components/LaunchKiwiBadge";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -83,12 +82,12 @@ const Footer = () => {
   return (
     <footer className="mt-auto w-full px-4 pb-8 pt-8 sm:px-6 lg:px-8">
       <div className="relative overflow-hidden rounded-4xl bg-white p-8 sm:p-10 lg:p-12 dark:bg-muted">
-        <p
+        {/* <p
           aria-hidden
           className="pointer-events-none absolute inset-x-0 bottom-16 z-0 hidden select-none text-center font-sans text-[clamp(4.25rem,22vw,11rem)] font-bold italic leading-none tracking-tight text-black/5.5 sm:bottom-12 md:block dark:text-foreground/7.5"
         >
           BRACKETVIEW
-        </p>
+        </p> */}
 
         <div className="relative z-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-7 lg:gap-8">
           <div className="lg:col-span-2">
@@ -108,9 +107,14 @@ const Footer = () => {
               <span className="text-lg font-medium">BracketView</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-black/65 dark:text-foreground/65">
-              A fast online JSON viewer, formatter, validator, and query tool
-              for modern developers.
+              A privacy-first JSON workspace: text, tree, graph, node, and table
+              views, plus query, diff, and schema — in the browser or as a
+              Windows app.
             </p>
+            {/* <p className="mt-3 max-w-sm text-xs leading-relaxed text-black/55 dark:text-foreground/55">
+              UI in nine languages: {UI_LANGUAGE_FOOTER_LIST}. Switch them in
+              the app (Workspace settings), not here.
+            </p> */}
 
             <div className="mt-5 flex items-center gap-3">
               {socialLinks.map((social) => {
@@ -130,10 +134,6 @@ const Footer = () => {
                   </a>
                 );
               })}
-            </div>
-
-            <div className="mt-6">
-              <LaunchKiwiBadge />
             </div>
           </div>
 

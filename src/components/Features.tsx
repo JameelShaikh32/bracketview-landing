@@ -23,9 +23,9 @@ const Features = () => {
                     </h2>
 
                     <p className="mt-6 max-w-xl text-sm leading-relaxed text-black/75 sm:mt-8 sm:text-base dark:text-foreground/70">
-                        Inspect, format, validate, and query structured data in one
-                        browser tab — with optional AI repair and a WebAssembly jq
-                        playground when you need them.
+                        Five ways to look at JSON — text, tree, graph, node, and
+                        table — plus JSONPath, jq, and optional AI. UI in nine
+                        languages. Node and Table are free.
                     </p>
                 </Reveal>
 

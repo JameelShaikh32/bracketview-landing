@@ -158,10 +158,22 @@ const glossaryTerms: GlossaryTerm[] = [
             "A visual mode that maps JSON relationships as a dynamic node network instead of a hierarchical tree. Useful for understanding complex object references and nested structures.",
     },
     {
+        name: "JSON Node View",
+        slug: "json-node-view",
+        description:
+            "A free canvas of object cards with bezier edges. Nested objects stay inside the parent until they need their own card; arrays of objects render as table-shaped nodes.",
+    },
+    {
+        name: "JSON Table View",
+        slug: "json-table-view",
+        description:
+            "A free nested spreadsheet for JSON: objects as Key/Value rows, arrays of objects as columns, with expand/collapse and virtualized long lists.",
+    },
+    {
         name: "Performance Mode",
         slug: "performance-mode",
         description:
-            "A Pro-only workspace setting that optimizes parsing and rendering for large JSON payloads (up to 50 MB). Keeps tree, graph, and editor views responsive on heavy files. Disabled on Free accounts.",
+            "A Pro-only setting that optimizes parsing and rendering for large JSON payloads (up to 50 MB). Keeps tree, graph, node, table, and editor views responsive on heavy files. Node and Table stay available on Free.",
     },
     {
         name: "Encrypted Snapshot",

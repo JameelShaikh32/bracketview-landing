@@ -65,7 +65,7 @@ const CtaSection = () => {
                             rel="noopener noreferrer"
                             className="inline-flex w-fit items-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                         >
-                            Open JSON Viewer
+                            Open the workspace
                             <ArrowUpRight size={18} aria-hidden />
                         </Link>
                     </Reveal>

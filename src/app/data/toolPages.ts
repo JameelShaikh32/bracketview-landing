@@ -55,12 +55,11 @@ const toolPages: Record<string, ToolPage> = {
         slug: "json-viewer",
         h1: "Free Online JSON Viewer",
         badge: "JSON Viewer",
-        metaTitle:
-            "Free Online JSON Viewer & Formatter | BracketView",
+        metaTitle: "Free JSON Viewer: Node, Table, Tree | BracketView",
         metaDescription:
-            "Free online JSON viewer with collapsible tree, graph view, path copy, and search. Privacy-first — your data stays in the browser.",
+            "Free JSON viewer with tree, graph, node cards, and nested table. Nine UI languages. Privacy-first — data stays in the browser.",
         intro:
-            "A JSON viewer turns opaque payloads into a navigable structure. BracketView's online JSON viewer lets you expand nested objects, jump to paths, copy values, and switch between tree and graph views — entirely in your browser. Paste an API response, explore keys without scrolling a wall of text, and share an encrypted snapshot when you need a second pair of eyes.",
+            "A JSON viewer turns opaque payloads into a navigable structure. BracketView lets you switch between text, tree, graph, node cards, and a nested table — plus Stats and JQ Filter beside those views. Paste an API response, copy paths, search the tree, or lay arrays of objects out as a spreadsheet. The UI is in nine languages (Workspace settings in the header gear). Core viewing stays in the browser. Share an encrypted snapshot when you need a second pair of eyes.",
         problem:
             "Large API responses and nested configs are hard to read as raw text. Developers waste time hunting keys, copying fragile paths by hand, and losing context when switching tools.",
         useCases: [
@@ -94,11 +93,12 @@ const toolPages: Record<string, ToolPage> = {
         ],
         interactiveDemo: "viewer",
         features: [
-            "Collapsible tree with type-aware coloring",
-            "Graph view for relationship exploration",
+            "Text, tree, graph, node, and table views — all free",
+            "Node view: object cards, bezier edges, table-shaped array nodes",
+            "Table view: nested Key/Value and columnar arrays of objects",
             "Copy node value, path, or JSON snippet",
             "Search keys and values in the tree",
-            "Path breadcrumbs and node statistics",
+            "Nine UI languages in Workspace settings",
             UPLOAD_FEATURE_LINE,
             "Browser-side viewing — data stays local for core tools",
         ],
@@ -119,15 +119,15 @@ const toolPages: Record<string, ToolPage> = {
             },
             {
                 position: 3,
-                name: "Open the Viewer tab",
-                text: "Switch to Viewer to expand the tree, copy paths, and explore the graph.",
+                name: "Switch views",
+                text: "Use Tree, Graph, Node, Table, or Text. Stats and JQ Filter sit beside those views.",
             },
         ],
         faqs: [
             {
                 question: "What is a JSON viewer?",
                 answer:
-                    "A JSON viewer displays structured JSON as a navigable tree or graph so you can inspect nested fields without reading minified text. BracketView's JSON viewer runs free in the browser.",
+                    "A JSON viewer displays structured JSON as a navigable tree, graph, node cards, or nested table so you can inspect nested fields without reading minified text. BracketView's JSON viewer runs free in the browser.",
             },
             {
                 question: "Is the JSON viewer free?",
@@ -137,7 +137,7 @@ const toolPages: Record<string, ToolPage> = {
             {
                 question: "Does viewing JSON send data to a server?",
                 answer:
-                    "No. Tree and graph viewing run client-side. Optional features like encrypted snapshots and AI repair use a different path — see the privacy policy.",
+                    "No. Tree, graph, node, and table viewing run client-side. Optional features like encrypted snapshots and AI repair use a different path — see the privacy policy.",
             },
             {
                 question: "Can I search inside large JSON?",
@@ -147,11 +147,11 @@ const toolPages: Record<string, ToolPage> = {
             {
                 question: "What is the best free online JSON viewer?",
                 answer:
-                    "It depends on the job. JSONLint is a validator, JSON Editor Online is a classic tree editor, and JSONCrack is a graph visualizer. BracketView is a free online JSON viewer with tree and graph views plus formatter, JSONPath, jq, and diff in an ad-free app. See the comparison at bracketview.in/learn/best-json-viewer.",
+                    "It depends on the job. JSONLint is a validator, JSON Editor Online is a classic tree editor, and JSONCrack is a graph visualizer. BracketView is a free online JSON viewer with text, tree, graph, node, and table views plus formatter, JSONPath, jq, and diff in an ad-free app. See the comparison at bracketview.in/learn/best-json-viewer.",
             },
         ],
         appUrl: "https://app.bracketview.in/?sample=api-error",
-        ctaLabel: "Open JSON Viewer",
+        ctaLabel: "Open the workspace",
         relatedTools: [
             "json-formatter",
             "json-validator",
@@ -637,11 +637,11 @@ const toolPages: Record<string, ToolPage> = {
         slug: "json-type-generator",
         h1: "Generate TypeScript from JSON",
         badge: "Type Generator",
-        metaTitle: "Convert JSON to TypeScript Online — 9+ Languages | BracketView",
+        metaTitle: "JSON to TypeScript, Python, Go, Rust | BracketView",
         metaDescription:
             "Convert JSON to TypeScript online for free. Generate TypeScript interfaces, plus Python, Go & Rust types, from any JSON object. No install — runs in your browser.",
         intro:
-            "Converting JSON to TypeScript online saves hours of manual interface writing when integrating APIs or parsing responses. BracketView's Type Generator converts any JSON object into accurate TypeScript interfaces — plus Python, Go, Rust, and 9+ other languages. Paste an API response or example payload, pick your target language, and copy production-ready types instantly. Pair with the Schema Generator to keep types and validation rules in sync across your stack.",
+            "Converting JSON to TypeScript online saves hours of manual interface writing when integrating APIs or parsing responses. BracketView's Type Generator converts any JSON object into TypeScript interfaces — plus Python, Go, Rust, and other code targets. This is type export, not the nine UI languages in Workspace settings. Paste an API response, pick a target language, and copy production-ready types. Pair with the Schema Generator to keep types and validation in sync.",
         features: [
             "TypeScript interfaces and type aliases",
             "Python dataclasses and TypedDict",
@@ -653,7 +653,7 @@ const toolPages: Record<string, ToolPage> = {
         ],
         howToName: "How to Generate TypeScript from JSON with BracketView",
         howToDescription:
-            "Export TypeScript interfaces (or 9+ other languages) from JSON in three steps.",
+            "Export TypeScript interfaces (or Python, Go, Rust, and more) from JSON in three steps.",
         howToSteps: [
             {
                 position: 1,
@@ -676,7 +676,7 @@ const toolPages: Record<string, ToolPage> = {
             {
                 question: "What languages does BracketView support?",
                 answer:
-                    "BracketView generates types for TypeScript, Python, Go, Rust, Java, C#, Swift, Kotlin, and more — 9+ languages total.",
+                    "The Type Generator exports code for TypeScript, Python, Go, Rust, Java, C#, Swift, Kotlin, and more. That is separate from the nine UI languages in Workspace settings.",
             },
             {
                 question: "How do I generate TypeScript from JSON?",

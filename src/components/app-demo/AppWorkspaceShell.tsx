@@ -12,16 +12,26 @@ import {
   ClipboardIcon,
   ClipboardPaste,
   EyeIcon,
+  LayoutGrid,
   ListX,
   Loader2,
+  Network,
+  Table2,
+  Terminal,
   TextIcon,
   TextWrap,
-  Terminal,
   Wand2,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
-export type AppDemoTab = "viewer" | "text" | "stats" | "jq";
+export type AppDemoTab =
+  | "viewer"
+  | "graph"
+  | "node"
+  | "table"
+  | "text"
+  | "stats"
+  | "jq";
 
 type ActionId =
   | "paste"
@@ -42,8 +52,22 @@ type AppWorkspaceShellProps = {
   footer?: ReactNode;
 };
 
+const TABS: {
+  id: AppDemoTab;
+  label: string;
+  icon: typeof EyeIcon;
+}[] = [
+  { id: "viewer", label: "Tree", icon: EyeIcon },
+  { id: "graph", label: "Graph", icon: Network },
+  { id: "node", label: "Node", icon: LayoutGrid },
+  { id: "table", label: "Table", icon: Table2 },
+  { id: "text", label: "Text", icon: TextIcon },
+  { id: "stats", label: "Stats", icon: BarChart3 },
+  { id: "jq", label: "JQ", icon: Terminal },
+];
+
 const tabBtn = (active: boolean) =>
-  `flex items-center gap-1 px-2.5 py-2 text-xs font-semibold rounded-xl transition-colors cursor-pointer ${
+  `flex shrink-0 items-center gap-1 px-2.5 py-2 text-xs font-semibold rounded-xl transition-colors cursor-pointer ${
     active
       ? "bg-gray-100 text-gray-900 dark:bg-dark-active dark:text-dark-text"
       : "text-gray-600 dark:text-dark-text-secondary hover:text-gray-900 dark:hover:text-dark-text hover:bg-gray-100 dark:hover:bg-dark-hover"
@@ -66,58 +90,37 @@ const AppWorkspaceShell = ({
     <div
       className={`flex h-full min-h-0 w-full flex-col overflow-hidden bg-white dark:bg-dark-surface ${className}`}
     >
-      {/* View tabs — AppHeader pattern */}
-      <div className="flex items-center gap-1 border-b border-gray-300 px-2 py-1.5 dark:border-dark-border">
+      <div className="border-b border-gray-300 px-2 py-1.5 dark:border-dark-border">
         <div
-          className="flex items-center gap-1"
+          className="flex items-center gap-1 overflow-x-auto scrollbar-none"
           role="tablist"
           aria-label="Workspace views"
         >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeTab === "viewer"}
-            className={tabBtn(activeTab === "viewer")}
-            onClick={() => onTabChange?.("viewer")}
-          >
-            <EyeIcon className="h-3.5 w-3.5" />
-            <span>Tree View</span>
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeTab === "text"}
-            className={tabBtn(activeTab === "text")}
-            onClick={() => onTabChange?.("text")}
-          >
-            <TextIcon className="h-3.5 w-3.5" />
-            <span>Text</span>
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeTab === "stats"}
-            className={tabBtn(activeTab === "stats")}
-            onClick={() => onTabChange?.("stats")}
-          >
-            <BarChart3 className="h-3.5 w-3.5" />
-            <span>Stats</span>
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeTab === "jq"}
-            className={tabBtn(activeTab === "jq")}
-            onClick={() => onTabChange?.("jq")}
-          >
-            <Terminal className="h-3.5 w-3.5" />
-            <span>JQ</span>
-          </button>
+          {TABS.map((tab) => {
+            const Icon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                className={tabBtn(activeTab === tab.id)}
+                onClick={() => onTabChange?.(tab.id)}
+              >
+                <Icon className="h-3.5 w-3.5" />
+                <span>{tab.label}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Action bar — JSONViewer pattern */}
-      {showActionBar && activeTab !== "stats" && activeTab !== "jq" ? (
+      {showActionBar &&
+      activeTab !== "stats" &&
+      activeTab !== "jq" &&
+      activeTab !== "graph" &&
+      activeTab !== "node" &&
+      activeTab !== "table" ? (
         <div className="relative z-10 flex items-center gap-1 overflow-x-auto border-b border-gray-200 px-2 py-1.5 dark:border-dark-border">
           <button
             type="button"

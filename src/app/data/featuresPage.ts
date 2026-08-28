@@ -10,7 +10,9 @@ import {
     Gauge,
     GitBranch,
     GitCompare,
+    Languages,
     Layers,
+    LayoutGrid,
     Network,
     PenLine,
     SearchCode,
@@ -18,6 +20,7 @@ import {
     Shield,
     Sparkles,
     StickyNote,
+    Table2,
     Terminal,
     Wand2,
     Webhook,
@@ -47,13 +50,13 @@ const featureCategories: FeatureCategory[] = [
     {
         title: "View & Navigate",
         description:
-            "Explore complex JSON with multiple visual modes designed for deep nested structures.",
+            "Five ways to look at JSON — text, tree, graph, node, and table — plus Stats and JQ. All free.",
         features: [
             {
                 icon: GitBranch,
                 title: "Interactive Tree View",
                 description:
-                    "Collapse noisy branches, search keys, and inspect nested objects with type highlights.",
+                    "Virtualized collapsible tree, search on the toolbar, breadcrumbs, and path copy.",
                 href: "https://app.bracketview.in",
                 cta: "Open tree view",
             },
@@ -61,15 +64,31 @@ const featureCategories: FeatureCategory[] = [
                 icon: Network,
                 title: "Graph View",
                 description:
-                    "Map relationships as a dynamic node network instead of a flat list.",
+                    "Force-directed galaxy map of the payload — relationships instead of a flat list.",
                 href: "https://app.bracketview.in",
                 cta: "Open graph view",
+            },
+            {
+                icon: LayoutGrid,
+                title: "Node View",
+                description:
+                    "JSON Crack–style canvas: object cards, bezier edges, arrays of objects as table-shaped nodes, zoom/fit/lock, and search. Nested objects stay inside the parent until they need their own card. Free.",
+                href: "https://app.bracketview.in",
+                cta: "Open node view",
+            },
+            {
+                icon: Table2,
+                title: "Table View",
+                description:
+                    "Nested spreadsheet: objects as Key/Value, arrays of objects as columns, expand/collapse, virtualized long lists. Free.",
+                href: "https://app.bracketview.in",
+                cta: "Open table view",
             },
             {
                 icon: FileJson,
                 title: "Syntax-Highlighted Editor",
                 description:
-                    "Large, distraction-free text workspace with colour-coded JSON and line references.",
+                    "Monaco editor — paste, format, minify, and stringify with colour-coded JSON.",
                 href: "https://app.bracketview.in",
                 cta: "Open editor",
             },
@@ -77,15 +96,23 @@ const featureCategories: FeatureCategory[] = [
                 icon: BarChart3,
                 title: "Stats View",
                 description:
-                    "Quick analysis of node counts, depth, and structure at a glance.",
+                    "Counts, types, and depth at a glance — a tool next to the five views.",
                 href: "https://app.bracketview.in",
                 cta: "View JSON stats",
+            },
+            {
+                icon: Languages,
+                title: "Nine UI languages",
+                description:
+                    "Switch the workspace in Workspace settings (header gear): English, Simplified Chinese (简体中文), Japanese (日本語), Korean (한국어), Português (Brasil), Spanish, French, German, Russian. Not on the profile page. Free.",
+                href: "https://app.bracketview.in",
+                cta: "Open workspace settings",
             },
             {
                 icon: Gauge,
                 title: "Performance Mode",
                 description:
-                    "Pro-only optimization for large JSON payloads — keeps tree, graph, and editor views responsive on files up to 50 MB. Disabled on Free; upgrade to enable.",
+                    "Pro-only optimization for large JSON payloads — keeps tree, graph, node, table, and editor views responsive on files up to 50 MB. Node and Table stay available on Free; Performance Mode is the upgrade for huge files.",
                 href: APP_PRICING_MONTHLY_CHECKOUT_URL,
                 cta: "Unlock with Pro",
             },
@@ -208,7 +235,7 @@ const featureCategories: FeatureCategory[] = [
                 icon: Code2,
                 title: "Type Generator",
                 description:
-                    "Export accurate types/interfaces for 9+ languages including TypeScript, Python, Go, and Rust.",
+                    "Export types and interfaces for TypeScript, Python, Go, Rust, and more — this is code generation, not the nine UI languages in Workspace settings.",
                 href: "https://app.bracketview.in/json-types",
                 cta: "Generate types",
             },
@@ -231,7 +258,7 @@ const featureCategories: FeatureCategory[] = [
                 icon: Layers,
                 title: "Compare View",
                 description:
-                    "Paste two versions and see exactly what changed between releases.",
+                    "Paste two versions and see exactly what changed — including offline text compare in the Windows app.",
                 href: "https://app.bracketview.in/compare-view",
                 cta: "Open compare view",
             },
@@ -283,7 +310,7 @@ const featureCategories: FeatureCategory[] = [
                 icon: Binary,
                 title: "Encoder / Decoder",
                 description:
-                    "Handle common encoding and decoding tasks alongside your JSON editor.",
+                    "Handle common encoding and decoding tasks alongside your JSON editor. Included in the Windows app offline.",
                 href: "https://app.bracketview.in/encoder-decoder",
                 cta: "Open encoder tool",
             },

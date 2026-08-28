@@ -25,7 +25,7 @@ const HOME_TITLE =
 
 /** Homepage-only description. Keep ~120–155 chars for SERP display. */
 const HOME_DESCRIPTION =
-    "View, format, validate, query, and compare JSON in a clean browser-based workspace. Privacy-first core tools — no install.";
+    "Free online JSON viewer and formatter. Open JSON as text, tree, graph, node, or table. Format, validate, and query in the browser or Windows.";
 
 const OG_IMAGE = "/og-image.webp";
 
@@ -42,6 +42,8 @@ const HOME_KEYWORDS = [
     "JSON diff",
     "JSONPath",
     "jq",
+    "JSON node view",
+    "JSON table view",
     "BracketView",
 ] as const;
 
@@ -59,7 +61,7 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "Is BracketView free to use?",
         answer:
-            `BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, JSONPath, diff, schema, and Webhook Tester — are free with no signup required. Free accounts include ${PLAN_LIMITS.free.uploadMb} MB uploads, ${PLAN_LIMITS.free.snapshotsPerMonth} snapshot links per month, ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month, and Webhook Tester with ${PLAN_LIMITS.free.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each, and ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention. Pro unlocks unlimited AI, ${PLAN_LIMITS.pro.uploadMb} MB uploads, unlimited encrypted snapshot links, and higher webhook caps.`,
+            `BracketView is freemium. Core workspace tools — viewer, formatter, validator, tree, graph, node, table, JSONPath, diff, schema, and Webhook Tester — are free with no signup required. The UI is in nine languages. Free accounts include ${PLAN_LIMITS.free.uploadMb} MB uploads, ${PLAN_LIMITS.free.snapshotsPerMonth} snapshot links per month, ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month, and Webhook Tester with ${PLAN_LIMITS.free.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each, and ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention. Pro unlocks AI without a monthly cap, ${PLAN_LIMITS.pro.uploadMb} MB uploads plus Performance Mode, unlimited encrypted snapshot links (up to 2 hours), and higher webhook caps. Node, Table, and languages stay free.`,
     },
     {
         question: "Does my JSON data leave the browser?",
@@ -69,22 +71,22 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "What does BracketView Pro include?",
         answer:
-            `Pro unlocks unlimited AI across repair, mock data, jq assistant, and conversion helpers; uploads up to ${PLAN_LIMITS.pro.uploadMb} MB; Performance Mode for large JSON payloads; unlimited encrypted snapshot links with ${PRO_SNAPSHOT_EXPIRY_LABEL.toLowerCase()}; Webhook Tester with ${PLAN_LIMITS.pro.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} requests each, and ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day retention plus encrypted share of a single capture; and priority email support. Pro is ${PRO_PRICING_FAQ_DETAIL}.`,
+            `Pro is ${PRO_PRICING_FAQ_DETAIL}. It includes ${PLAN_LIMITS.pro.uploadMb} MB uploads plus Performance Mode for large payloads; unlimited snapshot links up to 2 hours; AI without a monthly cap (Fix, Explain, Types); and Webhook Tester with ${PLAN_LIMITS.pro.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} captures each, and ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day history. Viewer tabs — including Node and Table — stay free.`,
     },
     {
         question: "What is Performance Mode in BracketView?",
         answer:
-            `Performance Mode is a Pro-only workspace setting that optimizes parsing and rendering for large JSON files (up to ${PLAN_LIMITS.pro.uploadMb} MB). It keeps tree, graph, and editor views responsive when you work with heavy API responses, exports, or log dumps. Free accounts see Performance Mode disabled — upgrade to Pro to turn it on.`,
+            `Performance Mode is a Pro-only setting that optimizes parsing and rendering for large JSON files (up to ${PLAN_LIMITS.pro.uploadMb} MB). It keeps tree, graph, node, table, and editor views responsive on heavy payloads. Node and Table stay available on Free — upgrade to Pro when the file is huge.`,
     },
     {
         question: "How large can uploaded JSON files be?",
         answer:
-            `Free accounts can upload documents up to ${PLAN_LIMITS.free.uploadMb} MB. Pro raises the limit to ${PLAN_LIMITS.pro.uploadMb} MB for larger API payloads, exports, and log files.`,
+            `Free accounts can upload documents up to ${PLAN_LIMITS.free.uploadMb} MB on the web. Pro raises the web limit to ${PLAN_LIMITS.pro.uploadMb} MB. The Windows app opens local files up to 200 MB — the web Free cap does not apply there.`,
     },
     {
         question: "What is the best free online JSON viewer?",
         answer:
-            "The best free online JSON viewer depends on the job: JSONLint for a one-shot validate-and-format pass, JSON Editor Online for a classic tree-and-code editor, JSONCrack for a graph of nested data, and BracketView when you want a free browser workspace with tree and graph views, JSONPath, jq, diff, schema tools, and an ad-free app. Core viewing in BracketView runs in the browser with no install.",
+            "The best free online JSON viewer depends on the job: JSONLint for a one-shot validate-and-format pass, JSON Editor Online for a classic tree-and-code editor, JSONCrack for a graph of nested data, and BracketView when you want a free browser workspace with text, tree, graph, node, and table views, JSONPath, jq, diff, schema tools, nine UI languages, and an ad-free app. Core viewing in BracketView runs in the browser with no install.",
     },
     {
         question: "How do I validate JSON online?",
@@ -114,18 +116,21 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "What is Webhook Tester in BracketView?",
         answer:
-            `Webhook Tester gives you a disposable public webhook URL so you can capture and inspect live HTTP requests from Stripe, GitHub, Shopify, or any service that POSTs events. Free: ${PLAN_LIMITS.free.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each, ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention. Pro: ${PLAN_LIMITS.pro.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} requests each, ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day retention, plus encrypted share of a single capture. Endpoints are public and history is short-lived by design. Open it at app.bracketview.in/webhooks.`,
+            `Webhook Tester gives you a disposable public webhook URL so you can capture and inspect live HTTP requests from Stripe, GitHub, Shopify, or any service that POSTs events. Free: ${PLAN_LIMITS.free.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each, ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention. Pro: ${PLAN_LIMITS.pro.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} captures each, ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day history. Endpoints are public and history is short-lived by design. Open it at app.bracketview.in/webhooks.`,
     },
 ];
 
 const FEATURE_LIST = [
     "JSON Tree View",
     "JSON Graph View",
+    "JSON Node View",
+    "JSON Table View",
     "JSON Formatter & Beautifier",
     "JSON Minifier",
     "JSON Validator",
     "JSONPath Query",
     "WebAssembly JQ Playground",
+    "Nine UI languages",
     "AI-Powered JSON Syntax Repair",
     "AI Mock Data Generator",
     "JSON Diff & Compare",
@@ -138,6 +143,7 @@ const FEATURE_LIST = [
     "WebRTC Nearby Share",
     "JSON Annotations",
     "Encoder/Decoder",
+    "Windows desktop app",
 ];
 
 const SAME_AS = [
@@ -237,7 +243,7 @@ function buildSoftwareApplicationSchema() {
         url: SITE_URL,
         sameAs: SAME_AS,
         description:
-            "BracketView is a freemium, privacy-first online JSON viewer, formatter, and validator for developers. View, format, validate, query, and compare JSON in the browser. Core tools run client-side; optional AI repair, encrypted snapshots, and Webhook Tester use the server when you choose them. The app workspace is ad-free.",
+            "BracketView is a freemium, privacy-first JSON workspace. See JSON as text, tree, graph, node cards, or a nested table — in nine languages, in the browser or as a Windows app. Core tools run client-side; optional AI, encrypted snapshots, and Webhook Tester use the server when you choose them. The app workspace is ad-free.",
         featureList: FEATURE_LIST,
         offers: [
             {
@@ -473,7 +479,7 @@ function buildHomepageHowToSchema() {
             {
                 position: 3,
                 name: "Format, explore, or query",
-                text: "Click Format to beautify, switch to Tree View to explore nested objects, run JSONPath or JQ queries to filter data, or use Diff to compare two versions.",
+                text: "Click Format to beautify, then switch among Text, Tree, Graph, Node, or Table. Stats and JQ sit beside those views. Run JSONPath or JQ to filter data, or use Diff to compare two versions.",
             },
         ],
     );

@@ -42,10 +42,13 @@ const HeroAnimated = () => {
             </motion.h1>
             <motion.p
               variants={itemVariant}
-              className="hero-description max-w-md text-base leading-relaxed text-black/70 dark:text-foreground/70"
+              className="hero-description max-w-xl text-base leading-relaxed text-black/70 dark:text-foreground/70"
             >
-              View JSON in a clean interactive tree, format and validate it,
-              search nested data, and inspect large payloads in your browser.
+              Paste, format, and validate JSON in a free online workspace —
+              then open the same payload as text, a tree, a graph, node cards,
+              or a nested table. Query with JSONPath or jq, diff two documents,
+              and check schemas. The UI is in nine languages, in the browser or
+              as a Windows app. Node and Table stay free — not Pro.
             </motion.p>
 
             <motion.div variants={itemVariant}>
@@ -64,7 +67,7 @@ const HeroAnimated = () => {
                 rel="noopener noreferrer"
                 className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:px-6 dark:bg-accent-dark"
               >
-                Open JSON Viewer
+                Open the workspace
                 <ArrowUpRight size={18} aria-hidden />
               </Link>
 

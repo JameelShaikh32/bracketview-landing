@@ -39,7 +39,7 @@ const HowItWorks = () => {
             }
             steps={howItWorksSteps}
             cta={{
-                label: "Open JSON Viewer",
+                label: "Open the workspace",
                 href: "https://app.bracketview.in",
                 external: true,
             }}

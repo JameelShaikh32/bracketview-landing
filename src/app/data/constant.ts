@@ -3,8 +3,8 @@ import {
     Braces,
     Code2,
     FileSearch,
-    GitBranch,
     GitCompare,
+    LayoutGrid,
     ScrollText,
     SearchCode,
     Settings2,
@@ -14,19 +14,16 @@ import {
     APP_PRICING_MONTHLY_CHECKOUT_URL,
     APP_PRICING_YEARLY_CHECKOUT_URL,
     FREE_AI_LABEL,
-    FREE_SNAPSHOT_EXPIRY_LABEL,
-    FREE_SNAPSHOTS_LABEL,
+    FREE_SNAPSHOTS_COMBINED_LABEL,
     FREE_UPLOAD_LABEL,
+    FREE_VIEWER_TOOLS_LABEL,
     FREE_WEBHOOK_LABEL,
     PRICING,
     PRO_AI_LABEL,
     PRO_MONTHLY_PRICE_LABEL,
-    PRO_PERFORMANCE_MODE_LABEL,
-    PRO_SNAPSHOT_EXPIRY_LABEL,
-    PRO_SNAPSHOTS_LABEL,
-    PRO_UPLOAD_LABEL,
+    PRO_SNAPSHOTS_COMBINED_LABEL,
+    PRO_UPLOAD_AND_PERF_LABEL,
     PRO_WEBHOOK_LABEL,
-    PRO_WEBHOOK_SHARE_LABEL,
     PRO_YEARLY_BILL_LABEL,
     PRO_YEARLY_MONTHLY_LABEL,
 } from "./planLimits";
@@ -62,7 +59,7 @@ const howItWorksSteps: HowItWorksStep[] = [
         step: "03",
         title: "Explore & export",
         description:
-            "Browse the tree, run JSONPath queries, diff versions, and share results.",
+            "Browse the tree, node, or table view, run JSONPath queries, diff versions, and share results.",
     },
 ];
 
@@ -132,9 +129,10 @@ const useCases: UseCaseItem[] = [
 
 const features: FeatureItem[] = [
     {
-        icon: GitBranch,
-        title: "Tree & Graph Viewer",
-        description: "Explore nested JSON with collapsible tree and graph views",
+        icon: LayoutGrid,
+        title: "Five JSON views",
+        description:
+            "Explore nested JSON as text, tree, graph, node cards, or a nested table — free",
         href: "/json-viewer",
         cta: "Open JSON Viewer",
     },
@@ -184,16 +182,14 @@ const pricingPlans: PricingPlan[] = [
         price: "$0",
         period: "forever",
         description:
-            "Core JSON workspace at no cost. Upload, snapshot, AI, and Webhook Tester limits apply.",
+            "Free to see the JSON. Pro when the file is huge, the link has to last, or AI shouldn’t run out.",
         features: [
             "JSON viewer, editor, format, validate & minify",
-            "Tree, graph, JSONPath, JQ, diff & schema tools",
-            "Type generators, compare view & utility tools",
-            FREE_WEBHOOK_LABEL,
+            FREE_VIEWER_TOOLS_LABEL,
+            FREE_SNAPSHOTS_COMBINED_LABEL,
             `Uploads up to ${FREE_UPLOAD_LABEL}`,
-            FREE_SNAPSHOTS_LABEL,
-            FREE_SNAPSHOT_EXPIRY_LABEL,
             FREE_AI_LABEL,
+            FREE_WEBHOOK_LABEL,
         ],
         cta: "Get started free",
         ctaHref: "https://app.bracketview.in",
@@ -204,18 +200,13 @@ const pricingPlans: PricingPlan[] = [
         price: PRO_MONTHLY_PRICE_LABEL,
         period: "per month",
         description:
-            "For developers who work in JSON daily — higher caps on uploads, webhooks, AI, and sharing.",
+            "Free to see the JSON. Pro when the file is huge, the link has to last, or AI shouldn’t run out.",
         features: [
             "Everything in Free",
-            `Uploads up to ${PRO_UPLOAD_LABEL}`,
-            PRO_WEBHOOK_LABEL,
-            PRO_WEBHOOK_SHARE_LABEL,
-            PRO_SNAPSHOTS_LABEL,
-            PRO_SNAPSHOT_EXPIRY_LABEL,
+            PRO_UPLOAD_AND_PERF_LABEL,
+            PRO_SNAPSHOTS_COMBINED_LABEL,
             PRO_AI_LABEL,
-            PRO_PERFORMANCE_MODE_LABEL,
-            "Priority email support",
-            "Priority for future Pro capabilities",
+            PRO_WEBHOOK_LABEL,
         ],
         cta: "Start monthly plan",
         ctaHref: APP_PRICING_MONTHLY_CHECKOUT_URL,
@@ -228,18 +219,13 @@ const pricingPlans: PricingPlan[] = [
         billingNote: `Annual bill of ${PRO_YEARLY_BILL_LABEL} with raised Pro caps.`,
         saveTag: `SAVE ${PRICING.annualDiscountPercent}%`,
         description:
-            "Best value for power users — same Pro benefits, billed once a year.",
+            "Same Pro benefits, billed once a year — 25% off vs monthly × 12.",
         features: [
             "Everything in Free",
-            `Uploads up to ${PRO_UPLOAD_LABEL}`,
-            PRO_WEBHOOK_LABEL,
-            PRO_WEBHOOK_SHARE_LABEL,
-            PRO_SNAPSHOTS_LABEL,
-            PRO_SNAPSHOT_EXPIRY_LABEL,
+            PRO_UPLOAD_AND_PERF_LABEL,
+            PRO_SNAPSHOTS_COMBINED_LABEL,
             PRO_AI_LABEL,
-            PRO_PERFORMANCE_MODE_LABEL,
-            "Priority email support",
-            "Priority for future Pro capabilities",
+            PRO_WEBHOOK_LABEL,
         ],
         cta: "Start yearly plan",
         ctaHref: APP_PRICING_YEARLY_CHECKOUT_URL,
@@ -262,7 +248,7 @@ const pricingFaqs = [
     {
         question: "What is the ROI of Pro?",
         answer:
-            "Pro removes AI and snapshot friction for daily API work, raises upload and webhook caps, and unlocks Performance Mode for large payloads — typically replacing multiple paid single-purpose tools.",
+            "Pro removes AI and snapshot friction for daily API work and raises upload and webhook caps — typically replacing multiple paid single-purpose tools. Viewer tabs stay free.",
     },
 ];
 
@@ -322,6 +308,7 @@ const footerLinks = {
     product: [
         { label: "All features", href: "/features" },
         { label: "View pricing", href: "/pricing" },
+        { label: "Changelog", href: "/changelog" },
         { label: "Download for Windows", href: "/downloads" },
         { label: "How BracketView works", href: "/#how-it-works" },
         { label: "Learn hub", href: "/learn" },

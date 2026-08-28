@@ -28,6 +28,14 @@ export const JSON_TOOL_COMPARISON_ROWS: JsonToolComparisonRow[] = [
         values: ["Yes", "No", "No", "Yes"],
     },
     {
+        feature: "Node view (object cards)",
+        values: ["Yes", "No", "No", "Limited"],
+    },
+    {
+        feature: "Nested table view",
+        values: ["Yes", "No", "Yes", "No"],
+    },
+    {
         feature: "Search and path copy",
         values: ["Yes", "No", "Yes", "Limited"],
     },
@@ -101,7 +109,7 @@ export const JSON_VIEWER_LISTED_TOOLS: ListedJsonTool[] = [
     {
         name: "BracketView",
         description:
-            "Free online JSON viewer and workspace: tree, graph, JSONPath, jq, diff, schema, and an ad-free app.",
+            "Free online JSON viewer and workspace: text, tree, graph, node, table, JSONPath, jq, diff, schema, nine UI languages, and an ad-free app.",
         url: "https://bracketview.in/json-viewer",
     },
 ];

@@ -58,24 +58,33 @@ const FREE_SNAPSHOTS_LABEL = `${PLAN_LIMITS.free.snapshotsPerMonth} encrypted sn
 const PRO_SNAPSHOTS_LABEL = "Unlimited encrypted snapshot links";
 
 const FREE_AI_LABEL = `${PLAN_LIMITS.free.aiActionsPerMonth} AI actions per month`;
-const PRO_AI_LABEL = "Unlimited AI (repair, mock data, jq assistant & more)";
+const PRO_AI_LABEL = "AI without a monthly cap (Fix, Explain, Types)";
 
 const PRO_PERFORMANCE_MODE_LABEL =
     "Performance Mode for large JSON payloads (up to 50 MB)";
 
+const PRO_UPLOAD_AND_PERF_LABEL = `${PRO_UPLOAD_LABEL} uploads + Performance Mode for large payloads`;
+
 const FREE_SNAPSHOT_EXPIRY_LABEL = `Snapshot links up to ${formatExpiryMinutes(PLAN_LIMITS.free.snapshotMaxExpiryMinutes)} expiry`;
 const PRO_SNAPSHOT_EXPIRY_LABEL = `Snapshot links up to ${formatExpiryMinutes(PLAN_LIMITS.pro.snapshotMaxExpiryMinutes)} expiry`;
 
-const FREE_WEBHOOK_LABEL = `Webhook Tester: ${PLAN_LIMITS.free.webhookEndpoints} endpoints · ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each · ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention`;
-const PRO_WEBHOOK_LABEL = `Webhook Tester: ${PLAN_LIMITS.pro.webhookEndpoints} endpoints · ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} requests each · ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day retention`;
+const FREE_SNAPSHOTS_COMBINED_LABEL = `Encrypted snapshots: ${PLAN_LIMITS.free.snapshotsPerMonth} / month, ${PLAN_LIMITS.free.snapshotMaxExpiryMinutes} min expiry`;
+const PRO_SNAPSHOTS_COMBINED_LABEL =
+    "Unlimited snapshot links, up to 2 hours (not 10 minutes)";
+
+const FREE_WEBHOOK_LABEL = `Webhook Tester: ${PLAN_LIMITS.free.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.free.webhookRequestsPerEndpoint)} requests each, ${PLAN_LIMITS.free.webhookMaxRetentionDays}-day retention`;
+const PRO_WEBHOOK_LABEL = `Webhook Tester: ${PLAN_LIMITS.pro.webhookEndpoints} endpoints, ${formatCount(PLAN_LIMITS.pro.webhookRequestsPerEndpoint)} captures each, ${PLAN_LIMITS.pro.webhookMaxRetentionDays}-day history`;
 const PRO_WEBHOOK_SHARE_LABEL =
     "Share captured webhook requests via encrypted snapshot links";
 
 const PRO_VALUE_SUMMARY =
-    "Pro is for daily JSON work — larger files, Performance Mode, higher Webhook Tester caps with capture share links, unlimited snapshot sharing, and unlimited AI.";
+    "Pro is power, persistence, and AI — larger files, longer snapshot links, and AI without a monthly cap. Viewer tabs stay free.";
 
 const FREE_TIER_SUMMARY =
     "Core JSON tools stay free. Paid limits apply to uploads, snapshots, AI, and Webhook Tester caps.";
+
+const FREE_VIEWER_TOOLS_LABEL =
+    "Tree, graph, node, table, JSONPath, JQ, diff, schema, types, compare, utilities";
 
 const APP_BASE_URL = "https://app.bracketview.in";
 const APP_PRICING_URL = `${APP_BASE_URL}/pricing`;
@@ -103,9 +112,11 @@ export {
     formatUsd,
     FREE_AI_LABEL,
     FREE_SNAPSHOT_EXPIRY_LABEL,
+    FREE_SNAPSHOTS_COMBINED_LABEL,
     FREE_SNAPSHOTS_LABEL,
     FREE_TIER_SUMMARY,
     FREE_UPLOAD_LABEL,
+    FREE_VIEWER_TOOLS_LABEL,
     FREE_WEBHOOK_LABEL,
     PLAN_LIMITS,
     PRICING,
@@ -113,6 +124,7 @@ export {
     PRO_MONTHLY_PRICE_LABEL,
     PRO_PERFORMANCE_MODE_LABEL,
     PRO_PRICING_FAQ_DETAIL,
+    PRO_SNAPSHOTS_COMBINED_LABEL,
     PRO_PRICING_SUMMARY,
     PRO_SNAPSHOT_EXPIRY_LABEL,
     PRO_SNAPSHOTS_LABEL,
@@ -120,6 +132,7 @@ export {
     PRO_WEBHOOK_SHARE_LABEL,
     PRO_YEARLY_BILL_LABEL,
     PRO_YEARLY_MONTHLY_LABEL,
+    PRO_UPLOAD_AND_PERF_LABEL,
     PRO_UPLOAD_LABEL,
     PRO_VALUE_SUMMARY,
 };

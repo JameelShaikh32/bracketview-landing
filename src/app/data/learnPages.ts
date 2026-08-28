@@ -326,7 +326,7 @@ export const learnPages: Record<string, LearnPage> = {
       "Compare free online JSON viewers: JSONLint, JSON Editor Online, JSONCrack, and BracketView. Criteria: tree navigation, privacy, search, and adjacent tools.",
     cluster: "viewer",
     answerFirst:
-      "The best free online JSON viewer depends on the job. Use JSONLint to validate and pretty-print, JSON Editor Online for a classic tree-and-code editor, JSONCrack for a graph map of nested data, and BracketView when you want a free browser workspace that combines tree and graph viewing with JSONPath, jq, diff, schema, and an ad-free app. Prefer tools that parse JSON in the browser for sensitive payloads.",
+      "The best free online JSON viewer depends on the job. Use JSONLint to validate and pretty-print, JSON Editor Online for a classic tree-and-code editor, JSONCrack for a graph map of nested data, and BracketView when you want a free browser workspace that combines text, tree, graph, node, and table views with JSONPath, jq, diff, schema, nine UI languages, and an ad-free app. Prefer tools that parse JSON in the browser for sensitive payloads.",
     sections: [
       {
         heading: "How to choose a JSON viewer",
@@ -342,11 +342,11 @@ export const learnPages: Record<string, LearnPage> = {
       },
       {
         heading: "JSONCrack — best for a graph of nested JSON",
-        body: "JSONCrack renders JSON as a node graph, which helps when relationships matter more than a nested list. Use it to see structure at a glance. You will still want a tree, formatter, and query tools for everyday debugging — JSONCrack is strongest as a visualizer, not a full workspace.",
+        body: "JSONCrack renders JSON as a node graph, which helps when relationships matter more than a nested list. Use it to see structure at a glance. BracketView’s Node view is a card canvas (objects as cards, arrays of objects as table-shaped nodes) plus a separate Graph view — and you still have tree, table, formatter, and query tools in the same workspace.",
       },
       {
         heading: "BracketView — best for a free JSON workspace",
-        body: "BracketView is a free online JSON viewer with tree and graph views, path copy, search, formatter, validator, JSONPath, a WebAssembly jq playground, JSON diff, schema tools, and type export. Core viewing, formatting, and validation run in the browser. The app workspace is ad-free; Pro raises upload, AI, snapshot, and webhook limits. Choose BracketView when the viewer has to sit next to the rest of the debug loop.",
+        body: "BracketView is a free online JSON viewer with text, tree, graph, node, and table views, path copy, search, formatter, validator, JSONPath, a WebAssembly jq playground, JSON diff, schema tools, type export, and nine UI languages. Core viewing, formatting, and validation run in the browser. The app workspace is ad-free; Pro raises upload, AI, snapshot, and webhook limits — not extra viewer tabs. Choose BracketView when the viewer has to sit next to the rest of the debug loop.",
       },
     ],
     comparison: HOMEPAGE_LEARN_COMPARISON,
@@ -369,7 +369,7 @@ export const learnPages: Record<string, LearnPage> = {
       {
         question: "What is the best free online JSON viewer?",
         answer:
-          "There is no single winner. JSONLint is best for a quick validate-and-format pass, JSON Editor Online for a familiar tree editor, JSONCrack for graphs, and BracketView for a free online JSON viewer that also formats, validates, queries, and diffs in one ad-free app.",
+          "There is no single winner. JSONLint is best for a quick validate-and-format pass, JSON Editor Online for a familiar tree editor, JSONCrack for graphs, and BracketView for a free online JSON viewer with node and table views as well as format, validate, query, and diff in one ad-free app.",
       },
       {
         question: "Is BracketView a free JSON viewer?",
@@ -480,10 +480,10 @@ export const learnPages: Record<string, LearnPage> = {
     metaTitle:
       "BracketView vs JSON Editor Online — JSON Workspace Comparison",
     metaDescription:
-      "JSON Editor Online is the classic tree and code editor. BracketView is a free online JSON viewer with jq, JSONPath, diff, schema, and an ad-free app.",
+      "JSON Editor Online is the classic tree, code, and table editor. BracketView is a free online JSON viewer with node and table views, jq, JSONPath, diff, schema, and an ad-free app.",
     cluster: "comparisons",
     answerFirst:
-      "Choose JSON Editor Online if you want the familiar tree-plus-code-plus-table editor you have used for years. Choose BracketView if you want that tree in a free workspace that also runs JSONPath and jq, diffs two documents, validates schemas, and keeps the app ad-free with client-side core tools.",
+      "Choose JSON Editor Online if you want the familiar tree-plus-code-plus-table editor you have used for years. Choose BracketView if you want tree, node, and table views in a free workspace that also runs JSONPath and jq, diffs two documents, validates schemas, and keeps the app ad-free with client-side core tools.",
     sections: [
       {
         heading: "Where JSON Editor Online wins",
@@ -491,7 +491,7 @@ export const learnPages: Record<string, LearnPage> = {
       },
       {
         heading: "Where BracketView wins",
-        body: "Debugging an API rarely stops at the tree. BracketView keeps formatter, validator, JSONPath, a WebAssembly jq playground, JSON diff, schema generate/validate, and type export beside the viewer. Graph view (JSON Galaxy) sits next to the tree when a list of nodes is not enough.",
+        body: "Debugging an API rarely stops at the tree. BracketView keeps formatter, validator, JSONPath, a WebAssembly jq playground, JSON diff, schema generate/validate, and type export beside the viewer. Node and Table views are free tabs next to Tree and Graph.",
       },
       {
         heading: "Ads, accounts, and privacy",
@@ -504,11 +504,12 @@ export const learnPages: Record<string, LearnPage> = {
     ],
     comparison: {
       caption:
-        "Both offer a collapsible tree. BracketView adds query, diff, schema, and an ad-free app.",
+        "Both offer a collapsible tree and a table. BracketView adds node, graph, query, diff, schema, and an ad-free app.",
       columns: ["BracketView", "JSON Editor Online"],
       rows: [
         { feature: "Tree + code views", values: ["Yes", "Yes"] },
-        { feature: "Table view for arrays", values: ["Stats + tree", "Yes"] },
+        { feature: "Nested table view", values: ["Yes", "Yes"] },
+        { feature: "Node view (object cards)", values: ["Yes", "No"] },
         { feature: "Graph view", values: ["Yes", "No"] },
         { feature: "JSONPath and jq", values: ["Yes", "No"] },
         { feature: "JSON diff", values: ["Yes", "Limited"] },
@@ -539,12 +540,12 @@ export const learnPages: Record<string, LearnPage> = {
   "bracketview-vs-jsoncrack": {
     slug: "bracketview-vs-jsoncrack",
     title: "BracketView vs JSONCrack",
-    metaTitle: "BracketView vs JSONCrack — Tree Workspace vs Graph Viewer",
+    metaTitle: "BracketView vs JSONCrack — Node, Table, Graph | BracketView",
     metaDescription:
-      "JSONCrack maps JSON as a graph. BracketView is a free online JSON viewer with tree and graph views plus JSONPath, jq, diff, and schema tools.",
+      "JSONCrack maps JSON as a graph. BracketView adds node cards, a nested table, tree, JSONPath, jq, and schema — all free in one workspace.",
     cluster: "comparisons",
     answerFirst:
-      "Use JSONCrack when you want a graph of nested JSON and that picture is the whole job. Use BracketView when you still need a tree, search, path copy, formatter, and queries after you see the graph. BracketView includes a graph view (JSON Galaxy) inside a broader free workspace; JSONCrack is strongest as a dedicated visualizer.",
+      "Use JSONCrack when you want a graph of nested JSON and that picture is the whole job. Use BracketView when you still need a tree, node cards, a nested table, search, path copy, formatter, and queries after you see the graph. BracketView includes Graph and Node views inside a broader free workspace; JSONCrack is strongest as a dedicated visualizer.",
     sections: [
       {
         heading: "What JSONCrack is for",
@@ -552,7 +553,7 @@ export const learnPages: Record<string, LearnPage> = {
       },
       {
         heading: "What BracketView is for",
-        body: "BracketView is a free online JSON viewer for the full debug loop: paste, validate, expand a tree, copy a path, run JSONPath or jq, diff two versions, and optionally capture a webhook. Graph view is one tab, not the only product.",
+        body: "BracketView is a free online JSON viewer for the full debug loop: paste, validate, expand a tree, open Node or Table, copy a path, run JSONPath or jq, diff two versions, and optionally capture a webhook. Graph and Node are tabs, not the only product. Both stay free.",
       },
       {
         heading: "Privacy",
@@ -565,10 +566,12 @@ export const learnPages: Record<string, LearnPage> = {
     ],
     comparison: {
       caption:
-        "JSONCrack is a graph visualizer. BracketView is a viewer workspace that also includes a graph.",
+        "JSONCrack is a graph visualizer. BracketView is a viewer workspace with graph, node, and table tabs.",
       columns: ["BracketView", "JSONCrack"],
       rows: [
         { feature: "Graph / visual map", values: ["Yes", "Yes"] },
+        { feature: "Node view (object cards)", values: ["Yes", "Limited"] },
+        { feature: "Nested table view", values: ["Yes", "No"] },
         { feature: "Collapsible tree", values: ["Yes", "Limited"] },
         { feature: "Format and validate", values: ["Yes", "Yes"] },
         { feature: "JSONPath / jq", values: ["Yes", "No"] },
@@ -582,7 +585,7 @@ export const learnPages: Record<string, LearnPage> = {
       {
         question: "Does BracketView have a graph view like JSONCrack?",
         answer:
-          "Yes. JSON Galaxy maps nested data as a node network. Use it beside the tree when you need both a map and path copy.",
+          "Yes. Graph maps nested data as a force-directed network. Node view is a separate card canvas — object cards and table-shaped nodes for arrays of objects. Both are free.",
       },
       {
         question: "Which is better for large JSON?",

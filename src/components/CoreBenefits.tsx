@@ -4,9 +4,14 @@ import Link from "next/link";
 
 const benefits = [
   {
-    title: "Interactive tree view",
+    title: "Five ways to look at JSON",
     description:
-      "Expand nested objects and arrays, copy paths, and inspect types without drowning in minified text.",
+      "Text, tree, graph, node cards, and a nested table — Stats and JQ sit beside those views. All free.",
+  },
+  {
+    title: "Nine UI languages",
+    description:
+      "Switch the workspace in Workspace settings (header gear): English, 简体中文, 日本語, 한국어, Português (Brasil), Spanish, French, German, Russian.",
   },
   {
     title: "Format and validate",
@@ -16,12 +21,7 @@ const benefits = [
   {
     title: "Search nested data",
     description:
-      "Find keys and values inside large documents, then jump to the matching node.",
-  },
-  {
-    title: "Handle large payloads",
-    description:
-      "Worker-based parsing and virtualized tree rendering keep the editor responsive on heavy files.",
+      "Find keys and values inside large documents, then jump to the matching node. Tree search sits on the tree toolbar.",
   },
   {
     title: "Compare JSON documents",
@@ -55,7 +55,8 @@ const CoreBenefits = () => {
           </h2>
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/70">
             A clean browser-based workspace built for API debugging, configs, and
-            nested payloads — without making AI the product.
+            nested payloads — five views, nine languages, without making AI the
+            product.
           </p>
         </Reveal>
 

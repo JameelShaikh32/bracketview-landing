@@ -22,12 +22,12 @@ const aboutHighlights = [
     {
         title: "Privacy-first",
         description:
-            "Core tools — formatter, validator, tree view, JSONPath, JQ, and diff — run locally in your browser whenever possible.",
+            "Core tools — formatter, validator, tree, graph, node, table, JSONPath, JQ, and diff — run locally in your browser whenever possible.",
     },
     {
         title: "Freemium model",
         description:
-            "Core tools stay free. Pro unlocks larger uploads, Performance Mode, unlimited snapshots, and unlimited AI.",
+            "Core tools stay free — including Node, Table, and nine UI languages. Pro is for larger uploads, Performance Mode, longer snapshot links, and AI without a monthly cap.",
     },
     {
         title: "Built for builders",
@@ -43,7 +43,7 @@ const AboutPage = () => {
                 <PageHeader
                     badge="About"
                     title="About BracketView"
-                    description="A privacy-first JSON workspace for developers who need to format, validate, query, and compare API data in the browser, or as a local Windows app."
+                    description="A privacy-first JSON workspace for developers who need to format, validate, query, and compare API data in the browser — as text, tree, graph, node, or table — or as a local Windows app."
                 />
 
                 <div className="mx-auto mt-14 max-w-7xl space-y-8">
@@ -81,7 +81,7 @@ const AboutPage = () => {
                                 href="https://app.bracketview.in"
                                 className="mt-8 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                             >
-                                Open BracketView workspace
+                                Open the workspace
                                 <ArrowUpRight size={16} aria-hidden />
                             </a>
                         </section>

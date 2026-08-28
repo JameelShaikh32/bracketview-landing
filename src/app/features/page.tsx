@@ -17,7 +17,7 @@ export const metadata = createPageMetadata({
     path: "/features",
     title: "Features | BracketView",
     description:
-        "JSON workspace for developers. Format, validate, and query JSON in the browser — JQ filters, AI repair, schema tools, diff, and sharing.",
+        "JSON workspace: text, tree, graph, node, and table views, nine UI languages, jq, schema, and diff. Node and Table are free.",
 });
 
 export default function FeaturesPage() {
@@ -35,7 +35,7 @@ export default function FeaturesPage() {
         buildWebPageSchema(
             "/features",
             "BracketView Features",
-            "Explore every BracketView feature — JSON viewer, formatter, validator, JQ, JSONPath, AI fixer, diff, schema tools, sharing, and more.",
+            "Explore every BracketView feature — JSON viewer (text, tree, graph, node, table), formatter, validator, JQ, JSONPath, AI fixer, diff, schema tools, nine UI languages, and more.",
         ),
         buildItemListSchema("BracketView Features", featureItems),
     ];
@@ -47,9 +47,9 @@ export default function FeaturesPage() {
                 <PageHeader
                     badge="Features"
                     title="Everything in one JSON workspace"
-                    description="BracketView combines viewing, formatting, validation, querying, AI repair, schema tools, diffing, and sharing — all in your browser with no install required. BracketView is also a Windows desktop app. Linux coming soon."
+                    description="See JSON as text, tree, graph, node cards, or a nested table — in nine languages, in the browser or as a Windows app. Format, validate, query, schema, and diff stay in the workspace. Optional AI, snapshots, and Webhook Tester use the server when you choose them. Linux coming soon."
                     cta={{
-                        label: "Open BracketView",
+                        label: "Open the workspace",
                         href: "https://app.bracketview.in",
                         external: true,
                     }}

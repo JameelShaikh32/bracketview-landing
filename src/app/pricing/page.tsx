@@ -16,7 +16,7 @@ export const metadata = createPageMetadata({
   path: "/pricing",
   title: "Pricing — Free & Pro | BracketView",
   description:
-    "Start free with client-side JSON tools. Upgrade to Pro for AI, Performance Mode, and higher limits.",
+    "Free to see the JSON. Pro ($3/month or $27/year) when the file is huge, the link has to last, or AI shouldn’t run out. Node and Table stay free.",
   keywords: [
     "BracketView pricing",
     "JSON viewer pricing",
@@ -37,12 +37,12 @@ const PricingPage = () => {
             Pricing
           </span>
           <h1 className="mt-8 text-3xl font-bold tracking-tight sm:text-5xl">
-            Start free. Upgrade when JSON is your daily driver.
+            Start free. Upgrade when the file is huge.
           </h1>
           <p className="mt-5 text-sm leading-relaxed text-black/70 sm:text-base dark:text-foreground/70">
-            Privacy-first core tools stay free forever. Pro raises AI, upload,
-            snapshot, and webhook limits — plus Performance Mode for large
-            payloads.
+            Free to see the JSON. Pro when the file is huge, the link has to
+            last, or AI shouldn’t run out. Node, Table, and nine UI languages
+            stay free. USD list; Razorpay charges local currency.
           </p>
         </Reveal>
 
@@ -144,8 +144,9 @@ const PricingPage = () => {
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-black/70 sm:text-base dark:text-foreground/70">
             Most teams juggle a formatter, a schema tool, a diff viewer, and an
             ad-supported paste site. BracketView consolidates those workflows in
-            one privacy-first workspace — free for core use, Pro when AI repair,
-            large uploads, and webhook volume become the bottleneck.
+            one privacy-first workspace — free for core use, Pro when the file
+            is huge, the snapshot has to last, or AI shouldn’t run out. Node
+            and Table are not Pro extras.
           </p>
         </section>
 

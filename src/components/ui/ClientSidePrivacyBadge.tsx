@@ -12,7 +12,7 @@ const ClientSidePrivacyBadge = ({
   ...props
 }: ClientSidePrivacyBadgeProps) => {
   const label =
-    "Core tools run in your browser. Optional AI, snapshots, and webhooks use the server when you choose them.";
+    "Viewing, formatting, and querying run in your browser. Optional AI, snapshot links, and Webhook Tester use the server only when you choose them.";
 
   return (
     <div

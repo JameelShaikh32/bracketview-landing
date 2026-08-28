@@ -21,7 +21,7 @@ import Link from "next/link";
 
 const DOWNLOAD_TITLE = "Download BracketView for Windows | BracketView";
 const DOWNLOAD_DESCRIPTION =
-    "Download BracketView 0.1.0 for Windows x64. Open JSON files locally — offline, no account. Linux coming soon.";
+    `Download BracketView ${DESKTOP_VERSION} for Windows x64. Open JSON files locally — offline, no account. Linux coming soon.`;
 
 export const metadata = {
     ...createPageMetadata({

@@ -439,10 +439,6 @@ const navLinks = [
         href: "/pricing",
     },
     {
-        label: "Download",
-        href: "/downloads",
-    },
-    {
         label: "About",
         href: "/about",
     },
@@ -453,6 +449,10 @@ const navLinks = [
     {
         label: "Contact",
         href: "/contact",
+    },
+    {
+        label: "Download",
+        href: "/downloads",
     },
 ];
 

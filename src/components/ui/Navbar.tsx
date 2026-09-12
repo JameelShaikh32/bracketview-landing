@@ -2,7 +2,7 @@
 
 import { navLinks } from "@/app/data/constant";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-import { Menu, Rocket, X } from "lucide-react";
+import { Download, Menu, Rocket, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,6 +23,12 @@ const getServerSnapshot = () => false;
 
 const iconButtonClasses =
   "flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-black text-white transition-colors duration-300 hover:bg-black/10 hover:text-foreground dark:bg-gray dark:text-black dark:hover:bg-gray/30 dark:hover:text-gray";
+
+const navLinkClasses =
+  "inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl px-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray dark:hover:text-black";
+
+const downloadNavClasses =
+  "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-accent px-4 text-sm font-medium text-white transition-opacity hover:opacity-85 dark:bg-accent-dark";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -99,17 +105,26 @@ const Navbar = () => {
           style={{ top: menuTop }}
         >
           <ul className="flex flex-col px-2 py-2">
-            {navLinks.map((link: { label: string; href: string }) => (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  className="block rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-black/5 dark:hover:bg-white/10"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link: { label: string; href: string }) => {
+              const isDownload = link.label === "Download";
+
+              return (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className={
+                      isDownload
+                        ? `${downloadNavClasses} w-full px-4 py-3`
+                        : "block rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+                    }
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {isDownload ? <Download size={16} aria-hidden /> : null}
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="flex items-center justify-between border-t border-black/5 px-4 py-3 dark:border-white/10">
@@ -152,16 +167,21 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
-          {navLinks.map((link: { label: string; href: string }) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl px-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-black/10 dark:hover:bg-gray dark:hover:text-black"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-4 md:flex">
+          {navLinks.map((link: { label: string; href: string }) => {
+            const isDownload = link.label === "Download";
+
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={isDownload ? downloadNavClasses : navLinkClasses}
+              >
+                {isDownload ? <Download size={16} aria-hidden /> : null}
+                {link.label}
+              </Link>
+            );
+          })}
         </ul>
 
         <div className="flex shrink-0 items-center gap-2">

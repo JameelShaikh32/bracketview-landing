@@ -48,7 +48,7 @@ const HeroAnimated = () => {
               then open the same payload as text, a tree, a graph, node cards,
               or a nested table. Query with JSONPath or jq, diff two documents,
               and check schemas. The UI is in nine languages, in the browser or
-              as a Windows app. Node and Table stay free — not Pro.
+              as a Windows and Linux app. Node and Table stay free — not Pro.
             </motion.p>
 
             <motion.div variants={itemVariant}>

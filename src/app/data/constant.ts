@@ -309,7 +309,7 @@ const footerLinks = {
         { label: "All features", href: "/features" },
         { label: "View pricing", href: "/pricing" },
         { label: "Changelog", href: "/changelog" },
-        { label: "Download for Windows", href: "/downloads" },
+        { label: "Download", href: "/downloads" },
         { label: "How BracketView works", href: "/#how-it-works" },
         { label: "Learn hub", href: "/learn" },
         { label: "Best JSON viewer", href: "/learn/best-json-viewer" },

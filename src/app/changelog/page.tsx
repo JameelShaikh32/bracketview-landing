@@ -16,7 +16,7 @@ export const metadata = createPageMetadata({
     path: "/changelog",
     title: "Changelog — August 2026 | BracketView",
     description:
-        `August 2026: Node and Table views (free), nine UI languages, Windows ${DESKTOP_VERSION}, and workspace polish. Pro is power and persistence — not extra viewer tabs.`,
+        `August 2026: Node and Table views (free), nine UI languages, desktop ${DESKTOP_VERSION}, and workspace polish. Pro is power and persistence — not extra viewer tabs.`,
     keywords: [
         "BracketView changelog",
         "JSON node view",
@@ -62,7 +62,7 @@ export default function ChangelogPage() {
                             August 2026
                         </p>
                         <h2 className="mt-3 text-2xl font-bold sm:text-3xl">
-                            Node, Table, nine languages, Windows {DESKTOP_VERSION}
+                            Node, Table, nine languages, desktop {DESKTOP_VERSION}
                         </h2>
                         <p className="mt-4 text-sm leading-relaxed text-black/75 dark:text-foreground/75">
                             The workspace now has seven tabs. Five of them are
@@ -122,7 +122,7 @@ export default function ChangelogPage() {
                         </div>
 
                         <h3 className="mt-8 text-lg font-bold">
-                            Windows app {DESKTOP_VERSION}
+                            Desktop app {DESKTOP_VERSION}
                         </h3>
                         <p className="mt-2 text-sm leading-relaxed text-black/75 dark:text-foreground/75">
                             Local JSON workspace: text, tree, graph, node, table,
@@ -130,15 +130,16 @@ export default function ChangelogPage() {
                             text compare. Native View and Tools menus. Local
                             files up to {DESKTOP_LOCAL_FILE_LABEL} (not the web
                             Free 5 MB cap). No sign-in, AI, snapshots, or
-                            webhook tester. Unsigned builds may show SmartScreen.
-                            Linux is still coming soon — no macOS bundle.
+                            webhook tester. Unsigned Windows builds may show
+                            SmartScreen. Windows x64 and Linux x86_64 are
+                            available — no macOS bundle.
                         </p>
                         <p className="mt-3">
                             <Link
                                 href="/downloads"
                                 className="text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
                             >
-                                Download for Windows
+                                Download
                             </Link>
                         </p>
 

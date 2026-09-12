@@ -127,6 +127,32 @@
                     "value": "attachment"
                 }
             ]
+        },
+        {
+            "source": "/releases/:version/:file.AppImage",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/octet-stream"
+                },
+                {
+                    "key": "Content-Disposition",
+                    "value": "attachment"
+                }
+            ]
+        },
+        {
+            "source": "/releases/:version/:file.deb",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/vnd.debian.binary-package"
+                },
+                {
+                    "key": "Content-Disposition",
+                    "value": "attachment"
+                }
+            ]
         }
     ]
 }

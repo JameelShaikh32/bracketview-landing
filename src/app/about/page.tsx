@@ -43,7 +43,7 @@ const AboutPage = () => {
                 <PageHeader
                     badge="About"
                     title="About BracketView"
-                    description="A privacy-first JSON workspace for developers who need to format, validate, query, and compare API data in the browser — as text, tree, graph, node, or table — or as a local Windows app."
+                    description="A privacy-first JSON workspace for developers who need to format, validate, query, and compare API data in the browser — as text, tree, graph, node, or table — or as a local Windows and Linux app."
                 />
 
                 <div className="mx-auto mt-14 max-w-7xl space-y-8">

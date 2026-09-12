@@ -25,7 +25,7 @@ const HOME_TITLE =
 
 /** Homepage-only description. Keep ~120–155 chars for SERP display. */
 const HOME_DESCRIPTION =
-    "Free online JSON viewer and formatter. Open JSON as text, tree, graph, node, or table. Format, validate, and query in the browser or Windows.";
+    "Free online JSON viewer and formatter. Open JSON as text, tree, graph, node, or table. Format, validate, and query in the browser, Windows, or Linux.";
 
 const OG_IMAGE = "/og-image.webp";
 
@@ -81,7 +81,7 @@ const SEO_FAQ_ITEMS: FaqItem[] = [
     {
         question: "How large can uploaded JSON files be?",
         answer:
-            `Free accounts can upload documents up to ${PLAN_LIMITS.free.uploadMb} MB on the web. Pro raises the web limit to ${PLAN_LIMITS.pro.uploadMb} MB. The Windows app opens local files up to 200 MB — the web Free cap does not apply there.`,
+            `Free accounts can upload documents up to ${PLAN_LIMITS.free.uploadMb} MB on the web. Pro raises the web limit to ${PLAN_LIMITS.pro.uploadMb} MB. The desktop app opens local files up to 200 MB — the web Free cap does not apply there.`,
     },
     {
         question: "What is the best free online JSON viewer?",
@@ -143,7 +143,7 @@ const FEATURE_LIST = [
     "WebRTC Nearby Share",
     "JSON Annotations",
     "Encoder/Decoder",
-    "Windows desktop app",
+    "Windows and Linux desktop app",
 ];
 
 const SAME_AS = [
@@ -243,7 +243,7 @@ function buildSoftwareApplicationSchema() {
         url: SITE_URL,
         sameAs: SAME_AS,
         description:
-            "BracketView is a freemium, privacy-first JSON workspace. See JSON as text, tree, graph, node cards, or a nested table — in nine languages, in the browser or as a Windows app. Core tools run client-side; optional AI, encrypted snapshots, and Webhook Tester use the server when you choose them. The app workspace is ad-free.",
+            "BracketView is a freemium, privacy-first JSON workspace. See JSON as text, tree, graph, node cards, or a nested table — in nine languages, in the browser or as a Windows and Linux app. Core tools run client-side; optional AI, encrypted snapshots, and Webhook Tester use the server when you choose them. The app workspace is ad-free.",
         featureList: FEATURE_LIST,
         offers: [
             {

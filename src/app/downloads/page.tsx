@@ -2,7 +2,9 @@ import {
     DESKTOP_LOCAL_FILE_LABEL,
     DESKTOP_VERSION,
     DOWNLOADS_PAGE_PATH,
-    LINUX_STATUS,
+    LINUX_APPIMAGE_URL,
+    LINUX_ARCH_LABEL,
+    LINUX_DEB_URL,
     WINDOWS_ARCH_LABEL,
     WINDOWS_EXE_URL,
     WINDOWS_MSI_URL,
@@ -12,7 +14,6 @@ import PageHeader from "@/components/motion/PageHeader";
 import Reveal from "@/components/motion/Reveal";
 import StaggerGroup from "@/components/motion/StaggerGroup";
 import JsonLd from "@/components/seo/JsonLd";
-import Badge from "@/components/ui/Badge";
 import {
     APP_URL,
     buildWebPageSchema,
@@ -22,9 +23,9 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const DOWNLOAD_TITLE =
-    "Download BracketView: Node, Table, 200 MB | BracketView";
+    "Download BracketView: Windows & Linux | BracketView";
 const DOWNLOAD_DESCRIPTION =
-    `Download BracketView ${DESKTOP_VERSION} for Windows. Local JSON workspace: text, tree, graph, node, table, encoder, and compare. Files up to 200 MB. No account.`;
+    `Download BracketView ${DESKTOP_VERSION} for Windows and Linux. Local JSON workspace: text, tree, graph, node, table, encoder, and compare. Files up to 200 MB. No account.`;
 
 export const metadata = {
     ...createPageMetadata({
@@ -34,6 +35,7 @@ export const metadata = {
         keywords: [
             "BracketView download",
             "JSON viewer Windows",
+            "JSON viewer Linux",
             "open JSON file",
             "desktop JSON editor",
             "offline JSON tools",
@@ -50,7 +52,7 @@ const desktopBenefits = [
     {
         title: "Five views plus tools",
         description:
-            "Text, tree, graph, node, table, stats, and jq — the same free viewer tabs as the web app, running on your machine.",
+            "Text, tree, graph, node, table, stats, jq, and JSONPath — the same free viewer tabs as the web app, running on your machine.",
     },
     {
         title: "Diff, schema, and types",
@@ -60,12 +62,12 @@ const desktopBenefits = [
     {
         title: "Native View and Tools menus",
         description:
-            "Open files from File Explorer, use the app menus, and stay in a local workspace — no browser tab required.",
+            "Open files from your file manager, use the app menus, and stay in a local workspace — no browser tab required.",
     },
     {
         title: `${DESKTOP_LOCAL_FILE_LABEL} local files`,
         description:
-            `Open JSON up to ${DESKTOP_LOCAL_FILE_LABEL} on disk. The web Free ${FREE_UPLOAD_LABEL} cap does not apply to the Windows app.`,
+            `Open JSON up to ${DESKTOP_LOCAL_FILE_LABEL} on disk. The web Free ${FREE_UPLOAD_LABEL} cap does not apply to the desktop app.`,
     },
     {
         title: "Works offline",
@@ -82,7 +84,7 @@ const desktopBenefits = [
 export default function DownloadsPage() {
     const schema = buildWebPageSchema(
         DOWNLOADS_PAGE_PATH,
-        "Download BracketView for Windows",
+        "Download BracketView for Windows and Linux",
         DOWNLOAD_DESCRIPTION,
     );
 
@@ -92,8 +94,8 @@ export default function DownloadsPage() {
             <div className="mx-auto max-w-7xl">
                 <PageHeader
                     badge="Desktop"
-                    title="Download BracketView for Windows"
-                    description={`A local JSON workspace (${DESKTOP_VERSION}). Text, tree, graph, node, table, stats, jq, diff, schema, types, encoder/decoder, and text compare. Native View and Tools menus. Files up to ${DESKTOP_LOCAL_FILE_LABEL}. No sign-in, AI, snapshots, or webhook tester. Linux coming soon.`}
+                    title="Download BracketView for Windows and Linux"
+                    description={`A local JSON workspace (${DESKTOP_VERSION}). Text, tree, graph, node, table, stats, jq, JSONPath, diff, schema, types, encoder/decoder, and text compare. Native View and Tools menus. Files up to ${DESKTOP_LOCAL_FILE_LABEL}. No sign-in, AI, snapshots, or webhook tester.`}
                 />
 
                 <Reveal className="mx-auto mt-14 max-w-3xl">
@@ -107,35 +109,47 @@ export default function DownloadsPage() {
                                     {DESKTOP_VERSION} for {WINDOWS_ARCH_LABEL}
                                 </p>
                                 <a
-                                    href={WINDOWS_MSI_URL}
+                                    href={WINDOWS_EXE_URL}
                                     className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
                                 >
                                     Download for Windows
                                 </a>
                                 <p className="mt-4 text-sm">
                                     <a
-                                        href={WINDOWS_EXE_URL}
+                                        href={WINDOWS_MSI_URL}
                                         className="font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
                                     >
-                                        Setup (.exe)
+                                        Installer (.msi)
                                     </a>
                                 </p>
                             </div>
 
                             <div>
-                                <p className="text-xs font-medium uppercase tracking-[0.14em] text-black/50 dark:text-foreground/50">
+                                <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent-dark dark:text-accent">
                                     Linux
                                 </p>
-                                <div className="mt-6">
-                                    <Badge className="cursor-default opacity-70">
-                                        {LINUX_STATUS}
-                                    </Badge>
-                                </div>
+                                <p className="mt-2 text-sm text-black/70 dark:text-foreground/70">
+                                    {DESKTOP_VERSION} for {LINUX_ARCH_LABEL}
+                                </p>
+                                <a
+                                    href={LINUX_APPIMAGE_URL}
+                                    className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-accent px-5 text-sm font-medium text-white transition-opacity hover:opacity-90 dark:bg-accent-dark"
+                                >
+                                    Download for Linux
+                                </a>
+                                <p className="mt-4 text-sm">
+                                    <a
+                                        href={LINUX_DEB_URL}
+                                        className="font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
+                                    >
+                                        Package (.deb)
+                                    </a>
+                                </p>
                             </div>
                         </div>
 
                         <p className="mt-10 border-t border-black/8 pt-8 text-sm leading-relaxed text-black/70 dark:border-foreground/10 dark:text-foreground/70">
-                            Requires Windows 10 or 11. SmartScreen may warn because
+                            Windows 10 or 11 (x64). SmartScreen may warn because
                             this build is unsigned — choose{" "}
                             <span className="font-medium text-black dark:text-foreground">
                                 More info
@@ -144,8 +158,9 @@ export default function DownloadsPage() {
                             <span className="font-medium text-black dark:text-foreground">
                                 Run anyway
                             </span>
-                            . JSON stays on the device. Node, Table, languages, and
-                            encoder/compare do not require Pro.
+                            . Linux x86_64 needs WebKitGTK 4.1 (Ubuntu 22.04+ /
+                            Debian 12+). JSON stays on the device. Node, Table,
+                            languages, and encoder/compare do not require Pro.
                         </p>
 
                         <Link

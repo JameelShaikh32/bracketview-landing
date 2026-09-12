@@ -25,9 +25,9 @@ const WhatIsBracketView = () => {
                   nested table — seven tabs in all, with Stats and JQ beside
                   those views. The UI is in nine languages (Workspace settings
                   in the header gear). Optional server features: AI, encrypted
-                  snapshots, webhook tester, signed-in history. BracketView is
-                  also a Windows desktop app ({DESKTOP_VERSION}). Linux is
-                  coming soon.
+                  snapshots, webhook tester, signed-in history. A Windows and
+                  Linux desktop app ({DESKTOP_VERSION}) runs the same core tools
+                  locally, with no sign-in, AI, or cloud.
                 </p>
                 <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
                   <Link
@@ -42,7 +42,7 @@ const WhatIsBracketView = () => {
                     href="/downloads"
                     className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
                   >
-                    Download for Windows
+                    Download
                   </Link>
                 </div>
               </div>

@@ -47,7 +47,7 @@ export default function FeaturesPage() {
                 <PageHeader
                     badge="Features"
                     title="Everything in one JSON workspace"
-                    description="See JSON as text, tree, graph, node cards, or a nested table — in nine languages, in the browser or as a Windows app. Format, validate, query, schema, and diff stay in the workspace. Optional AI, snapshots, and Webhook Tester use the server when you choose them. Linux coming soon."
+                    description="See JSON as text, tree, graph, node cards, or a nested table — in nine languages, in the browser or as a Windows and Linux app. Format, validate, query, schema, and diff stay in the workspace. Optional AI, snapshots, and Webhook Tester use the server when you choose them."
                     cta={{
                         label: "Open the workspace",
                         href: "https://app.bracketview.in",
@@ -60,7 +60,7 @@ export default function FeaturesPage() {
                         href="/downloads"
                         className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
                     >
-                        Download the Windows app
+                        Download the desktop app
                     </Link>
                 </div>
 

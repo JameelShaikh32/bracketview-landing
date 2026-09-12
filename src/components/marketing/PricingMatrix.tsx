@@ -118,7 +118,7 @@ const PricingMatrix = () => {
       </div>
       <p className="mt-4 text-xs text-black/50 dark:text-foreground/45">
         † Fair use applies to unlimited AI. Web Free uploads are{" "}
-        {FREE_UPLOAD_LABEL}; the Windows app opens local files up to{" "}
+        {FREE_UPLOAD_LABEL}; the desktop app opens local files up to{" "}
         {DESKTOP_LOCAL_FILE_LABEL}.
       </p>
     </section>

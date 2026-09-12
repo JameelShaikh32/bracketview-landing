@@ -258,7 +258,7 @@ const featureCategories: FeatureCategory[] = [
                 icon: Layers,
                 title: "Compare View",
                 description:
-                    "Paste two versions and see exactly what changed — including offline text compare in the Windows app.",
+                    "Paste two versions and see exactly what changed — including offline text compare in the desktop app.",
                 href: "https://app.bracketview.in/compare-view",
                 cta: "Open compare view",
             },
@@ -310,7 +310,7 @@ const featureCategories: FeatureCategory[] = [
                 icon: Binary,
                 title: "Encoder / Decoder",
                 description:
-                    "Handle common encoding and decoding tasks alongside your JSON editor. Included in the Windows app offline.",
+                    "Handle common encoding and decoding tasks alongside your JSON editor. Included in the desktop app offline.",
                 href: "https://app.bracketview.in/encoder-decoder",
                 cta: "Open encoder tool",
             },

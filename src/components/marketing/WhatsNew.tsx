@@ -51,7 +51,7 @@ const WhatsNew = () => {
                   What’s new
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-black/70 dark:text-foreground/70">
-                  Node and Table views, nine UI languages, and Windows {DESKTOP_VERSION} —
+                  Node and Table views, nine UI languages, and desktop {DESKTOP_VERSION} —
                   plus a few workspace polish items. None of these require Pro.
                 </p>
               </div>

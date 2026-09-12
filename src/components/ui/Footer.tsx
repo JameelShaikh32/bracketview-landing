@@ -109,7 +109,7 @@ const Footer = () => {
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-black/65 dark:text-foreground/65">
               A privacy-first JSON workspace: text, tree, graph, node, and table
               views, plus query, diff, and schema — in the browser or as a
-              Windows app.
+              Windows and Linux app.
             </p>
             {/* <p className="mt-3 max-w-sm text-xs leading-relaxed text-black/55 dark:text-foreground/55">
               UI in nine languages: {UI_LANGUAGE_FOOTER_LIST}. Switch them in

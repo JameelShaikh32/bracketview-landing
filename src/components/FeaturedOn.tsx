@@ -1,5 +1,6 @@
 import { featuredOnLinks } from "@/app/data/constant";
 import AiAgentsDirectoryBadge from "@/components/AiAgentsDirectoryBadge";
+import DangAiBadge from "@/components/DangAiBadge";
 import LaunchKiwiBadge from "@/components/LaunchKiwiBadge";
 import ToolTrimBadge from "@/components/ToolTrimBadge";
 import Reveal from "@/components/motion/Reveal";
@@ -31,6 +32,12 @@ const FeaturedBadgeList = ({ ariaHidden = false }: { ariaHidden?: boolean }) => 
       </li>
       <li>
         <AiAgentsDirectoryBadge
+          className={badgeClassName}
+          tabIndex={ariaHidden ? -1 : undefined}
+        />
+      </li>
+      <li>
+        <DangAiBadge
           className={badgeClassName}
           tabIndex={ariaHidden ? -1 : undefined}
         />

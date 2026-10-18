@@ -2,8 +2,8 @@
 
 import {
     INSTALLERS_SECTION_ID,
-    LINUX_APPIMAGE_URL,
-    WINDOWS_EXE_URL,
+    LINUX_DEB_URL,
+    WINDOWS_MSI_URL,
 } from "@/app/data/desktop";
 import OsBrandIcon from "@/components/downloads/OsBrandIcon";
 import { useSyncExternalStore } from "react";
@@ -44,7 +44,7 @@ const PlatformDownloadButton = () => {
 
     if (detected === "windows") {
         return (
-            <a href={WINDOWS_EXE_URL} className={primaryButtonClasses}>
+            <a href={WINDOWS_MSI_URL} className={primaryButtonClasses}>
                 <OsBrandIcon os="windows" size={18} />
                 Download for Windows
             </a>
@@ -53,7 +53,7 @@ const PlatformDownloadButton = () => {
 
     if (detected === "linux") {
         return (
-            <a href={LINUX_APPIMAGE_URL} className={primaryButtonClasses}>
+            <a href={LINUX_DEB_URL} className={primaryButtonClasses}>
                 <OsBrandIcon os="linux" size={18} />
                 Download for Linux
             </a>

@@ -51,16 +51,16 @@ const LATEST_RELEASE: DesktopRelease = {
             id: "windows",
             heading: "Windows",
             installers: [
-                { label: "Windows (x64) Setup", href: WINDOWS_EXE_URL },
                 { label: "Windows (x64) MSI", href: WINDOWS_MSI_URL },
+                { label: "Windows (x64) Setup", href: WINDOWS_EXE_URL },
             ],
         },
         {
             id: "linux",
             heading: "Linux",
             installers: [
-                { label: "Linux AppImage (x64)", href: LINUX_APPIMAGE_URL },
                 { label: "Linux .deb (x64)", href: LINUX_DEB_URL },
+                { label: "Linux AppImage (x64)", href: LINUX_APPIMAGE_URL },
             ],
         },
     ],

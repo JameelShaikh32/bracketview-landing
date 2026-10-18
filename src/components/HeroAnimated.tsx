@@ -11,56 +11,62 @@ import ClientSidePrivacyBadge from "@/components/ui/ClientSidePrivacyBadge";
 import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const APP_URL = "https://app.bracketview.in";
 
 const HeroAnimated = () => {
   const reducedMotion = useHydratedReducedMotion();
   const itemVariant = getFadeUpVariant(reducedMotion);
+  const [contentReady, setContentReady] = useState(false);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setContentReady(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  const shouldAnimate = contentReady && !reducedMotion;
+  const secondaryVisible = contentReady || reducedMotion;
 
   return (
     <section className="relative w-full px-4 pb-12 pt-2 sm:px-6 lg:px-8">
       <div className="relative mx-auto grid grid-cols-1 gap-4 lg:min-h-[calc(100vh-12rem)] lg:grid-cols-2 lg:gap-5">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={heroStaggerContainer}
-          className="hero-left-panel relative flex flex-col justify-start gap-2 rounded-4xl bg-white px-4 py-10 sm:px-10 sm:py-12 md:rounded-t-4xl md:rounded-bl-4xl md:rounded-br-none lg:px-12 lg:py-14 dark:bg-muted"
-        >
+        <div className="hero-left-panel relative flex flex-col justify-start gap-2 rounded-4xl bg-white px-4 py-10 sm:px-10 sm:py-12 md:rounded-t-4xl md:rounded-bl-4xl md:rounded-br-none lg:px-12 lg:py-14 dark:bg-muted">
+          {/* LCP-critical copy: always painted, never opacity-0 */}
           <div className="flex flex-col gap-6">
-            <motion.p
-              variants={itemVariant}
-              className="text-xs font-medium uppercase tracking-[0.14em] text-accent-dark dark:text-accent"
-            >
+            <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent-dark dark:text-accent">
               BracketView
-            </motion.p>
-            <motion.h1
-              variants={itemVariant}
-              className="max-w-xl text-3xl font-bold leading-normal text-black md:text-5xl md:leading-normal dark:text-foreground"
-            >
+            </p>
+            <h1 className="max-w-xl text-3xl font-bold leading-normal text-black md:text-5xl md:leading-normal dark:text-foreground">
               Free Online JSON Viewer
-            </motion.h1>
-            <motion.p
-              variants={itemVariant}
-              className="hero-description max-w-xl text-base leading-relaxed text-black/70 dark:text-foreground/70"
-            >
+            </h1>
+            <p className="hero-description max-w-xl text-base leading-relaxed text-black/70 dark:text-foreground/70">
               Paste, format, and validate JSON in a free online workspace —
               then open the same payload as text, a tree, a graph, node cards,
               or a nested table. Query with JSONPath or jq, diff two documents,
               and check schemas. The UI is in nine languages, in the browser or
               as a Windows and Linux app. Node and Table stay free — not Pro.
-            </motion.p>
+            </p>
 
-            <motion.div variants={itemVariant}>
+            <motion.div
+              initial="hidden"
+              animate={secondaryVisible ? "visible" : "hidden"}
+              variants={itemVariant}
+            >
               <ClientSidePrivacyBadge compact className="max-w-lg" />
             </motion.div>
           </div>
 
           <motion.div
-            variants={itemVariant}
+            initial="hidden"
+            animate={secondaryVisible ? "visible" : "hidden"}
+            variants={heroStaggerContainer}
             className="mt-10 flex flex-col gap-3 sm:mt-12"
           >
-            <div className="flex flex-wrap items-center gap-3">
+            <motion.div
+              variants={itemVariant}
+              className="flex flex-wrap items-center gap-3"
+            >
               <Link
                 href={APP_URL}
                 target="_blank"
@@ -78,11 +84,11 @@ const HeroAnimated = () => {
                 <Download size={18} aria-hidden />
                 Download
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
 
           <div className="absolute bottom-0 right-0 hidden h-22 w-16 rounded-tl-3xl bg-background md:block" />
-        </motion.div>
+        </div>
 
         <div className="hero-right-panel relative min-h-88 overflow-hidden rounded-[1.75rem] bg-[#e5e0de] sm:min-h-104 md:rounded-tl-4xl md:rounded-tr-4xl md:rounded-br-none md:rounded-bl-none lg:min-h-0 dark:bg-dark-card">
           <div className="absolute inset-0 z-0 overflow-hidden rounded-2xl p-3 sm:p-4 md:rounded-tl-2xl md:rounded-tr-2xl md:rounded-br-none md:rounded-bl-none">
@@ -91,8 +97,14 @@ const HeroAnimated = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
+            animate={
+              secondaryVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }
+            }
+            transition={
+              shouldAnimate
+                ? { duration: 0.5, delay: 0.7 }
+                : { duration: 0 }
+            }
             className="absolute bottom-0 right-0 z-20 hidden h-18 w-38 items-center justify-center rounded-tl-4xl bg-background px-4 md:flex md:h-24 md:w-44 sm:h-16 sm:w-48 sm:rounded-tl-6xl"
           >
             <p className="text-center text-sm font-medium uppercase leading-snug tracking-[0.12em] text-black dark:text-foreground">
@@ -116,8 +128,16 @@ const HeroAnimated = () => {
         <motion.a
           href="#what-is-bracketview"
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
+          animate={
+            secondaryVisible
+              ? { opacity: 1, scale: 1 }
+              : { opacity: 0, scale: 0.9 }
+          }
+          transition={
+            shouldAnimate
+              ? { duration: 0.5, delay: 0.9 }
+              : { duration: 0 }
+          }
           className="absolute bottom-0 left-1/2 z-30 hidden -translate-x-1/2 translate-y-[38%] lg:flex"
           aria-label="Learn more about BracketView"
         >

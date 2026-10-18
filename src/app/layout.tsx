@@ -8,7 +8,6 @@ import {
 } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Fira_Code, Martian_Mono } from "next/font/google";
-import Script from "next/script";
 import SiteProviders from "../components/ads/SiteProviders";
 import Analytics, { GTM_ID } from "../components/Analytics";
 import DeferredMetrics from "../components/DeferredMetrics";
@@ -141,13 +140,12 @@ export default function RootLayout({
                 />
                 <StructuredData />
                 <Analytics />
-            </head>
-            <body className="min-h-full flex flex-col bg-background pt-20 text-foreground">
-                <Script
+                <script
                     id="theme-init"
-                    strategy="beforeInteractive"
                     dangerouslySetInnerHTML={{ __html: themeInitScript }}
                 />
+            </head>
+            <body className="min-h-full flex flex-col bg-background pt-20 text-foreground">
                 {GTM_ID ? (
                     <noscript>
                         <iframe

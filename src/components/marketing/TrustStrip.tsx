@@ -72,23 +72,30 @@ const TrustStrip = () => {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 border-t border-black/5 pt-8 dark:border-foreground/10">
-            {featuredOnLinks.slice(0, 4).map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-11 min-w-11 items-center justify-center opacity-70 transition-opacity hover:opacity-100"
-              >
-                <Image
-                  src={item.imageSrc}
-                  alt={item.imageAlt}
-                  width={item.imageWidth}
-                  height={item.imageHeight}
-                  className="h-8 w-auto object-contain sm:h-10"
-                />
-              </Link>
-            ))}
+            {featuredOnLinks.slice(0, 4).map((item) => {
+              const imageSrc =
+                "imageSrc" in item && item.imageSrc
+                  ? item.imageSrc
+                  : item.imgLightSrc;
+
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center opacity-70 transition-opacity hover:opacity-100"
+                >
+                  <Image
+                    src={imageSrc!}
+                    alt={item.imageAlt}
+                    width={item.imageWidth}
+                    height={item.imageHeight}
+                    className="h-8 w-auto object-contain sm:h-10"
+                  />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

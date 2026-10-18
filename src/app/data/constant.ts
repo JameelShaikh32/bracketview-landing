@@ -348,7 +348,10 @@ const featuredOnLinks = [
     {
         label: "Product Hunt",
         href: "https://www.producthunt.com/products/bracketview/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-bracketview",
-        imageSrc: "/images/featured-logo/product_hunt_badge.webp",
+        imgDarkSrc:
+            "https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1046113&theme=dark&t=1792327920375",
+        imgLightSrc:
+            "https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1046113&theme=light&t=1792327898157",
         imageAlt:
             "BracketView - Free Advanced JSON viewer with AI fix, JQ, JSON share & more | Product Hunt",
         imageWidth: 250,

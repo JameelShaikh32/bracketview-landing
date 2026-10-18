@@ -2,14 +2,16 @@ const LAUNCHKIWI_LISTING_URL = "https://launchkiwi.com/p/bracketview";
 
 type LaunchKiwiBadgeProps = {
     className?: string;
+    tabIndex?: number;
 };
 
-const LaunchKiwiBadge = ({ className = "" }: LaunchKiwiBadgeProps) => {
+const LaunchKiwiBadge = ({ className = "", tabIndex }: LaunchKiwiBadgeProps) => {
     return (
         <a
             href={LAUNCHKIWI_LISTING_URL}
             target="_blank"
             rel="noopener"
+            tabIndex={tabIndex}
             className={`inline-flex min-h-11 items-center ${className}`}
         >
             <img

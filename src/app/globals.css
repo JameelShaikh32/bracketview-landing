@@ -47,6 +47,17 @@
   --color-dark-text-secondary: #8b949e;
   --color-dark-hover: #1f242b;
   --color-dark-active: #262c36;
+
+  --animate-marquee: marquee 45s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* Thin, branded scrollbar — page + overflow panes (Firefox + Chromium/Safari) */
@@ -92,6 +103,27 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .featured-marquee {
+    mask-image: none !important;
+    overflow: visible !important;
+  }
+
+  .featured-marquee-track {
+    animation: none !important;
+    width: 100% !important;
+  }
+
+  .featured-marquee-track > ul {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 1.5rem;
+  }
+
+  .featured-marquee-track [aria-hidden="true"] {
+    display: none;
   }
 }
 

@@ -1,7 +1,84 @@
 import { featuredOnLinks } from "@/app/data/constant";
 import LaunchKiwiBadge from "@/components/LaunchKiwiBadge";
+import ToolTrimBadge from "@/components/ToolTrimBadge";
 import Reveal from "@/components/motion/Reveal";
 import Image from "next/image";
+
+const badgeClassName =
+  "opacity-80 transition-opacity hover:opacity-100";
+
+const imageClassName =
+  "h-8 w-auto max-w-35 object-contain sm:h-10 sm:max-w-40";
+
+const FeaturedBadgeList = ({ ariaHidden = false }: { ariaHidden?: boolean }) => {
+  return (
+    <ul
+      aria-hidden={ariaHidden || undefined}
+      className="flex shrink-0 items-center gap-x-10 px-5 sm:gap-x-12 sm:px-6 md:gap-x-14"
+    >
+      <li>
+        <LaunchKiwiBadge
+          className={badgeClassName}
+          tabIndex={ariaHidden ? -1 : undefined}
+        />
+      </li>
+      <li>
+        <ToolTrimBadge
+          className={badgeClassName}
+          tabIndex={ariaHidden ? -1 : undefined}
+        />
+      </li>
+      {featuredOnLinks.map((item) => (
+        <li key={item.label}>
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={ariaHidden ? -1 : undefined}
+            aria-label={item.label}
+            className={`inline-flex min-h-11 min-w-11 items-center justify-center ${badgeClassName}`}
+          >
+            {"imageSrc" in item && item.imageSrc ? (
+              <Image
+                src={item.imageSrc}
+                alt={item.imageAlt}
+                width={item.imageWidth}
+                height={item.imageHeight}
+                sizes="(max-width: 640px) 120px, 160px"
+                loading="lazy"
+                decoding="async"
+                className={imageClassName}
+              />
+            ) : (
+              <>
+                <Image
+                  src={item.imgLightSrc!}
+                  alt={item.imageAlt}
+                  width={item.imageWidth}
+                  height={item.imageHeight}
+                  sizes="(max-width: 640px) 120px, 160px"
+                  loading="lazy"
+                  decoding="async"
+                  className={`${imageClassName} dark:hidden`}
+                />
+                <Image
+                  src={item.imgDarkSrc!}
+                  alt={item.imageAlt}
+                  width={item.imageWidth}
+                  height={item.imageHeight}
+                  sizes="(max-width: 640px) 120px, 160px"
+                  loading="lazy"
+                  decoding="async"
+                  className={`hidden ${imageClassName} dark:inline`}
+                />
+              </>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 const FeaturedOn = () => {
   return (
@@ -16,33 +93,12 @@ const FeaturedOn = () => {
             Featured On
           </p>
 
-          <ul className="mt-6 flex w-full flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:mt-8 sm:gap-x-10 md:gap-x-12">
-            <li>
-              <LaunchKiwiBadge className="opacity-90 transition-opacity hover:opacity-100" />
-            </li>
-            {featuredOnLinks.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={item.label}
-                  className="inline-flex min-h-11 min-w-11 items-center justify-center opacity-70 transition-opacity hover:opacity-100"
-                >
-                  <Image
-                    src={item.imageSrc}
-                    alt={item.imageAlt}
-                    width={item.imageWidth}
-                    height={item.imageHeight}
-                    sizes="(max-width: 640px) 120px, 160px"
-                    loading="lazy"
-                    decoding="async"
-                    className="h-8 w-auto max-w-35 object-contain sm:h-10 sm:max-w-40"
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="featured-marquee group/marquee relative mt-6 w-full overflow-hidden sm:mt-8 mask-[linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+            <div className="featured-marquee-track flex w-max animate-marquee group-hover/marquee:[animation-play-state:paused]">
+              <FeaturedBadgeList />
+              <FeaturedBadgeList ariaHidden />
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>

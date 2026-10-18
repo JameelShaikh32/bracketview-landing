@@ -1,4 +1,4 @@
-const DESKTOP_VERSION = "0.1.5";
+const DESKTOP_VERSION = "0.1.6";
 
 const DOWNLOADS_PAGE_PATH = "/downloads";
 

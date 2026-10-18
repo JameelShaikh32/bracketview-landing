@@ -4,28 +4,14 @@ import Link from "next/link";
 
 const items = [
   {
-    title: "Workspace settings",
-    detail: "Theme, editor font, and UI language live in the header gear — moved off the profile page.",
+    title: "Inspect truncated table cells",
+    detail:
+      "Long strings in Table view stay clamped for readability. Reveal the full value on hover, click, or keyboard focus — including on touch screens. The truncated badge hides while the value is open.",
   },
   {
-    title: "Account menu",
-    detail: "Manage Profile and Sign out sit on the profile photo. There is no separate header Sign out.",
-  },
-  {
-    title: "Tree search",
-    detail: "Search is on the tree toolbar, before Expand all.",
-  },
-  {
-    title: "AI panel",
-    detail: "Slides in from the right, next to keyboard shortcuts.",
-  },
-  {
-    title: "Route loading",
-    detail: "Layout skeletons instead of a blank screen.",
-  },
-  {
-    title: "JSON history",
-    detail: "Signed-in history gets a custom date filter and one-click copy of an entry’s JSON.",
+    title: "Clearer Node view limits",
+    detail:
+      "Large graphs show a visible n of m count when capped at 250 nodes, so you know you’re looking at a projection, not the entire document. Use Text or Tree for everything.",
   },
 ] as const;
 
@@ -42,7 +28,7 @@ const WhatsNew = () => {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent-dark dark:text-accent">
-                  August 2026
+                  October 2026
                 </p>
                 <h2
                   id="whats-new-heading"
@@ -51,8 +37,8 @@ const WhatsNew = () => {
                   What’s new
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-black/70 dark:text-foreground/70">
-                  Node and Table views, nine UI languages, and desktop {DESKTOP_VERSION} —
-                  plus a few workspace polish items. None of these require Pro.
+                  BracketView {DESKTOP_VERSION} — clearer Table cell inspection and
+                  honest Node view limits in the workspace and desktop app.
                 </p>
               </div>
               <Link
@@ -62,7 +48,7 @@ const WhatsNew = () => {
                 Full changelog
               </Link>
             </div>
-            <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {items.map((item) => (
                 <li key={item.title}>
                   <p className="text-sm font-bold">{item.title}</p>

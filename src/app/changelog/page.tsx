@@ -14,13 +14,13 @@ import Link from "next/link";
 
 export const metadata = createPageMetadata({
     path: "/changelog",
-    title: "Changelog — August 2026 | BracketView",
+    title: `Changelog — BracketView ${DESKTOP_VERSION} | BracketView`,
     description:
-        `August 2026: Node and Table views (free), nine UI languages, desktop ${DESKTOP_VERSION}, and workspace polish. Pro is power and persistence — not extra viewer tabs.`,
+        `BracketView ${DESKTOP_VERSION}: inspect truncated table cells, clearer Node view limits (n of m when capped at 250). Desktop installers for Windows and Linux.`,
     keywords: [
         "BracketView changelog",
-        "JSON node view",
         "JSON table view",
+        "JSON node view",
         "BracketView Windows",
     ],
 });
@@ -38,7 +38,7 @@ export default function ChangelogPage() {
     const schema = buildWebPageSchema(
         "/changelog",
         "BracketView changelog",
-        "Product notes for BracketView, starting with the August 2026 workspace release.",
+        `Product notes for BracketView, including ${DESKTOP_VERSION} table and node view improvements.`,
     );
 
     return (
@@ -59,10 +59,72 @@ export default function ChangelogPage() {
                 <Reveal className="mx-auto mt-14 max-w-7xl">
                     <article className="rounded-4xl bg-white p-8 sm:p-12 dark:bg-muted">
                         <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent-dark dark:text-accent">
+                            October 2026
+                        </p>
+                        <h2 className="mt-3 text-2xl font-bold sm:text-3xl">
+                            BracketView {DESKTOP_VERSION}
+                        </h2>
+                        <p className="mt-4 text-sm leading-relaxed text-black/75 dark:text-foreground/75">
+                            Workspace and desktop polish for Table and Node views —
+                            so truncated values are easy to read, and large graphs
+                            make their limits obvious.
+                        </p>
+
+                        <h3 className="mt-10 text-lg font-bold">
+                            Inspect truncated table cells
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-black/75 dark:text-foreground/75">
+                            Long strings in Table view stay clamped for readability.
+                            Reveal the full value on hover, click, or keyboard focus —
+                            including on touch screens. The truncated badge hides
+                            while the value is open.
+                        </p>
+
+                        <h3 className="mt-8 text-lg font-bold">
+                            Clearer Node view limits
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-black/75 dark:text-foreground/75">
+                            Large graphs show a visible n of m count when capped at
+                            250 nodes, so you know you’re looking at a projection,
+                            not the entire document. Use Text or Tree for everything.
+                        </p>
+
+                        <h3 className="mt-8 text-lg font-bold">
+                            Desktop app {DESKTOP_VERSION}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-black/75 dark:text-foreground/75">
+                            Same Table and Node improvements ship in the Windows and
+                            Linux installers. Local files up to {DESKTOP_LOCAL_FILE_LABEL}.
+                            No sign-in, AI, snapshots, or webhook tester.
+                        </p>
+                        <p className="mt-3">
+                            <Link
+                                href="/downloads"
+                                className="text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
+                            >
+                                Download
+                            </Link>
+                        </p>
+
+                        <Link
+                            href={APP_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-10 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
+                        >
+                            Open the workspace
+                            <ArrowUpRight size={16} aria-hidden />
+                        </Link>
+                    </article>
+                </Reveal>
+
+                <Reveal className="mx-auto mt-8 max-w-7xl">
+                    <article className="rounded-4xl bg-white p-8 sm:p-12 dark:bg-muted">
+                        <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent-dark dark:text-accent">
                             August 2026
                         </p>
                         <h2 className="mt-3 text-2xl font-bold sm:text-3xl">
-                            Node, Table, nine languages, desktop {DESKTOP_VERSION}
+                            Node, Table, nine languages, desktop
                         </h2>
                         <p className="mt-4 text-sm leading-relaxed text-black/75 dark:text-foreground/75">
                             The workspace now has seven tabs. Five of them are
@@ -122,7 +184,7 @@ export default function ChangelogPage() {
                         </div>
 
                         <h3 className="mt-8 text-lg font-bold">
-                            Desktop app {DESKTOP_VERSION}
+                            Desktop app
                         </h3>
                         <p className="mt-2 text-sm leading-relaxed text-black/75 dark:text-foreground/75">
                             Local JSON workspace: text, tree, graph, node, table,
@@ -160,16 +222,6 @@ export default function ChangelogPage() {
                             Node, Table, languages, and the desktop viewer do
                             not require Pro.
                         </p>
-
-                        <Link
-                            href={APP_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mt-10 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-accent underline-offset-2 hover:underline dark:text-accent-dark"
-                        >
-                            Open the workspace
-                            <ArrowUpRight size={16} aria-hidden />
-                        </Link>
                     </article>
                 </Reveal>
             </div>

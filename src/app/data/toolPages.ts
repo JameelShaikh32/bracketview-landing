@@ -59,7 +59,7 @@ const toolPages: Record<string, ToolPage> = {
         metaDescription:
             "Free JSON viewer with tree, graph, node cards, and nested table. Nine UI languages. Privacy-first — data stays in the browser.",
         intro:
-            "A JSON viewer turns opaque payloads into a navigable structure. BracketView lets you switch between text, tree, graph, node cards, and a nested table — plus Stats and JQ Filter beside those views. Paste an API response, copy paths, search the tree, or lay arrays of objects out as a spreadsheet. The UI is in nine languages (Workspace settings in the header gear). Core viewing stays in the browser. Share an encrypted snapshot when you need a second pair of eyes.",
+            "A JSON viewer turns opaque payloads into a navigable structure. BracketView lets you switch between text, tree, graph, node cards, and a nested table — plus Stats and JQ Filter beside those views. Dual mode keeps the text editor on the left and Tree, Graph, Node, or Table on the right; the header tabs choose the right pane. Paste an API response, copy paths, search the tree, or lay arrays of objects out as a spreadsheet. The UI is in nine languages (Workspace settings in the header gear). Core viewing stays in the browser. Share an encrypted snapshot when you need a second pair of eyes.",
         problem:
             "Large API responses and nested configs are hard to read as raw text. Developers waste time hunting keys, copying fragile paths by hand, and losing context when switching tools.",
         useCases: [
@@ -94,6 +94,7 @@ const toolPages: Record<string, ToolPage> = {
         interactiveDemo: "viewer",
         features: [
             "Text, tree, graph, node, and table views — all free",
+            "Dual mode: text editor on the left, Tree, Graph, Node, or Table on the right",
             "Node view: object cards, bezier edges, table-shaped array nodes",
             "Table view: nested Key/Value and columnar arrays of objects",
             "Copy node value, path, or JSON snippet",

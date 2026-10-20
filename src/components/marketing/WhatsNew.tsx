@@ -4,14 +4,19 @@ import Link from "next/link";
 
 const items = [
   {
-    title: "Inspect truncated table cells",
+    title: "Dual mode",
     detail:
-      "Long strings in Table view stay clamped for readability. Reveal the full value on hover, click, or keyboard focus — including on touch screens. The truncated badge hides while the value is open.",
+      "Turn on Dual mode in Workspace settings to keep the text editor on the left and Tree, Graph, Node, or Table on the right. The header tabs choose the right pane.",
   },
   {
-    title: "Clearer Node view limits",
+    title: "Page zoom is separate from font size",
     detail:
-      "Large graphs show a visible n of m count when capped at 250 nodes, so you know you’re looking at a projection, not the entire document. Use Text or Tree for everything.",
+      "Ctrl+Shift++ and Ctrl+Shift+- change the editor font. Ctrl++ and Ctrl+- zoom the page again.",
+  },
+  {
+    title: "Tree search shows the whole node",
+    detail:
+      "When a search hits a field, the tree keeps every sibling on that object or array item, not only the matching row.",
   },
 ] as const;
 
@@ -37,8 +42,9 @@ const WhatsNew = () => {
                   What’s new
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-black/70 dark:text-foreground/70">
-                  BracketView {DESKTOP_VERSION} — clearer Table cell inspection and
-                  honest Node view limits in the workspace and desktop app.
+                  BracketView {DESKTOP_VERSION} — Dual mode beside the editor,
+                  page zoom separate from font size, and tree search that keeps
+                  the whole node.
                 </p>
               </div>
               <Link
@@ -48,7 +54,7 @@ const WhatsNew = () => {
                 Full changelog
               </Link>
             </div>
-            <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <ul className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
               {items.map((item) => (
                 <li key={item.title}>
                   <p className="text-sm font-bold">{item.title}</p>

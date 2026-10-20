@@ -17,7 +17,7 @@ export const metadata = createPageMetadata({
     path: "/features",
     title: "Features | BracketView",
     description:
-        "JSON workspace: text, tree, graph, node, and table views, nine UI languages, jq, schema, and diff. Node and Table are free.",
+        "JSON workspace: text, tree, graph, node, and table views, Dual mode, nine UI languages, jq, schema, and diff. Node and Table are free.",
 });
 
 export default function FeaturesPage() {
@@ -35,7 +35,7 @@ export default function FeaturesPage() {
         buildWebPageSchema(
             "/features",
             "BracketView Features",
-            "Explore every BracketView feature — JSON viewer (text, tree, graph, node, table), formatter, validator, JQ, JSONPath, AI fixer, diff, schema tools, nine UI languages, and more.",
+            "Explore every BracketView feature — JSON viewer (text, tree, graph, node, table), Dual mode, formatter, validator, JQ, JSONPath, AI fixer, diff, schema tools, nine UI languages, and more.",
         ),
         buildItemListSchema("BracketView Features", featureItems),
     ];
@@ -47,7 +47,7 @@ export default function FeaturesPage() {
                 <PageHeader
                     badge="Features"
                     title="Everything in one JSON workspace"
-                    description="See JSON as text, tree, graph, node cards, or a nested table — in nine languages, in the browser or as a Windows and Linux app. Format, validate, query, schema, and diff stay in the workspace. Optional AI, snapshots, and Webhook Tester use the server when you choose them."
+                    description="See JSON as text, tree, graph, node cards, or a nested table — or side by side in Dual mode — in nine languages, in the browser or as a Windows and Linux app. Format, validate, query, schema, and diff stay in the workspace. Optional AI, snapshots, and Webhook Tester use the server when you choose them."
                     cta={{
                         label: "Open the workspace",
                         href: "https://app.bracketview.in",

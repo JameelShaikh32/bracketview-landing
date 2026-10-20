@@ -23,8 +23,10 @@ const WhatIsBracketView = () => {
                   validate, query (JSONPath + jq), diff, schema, and types in
                   the browser. See JSON as text, tree, graph, node cards, or a
                   nested table — seven tabs in all, with Stats and JQ beside
-                  those views. The UI is in nine languages (Workspace settings
-                  in the header gear). Optional server features: AI, encrypted
+                  those views. Dual mode, in Workspace settings, keeps the text
+                  editor on the left and Tree, Graph, Node, or Table on the
+                  right. The UI is in nine languages (Workspace settings in the
+                  header gear). Optional server features: AI, encrypted
                   snapshots, webhook tester, signed-in history. A Windows and
                   Linux desktop app ({DESKTOP_VERSION}) runs the same core tools
                   locally, with no sign-in, AI, or cloud.

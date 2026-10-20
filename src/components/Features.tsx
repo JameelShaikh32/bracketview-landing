@@ -24,8 +24,8 @@ const Features = () => {
 
                     <p className="mt-6 max-w-xl text-sm leading-relaxed text-black/75 sm:mt-8 sm:text-base dark:text-foreground/70">
                         Five ways to look at JSON — text, tree, graph, node, and
-                        table — plus JSONPath, jq, and optional AI. UI in nine
-                        languages. Node and Table are free.
+                        table — plus Dual mode, JSONPath, jq, and optional AI.
+                        UI in nine languages. Node and Table are free.
                     </p>
                 </Reveal>
 

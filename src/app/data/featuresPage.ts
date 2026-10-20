@@ -5,6 +5,7 @@ import {
     Braces,
     ClipboardCopy,
     Code2,
+    Columns2,
     FileJson,
     FileSpreadsheet,
     Gauge,
@@ -50,7 +51,7 @@ const featureCategories: FeatureCategory[] = [
     {
         title: "View & Navigate",
         description:
-            "Five ways to look at JSON — text, tree, graph, node, and table — plus Stats and JQ. All free.",
+            "Five ways to look at JSON — text, tree, graph, node, and table — plus Dual mode, Stats, and JQ. All free.",
         features: [
             {
                 icon: GitBranch,
@@ -91,6 +92,14 @@ const featureCategories: FeatureCategory[] = [
                     "Monaco editor — paste, format, minify, and stringify with colour-coded JSON.",
                 href: "https://app.bracketview.in",
                 cta: "Open editor",
+            },
+            {
+                icon: Columns2,
+                title: "Dual mode",
+                description:
+                    "Turn on Dual mode in Workspace settings to keep the text editor on the left and Tree, Graph, Node, or Table on the right. The header tabs choose the right pane. Free.",
+                href: "https://app.bracketview.in",
+                cta: "Open the workspace",
             },
             {
                 icon: BarChart3,

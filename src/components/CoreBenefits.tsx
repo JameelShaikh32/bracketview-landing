@@ -6,7 +6,7 @@ const benefits = [
   {
     title: "Five ways to look at JSON",
     description:
-      "Text, tree, graph, node cards, and a nested table — Stats and JQ sit beside those views. All free.",
+      "Text, tree, graph, node cards, and a nested table. Dual mode keeps the editor on the left and Tree, Graph, Node, or Table on the right. Stats and JQ sit beside those views. All free.",
   },
   {
     title: "Nine UI languages",

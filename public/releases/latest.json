@@ -1,8 +1,8 @@
 {
-  "version": "0.1.6",
-  "notes": "Table cells: reveal full truncated values on click or focus (not only hover). Node view shows a clear n of m cap. Privacy-first local JSON workspace.",
-  "pub_date": "2026-10-18T14:17:36.708Z",
-  "url": "https://downloads.bracketview.in/releases/0.1.6/BracketView_0.1.6_x64_en-US.msi",
+  "version": "0.1.7",
+  "notes": "Dual mode keeps the text editor on the left and Tree, Graph, Node, or Table on the right. Page zoom is separate from editor font size. Tree search keeps every sibling on a matching object or array item. Privacy-first local JSON workspace.",
+  "pub_date": "2026-10-20T08:35:21.000Z",
+  "url": "https://downloads.bracketview.in/releases/0.1.7/BracketView_0.1.7_x64_en-US.msi",
   "pageUrl": "https://bracketview.in/downloads",
-  "linuxUrl": "https://downloads.bracketview.in/releases/0.1.6/BracketView_0.1.6_amd64.deb"
+  "linuxUrl": "https://downloads.bracketview.in/releases/0.1.7/BracketView_0.1.7_amd64.deb"
 }

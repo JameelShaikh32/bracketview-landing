@@ -132,7 +132,7 @@ const features: FeatureItem[] = [
         icon: LayoutGrid,
         title: "Five JSON views",
         description:
-            "Explore nested JSON as text, tree, graph, node cards, or a nested table — free",
+            "Text, tree, graph, node cards, or a nested table. Dual mode keeps the editor beside a view — free",
         href: "/json-viewer",
         cta: "Open JSON Viewer",
     },

@@ -7,24 +7,27 @@ module.exports = {
     exclude: ["/api/*", "/_not-found", "/apple-icon.png"],
     robotsTxtOptions: {
         policies: [
-            { userAgent: "GPTBot", allow: "/" },
-            { userAgent: "ClaudeBot", allow: "/" },
-            { userAgent: "PerplexityBot", allow: "/" },
-            { userAgent: "Googlebot", allow: "/" },
-            { userAgent: "Google-Extended", allow: "/" },
-            { userAgent: "Applebot-Extended", allow: "/" },
-            { userAgent: "CCBot", allow: "/" },
-            { userAgent: "meta-externalagent", allow: "/" },
-            { userAgent: "Amazonbot", allow: "/" },
-            { userAgent: "BingBot", allow: "/" },
             {
                 userAgent: "*",
                 allow: "/",
                 disallow: ["/api/"],
             },
         ],
-        transformRobotsTxt: async (_, robotsTxt) =>
-            `${robotsTxt.trim()}\n\n# LLM product summary: https://bracketview.in/llms.txt\n`,
+        transformRobotsTxt: async () => {
+            const siteUrl = (
+                process.env.NEXT_PUBLIC_SITE_URL || "https://bracketview.in"
+            ).replace(/\/$/, "");
+            return [
+                "User-agent: *",
+                "Allow: /",
+                "Disallow: /api/",
+                "",
+                `Sitemap: ${siteUrl}/sitemap.xml`,
+                "",
+                `# LLM product summary: ${siteUrl}/llms.txt`,
+                "",
+            ].join("\n");
+        },
     },
     transform: async (config, path) => {
         const priorities = {

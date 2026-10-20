@@ -21,7 +21,7 @@ const META_DESCRIPTION =
 
 /** Homepage-only title — distinct from META_TITLE (the sitewide fallback used in layout.tsx). */
 const HOME_TITLE =
-    "Free Online JSON Viewer & Formatter | BracketView";
+    "Free Online JSON Viewer & JSON Formatter | BracketView";
 
 /** Homepage-only description. Keep ~120–155 chars for SERP display. */
 const HOME_DESCRIPTION =
@@ -245,30 +245,14 @@ function buildSoftwareApplicationSchema() {
         description:
             "BracketView is a freemium, privacy-first JSON workspace. See JSON as text, tree, graph, node cards, or a nested table — in nine languages, in the browser or as a Windows and Linux app. Core tools run client-side; optional AI, encrypted snapshots, and Webhook Tester use the server when you choose them. The app workspace is ad-free.",
         featureList: FEATURE_LIST,
-        offers: [
-            {
-                "@type": "Offer",
-                name: "Free",
-                price: "0",
-                priceCurrency: "USD",
-                description:
-                    `Core JSON workspace — ${PLAN_LIMITS.free.uploadMb} MB uploads, ${PLAN_LIMITS.free.snapshotsPerMonth} snapshots/month, ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions/month`,
-            },
-            {
-                "@type": "Offer",
-                name: "Pro Monthly",
-                price: String(PRICING.monthlyUsd),
-                priceCurrency: "USD",
-                billingDuration: "P1M",
-            },
-            {
-                "@type": "Offer",
-                name: "Pro Yearly",
-                price: String(PRICING.yearlyUsd),
-                priceCurrency: "USD",
-                billingDuration: "P1Y",
-            },
-        ],
+        offers: {
+            "@type": "Offer",
+            name: "Free",
+            price: "0",
+            priceCurrency: "USD",
+            description:
+                `Core JSON workspace — ${PLAN_LIMITS.free.uploadMb} MB uploads, ${PLAN_LIMITS.free.snapshotsPerMonth} snapshots/month, ${PLAN_LIMITS.free.aiActionsPerMonth} AI actions/month`,
+        },
         author: {
             "@type": "Person",
             name: "Jameel Shaikh",

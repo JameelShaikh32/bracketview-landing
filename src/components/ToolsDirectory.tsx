@@ -30,7 +30,7 @@ const ToolsDirectory = () => {
               id="tools-heading"
               className="text-3xl font-bold text-black sm:text-4xl dark:text-foreground"
             >
-              Advanced tools and docs
+              JSON viewer, formatter, and validator tools
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-black/75 sm:text-base dark:text-foreground/75">
               Dedicated landing pages for each workflow, plus learn guides and

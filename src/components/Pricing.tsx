@@ -22,12 +22,9 @@ const PricingCard = ({
   cta,
   ctaHref,
   highlighted = false,
-  offerSchema,
 }: PricingPlan) => {
   return (
     <motion.article
-      itemScope
-      itemType="https://schema.org/Offer"
       whileHover={{ y: -4, scale: highlighted ? 1.02 : 1 }}
       transition={springTransition}
       className={`group flex h-full w-full flex-col rounded-4xl p-6 sm:p-8 ${highlighted
@@ -35,14 +32,8 @@ const PricingCard = ({
           : "bg-white text-black dark:bg-muted dark:text-foreground"
         }`}
     >
-      {offerSchema ? (
-        <>
-          <meta itemProp="price" content={offerSchema.price} />
-          <meta itemProp="priceCurrency" content={offerSchema.priceCurrency} />
-        </>
-      ) : null}
       <div className="flex flex-wrap items-center gap-3">
-        <h3 className="text-2xl font-bold" itemProp="name">
+        <h3 className="text-2xl font-bold">
           {name}
         </h3>
         {saveTag && (

@@ -38,7 +38,7 @@ const HeroAnimated = () => {
               BracketView
             </p>
             <h1 className="max-w-xl text-3xl font-bold leading-normal text-black md:text-5xl md:leading-normal dark:text-foreground">
-              Free Online JSON Viewer
+              Free Online JSON Viewer and Formatter
             </h1>
             <p className="hero-description max-w-xl text-base leading-relaxed text-black/70 dark:text-foreground/70">
               Paste, format, and validate JSON in a free online workspace —

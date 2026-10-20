@@ -51,7 +51,7 @@ const WhatIsBracketView = () => {
                 <div className="overflow-hidden rounded-2xl border border-black/8 bg-gray shadow-[0_24px_60px_-28px_rgba(25,19,20,0.35)] dark:border-foreground/10 dark:bg-background dark:shadow-[0_24px_60px_-28px_rgba(0,0,0,0.55)]">
                   <Image
                     src="/images/what-is-bracketview-light.webp"
-                    alt="BracketView JSON workspace with Tree, Graph, Node, Table, and Text tabs"
+                    alt="BracketView JSON viewer with Tree, Graph, Node, Table, and Text tabs"
                     width={1200}
                     height={900}
                     className="h-auto w-full dark:hidden"
@@ -59,7 +59,7 @@ const WhatIsBracketView = () => {
                   />
                   <Image
                     src="/images/what-is-bracketview-dark.webp"
-                    alt="BracketView JSON workspace with Tree, Graph, Node, Table, and Text tabs"
+                    alt="BracketView JSON viewer with Tree, Graph, Node, Table, and Text tabs"
                     width={1200}
                     height={900}
                     className="hidden h-auto w-full dark:block"

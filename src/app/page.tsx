@@ -1,7 +1,6 @@
 import {
   buildFaqPageSchema,
   buildHomepageHowToSchema,
-  buildProductSchema,
   buildSoftwareApplicationSchema,
   buildSpeakableSchema,
   buildWebSiteSchema,
@@ -17,14 +16,15 @@ import FeaturedOn from "../components/FeaturedOn";
 import Features from "../components/Features";
 import HeroSection from "../components/HeroSection";
 import HowItWorks from "../components/HowItWorks";
+import JsonToolsGuide from "../components/JsonToolsGuide";
 import FeatureDemoChapter from "../components/marketing/FeatureDemoChapter";
 import HomepageViewTracker from "../components/marketing/HomepageViewTracker";
+import WhatsNew from "../components/marketing/WhatsNew";
 import PrivacyExplainer from "../components/PrivacyExplainer";
 import JsonLd from "../components/seo/JsonLd";
 import ToolsDirectory from "../components/ToolsDirectory";
 import UseCases from "../components/UseCases";
 import WhatIsBracketView from "../components/WhatIsBracketView";
-import WhatsNew from "../components/marketing/WhatsNew";
 
 const ComparisonTable = dynamic(() => import("../components/ComparisonTable"));
 const Pricing = dynamic(() => import("../components/Pricing"));
@@ -47,7 +47,6 @@ export default function Home() {
     buildFaqPageSchema(),
     buildHomepageHowToSchema(),
     buildSpeakableSchema(),
-    buildProductSchema(),
   ];
 
   return (
@@ -57,6 +56,7 @@ export default function Home() {
       <HeroSection />
       <FeaturedOn />
       <WhatIsBracketView />
+      <JsonToolsGuide />
       <WhatsNew />
       <FeatureDemoChapter />
       <CoreBenefits />

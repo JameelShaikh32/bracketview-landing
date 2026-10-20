@@ -173,7 +173,6 @@ type PricingPlan = {
     cta: string;
     ctaHref: string;
     highlighted?: boolean;
-    offerSchema?: PricingOfferSchema;
 };
 
 const pricingPlans: PricingPlan[] = [
@@ -193,7 +192,6 @@ const pricingPlans: PricingPlan[] = [
         ],
         cta: "Get started free",
         ctaHref: "https://app.bracketview.in",
-        offerSchema: { price: "0", priceCurrency: "USD" },
     },
     {
         name: "Monthly",
@@ -210,7 +208,6 @@ const pricingPlans: PricingPlan[] = [
         ],
         cta: "Start monthly plan",
         ctaHref: APP_PRICING_MONTHLY_CHECKOUT_URL,
-        offerSchema: { price: String(PRICING.monthlyUsd), priceCurrency: "USD" },
     },
     {
         name: "Yearly",
@@ -230,7 +227,6 @@ const pricingPlans: PricingPlan[] = [
         cta: "Start yearly plan",
         ctaHref: APP_PRICING_YEARLY_CHECKOUT_URL,
         highlighted: true,
-        offerSchema: { price: String(PRICING.yearlyUsd), priceCurrency: "USD" },
     },
 ];
 
@@ -251,11 +247,6 @@ const pricingFaqs = [
             "Pro removes AI and snapshot friction for daily API work and raises upload and webhook caps — typically replacing multiple paid single-purpose tools. Viewer tabs stay free.",
     },
 ];
-
-type PricingOfferSchema = {
-    price: string;
-    priceCurrency: string;
-};
 
 type Testimonial = {
     name: string;
@@ -474,7 +465,6 @@ export {
 export type {
     FeatureItem,
     HowItWorksStep,
-    PricingOfferSchema,
     PricingPlan,
     RelatedLink,
     Testimonial,
